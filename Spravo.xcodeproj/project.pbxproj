@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0483CA4C233B98FB003C2D10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0483CA4E233B98FB003C2D10 /* Localizable.strings */; };
+		0483CA53233B9C4B003C2D10 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483CA52233B9C4B003C2D10 /* String.swift */; };
 		04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C63D233A86D2008C4269 /* AppDelegate.swift */; };
-		04B8C640233A86D2008C4269 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C63F233A86D2008C4269 /* ViewController.swift */; };
+		04B8C640233A86D2008C4269 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C63F233A86D2008C4269 /* LoginVC.swift */; };
 		04B8C643233A86D2008C4269 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C641233A86D2008C4269 /* Main.storyboard */; };
 		04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C644233A86D4008C4269 /* Assets.xcassets */; };
 		04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */; };
@@ -17,9 +19,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0483CA4D233B98FB003C2D10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0483CA4F233B98FE003C2D10 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0483CA50233B98FF003C2D10 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0483CA52233B9C4B003C2D10 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		04B8C63A233A86D2008C4269 /* Spravo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spravo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B8C63D233A86D2008C4269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04B8C63F233A86D2008C4269 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04B8C63F233A86D2008C4269 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		04B8C642233A86D2008C4269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04B8C644233A86D4008C4269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04B8C647233A86D4008C4269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,9 +56,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0483CA51233B9B08003C2D10 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0483CA52233B9C4B003C2D10 /* String.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0483CA54233B9CFA003C2D10 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */,
+				04B8C641233A86D2008C4269 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0483CA55233B9D3F003C2D10 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04B8C64F233A8A04008C4269 /* ModelSpravo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0483CA56233B9D5E003C2D10 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				04B8C63F233A86D2008C4269 /* LoginVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		04B8C631233A86D2008C4269 = {
 			isa = PBXGroup;
 			children = (
+				0483CA4E233B98FB003C2D10 /* Localizable.strings */,
+				04B8C644233A86D4008C4269 /* Assets.xcassets */,
 				04B8C63C233A86D2008C4269 /* Spravo */,
 				04B8C63B233A86D2008C4269 /* Products */,
 				D0E48D6B89A7CD37C69D1FF7 /* Pods */,
@@ -71,12 +112,11 @@
 		04B8C63C233A86D2008C4269 /* Spravo */ = {
 			isa = PBXGroup;
 			children = (
+				0483CA56233B9D5E003C2D10 /* Screens */,
+				0483CA55233B9D3F003C2D10 /* Models */,
+				0483CA54233B9CFA003C2D10 /* Storyboards */,
+				0483CA51233B9B08003C2D10 /* Extension */,
 				04B8C63D233A86D2008C4269 /* AppDelegate.swift */,
-				04B8C64F233A8A04008C4269 /* ModelSpravo.swift */,
-				04B8C63F233A86D2008C4269 /* ViewController.swift */,
-				04B8C641233A86D2008C4269 /* Main.storyboard */,
-				04B8C644233A86D4008C4269 /* Assets.xcassets */,
-				04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */,
 				04B8C649233A86D4008C4269 /* Info.plist */,
 			);
 			path = Spravo;
@@ -135,6 +175,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				uk,
 			);
 			mainGroup = 04B8C631233A86D2008C4269;
 			productRefGroup = 04B8C63B233A86D2008C4269 /* Products */;
@@ -152,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */,
+				0483CA4C233B98FB003C2D10 /* Localizable.strings in Resources */,
 				04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */,
 				04B8C643233A86D2008C4269 /* Main.storyboard in Resources */,
 			);
@@ -191,7 +234,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Spravo/Pods-Spravo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 			);
@@ -199,7 +241,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 			);
@@ -216,7 +257,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B8C650233A8A04008C4269 /* ModelSpravo.swift in Sources */,
-				04B8C640233A86D2008C4269 /* ViewController.swift in Sources */,
+				04B8C640233A86D2008C4269 /* LoginVC.swift in Sources */,
+				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +266,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0483CA4E233B98FB003C2D10 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0483CA4D233B98FB003C2D10 /* en */,
+				0483CA4F233B98FE003C2D10 /* de */,
+				0483CA50233B98FF003C2D10 /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		04B8C641233A86D2008C4269 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -247,6 +299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -308,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

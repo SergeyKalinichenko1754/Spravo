@@ -2,7 +2,7 @@
 //  LoginVC.swift
 //  Spravo
 //
-//  Created by Onix on 9/24/19.
+//  Created by Onix on 9/26/19.
 //  Copyright © 2019 Home. All rights reserved.
 //
 
@@ -11,41 +11,42 @@ import FBSDKLoginKit
 
 class LoginVC: UIViewController, LoginButtonDelegate {
     
+    @IBOutlet weak var facebookLoginButton: FBLoginButton!
+    @IBOutlet weak var messageLabel: UILabel!
+    
+    var viewModel: LoginViewModelType?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        addFacebookButton()
-        if let _ = AccessToken.current {
-            print("User is already logged in")
-            logIn()
+        messageLabel.text = nil
+        if let accessToken = AccessToken.current {
+            logIn(accessToken.userID)
         }
-    }
-    
-    func addFacebookButton() {
-        let logginButton = FBLoginButton()
-        logginButton.delegate = self
-        logginButton.center = view.center
-        view.addSubview(logginButton)
+        facebookLoginButton.delegate = self 
     }
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
-            assertionFailure(error.localizedDescription)
+            messageLabel.text = error.localizedDescription
             return
         }
-        if let _ = result?.token {
+        messageLabel.text = ""
+        guard let result = result else { return }
+        if result.isCancelled {
+            messageLabel.text = NSLocalizedString("Login.Cancel.Warning", comment: "Message about the impossibility of entering the program without registering on Facebook")
+            return
+        } else if let accessToken = result.token {
             loginButton.isHidden = true
-            logIn()
-        } else {
-            exit(0)
+            logIn(accessToken.userID)
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        exit(0)
+        print("User logged out")
     }
-
-    func logIn() {
-        print("User logged in")
+    
+    func logIn(_ id: String) {
+        //TODO(SerhiiK) Do login from ViewModel
+        print("User logged with ID: \(id)")
     }
 }
-

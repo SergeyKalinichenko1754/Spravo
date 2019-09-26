@@ -7,30 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0483CA4C233B98FB003C2D10 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0483CA4E233B98FB003C2D10 /* Localizable.strings */; };
+		0414959D233D2BB6001D914C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414959C233D2BB6001D914C /* LoginVC.swift */; };
 		0483CA53233B9C4B003C2D10 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483CA52233B9C4B003C2D10 /* String.swift */; };
+		04AC39F2233BEECC007EDD56 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC39F1233BEECC007EDD56 /* LoginViewModel.swift */; };
 		04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C63D233A86D2008C4269 /* AppDelegate.swift */; };
-		04B8C640233A86D2008C4269 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C63F233A86D2008C4269 /* LoginVC.swift */; };
 		04B8C643233A86D2008C4269 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C641233A86D2008C4269 /* Main.storyboard */; };
 		04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C644233A86D4008C4269 /* Assets.xcassets */; };
 		04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */; };
 		04B8C650233A8A04008C4269 /* ModelSpravo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C64F233A8A04008C4269 /* ModelSpravo.swift */; };
+		04D55880233D226800511BF7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D55882233D226800511BF7 /* Localizable.strings */; };
 		447BE8D9FC74A5B03B386667 /* Pods_Spravo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E321E893F6F0731D97556F /* Pods_Spravo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0483CA4D233B98FB003C2D10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0483CA4F233B98FE003C2D10 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0483CA50233B98FF003C2D10 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0414959C233D2BB6001D914C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		0483CA52233B9C4B003C2D10 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		04AC39F1233BEECC007EDD56 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		04B8C63A233A86D2008C4269 /* Spravo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spravo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B8C63D233A86D2008C4269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04B8C63F233A86D2008C4269 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		04B8C642233A86D2008C4269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04B8C644233A86D4008C4269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04B8C647233A86D4008C4269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04B8C649233A86D4008C4269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04B8C64F233A8A04008C4269 /* ModelSpravo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSpravo.swift; sourceTree = "<group>"; };
+		04D55881233D226800511BF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04D55883233D226A00511BF7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04D55884233D226C00511BF7 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A09041CB567937019508DC0F /* Pods-Spravo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spravo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spravo/Pods-Spravo.debug.xcconfig"; sourceTree = "<group>"; };
 		AE734558FA51812AB47364BE /* Pods-Spravo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spravo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spravo/Pods-Spravo.release.xcconfig"; sourceTree = "<group>"; };
 		F0E321E893F6F0731D97556F /* Pods_Spravo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spravo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +86,8 @@
 		0483CA56233B9D5E003C2D10 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				04B8C63F233A86D2008C4269 /* LoginVC.swift */,
+				04AC39F1233BEECC007EDD56 /* LoginViewModel.swift */,
+				0414959C233D2BB6001D914C /* LoginVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -92,7 +95,7 @@
 		04B8C631233A86D2008C4269 = {
 			isa = PBXGroup;
 			children = (
-				0483CA4E233B98FB003C2D10 /* Localizable.strings */,
+				04D55882233D226800511BF7 /* Localizable.strings */,
 				04B8C644233A86D4008C4269 /* Assets.xcassets */,
 				04B8C63C233A86D2008C4269 /* Spravo */,
 				04B8C63B233A86D2008C4269 /* Products */,
@@ -194,7 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */,
-				0483CA4C233B98FB003C2D10 /* Localizable.strings in Resources */,
+				04D55880233D226800511BF7 /* Localizable.strings in Resources */,
 				04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */,
 				04B8C643233A86D2008C4269 /* Main.storyboard in Resources */,
 			);
@@ -257,8 +260,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B8C650233A8A04008C4269 /* ModelSpravo.swift in Sources */,
-				04B8C640233A86D2008C4269 /* LoginVC.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
+				0414959D233D2BB6001D914C /* LoginVC.swift in Sources */,
+				04AC39F2233BEECC007EDD56 /* LoginViewModel.swift in Sources */,
 				04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,16 +270,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0483CA4E233B98FB003C2D10 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0483CA4D233B98FB003C2D10 /* en */,
-				0483CA4F233B98FE003C2D10 /* de */,
-				0483CA50233B98FF003C2D10 /* uk */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		04B8C641233A86D2008C4269 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -290,6 +284,16 @@
 				04B8C647233A86D4008C4269 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		04D55882233D226800511BF7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04D55881233D226800511BF7 /* en */,
+				04D55883233D226A00511BF7 /* de */,
+				04D55884233D226C00511BF7 /* uk */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -10,5 +10,6 @@ import Foundation
 
 struct AddressBook: Codable {
     let name: String?
-    
+    let phoneNumber: String?
+    let birthday: Date?
 }

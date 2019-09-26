@@ -1,6 +1,0 @@
-framework module Pods_Spravo {
-  umbrella header "Pods-Spravo-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -16,6 +16,9 @@
 		04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */; };
 		04B8C650233A8A04008C4269 /* ModelSpravo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C64F233A8A04008C4269 /* ModelSpravo.swift */; };
 		04D55880233D226800511BF7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D55882233D226800511BF7 /* Localizable.strings */; };
+		04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6387233E1BDF00D46342 /* AlertHelper.swift */; };
+		04EB638A233E1CF100D46342 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6389233E1CF100D46342 /* Defines.swift */; };
+		04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB638B233E21F000D46342 /* HUDRenderer.swift */; };
 		447BE8D9FC74A5B03B386667 /* Pods_Spravo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E321E893F6F0731D97556F /* Pods_Spravo.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +36,9 @@
 		04D55881233D226800511BF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04D55883233D226A00511BF7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04D55884233D226C00511BF7 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04EB6387233E1BDF00D46342 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		04EB6389233E1CF100D46342 /* Defines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
+		04EB638B233E21F000D46342 /* HUDRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDRenderer.swift; sourceTree = "<group>"; };
 		A09041CB567937019508DC0F /* Pods-Spravo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spravo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spravo/Pods-Spravo.debug.xcconfig"; sourceTree = "<group>"; };
 		AE734558FA51812AB47364BE /* Pods-Spravo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spravo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spravo/Pods-Spravo.release.xcconfig"; sourceTree = "<group>"; };
 		F0E321E893F6F0731D97556F /* Pods_Spravo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spravo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +121,7 @@
 		04B8C63C233A86D2008C4269 /* Spravo */ = {
 			isa = PBXGroup;
 			children = (
+				04EB6386233E1BBC00D46342 /* Helpers */,
 				0483CA56233B9D5E003C2D10 /* Screens */,
 				0483CA55233B9D3F003C2D10 /* Models */,
 				0483CA54233B9CFA003C2D10 /* Storyboards */,
@@ -123,6 +130,16 @@
 				04B8C649233A86D4008C4269 /* Info.plist */,
 			);
 			path = Spravo;
+			sourceTree = "<group>";
+		};
+		04EB6386233E1BBC00D46342 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				04EB6387233E1BDF00D46342 /* AlertHelper.swift */,
+				04EB6389233E1CF100D46342 /* Defines.swift */,
+				04EB638B233E21F000D46342 /* HUDRenderer.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		D0E48D6B89A7CD37C69D1FF7 /* Pods */ = {
@@ -239,6 +256,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Spravo/Pods-Spravo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -246,6 +264,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -259,8 +278,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EB638A233E1CF100D46342 /* Defines.swift in Sources */,
+				04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */,
 				04B8C650233A8A04008C4269 /* ModelSpravo.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
+				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
 				0414959D233D2BB6001D914C /* LoginVC.swift in Sources */,
 				04AC39F2233BEECC007EDD56 /* LoginViewModel.swift in Sources */,
 				04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */,

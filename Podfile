@@ -6,5 +6,7 @@ target 'Spravo' do
   use_frameworks!
 
   pod 'FBSDKLoginKit', '~> 5.6.0'
+  pod 'MBProgressHUD', '~> 1.1.0'
+
 
 end

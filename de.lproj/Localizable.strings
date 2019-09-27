@@ -5,4 +5,10 @@
   Created by Onix on 9/26/19.
   Copyright © 2019 Home. All rights reserved.
 */
+//Common
+"Common.OK" = "Okay";
+"Common.Error" = "Error";
+
+// LogIn
+"Login.WelcomeTo" = "Willkommen zu";
 "Login.Cancel.Warning" = "Es ist unmöglich, das Programm zu betreten, ohne sich auf Facebook zu registrieren";

@@ -22,19 +22,27 @@
                                 <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SpravoBrand" translatesAutoresizingMaskIntoConstraints="NO" id="lg6-Dp-Zl0">
+                                <rect key="frame" x="97.5" y="222" width="180" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="2TE-92-Syh"/>
+                                    <constraint firstAttribute="width" constant="180" id="fVo-xh-kfO"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Label}" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fky-zE-Wrh">
-                                <rect key="frame" x="10" y="368.5" width="355" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="155.5" y="181.5" width="64.5" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="lg6-Dp-Zl0" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="4hg-fs-9WV"/>
                             <constraint firstItem="gQV-pW-1av" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="BLC-XR-UoL"/>
-                            <constraint firstItem="Fky-zE-Wrh" firstAttribute="leading" secondItem="lGW-rB-hzy" secondAttribute="leading" constant="10" id="IR7-Op-mFF"/>
-                            <constraint firstItem="lGW-rB-hzy" firstAttribute="trailing" secondItem="Fky-zE-Wrh" secondAttribute="trailing" constant="10" id="Rr1-cp-SFb"/>
-                            <constraint firstItem="Fky-zE-Wrh" firstAttribute="top" secondItem="gQV-pW-1av" secondAttribute="bottom" constant="20" id="cnD-Y4-hoW"/>
+                            <constraint firstItem="gQV-pW-1av" firstAttribute="top" secondItem="lg6-Dp-Zl0" secondAttribute="bottom" constant="16.5" id="Bop-A3-1RQ"/>
+                            <constraint firstItem="Fky-zE-Wrh" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="nyn-cY-u8Y"/>
+                            <constraint firstItem="lg6-Dp-Zl0" firstAttribute="top" secondItem="Fky-zE-Wrh" secondAttribute="bottom" constant="15" id="sUW-W6-850"/>
                             <constraint firstItem="gQV-pW-1av" firstAttribute="centerY" secondItem="PFo-DG-4mp" secondAttribute="centerY" id="zpm-ia-b7I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lGW-rB-hzy"/>
@@ -49,4 +57,7 @@
             <point key="canvasLocation" x="56.799999999999997" y="26.53673163418291"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SpravoBrand" width="180" height="80"/>
+    </resources>
 </document>

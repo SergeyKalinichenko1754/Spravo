@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0414959D233D2BB6001D914C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414959C233D2BB6001D914C /* LoginVC.swift */; };
+		0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414959C233D2BB6001D914C /* AuthorizationVC.swift */; };
 		0483CA53233B9C4B003C2D10 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483CA52233B9C4B003C2D10 /* String.swift */; };
-		04AC39F2233BEECC007EDD56 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC39F1233BEECC007EDD56 /* LoginViewModel.swift */; };
+		049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D2233E569100344EA7 /* ServiceHolder.swift */; };
+		049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D5233E589700344EA7 /* AppCoordinator.swift */; };
+		049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D7233E58AA00344EA7 /* AuthFlowCoordinator.swift */; };
+		049E34DA233E6DFE00344EA7 /* AuthorizationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D9233E6DFE00344EA7 /* AuthorizationCoordinator.swift */; };
+		049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34DB233E70F700344EA7 /* UIStoryboard.swift */; };
+		049E34DE233E721600344EA7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34DD233E721600344EA7 /* UIViewController.swift */; };
+		04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */; };
 		04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C63D233A86D2008C4269 /* AppDelegate.swift */; };
-		04B8C643233A86D2008C4269 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C641233A86D2008C4269 /* Main.storyboard */; };
+		04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C641233A86D2008C4269 /* AuthFlow.storyboard */; };
 		04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C644233A86D4008C4269 /* Assets.xcassets */; };
 		04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */; };
 		04B8C650233A8A04008C4269 /* ModelSpravo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C64F233A8A04008C4269 /* ModelSpravo.swift */; };
@@ -23,12 +29,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0414959C233D2BB6001D914C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		0414959C233D2BB6001D914C /* AuthorizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
 		0483CA52233B9C4B003C2D10 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		04AC39F1233BEECC007EDD56 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		049E34D2233E569100344EA7 /* ServiceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHolder.swift; sourceTree = "<group>"; };
+		049E34D5233E589700344EA7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		049E34D7233E58AA00344EA7 /* AuthFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowCoordinator.swift; sourceTree = "<group>"; };
+		049E34D9233E6DFE00344EA7 /* AuthorizationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCoordinator.swift; sourceTree = "<group>"; };
+		049E34DB233E70F700344EA7 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
+		049E34DD233E721600344EA7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		04B8C63A233A86D2008C4269 /* Spravo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spravo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B8C63D233A86D2008C4269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04B8C642233A86D2008C4269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04B8C642233A86D2008C4269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AuthFlow.storyboard; sourceTree = "<group>"; };
 		04B8C644233A86D4008C4269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04B8C647233A86D4008C4269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04B8C649233A86D4008C4269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				0483CA52233B9C4B003C2D10 /* String.swift */,
+				049E34DB233E70F700344EA7 /* UIStoryboard.swift */,
+				049E34DD233E721600344EA7 /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -76,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */,
-				04B8C641233A86D2008C4269 /* Main.storyboard */,
+				04B8C641233A86D2008C4269 /* AuthFlow.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -92,10 +106,36 @@
 		0483CA56233B9D5E003C2D10 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				04AC39F1233BEECC007EDD56 /* LoginViewModel.swift */,
-				0414959C233D2BB6001D914C /* LoginVC.swift */,
+				049E34DF233E769800344EA7 /* AuthFlow */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		049E34D1233E567000344EA7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				049E34D2233E569100344EA7 /* ServiceHolder.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		049E34D4233E587A00344EA7 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				049E34D5233E589700344EA7 /* AppCoordinator.swift */,
+				049E34D7233E58AA00344EA7 /* AuthFlowCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		049E34DF233E769800344EA7 /* AuthFlow */ = {
+			isa = PBXGroup;
+			children = (
+				049E34D9233E6DFE00344EA7 /* AuthorizationCoordinator.swift */,
+				04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */,
+				0414959C233D2BB6001D914C /* AuthorizationVC.swift */,
+			);
+			path = AuthFlow;
 			sourceTree = "<group>";
 		};
 		04B8C631233A86D2008C4269 = {
@@ -121,6 +161,8 @@
 		04B8C63C233A86D2008C4269 /* Spravo */ = {
 			isa = PBXGroup;
 			children = (
+				049E34D4233E587A00344EA7 /* Coordinators */,
+				049E34D1233E567000344EA7 /* Services */,
 				04EB6386233E1BBC00D46342 /* Helpers */,
 				0483CA56233B9D5E003C2D10 /* Screens */,
 				0483CA55233B9D3F003C2D10 /* Models */,
@@ -216,7 +258,7 @@
 				04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */,
 				04D55880233D226800511BF7 /* Localizable.strings in Resources */,
 				04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */,
-				04B8C643233A86D2008C4269 /* Main.storyboard in Resources */,
+				04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,26 +320,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049E34DE233E721600344EA7 /* UIViewController.swift in Sources */,
 				04EB638A233E1CF100D46342 /* Defines.swift in Sources */,
 				04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */,
+				049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */,
 				04B8C650233A8A04008C4269 /* ModelSpravo.swift in Sources */,
+				049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
-				0414959D233D2BB6001D914C /* LoginVC.swift in Sources */,
-				04AC39F2233BEECC007EDD56 /* LoginViewModel.swift in Sources */,
+				0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */,
+				04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */,
 				04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */,
+				049E34DA233E6DFE00344EA7 /* AuthorizationCoordinator.swift in Sources */,
+				049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */,
+				049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		04B8C641233A86D2008C4269 /* Main.storyboard */ = {
+		04B8C641233A86D2008C4269 /* AuthFlow.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				04B8C642233A86D2008C4269 /* Base */,
 			);
-			name = Main.storyboard;
+			name = AuthFlow.storyboard;
 			sourceTree = "<group>";
 		};
 		04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */ = {

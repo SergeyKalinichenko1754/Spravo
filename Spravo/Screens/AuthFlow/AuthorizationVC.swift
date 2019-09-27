@@ -1,5 +1,5 @@
 //
-//  LoginVC.swift
+//  AuthorizationVC.swift
 //  Spravo
 //
 //  Created by Onix on 9/26/19.
@@ -9,12 +9,12 @@
 import UIKit
 import FBSDKLoginKit
 
-class LoginVC: UIViewController, LoginButtonDelegate {
+class AuthorizationVC: UIViewController, LoginButtonDelegate {
     
     @IBOutlet weak var facebookLoginButton: FBLoginButton!
     @IBOutlet weak var messageLabel: UILabel!
     
-    var viewModel: LoginViewModelType?
+    var viewModel: AuthorizationViewModelType?
     
     override func viewDidLoad() {
         super.viewDidLoad()

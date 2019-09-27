@@ -12,7 +12,12 @@ protocol AuthorizationCoordinatorTransitions: class {
     func userDidLogin()
 }
 
-class AuthorizationCoordinator {
+
+protocol AuthorizationCoordinatorType {
+    func userDidLogin()
+}
+
+class AuthorizationCoordinator: AuthorizationCoordinatorType {
     
     private weak var navigationController: UINavigationController?
     private weak var controller = Storyboard.auth.controller(withClass: AuthorizationVC.self)
@@ -23,10 +28,12 @@ class AuthorizationCoordinator {
         self.navigationController = navigationController
         self.transitions = transitions
         self.serviceHolder = serviceHolder
+        controller?.viewModel = AuthorizationViewModel(self, serviceHolder: serviceHolder)
     }
     
     func start() {
-        
+        guard let controller = controller else { return }
+        navigationController?.setViewControllers([controller], animated: false)
     }
     
     func userDidLogin() {

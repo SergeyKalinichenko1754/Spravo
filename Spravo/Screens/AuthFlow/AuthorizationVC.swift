@@ -14,7 +14,7 @@ class AuthorizationVC: UIViewController, LoginButtonDelegate {
     @IBOutlet weak var facebookLoginButton: FBLoginButton!
     @IBOutlet weak var messageLabel: UILabel!
     
-    var viewModel: AuthorizationViewModelType?
+    var viewModel: AuthorizationViewModelType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,10 @@ class AuthorizationVC: UIViewController, LoginButtonDelegate {
     func localizeScreen() {
         messageLabel.text = NSLocalizedString("Login.WelcomeTo", comment: "Welcome to")
     }
+    
+    
+
+    
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
@@ -78,5 +82,11 @@ class AuthorizationVC: UIViewController, LoginButtonDelegate {
             }
         }
     }
+    
+    
+    @IBAction func tapedMyFBBtn(_ sender: UIButton) {
+        viewModel.authWithFB()
+    }
+    
     
 }

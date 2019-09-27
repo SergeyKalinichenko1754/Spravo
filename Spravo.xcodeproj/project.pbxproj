@@ -15,6 +15,7 @@
 		049E34DA233E6DFE00344EA7 /* AuthorizationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D9233E6DFE00344EA7 /* AuthorizationCoordinator.swift */; };
 		049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34DB233E70F700344EA7 /* UIStoryboard.swift */; };
 		049E34DE233E721600344EA7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34DD233E721600344EA7 /* UIViewController.swift */; };
+		049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34E0233E9C3000344EA7 /* FBAuthorization.swift */; };
 		04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */; };
 		04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C63D233A86D2008C4269 /* AppDelegate.swift */; };
 		04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C641233A86D2008C4269 /* AuthFlow.storyboard */; };
@@ -37,6 +38,7 @@
 		049E34D9233E6DFE00344EA7 /* AuthorizationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCoordinator.swift; sourceTree = "<group>"; };
 		049E34DB233E70F700344EA7 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		049E34DD233E721600344EA7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		049E34E0233E9C3000344EA7 /* FBAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthorization.swift; sourceTree = "<group>"; };
 		04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		04B8C63A233A86D2008C4269 /* Spravo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spravo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B8C63D233A86D2008C4269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				04EB6387233E1BDF00D46342 /* AlertHelper.swift */,
 				04EB6389233E1CF100D46342 /* Defines.swift */,
 				04EB638B233E21F000D46342 /* HUDRenderer.swift */,
+				049E34E0233E9C3000344EA7 /* FBAuthorization.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */,
 				04B8C650233A8A04008C4269 /* ModelSpravo.swift in Sources */,
 				049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */,
+				049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
 				0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */,

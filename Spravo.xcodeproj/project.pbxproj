@@ -180,6 +180,7 @@
 				04EB6387233E1BDF00D46342 /* AlertHelper.swift */,
 				04EB6389233E1CF100D46342 /* Defines.swift */,
 				04EB638B233E21F000D46342 /* HUDRenderer.swift */,
+				049E34E0233E9C3000344EA7 /* FBAuthorization.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

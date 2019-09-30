@@ -16,6 +16,11 @@ class FBAuthorization {
         return accessToken.userID
     }
     
+    func getFBTokenExpDate() -> Date? {
+        guard let accessToken = AccessToken.current  else { return nil }
+        return accessToken.expirationDate
+    }
+    
     func fetchFacebookProfileId(successBlock: @escaping (_ userID: String) -> (), failureBlock: @escaping (_ error: String?) -> ()) {
         if let userID = getFBUserId() {
             successBlock(userID)

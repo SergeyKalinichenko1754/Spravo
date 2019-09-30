@@ -11,4 +11,5 @@
 
 // LogIn
 "Login.WelcomeTo" = "Ласкаво просимо до";
+"Login.LoginButtonCaption" = "Увiйти з Facebook";
 "Login.Cancel.Warning" = "Без реєстрації на facebook вхід в програму неможливий";

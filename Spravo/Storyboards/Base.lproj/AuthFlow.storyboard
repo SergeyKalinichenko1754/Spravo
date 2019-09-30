@@ -18,36 +18,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQV-pW-1av" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SpravoBrand" translatesAutoresizingMaskIntoConstraints="NO" id="lg6-Dp-Zl0">
-                                <rect key="frame" x="97.5" y="222" width="180" height="80"/>
+                                <rect key="frame" x="97.5" y="223.5" width="180" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="2TE-92-Syh"/>
                                     <constraint firstAttribute="width" constant="180" id="fVo-xh-kfO"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Label}" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fky-zE-Wrh">
-                                <rect key="frame" x="155.5" y="181.5" width="64.5" height="25.5"/>
+                                <rect key="frame" x="155.5" y="183" width="64.5" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7AM-nf-zRO">
-                                <rect key="frame" x="107.5" y="537" width="160" height="30"/>
+                                <rect key="frame" x="102.5" y="318.5" width="170" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.32036388118055559" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="deK-P5-AZT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Login with Facebook">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapedMyFBBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O6Q-zB-Nex"/>
+                                    <action selector="tapedLoginWithFBButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BBk-r4-tuO"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMb-iH-yHv">
+                                <rect key="frame" x="155" y="617" width="65" height="30"/>
+                                <color key="backgroundColor" red="0.68625372650000005" green="0.68208462000000003" blue="0.69854551549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0L3-I1-VPc"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.32036388119999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="tapedLogOutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VVt-Hq-aM4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -55,18 +64,18 @@
                         <constraints>
                             <constraint firstItem="lg6-Dp-Zl0" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="4hg-fs-9WV"/>
                             <constraint firstItem="7AM-nf-zRO" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="7nd-VS-j0I"/>
-                            <constraint firstItem="7AM-nf-zRO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gQV-pW-1av" secondAttribute="bottom" constant="10" id="AC3-6L-X8d"/>
-                            <constraint firstItem="gQV-pW-1av" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="BLC-XR-UoL"/>
-                            <constraint firstItem="gQV-pW-1av" firstAttribute="top" secondItem="lg6-Dp-Zl0" secondAttribute="bottom" constant="16.5" id="Bop-A3-1RQ"/>
-                            <constraint firstItem="lGW-rB-hzy" firstAttribute="bottom" secondItem="7AM-nf-zRO" secondAttribute="bottom" constant="100" id="LYK-5F-gn3"/>
+                            <constraint firstItem="7AM-nf-zRO" firstAttribute="centerY" secondItem="PFo-DG-4mp" secondAttribute="centerY" id="8VL-sl-QJR"/>
+                            <constraint firstItem="7AM-nf-zRO" firstAttribute="top" secondItem="lg6-Dp-Zl0" secondAttribute="bottom" constant="15" id="hf0-wt-DNB"/>
                             <constraint firstItem="Fky-zE-Wrh" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="nyn-cY-u8Y"/>
+                            <constraint firstItem="wMb-iH-yHv" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="oI5-Lg-Kdk"/>
                             <constraint firstItem="lg6-Dp-Zl0" firstAttribute="top" secondItem="Fky-zE-Wrh" secondAttribute="bottom" constant="15" id="sUW-W6-850"/>
-                            <constraint firstItem="gQV-pW-1av" firstAttribute="centerY" secondItem="PFo-DG-4mp" secondAttribute="centerY" id="zpm-ia-b7I"/>
+                            <constraint firstItem="lGW-rB-hzy" firstAttribute="bottom" secondItem="wMb-iH-yHv" secondAttribute="bottom" constant="20" id="zp9-kC-T9p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lGW-rB-hzy"/>
                     </view>
                     <connections>
-                        <outlet property="facebookLoginButton" destination="gQV-pW-1av" id="lZ9-WC-Ldz"/>
+                        <outlet property="facebookLoginButton" destination="7AM-nf-zRO" id="Cu3-HT-9ON"/>
+                        <outlet property="logOutButton" destination="wMb-iH-yHv" id="9Vt-jk-rdN"/>
                         <outlet property="messageLabel" destination="Fky-zE-Wrh" id="Ygy-gh-ojB"/>
                     </connections>
                 </viewController>

@@ -12,13 +12,11 @@ protocol AuthorizationCoordinatorTransitions: class {
     func userDidLogin()
 }
 
-
 protocol AuthorizationCoordinatorType {
     func userDidLogin()
 }
 
 class AuthorizationCoordinator: AuthorizationCoordinatorType {
-    
     private weak var navigationController: UINavigationController?
     private weak var controller = Storyboard.auth.controller(withClass: AuthorizationVC.self)
     private weak var transitions: AuthorizationCoordinatorTransitions?

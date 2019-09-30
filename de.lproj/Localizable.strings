@@ -11,4 +11,5 @@
 
 // LogIn
 "Login.WelcomeTo" = "Willkommen zu";
+"Login.LoginButtonCaption" = "Mit Facebook einloggen";
 "Login.Cancel.Warning" = "Es ist unmöglich, das Programm zu betreten, ohne sich auf Facebook zu registrieren";

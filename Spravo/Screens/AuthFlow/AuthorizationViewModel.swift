@@ -10,10 +10,9 @@ import Foundation
 import UIKit
 
 protocol AuthorizationViewModelType {
-    
-    func fetchIssueContacts()
-    func authWithFB()
-    
+    func greeting() -> String
+    func authWithFbAndGetUserName()
+    func logOut()
 }
 
 class AuthorizationViewModel: AuthorizationViewModelType {
@@ -25,23 +24,42 @@ class AuthorizationViewModel: AuthorizationViewModelType {
         self.serviceHolder = serviceHolder
     }
     
+    func greeting() -> String {
+        return NSLocalizedString("Login.WelcomeTo", comment: "Welcome to")
+    }
     
-    func authWithFB() {
-        FBAuthorization().loginToFB(successBlock: { (id) in
-            print("success Block return userID: \(id)")
+    func authWithFB(successBlock: @escaping (_ userID: String?) -> ()) {
+        let currentVC = AlertHelper.getTopController(from: nil)
+        FBAuthorization().fetchFacebookProfileId(successBlock: { (userFbId) in
+            successBlock(userFbId)
+            print("User Id : \(userFbId)")
         }) { (error) in
             if let error = error {
-                print("Failure block return error: \(error)")
-                
-                AlertHelper.showAlert("⛔️", msg: error)
-                
-                
+                FBAuthorization().logOutFromFB()
+                successBlock(nil)
+                AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
             }
         }
     }
-  
-    func fetchIssueContacts() {
-        print("fetch Contacts")
+    
+    func getFbUserName() {
+        let currentVC = AlertHelper.getTopController(from: nil)
+        FBAuthorization().fetchFacebookProfileName(successBlock: { (userFbName) in
+            print("User name in FB : \(userFbName)")
+        }) { (error) in
+            if let error = error {
+                AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
+            }
+        }
+    }
+    
+    func authWithFbAndGetUserName() {
+        authWithFB(successBlock: { (userFbId) in
+            self.getFbUserName()
+        })
+    }
+    
+    func logOut() {
+        FBAuthorization().logOutFromFB()
     }
 }
-

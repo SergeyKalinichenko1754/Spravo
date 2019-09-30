@@ -22,7 +22,7 @@ class AuthorizationVC: UIViewController {
     }
     
     func localizeScreen() {
-        messageLabel.text = viewModel.greeting()
+        messageLabel.text = NSLocalizedString("Login.WelcomeTo", comment: "Welcome to")
         let loginBtnCaption = NSLocalizedString("Login.LoginButtonCaption", comment: "Caption of Login with facebook button")
         facebookLoginButton.setTitle(loginBtnCaption, for: .normal)
     }
@@ -35,7 +35,6 @@ class AuthorizationVC: UIViewController {
     @IBAction func tapedLoginWithFBButton(_ sender: UIButton) {
         viewModel.authWithFbAndGetUserName()
         showActualButtuns()
-        //messageLabel.text = userFbName + "\n" + viewModel.greeting()
     }
     
     @IBAction func tapedLogOutButton(_ sender: UIButton) {

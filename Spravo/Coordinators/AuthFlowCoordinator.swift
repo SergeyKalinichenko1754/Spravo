@@ -10,7 +10,6 @@ import UIKit
 
 protocol AuthFlowCoordinatorTransitions: class {
     func userDidLogin()
-  
 }
 
 class AuthFlowCoordinator {
@@ -27,6 +26,9 @@ class AuthFlowCoordinator {
     }
     
     func start() {
+        if let fbTokenExpirationDate = FBAuthorization().getFBTokenExpDate() {
+            print("FB token will be active till - \(fbTokenExpirationDate)")
+        }
         rootNav.setNavigationBarHidden(true, animated: false)
         let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
         coordinator.start()

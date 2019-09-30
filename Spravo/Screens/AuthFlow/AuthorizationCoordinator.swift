@@ -37,5 +37,4 @@ class AuthorizationCoordinator: AuthorizationCoordinatorType {
     func userDidLogin() {
         transitions?.userDidLogin()
     }
-    
 }

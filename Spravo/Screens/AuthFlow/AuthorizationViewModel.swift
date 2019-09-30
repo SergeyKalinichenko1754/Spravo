@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 protocol AuthorizationViewModelType {
-    func greeting() -> String
     func authWithFbAndGetUserName()
     func logOut()
 }
@@ -22,10 +21,6 @@ class AuthorizationViewModel: AuthorizationViewModelType {
     init(_ coordinator: AuthorizationCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
-    }
-    
-    func greeting() -> String {
-        return NSLocalizedString("Login.WelcomeTo", comment: "Welcome to")
     }
     
     func authWithFB(successBlock: @escaping (_ userID: String?) -> ()) {
@@ -53,9 +48,23 @@ class AuthorizationViewModel: AuthorizationViewModelType {
         }
     }
     
+    func fetchExistingContacts() {
+        let currentVC = AlertHelper.getTopController(from: nil)
+        PhoneContactsAgent().fetchExistingContacts(successBlock: { (contacts) in
+            guard let contacts = contacts else { return }
+            print("Добыто контактов : \(contacts.count)")
+        }) { (error) in
+            if let error = error {
+                AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
+            }
+        }
+    }
+    
     func authWithFbAndGetUserName() {
-        authWithFB(successBlock: { (userFbId) in
+        authWithFB(successBlock: { [weak self] (userFbId) in
+            guard let self = self else { return }
             self.getFbUserName()
+            self.fetchExistingContacts()
         })
     }
     

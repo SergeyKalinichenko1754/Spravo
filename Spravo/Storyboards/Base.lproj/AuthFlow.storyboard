@@ -46,19 +46,6 @@
                                     <action selector="tapedLoginWithFBButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BBk-r4-tuO"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMb-iH-yHv">
-                                <rect key="frame" x="155" y="617" width="65" height="30"/>
-                                <color key="backgroundColor" red="0.68625372650000005" green="0.68208462000000003" blue="0.69854551549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0L3-I1-VPc"/>
-                                </constraints>
-                                <color key="tintColor" red="0.0" green="0.32036388119999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                <state key="normal" title="Log Out"/>
-                                <connections>
-                                    <action selector="tapedLogOutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VVt-Hq-aM4"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -67,15 +54,12 @@
                             <constraint firstItem="7AM-nf-zRO" firstAttribute="centerY" secondItem="PFo-DG-4mp" secondAttribute="centerY" id="8VL-sl-QJR"/>
                             <constraint firstItem="7AM-nf-zRO" firstAttribute="top" secondItem="lg6-Dp-Zl0" secondAttribute="bottom" constant="15" id="hf0-wt-DNB"/>
                             <constraint firstItem="Fky-zE-Wrh" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="nyn-cY-u8Y"/>
-                            <constraint firstItem="wMb-iH-yHv" firstAttribute="centerX" secondItem="PFo-DG-4mp" secondAttribute="centerX" id="oI5-Lg-Kdk"/>
                             <constraint firstItem="lg6-Dp-Zl0" firstAttribute="top" secondItem="Fky-zE-Wrh" secondAttribute="bottom" constant="15" id="sUW-W6-850"/>
-                            <constraint firstItem="lGW-rB-hzy" firstAttribute="bottom" secondItem="wMb-iH-yHv" secondAttribute="bottom" constant="20" id="zp9-kC-T9p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lGW-rB-hzy"/>
                     </view>
                     <connections>
                         <outlet property="facebookLoginButton" destination="7AM-nf-zRO" id="Cu3-HT-9ON"/>
-                        <outlet property="logOutButton" destination="wMb-iH-yHv" id="9Vt-jk-rdN"/>
                         <outlet property="messageLabel" destination="Fky-zE-Wrh" id="Ygy-gh-ojB"/>
                     </connections>
                 </viewController>

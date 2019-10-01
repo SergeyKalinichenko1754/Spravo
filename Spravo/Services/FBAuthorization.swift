@@ -10,7 +10,6 @@ import FBSDKLoginKit
 
 protocol FBAuthorizationType: Service {
     func getFBUserId() -> String?
-    func getTokenString() -> String?
     func getFBTokenExpDate() -> Date?
     func refreshToken()
     func fetchFacebookProfileId(completion: @escaping (Result<String, String?>) -> ())
@@ -19,35 +18,22 @@ protocol FBAuthorizationType: Service {
 }
 
 class FBAuthorization: FBAuthorizationType {
-    fileprivate let facebookPermissions = ["public_profile"]
+    let facebookPermissions = ["public_profile"]
     
     func getFBUserId() -> String? {
-        guard let accessToken = AccessToken.current else { return nil }
+        guard let accessToken = AccessToken.current  else { return nil }
         return accessToken.userID
     }
     
-    func getTokenString() -> String? {
-        guard let accessTokenString = AccessToken.current?.tokenString else { return nil }
-        return accessTokenString
-    }
-    
     func getFBTokenExpDate() -> Date? {
-        guard let accessToken = AccessToken.current else { return nil }
+        guard let accessToken = AccessToken.current  else { return nil }
         print("token updated: \(accessToken.refreshDate)")
         return accessToken.expirationDate
     }
     
-    func needAuthorization() -> Bool {
-        if let fbTokenExpirationDate = getFBTokenExpDate(),
-            fbTokenExpirationDate > Date() {
-            return false
-        }
-        return true
-    }
-    
     func refreshToken() {
         AccessToken.refreshCurrentAccessToken { (conection, result, error) in
-            guard error == nil else {
+            if error != nil {
                 self.logOutFromFB()
                 return
             }

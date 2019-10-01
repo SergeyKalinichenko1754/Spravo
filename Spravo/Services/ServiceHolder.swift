@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 protocol Service {}
 
 public class ServiceHolder {

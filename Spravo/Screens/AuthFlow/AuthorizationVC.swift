@@ -12,7 +12,6 @@ import FBSDKLoginKit
 class AuthorizationVC: UIViewController {
     @IBOutlet weak var facebookLoginButton: FBLoginButton!
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var logOutButton: UIButton!
     
     var viewModel: AuthorizationViewModelType!
     
@@ -26,20 +25,8 @@ class AuthorizationVC: UIViewController {
         let loginBtnCaption = NSLocalizedString("Login.LoginButtonCaption", comment: "Caption of Login with facebook button")
         facebookLoginButton.setTitle(loginBtnCaption, for: .normal)
     }
-    
-    func showActualButtuns() {
-        facebookLoginButton.isHidden = !facebookLoginButton.isHidden
-        logOutButton.isHidden = !logOutButton.isHidden
-    }
-    
+        
     @IBAction func tapedLoginWithFBButton(_ sender: UIButton) {
         viewModel.authWithFbAndGetUserName()
-        showActualButtuns()
-    }
-    
-    @IBAction func tapedLogOutButton(_ sender: UIButton) {
-        viewModel.logOut()
-        showActualButtuns()
-        print("User logged out")
     }
 }

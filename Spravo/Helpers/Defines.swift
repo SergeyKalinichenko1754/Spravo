@@ -10,3 +10,8 @@ import Foundation
 
 typealias EmptyClosure = () -> ()
 typealias SimpleClosure<T> = (T) -> ()
+
+enum Result<V, E> {
+    case success(V)
+    case failure(E)
+}

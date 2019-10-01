@@ -17,21 +17,23 @@ protocol AuthorizationViewModelType {
 class AuthorizationViewModel: AuthorizationViewModelType {
     fileprivate let coordinator: AuthorizationCoordinatorType
     private var serviceHolder: ServiceHolder
+    private var fbAuthorization: FBAuthorizationType
     
     init(_ coordinator: AuthorizationCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
+        self.fbAuthorization = serviceHolder.get(by: FBAuthorization.self)
     }
     
-    func authWithFB(successBlock: @escaping (_ userID: String?) -> ()) {
+    func authWithFB(completion: @escaping (_ userID: String?) -> ()) {
         let currentVC = AlertHelper.getTopController(from: nil)
-        FBAuthorization().fetchFacebookProfileId(successBlock: { (userFbId) in
-            successBlock(userFbId)
-            print("User Id : \(userFbId)")
-        }) { (error) in
-            if let error = error {
+        fbAuthorization.fetchFacebookProfileId { result in
+            switch result {
+            case .success(let userFbId):
+                completion(userFbId)
+            case .failure(let error):
                 FBAuthorization().logOutFromFB()
-                successBlock(nil)
+                completion(nil)
                 AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
             }
         }
@@ -39,36 +41,29 @@ class AuthorizationViewModel: AuthorizationViewModelType {
     
     func getFbUserName() {
         let currentVC = AlertHelper.getTopController(from: nil)
-        FBAuthorization().fetchFacebookProfileName(successBlock: { (userFbName) in
-            print("User name in FB : \(userFbName)")
-        }) { (error) in
-            if let error = error {
-                AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
-            }
-        }
-    }
-    
-    func fetchExistingContacts() {
-        let currentVC = AlertHelper.getTopController(from: nil)
-        PhoneContactsAgent().fetchExistingContacts(successBlock: { (contacts) in
-            guard let contacts = contacts else { return }
-            print("Добыто контактов : \(contacts.count)")
-        }) { (error) in
-            if let error = error {
-                AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
-            }
-        }
-    }
-    
-    func authWithFbAndGetUserName() {
-        authWithFB(successBlock: { [weak self] (userFbId) in
+        fbAuthorization.fetchFacebookProfileName { [weak self]  result in
             guard let self = self else { return }
+            switch result {
+            case .success(let userFbName):
+                print("User name in FB : \(userFbName)")
+                self.coordinator.userDidLogin()
+            case .failure(let error):
+                if let error = error {
+                    AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
+                }
+            }
+        }
+    }
+
+    func authWithFbAndGetUserName() {
+        authWithFB(completion: { [weak self] (userFbId) in
+            guard let self = self, let userFbId = userFbId else { return }
+            print("Facebook user ID: \(userFbId)")
             self.getFbUserName()
-            self.fetchExistingContacts()
         })
     }
     
     func logOut() {
-        FBAuthorization().logOutFromFB()
+        fbAuthorization.logOutFromFB()
     }
 }

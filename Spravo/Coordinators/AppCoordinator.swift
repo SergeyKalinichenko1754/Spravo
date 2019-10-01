@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class AppCoordinator {
     
     private let window: UIWindow
@@ -30,9 +29,9 @@ class AppCoordinator {
     }
     
     private func enterApp() {
-        //start app
+        print("Start AddressBookTabBarCoordinator **************")
+        authFlowCoordinator = nil
     }
-    
 }
 
 extension AppCoordinator: AuthFlowCoordinatorTransitions {

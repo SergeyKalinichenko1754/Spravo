@@ -26,19 +26,39 @@ class AuthFlowCoordinator {
     }
     
     func start() {
-        if let fbTokenExpirationDate = FBAuthorization().getFBTokenExpDate() {
+        startServices()
+        let fbAuthorization = serviceHolder.get(by: FBAuthorization.self)
+        fbAuthorization.logOutFromFB()
+        if let fbTokenExpirationDate = fbAuthorization.getFBTokenExpDate(),
+            fbTokenExpirationDate > Date() {
             print("FB token will be active till - \(fbTokenExpirationDate)")
+            //fbAuthorization.refreshToken()
+            userDidLogin()
+        } else {
+            //print("Need autorize with FB token ")
+            rootNav.setNavigationBarHidden(true, animated: false)
+            let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
+            coordinator.start()
+            window.rootViewController = rootNav
+            window.makeKeyAndVisible()
         }
-        rootNav.setNavigationBarHidden(true, animated: false)
-        let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
-        coordinator.start()
-        window.rootViewController = rootNav
-        window.makeKeyAndVisible()
     }
 }
 
 extension AuthFlowCoordinator: AuthorizationCoordinatorTransitions {
     func userDidLogin() {
+        removeServices()
         transitions?.userDidLogin()
+    }
+}
+
+extension AuthFlowCoordinator {
+    private func startServices() {
+        let fbAuthorization = FBAuthorization()
+        serviceHolder.add(FBAuthorization.self, for: fbAuthorization)
+    }
+    
+    private func removeServices() {
+        serviceHolder.remove(by: FBAuthorization.self)
     }
 }

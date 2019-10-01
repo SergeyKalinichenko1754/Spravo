@@ -8,7 +8,16 @@
 
 import FBSDKLoginKit
 
-class FBAuthorization {
+protocol FBAuthorizationType: Service {
+    func getFBUserId() -> String?
+    func getFBTokenExpDate() -> Date?
+    func refreshToken()
+    func fetchFacebookProfileId(completion: @escaping (Result<String, String?>) -> ())
+    func fetchFacebookProfileName(completion: @escaping (Result<String, String?>) -> ())
+    func logOutFromFB()
+}
+
+class FBAuthorization: FBAuthorizationType {
     let facebookPermissions = ["public_profile"]
     
     func getFBUserId() -> String? {
@@ -18,26 +27,37 @@ class FBAuthorization {
     
     func getFBTokenExpDate() -> Date? {
         guard let accessToken = AccessToken.current  else { return nil }
+        print("token updated: \(accessToken.refreshDate)")
         return accessToken.expirationDate
     }
     
-    func fetchFacebookProfileId(successBlock: @escaping (_ userID: String) -> (), failureBlock: @escaping (_ error: String?) -> ()) {
+    func refreshToken() {
+        AccessToken.refreshCurrentAccessToken { (conection, result, error) in
+            if error != nil {
+                self.logOutFromFB()
+                return
+            }
+            print("Token updated")
+        }
+    }
+    
+    func fetchFacebookProfileId(completion: @escaping (Result<String, String?>) -> ()) {
         if let userID = getFBUserId() {
-            successBlock(userID)
+            completion(.success(userID))
             return
         }
         LoginManager().logIn(permissions: facebookPermissions, from: nil) { (result, error) in
             if let error = error {
-                failureBlock(error.localizedDescription)
+                completion(.failure(error.localizedDescription))
                 return
             }
             guard let result = result else {
-                failureBlock(nil)
+                completion(.failure(nil))
                 return
             }
             if result.isCancelled {
                 let message = NSLocalizedString("Login.Cancel.Warning", comment: "Message about the impossibility of entering the program without registering on Facebook")
-                failureBlock(message)
+                completion(.failure(message))
                 return
             } else if let accessToken = result.token {
                 var allPermsGranted = true
@@ -49,24 +69,20 @@ class FBAuthorization {
                     }
                 }
                 if allPermsGranted {
-                    successBlock(accessToken.userID)
+                    completion(.success(accessToken.userID))
                     return
                 }
             }
-            failureBlock(nil)
+            completion(.failure(nil))
         }
     }
     
-    func logOutFromFB() {
-        LoginManager().logOut()
-    }
-    
-    func fetchFacebookProfileName(successBlock: @escaping (_ userName: String) -> (), failureBlock: @escaping (_ error: String?) -> ()) {
+    func fetchFacebookProfileName(completion: @escaping (Result<String, String?>) -> ()) {
         let parameters = ["fields": "first_name, last_name"]
         var name = ""
         GraphRequest(graphPath: "me", parameters: parameters).start { (connection, result, error) -> Void in
             if let error = error {
-                failureBlock(error.localizedDescription)
+                completion(.failure(error.localizedDescription))
                 return
             }
             if let responseDictionary = result as? NSDictionary {
@@ -74,7 +90,15 @@ class FBAuthorization {
                 let lastNameFB = responseDictionary["last_name"] as? String
                 name = "\(firstNameFB ?? "") \(lastNameFB ?? "")"
             }
-            successBlock(name)
+            completion(.success(name))
         }
+    }
+    
+    func logOutFromFB() {
+        LoginManager().logOut()
+    }
+    
+    deinit {
+        print("FBAuthorization deinit !!!")
     }
 }

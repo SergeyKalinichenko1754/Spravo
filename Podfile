@@ -7,6 +7,7 @@ target 'Spravo' do
 
   pod 'FBSDKLoginKit', '~> 5.6.0'
   pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'Firebase/Analytics'
 
 
 end

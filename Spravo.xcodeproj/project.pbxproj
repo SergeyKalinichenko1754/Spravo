@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04022C632344D89700EABC2B /* GoogleService-Info.plist */; };
 		0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414959C233D2BB6001D914C /* AuthorizationVC.swift */; };
 		04165502234273E600856197 /* PhoneContactsAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04165501234273E600856197 /* PhoneContactsAgent.swift */; };
 		0483CA53233B9C4B003C2D10 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483CA52233B9C4B003C2D10 /* String.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04022C632344D89700EABC2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0414959C233D2BB6001D914C /* AuthorizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
 		04165501234273E600856197 /* PhoneContactsAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsAgent.swift; sourceTree = "<group>"; };
 		0483CA52233B9C4B003C2D10 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				0483CA51233B9B08003C2D10 /* Extension */,
 				04B8C63D233A86D2008C4269 /* AppDelegate.swift */,
 				04B8C649233A86D4008C4269 /* Info.plist */,
+				04022C632344D89700EABC2B /* GoogleService-Info.plist */,
 			);
 			path = Spravo;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */,
 				04D55880233D226800511BF7 /* Localizable.strings in Resources */,
+				04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */,
 				04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */,
 				04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */,
 			);

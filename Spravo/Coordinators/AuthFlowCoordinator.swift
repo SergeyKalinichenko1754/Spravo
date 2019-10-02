@@ -32,10 +32,9 @@ class AuthFlowCoordinator {
         if let fbTokenExpirationDate = fbAuthorization.getFBTokenExpDate(),
             fbTokenExpirationDate > Date() {
             print("FB token will be active till - \(fbTokenExpirationDate)")
-            //fbAuthorization.refreshToken()
+            //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
             userDidLogin()
         } else {
-            //print("Need autorize with FB token ")
             rootNav.setNavigationBarHidden(true, animated: false)
             let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
             coordinator.start()

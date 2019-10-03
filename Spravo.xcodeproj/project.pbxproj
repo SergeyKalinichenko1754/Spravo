@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04022C632344D89700EABC2B /* GoogleService-Info.plist */; };
+		04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04022C652344E9D700EABC2B /* FirebaseAgent.swift */; };
 		0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414959C233D2BB6001D914C /* AuthorizationVC.swift */; };
 		04165502234273E600856197 /* PhoneContactsAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04165501234273E600856197 /* PhoneContactsAgent.swift */; };
 		0483CA53233B9C4B003C2D10 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483CA52233B9C4B003C2D10 /* String.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		04022C632344D89700EABC2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04022C652344E9D700EABC2B /* FirebaseAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAgent.swift; sourceTree = "<group>"; };
 		0414959C233D2BB6001D914C /* AuthorizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
 		04165501234273E600856197 /* PhoneContactsAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsAgent.swift; sourceTree = "<group>"; };
 		0483CA52233B9C4B003C2D10 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				049E34D2233E569100344EA7 /* ServiceHolder.swift */,
 				049E34E0233E9C3000344EA7 /* FBAuthorization.swift */,
+				04022C652344E9D700EABC2B /* FirebaseAgent.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				049E34DE233E721600344EA7 /* UIViewController.swift in Sources */,
 				04EB638A233E1CF100D46342 /* Defines.swift in Sources */,
 				04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */,
+				04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */,
 				049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */,
 				049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */,
 				049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */,

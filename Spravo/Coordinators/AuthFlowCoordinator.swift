@@ -53,10 +53,13 @@ extension AuthFlowCoordinator: AuthorizationCoordinatorTransitions {
 extension AuthFlowCoordinator {
     private func startServices() {
         let fbAuthorization = FBAuthorization()
+        let firebaseAgent = FirebaseAgent()
         serviceHolder.add(FBAuthorization.self, for: fbAuthorization)
+        serviceHolder.add(FirebaseAgent.self, for: firebaseAgent)
     }
     
     private func removeServices() {
         serviceHolder.remove(by: FBAuthorization.self)
+        serviceHolder.remove(by: FirebaseAgent.self)
     }
 }

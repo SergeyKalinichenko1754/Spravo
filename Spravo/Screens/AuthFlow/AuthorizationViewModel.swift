@@ -17,18 +17,24 @@ class AuthorizationViewModel: AuthorizationViewModelType {
     fileprivate let coordinator: AuthorizationCoordinatorType
     private var serviceHolder: ServiceHolder
     private var fbAuthorization: FBAuthorizationType
+    private var firebaseAgent: FirebaseAgent
+    
+    private var userFbId = ""
     
     init(_ coordinator: AuthorizationCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
         self.fbAuthorization = serviceHolder.get(by: FBAuthorization.self)
+        self.firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
     }
     
-    func authWithFB(completion: @escaping (_ userID: String?) -> ()) {
+    fileprivate func authWithFB(completion: @escaping (_ userID: String?) -> ()) {
         let currentVC = AlertHelper.getTopController(from: nil)
-        fbAuthorization.fetchFacebookProfileId { result in
+        fbAuthorization.fetchFacebookProfileId { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let userFbId):
+                self.userFbId = userFbId
                 completion(userFbId)
             case .failure(let error):
                 self.fbAuthorization.logOutFromFB()
@@ -45,7 +51,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             switch result {
             case .success(let userFbName):
                 print("User name in FB : \(userFbName)")
-                self.coordinator.userDidLogin()
+                self.signIntoFirebase()
             case .failure(let error):
                 if let error = error {
                     AlertHelper.showAlert(nil, msg: error, from: currentVC)
@@ -53,7 +59,36 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             }
         }
     }
-
+    
+    fileprivate func signIntoFirebase() {
+        let currentVC = AlertHelper.getTopController(from: nil)
+        guard let token = fbAuthorization.getTokenString() else { return }
+        firebaseAgent.signIntoFirebase(token: token) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let providerID):
+                print("Succesfully logged with provider ID: \(providerID)")
+                self.fetchExistingContacts()
+            case .failure(let error):
+                if let error = error {
+                    AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
+                }
+            }
+        }
+    }
+    
+    fileprivate func fetchExistingContacts() {
+        
+        firebaseAgent.getContacts(at: self.userFbId) { (arr) in
+            
+            print(arr)
+        }
+        
+        
+        firebaseAgent.save(userFbId: self.userFbId)
+        coordinator.userDidLogin()
+    }
+    
     func authWithFbAndGetUserName() {
         authWithFB(completion: { [weak self] (userFbId) in
             guard let self = self, let userFbId = userFbId else { return }

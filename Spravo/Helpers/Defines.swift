@@ -15,3 +15,11 @@ enum Result<V, E> {
     case success(V)
     case failure(E)
 }
+
+func updateUIonMainThread(block: @escaping () -> Void) {
+    if Thread.isMainThread {
+        block()
+    } else {
+        DispatchQueue.main.async { block() }
+    }
+}

@@ -28,10 +28,9 @@ class AuthFlowCoordinator {
     func start() {
         startServices()
         let fbAuthorization = serviceHolder.get(by: FBAuthorization.self)
+        //TODO(SergeyK): Temporary log Out form Fb on start (need for setting authorization). After setting should delete !
         fbAuthorization.logOutFromFB()
-        if let fbTokenExpirationDate = fbAuthorization.getFBTokenExpDate(),
-            fbTokenExpirationDate > Date() {
-            print("FB token will be active till - \(fbTokenExpirationDate)")
+        if !fbAuthorization.needAuthorization() {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
             userDidLogin()
         } else {

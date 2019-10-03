@@ -6,7 +6,6 @@
 //  Copyright © 2019 Home. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class AlertHelper {
@@ -31,7 +30,7 @@ class AlertHelper {
         let alertTitle = title ?? "Common.Error".localized
         let alertMsg = msg ?? ""
         let alertLeftBtnTitle = leftBtnTitle ?? "Common.OK".localized
-        DispatchQueue.main.async {
+        updateUIonMainThread {
             HUDRenderer.hideHUD()
             guard let root = getTopController(from: from) else { return }
             let alertVC = UIAlertController(title: alertTitle, message: alertMsg, preferredStyle: .alert)
@@ -55,7 +54,7 @@ class AlertHelper {
     class func showAlert(msg: String?, from: UIViewController? = nil, leftBtnTitle: String? = nil, rightBtnTitle: String? = nil, completion: SimpleClosure<Bool>? = nil) {
         let alertMsg = msg ?? ""
         let alertLeftBtnTitle = leftBtnTitle ?? "Common.OK".localized
-        DispatchQueue.main.async {
+        updateUIonMainThread {
             HUDRenderer.hideHUD()
             guard let root = getTopController(from: from) else { return }
             let alertVC = UIAlertController(title: nil, message: alertMsg, preferredStyle: .alert)

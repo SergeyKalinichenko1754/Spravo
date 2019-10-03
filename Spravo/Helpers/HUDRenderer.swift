@@ -11,7 +11,7 @@ import MBProgressHUD
 class HUDRenderer {
     
     class func showHUD() {
-        DispatchQueue.main.async {
+        updateUIonMainThread {
             guard let view = UIApplication.shared.keyWindow else { return }
             MBProgressHUD.hide(for: view, animated: false)
             MBProgressHUD.showAdded(to: view, animated: true)
@@ -19,7 +19,7 @@ class HUDRenderer {
     }
     
     class func hideHUD() {
-        DispatchQueue.main.async {
+        updateUIonMainThread {
             guard let view = UIApplication.shared.keyWindow else { return }
             MBProgressHUD.hide(for: view, animated: true)
         }

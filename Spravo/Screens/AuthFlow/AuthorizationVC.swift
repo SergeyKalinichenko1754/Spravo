@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 
 class AuthorizationVC: UIViewController {
-    @IBOutlet weak var facebookLoginButton: FBLoginButton!
+    @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
     
     var viewModel: AuthorizationViewModelType!

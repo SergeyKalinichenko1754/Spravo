@@ -6,7 +6,6 @@
 //  Copyright © 2019 Home. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol AuthorizationViewModelType {
@@ -32,16 +31,16 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             case .success(let userFbId):
                 completion(userFbId)
             case .failure(let error):
-                FBAuthorization().logOutFromFB()
+                self.fbAuthorization.logOutFromFB()
                 completion(nil)
-                AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
+                AlertHelper.showAlert(nil, msg: error, from: currentVC)
             }
         }
     }
     
-    func getFbUserName() {
+    fileprivate func getFbUserName() {
         let currentVC = AlertHelper.getTopController(from: nil)
-        fbAuthorization.fetchFacebookProfileName { [weak self]  result in
+        fbAuthorization.fetchFacebookProfileName { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let userFbName):
@@ -49,7 +48,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
                 self.coordinator.userDidLogin()
             case .failure(let error):
                 if let error = error {
-                    AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
+                    AlertHelper.showAlert(nil, msg: error, from: currentVC)
                 }
             }
         }

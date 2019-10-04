@@ -29,7 +29,7 @@ class AppCoordinator {
     }
     
     private func enterApp() {
-        print("Start AddressBookTabBarCoordinator **************")
+        debugPrint("Start AddressBookTabBarCoordinator **************")
         authFlowCoordinator = nil
     }
 }

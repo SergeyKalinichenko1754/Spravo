@@ -22,11 +22,11 @@ class AuthorizationCoordinator: AuthorizationCoordinatorType {
     private weak var transitions: AuthorizationCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
     
-    init(navigationController: UINavigationController?, transitions: AuthorizationCoordinatorTransitions, serviceHolder: ServiceHolder) {
+    init(navigationController: UINavigationController?, transitions: AuthorizationCoordinatorTransitions, serviceHolder: ServiceHolder, addressBook: AddressBookViewModel) {
         self.navigationController = navigationController
         self.transitions = transitions
         self.serviceHolder = serviceHolder
-        controller?.viewModel = AuthorizationViewModel(self, serviceHolder: serviceHolder)
+        controller?.viewModel = AuthorizationViewModel(self, serviceHolder: serviceHolder, addressBook: addressBook)
     }
     
     func start() {

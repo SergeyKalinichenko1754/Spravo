@@ -16,14 +16,14 @@ protocol AuthorizationViewModelType {
 class AuthorizationViewModel: AuthorizationViewModelType {
     fileprivate let coordinator: AuthorizationCoordinatorType
     private var serviceHolder: ServiceHolder
+    private var addressBook: AddressBookViewModel
     private var fbAuthorization: FBAuthorizationType
     private var firebaseAgent: FirebaseAgent
     
-    private var userFbId = ""
-    
-    init(_ coordinator: AuthorizationCoordinatorType, serviceHolder: ServiceHolder) {
+    init(_ coordinator: AuthorizationCoordinatorType, serviceHolder: ServiceHolder, addressBook: AddressBookViewModel) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
+        self.addressBook = addressBook
         self.fbAuthorization = serviceHolder.get(by: FBAuthorization.self)
         self.firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
     }
@@ -34,7 +34,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             guard let self = self else { return }
             switch result {
             case .success(let userFbId):
-                self.userFbId = userFbId
+                self.addressBook.userModel.userFacebookID = userFbId
                 completion(userFbId)
             case .failure(let error):
                 self.fbAuthorization.logOutFromFB()
@@ -50,7 +50,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             guard let self = self else { return }
             switch result {
             case .success(let userFbName):
-                print("User name in FB : \(userFbName)")
+                debugPrint("User name in FB : \(userFbName)")
                 self.signIntoFirebase()
             case .failure(let error):
                 if let error = error {
@@ -67,32 +67,32 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             guard let self = self else { return }
             switch result {
             case .success(let providerID):
-                print("Succesfully logged with provider ID: \(providerID)")
+                debugPrint("Succesfully logged in with provider ID: \(providerID)")
                 self.fetchExistingContacts()
             case .failure(let error):
                 if let error = error {
-                    AlertHelper.showAlert("⛔️", msg: error, from: currentVC)
+                    AlertHelper.showAlert(nil, msg: error, from: currentVC)
                 }
             }
         }
     }
     
     fileprivate func fetchExistingContacts() {
-        
-        firebaseAgent.getContacts(at: self.userFbId) { (arr) in
-            
-            print(arr)
+    //TODO(SergeyK): Need modify function after development feching existing in Phone contacts
+        firebaseAgent.getAllContacts(userFbId: addressBook.userFacebookID) { [weak self] (arr) in
+            guard let self = self, let arr = arr else {
+                debugPrint("Can't fetch addressBook from firebase store")
+                return}
+            self.addressBook.addressBookModel = arr
+            debugPrint("Loaded \(arr.count) contacts from Firebase")
+            self.coordinator.userDidLogin()
         }
-        
-        
-        firebaseAgent.save(userFbId: self.userFbId)
-        coordinator.userDidLogin()
     }
     
     func authWithFbAndGetUserName() {
         authWithFB(completion: { [weak self] (userFbId) in
             guard let self = self, let userFbId = userFbId else { return }
-            print("Facebook user ID: \(userFbId)")
+            debugPrint("Facebook user ID: \(userFbId)")
             self.getFbUserName()
         })
     }

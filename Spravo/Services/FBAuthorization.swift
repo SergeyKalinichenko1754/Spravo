@@ -33,7 +33,7 @@ class FBAuthorization: FBAuthorizationType {
     
     func getFBTokenExpDate() -> Date? {
         guard let accessToken = AccessToken.current else { return nil }
-        print("token updated: \(accessToken.refreshDate)")
+        debugPrint("token updated: \(accessToken.refreshDate)")
         return accessToken.expirationDate
     }
     
@@ -51,7 +51,7 @@ class FBAuthorization: FBAuthorizationType {
                 self.logOutFromFB()
                 return
             }
-            print("Token updated")
+            debugPrint("Token updated")
         }
     }
     
@@ -113,6 +113,6 @@ class FBAuthorization: FBAuthorizationType {
     }
     
     deinit {
-        print("FBAuthorization deinit !!!")
+        debugPrint("FBAuthorization deinit !!!")
     }
 }

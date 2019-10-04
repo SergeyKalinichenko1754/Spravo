@@ -7,97 +7,18 @@
 //
 import Firebase
 
-
-struct SpravoContact: Codable {
-    let id: String
-    let givenName: String?
-    let familyName: String?
-    let phones: [LabelString]?
-    
-    init?(aDoc: DocumentSnapshot) {
-        self.id = aDoc.documentID
-        self.givenName = aDoc.get("givenName") as? String
-        self.familyName = aDoc.get("familyName") as? String
-        self.phones = aDoc.get("phones") as? [LabelString]
-    }
-    
-    
-//    init?(_ dictionary: [String : Any]) {
-//        self.givenName = dictionary["givenName"] as? String
-//        self.familyName = dictionary["familyName"] as? String
-//        //self.phones = dictionary["phones"] as? [LabelString]
-//        let dphones = dictionary["phones"] as? [String : Any]
-//        if let label = dphones?["label"] as? String,
-//            let value = dphones?["value"] as? String {
-//            let phone = LabelString(label: label, value: value)
-//            self.phones = [phone]
-//        } else {
-//            self.phones = nil
-//        }
-//    }
- }
-
-struct LabelString: Codable {
-    let label: String
-    let value: String
-}
-
 protocol FirebaseAgentType: Service {
-    func save(userFbId: String)
     func signIntoFirebase(token: String, completion: @escaping (Result<String, String?>) -> ())
+    func getAllContacts(userFbId: String, completion: @escaping ((_ array: [AddressBookModel]?) -> ()))
+    func saveNewContact(userFbId: String, contact: AddressBookModel)
     
-    func getContacts(at userFbId: String, completion: @escaping (([SpravoContact]) -> ()))
+    func deleteContact(userFbId: String, contactID: String)
     
 }
 
 class FirebaseAgent: FirebaseAgentType {
     
-    func save(userFbId: String) {
-        let db = Firestore.firestore()
-        var ref: DocumentReference? = nil
-        ref = db.collection("user\(userFbId)").addDocument(data: [
-            "givenName": "Vasia",
-            "familyName": "Pupkin",
-            "phones": [
-                [
-                    "label": "home",
-                    "value": "+380991234567"
-                ],
-                [
-                    "label": "work",
-                    "value": "+380503554211"
-                ],
-                [
-                    "label": "main",
-                    "value": "+3806655555555"
-                ]
-            ]
-            ])
-        { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
-    }
-    
-    func getContacts(at userFbId: String, completion: @escaping (([SpravoContact]) -> ())) {
-        let data = Firestore.firestore().collection("user\(userFbId)")
-        data.getDocuments { (snapshot, error) in
-            if let error = error {
-                print("ERROR In Loading !!!!!!!!!!: \(error)")
-                completion([])
-                return
-            }
-            let addresses = snapshot?.documents.compactMap({SpravoContact(aDoc: $0)}) ?? []
-            completion(addresses)
-        }
-    }
-    
-    deinit {
-        print("FirebaseAgent deinit !!!")
-    }
+    let firestore = Firestore.firestore()
     
     func signIntoFirebase(token: String, completion: @escaping (Result<String, String?>) -> ()) {
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
@@ -111,5 +32,67 @@ class FirebaseAgent: FirebaseAgentType {
             }
             completion(.failure(nil))
         }
+    }
+
+    func getAllContacts(userFbId: String, completion: @escaping (_ array: [AddressBookModel]?) -> ()) {
+        let decoder = JSONDecoder()
+        var arr = [AddressBookModel]()
+        firestore.collection("user\(userFbId)").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                debugPrint("Error getting documents: \(err)")
+                completion(nil)
+            } else {
+                for document in querySnapshot!.documents {
+                    do {
+                        let jsonData = try? JSONSerialization.data(withJSONObject: document.data())
+                        let contact = try decoder.decode(AddressBookModel.self, from: jsonData!)
+                        arr.append(contact)
+                        arr[arr.count - 1].id = document.documentID
+                    } catch let error  {
+                        print(error.localizedDescription)
+                    }
+                }
+                completion(arr)
+                return
+            }
+        }
+    }
+    
+    func saveNewContact(userFbId: String, contact: AddressBookModel) {
+        var ref: DocumentReference? = nil
+        guard let dict = contact.dictionary else { return }
+        ref = firestore.collection("user\(userFbId)").addDocument(data: dict)
+        { error in
+            if let error = error {
+                debugPrint("Error adding document: \(error)")
+            } else {
+                debugPrint("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+
+    func updateContact(userFbId: String, contact: AddressBookModel) {
+        guard let dict = contact.dictionary, let contactID = contact.id  else { return }
+        firestore.collection("user\(userFbId)").document(contactID).setData(dict, completion: { (error) in
+            if let error = error {
+                debugPrint("Error updating document: \(error)")
+            } else {
+                debugPrint("Document \(contactID) successfully updated")
+            }
+        })
+    }
+    
+    func deleteContact(userFbId: String, contactID: String) {
+        firestore.collection("user\(userFbId)").document(contactID).delete() { error in
+            if let error = error {
+                debugPrint("Error removing document: \(error)")
+            } else {
+                debugPrint("Document \(contactID) successfully removed!")
+            }
+        }
+    }
+    
+    deinit {
+        debugPrint("FirebaseAgent deinit !!!")
     }
 }

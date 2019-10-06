@@ -29,7 +29,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
     }
     
     fileprivate func authWithFB(completion: @escaping (_ userID: String?) -> ()) {
-        let currentVC = AlertHelper.getTopController(from: nil)
+        let currentVC = AlertHelper.getTopController(from: nil) //TODO(Serhii K) Transfer to VC
         fbAuthorization.fetchFacebookProfileId { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -39,39 +39,40 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             case .failure(let error):
                 self.fbAuthorization.logOutFromFB()
                 completion(nil)
-                AlertHelper.showAlert(nil, msg: error, from: currentVC)
+                AlertHelper.showAlert(nil, msg: error, from: currentVC) //TODO(Serhii K) Transfer to VC
             }
         }
     }
     
     fileprivate func getFbUserName() {
-        let currentVC = AlertHelper.getTopController(from: nil)
+        let currentVC = AlertHelper.getTopController(from: nil) //TODO(Serhii K) Transfer to VC
         fbAuthorization.fetchFacebookProfileName { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let userFbName):
                 debugPrint("User name in FB : \(userFbName)")
+                self.addressBook.userModel.userName = userFbName
                 self.signIntoFirebase()
             case .failure(let error):
                 if let error = error {
-                    AlertHelper.showAlert(nil, msg: error, from: currentVC)
+                    AlertHelper.showAlert(nil, msg: error, from: currentVC) //TODO(Serhii K) Transfer to VC
                 }
             }
         }
     }
     
     fileprivate func signIntoFirebase() {
-        let currentVC = AlertHelper.getTopController(from: nil)
+        let currentVC = AlertHelper.getTopController(from: nil) //TODO(Serhii K) Transfer to VC
         guard let token = fbAuthorization.getTokenString() else { return }
         firebaseAgent.signIntoFirebase(token: token) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let providerID):
-                debugPrint("Succesfully logged in with provider ID: \(providerID)")
+                debugPrint("Succesfully logged in Firebase with provider user ID: \(providerID)")
                 self.fetchExistingContacts()
             case .failure(let error):
                 if let error = error {
-                    AlertHelper.showAlert(nil, msg: error, from: currentVC)
+                    AlertHelper.showAlert(nil, msg: error, from: currentVC) //TODO(Serhii K) Transfer to VC
                 }
             }
         }

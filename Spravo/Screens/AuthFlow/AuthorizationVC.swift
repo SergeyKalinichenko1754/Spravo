@@ -19,7 +19,7 @@ class AuthorizationVC: UIViewController {
         localizeScreen()
     }
     
-    func localizeScreen() {
+    fileprivate func localizeScreen() {
         messageLabel.text = NSLocalizedString("Login.WelcomeTo", comment: "Welcome to")
         let loginBtnCaption = NSLocalizedString("Login.LoginButtonCaption", comment: "Caption of Login with facebook button")
         facebookLoginButton.setTitle(loginBtnCaption, for: .normal)

@@ -6,19 +6,19 @@
 //  Copyright © 2019 Home. All rights reserved.
 //
 import Firebase
+import FirebaseStorage
 
 protocol FirebaseAgentType: Service {
     func signIntoFirebase(token: String, completion: @escaping (Result<String, String?>) -> ())
     func getAllContacts(userFbId: String, completion: @escaping ((_ array: [AddressBookModel]?) -> ()))
     func saveNewContact(userFbId: String, contact: AddressBookModel)
-    
-    func deleteContact(userFbId: String, contactID: String)
-    
+    func deleteContact(userFbId: String, contact: AddressBookModel)
+    func uploadImage(userFbId: String, contactID: String, image: UIImage, completion: @escaping (_ urlString: String?) -> ())
 }
 
 class FirebaseAgent: FirebaseAgentType {
-    
-    let firestore = Firestore.firestore()
+    fileprivate let firestore = Firestore.firestore()
+    fileprivate let storage = Storage.storage()
     
     func signIntoFirebase(token: String, completion: @escaping (Result<String, String?>) -> ()) {
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
@@ -27,13 +27,13 @@ class FirebaseAgent: FirebaseAgentType {
                 completion(.failure(error.localizedDescription))
                 return
             } else if let result = result {
-                completion(.success(result.user.providerID))
+                completion(.success(result.user.uid))
                 return
             }
             completion(.failure(nil))
         }
     }
-
+    
     func getAllContacts(userFbId: String, completion: @escaping (_ array: [AddressBookModel]?) -> ()) {
         let decoder = JSONDecoder()
         var arr = [AddressBookModel]()
@@ -82,7 +82,11 @@ class FirebaseAgent: FirebaseAgentType {
         })
     }
     
-    func deleteContact(userFbId: String, contactID: String) {
+    func deleteContact(userFbId: String, contact: AddressBookModel) {
+        guard let contactID = contact.id else { return }
+        if let _ = contact.profileImage {
+           removeImageFromStorage(userFbId: userFbId, contactID: contactID)
+        }
         firestore.collection("user\(userFbId)").document(contactID).delete() { error in
             if let error = error {
                 debugPrint("Error removing document: \(error)")
@@ -92,6 +96,59 @@ class FirebaseAgent: FirebaseAgentType {
         }
     }
     
+    func uploadImage(userFbId: String, contactID: String, image: UIImage, completion: @escaping (_ urlString: String?) -> ()) {
+        guard let data = image.jpegData(compressionQuality: 1.0) else {
+            debugPrint("Problem with convertation image to data for contact \(contactID)")
+            completion(nil)
+            return}
+        let imageName = "profImageFor\(contactID)"
+        let imageReference = storage.reference()
+            .child("user\(userFbId)")
+            .child(imageName)
+        imageReference.putData(data, metadata: nil) { [weak self] (metadata, error) in
+            guard let self = self else {
+                completion(nil)
+                return }
+            if let error = error {
+                debugPrint("Problem with upload image for contact \(contactID): \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            imageReference.downloadURL(completion: { (url, error) in
+                if let error = error {
+                    debugPrint("Problem with upload image for contact \(contactID): \(error.localizedDescription)")
+                    completion(nil)
+                    return
+                }
+                guard let urlString = url?.absoluteString else {
+                    debugPrint("Problem with get image url for contact \(contactID)")
+                    completion(nil)
+                    return
+                }
+                self.firestore.collection("user\(userFbId)").document(contactID).setData(["profileImage": urlString], merge: true, completion: { (error) in
+                    if let error = error {
+                        debugPrint("Problem with upload Url image for contact \(contactID): \(error.localizedDescription)")
+                        completion(nil)
+                        return
+                    }
+                    completion(urlString)
+                })
+            })
+        }
+    }
+    
+    func removeImageFromStorage(userFbId: String, contactID: String) {
+        let imageName = "profImageFor\(contactID)"
+        let imageReference = storage.reference()
+            .child("user\(userFbId)")
+            .child(imageName)
+        imageReference.delete { (error) in
+            if let error = error {
+                debugPrint("Problem with deleting image from storage for contact \(contactID): \(error.localizedDescription)")
+            }
+        }
+    }
+        
     deinit {
         debugPrint("FirebaseAgent deinit !!!")
     }

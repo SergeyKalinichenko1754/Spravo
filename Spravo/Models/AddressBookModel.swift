@@ -31,7 +31,7 @@ struct AddressBookModel: Codable {
     var birthday: Date?
     var addresses: [LabelAddress]?
     var notes: String?
-    var image: String?
+    var profileImage: String?
 }
 
 extension AddressBookModel {
@@ -53,7 +53,8 @@ extension AddressBookModel {
          emails: [LabelString] = [],
          birthday: Date? = nil,
          addresses: [LabelAddress] = [],
-         notes: String? = nil) {
+         notes: String? = nil,
+         profileImage: String? = nil) {
         self.givenName = givenName
         self.familyName = familyName
         self.phones = phones

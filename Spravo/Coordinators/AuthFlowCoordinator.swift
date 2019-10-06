@@ -18,13 +18,13 @@ class AuthFlowCoordinator {
     private let rootNav = UINavigationController()
     private weak var transitions: AuthFlowCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
-    private var addressBook: AddressBookViewModel
+    private var addressBookProvider: AddressBookProvider
     
     init(window: UIWindow, transitions: AuthFlowCoordinatorTransitions, serviceHolder: ServiceHolder) {
         self.window = window
         self.transitions = transitions
         self.serviceHolder = serviceHolder
-        self.addressBook = AddressBookViewModel(user: UserModel())
+        self.addressBookProvider = AddressBookProvider(user: UserModel())
     }
     
     func start() {
@@ -37,7 +37,7 @@ class AuthFlowCoordinator {
             userDidLogin()
         } else {
             rootNav.setNavigationBarHidden(true, animated: false)
-            let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder, addressBook: addressBook)
+            let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder, addressBookProvider: addressBookProvider)
             coordinator.start()
             window.rootViewController = rootNav
             window.makeKeyAndVisible()

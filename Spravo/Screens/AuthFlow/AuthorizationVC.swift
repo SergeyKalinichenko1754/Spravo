@@ -26,6 +26,10 @@ class AuthorizationVC: UIViewController {
     }
         
     @IBAction func tapedLoginWithFBButton(_ sender: UIButton) {
-        viewModel.authWithFbAndGetUserName()
+        viewModel.authWithFbAndGetUserName() { [weak self] error in
+            if let error = error {
+                AlertHelper.showAlert(nil, msg: error, from: self)
+            }
+        }
     }
 }

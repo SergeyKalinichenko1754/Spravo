@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AddressBookViewModel {
+class AddressBookProvider {
     var userModel: UserModel
     var addressBookModel: [AddressBookModel]
     

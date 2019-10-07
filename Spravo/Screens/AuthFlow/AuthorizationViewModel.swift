@@ -77,6 +77,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
                 return}
             self.addressBookProvider.addressBookModel = arr
             debugPrint("Loaded \(arr.count) contacts from Firebase")
+            HUDRenderer.hideHUD()
             self.coordinator.userDidLogin()
         }
     }
@@ -96,10 +97,12 @@ class AuthorizationViewModel: AuthorizationViewModelType {
                         self.fetchExistingContacts()
                     case .failure(let error):
                         completion(error)
+                        HUDRenderer.hideHUD()
                     }
                 })
             case .failure(let error):
                 completion(error)
+                HUDRenderer.hideHUD()
             }
         })
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Type that represents key / value pair for phone number or email and its type
 struct LabelString: Codable {
     var label: String?
     var value: String?

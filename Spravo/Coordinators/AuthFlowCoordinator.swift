@@ -29,19 +29,22 @@ class AuthFlowCoordinator {
     
     func start() {
         startServices()
-        let fbAuthorization = serviceHolder.get(by: FBAuthorization.self)
-        //TODO(SergeyK): Temporary log Out form Fb on start (need for setting authorization). After setting should delete !
-        fbAuthorization.logOutFromFB()
-        if !fbAuthorization.needAuthorization() {
+        let fbAuthorization = serviceHolder.get(by: FBAuthorization.self), firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
+        //TODO(SergeyK): Temporary log Out form Fb on start (need for setting authorization). After setting should delete ! //fbAuthorization.logOutFromFB()
+        if !fbAuthorization.needAuthorization() && !firebaseAgent.needAuthorization() {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
             userDidLogin()
         } else {
             rootNav.setNavigationBarHidden(true, animated: false)
             let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder, addressBookProvider: addressBookProvider)
             coordinator.start()
-            window.rootViewController = rootNav
-            window.makeKeyAndVisible()
+            setupRootViewController(rootNav)
         }
+    }
+    
+    fileprivate func setupRootViewController(_ viewController: UIViewController) {
+        window.rootViewController = viewController
+        window.makeKeyAndVisible()
     }
 }
 

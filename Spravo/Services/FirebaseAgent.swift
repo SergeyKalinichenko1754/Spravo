@@ -6,7 +6,6 @@
 //  Copyright © 2019 Home. All rights reserved.
 //
 import Firebase
-import FirebaseStorage
 
 protocol FirebaseAgentType: Service {
     func signIntoFirebase(token: String, completion: @escaping (Result<String, String?>) -> ())
@@ -19,6 +18,22 @@ protocol FirebaseAgentType: Service {
 class FirebaseAgent: FirebaseAgentType {
     fileprivate let firestore = Firestore.firestore()
     fileprivate let storage = Storage.storage()
+    
+    func needAuthorization() -> Bool {
+        if let _ = Auth.auth().currentUser {
+            return false
+        }
+        return true
+    }
+    
+    func signOut() -> Bool{
+        do{
+            try Auth.auth().signOut()
+            return true
+        }catch{
+            return false
+        }
+    }
     
     func signIntoFirebase(token: String, completion: @escaping (Result<String, String?>) -> ()) {
         let credential = FacebookAuthProvider.credential(withAccessToken: token)

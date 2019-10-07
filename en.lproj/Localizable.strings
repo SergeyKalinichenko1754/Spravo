@@ -5,6 +5,11 @@
   Created by Onix on 9/26/19.
   Copyright © 2019 Home. All rights reserved.
 */
+//Common
+"Common.OK" = "OK";
+"Common.Error" = "Error";
 
 // LogIn
+"Login.WelcomeTo" = "Welcome to";
+"Login.LoginButtonCaption" = "Login with Facebook";
 "Login.Cancel.Warning" = "It is impossible to enter the program without registering on Facebook";

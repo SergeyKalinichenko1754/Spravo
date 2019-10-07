@@ -5,4 +5,11 @@
   Created by Onix on 9/26/19.
   Copyright © 2019 Home. All rights reserved.
 */
+//Common
+"Common.OK" = "Гаразд";
+"Common.Error" = "Помилка";
+
+// LogIn
+"Login.WelcomeTo" = "Ласкаво просимо до";
+"Login.LoginButtonCaption" = "Увiйти з Facebook";
 "Login.Cancel.Warning" = "Без реєстрації на facebook вхід в програму неможливий";

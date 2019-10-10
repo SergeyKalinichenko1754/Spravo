@@ -69,19 +69,6 @@ class AuthorizationViewModel: AuthorizationViewModelType {
         }
     }
     
-    fileprivate func fetchExistingContacts() {
-    //TODO(SergeyK): Need modify function after development feching existing in Phone contacts
-        firebaseAgent.getAllContacts(userFbId: addressBookProvider.userFacebookID) { [weak self] (arr) in
-            guard let self = self, let arr = arr else {
-                debugPrint("Can't fetch addressBook from firebase store")
-                return}
-            self.addressBookProvider.addressBookModel = arr
-            debugPrint("Loaded \(arr.count) contacts from Firebase")
-            HUDRenderer.hideHUD()
-            self.coordinator.userDidLogin()
-        }
-    }
-    
     func authWithFbAndGetUserName(completion: @escaping (String?) -> ()) {
         authWithFB(completion: { [weak self] (result) in
             guard let self = self else { return }
@@ -94,7 +81,8 @@ class AuthorizationViewModel: AuthorizationViewModelType {
                     switch result {
                     case .success(let providerID):
                         debugPrint("Succesfully logged in Firebase with provider user ID: \(providerID)")
-                        self.fetchExistingContacts()
+                        HUDRenderer.hideHUD()
+                        self.coordinator.startFetchPhoneContactsCoordinator()
                     case .failure(let error):
                         completion(error)
                         HUDRenderer.hideHUD()

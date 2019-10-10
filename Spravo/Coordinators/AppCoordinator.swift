@@ -9,7 +9,6 @@
 import UIKit
 
 class AppCoordinator {
-    
     private let window: UIWindow
     private var authFlowCoordinator: AuthFlowCoordinator?
     private var serviceHolder = ServiceHolder()

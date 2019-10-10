@@ -67,6 +67,33 @@
             </objects>
             <point key="canvasLocation" x="56.799999999999997" y="26.53673163418291"/>
         </scene>
+        <!--Fetch Phone ContactsVC-->
+        <scene sceneID="FlW-H8-Ljz">
+            <objects>
+                <viewController storyboardIdentifier="FetchPhoneContactsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tKM-ao-iXY" customClass="FetchPhoneContactsVC" customModule="Spravo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QH1-9K-Nr2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetch Phone Contacts VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBr-ED-82l">
+                                <rect key="frame" x="75.5" y="321.5" width="224" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uBr-ED-82l" firstAttribute="centerX" secondItem="QH1-9K-Nr2" secondAttribute="centerX" id="FF7-yh-kTv"/>
+                            <constraint firstItem="uBr-ED-82l" firstAttribute="centerY" secondItem="QH1-9K-Nr2" secondAttribute="centerY" id="Nl5-Q6-2rT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="drz-q4-KZ9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqi-bX-JZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="777" y="27"/>
+        </scene>
     </scenes>
     <resources>
         <image name="SpravoBrand" width="180" height="80"/>

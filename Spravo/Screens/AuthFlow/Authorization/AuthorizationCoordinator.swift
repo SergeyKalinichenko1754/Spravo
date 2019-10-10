@@ -9,11 +9,11 @@
 import UIKit
 
 protocol AuthorizationCoordinatorTransitions: class {
-    func userDidLogin()
+    func startFetchPhoneContactsCoordinator()
 }
 
 protocol AuthorizationCoordinatorType {
-    func userDidLogin()
+    func startFetchPhoneContactsCoordinator()
 }
 
 class AuthorizationCoordinator: AuthorizationCoordinatorType {
@@ -34,7 +34,7 @@ class AuthorizationCoordinator: AuthorizationCoordinatorType {
         navigationController?.setViewControllers([controller], animated: false)
     }
     
-    func userDidLogin() {
-        transitions?.userDidLogin()
+    func startFetchPhoneContactsCoordinator() {
+        transitions?.startFetchPhoneContactsCoordinator()
     }
 }

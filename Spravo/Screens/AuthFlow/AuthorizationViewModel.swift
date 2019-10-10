@@ -20,10 +20,10 @@ class AuthorizationViewModel: AuthorizationViewModelType {
     private var fbAuthorization: FBAuthorizationType
     private var firebaseAgent: FirebaseAgent
     
-    init(_ coordinator: AuthorizationCoordinatorType, serviceHolder: ServiceHolder, addressBookProvider: AddressBookProvider) {
+    init(_ coordinator: AuthorizationCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
-        self.addressBookProvider = addressBookProvider
+        self.addressBookProvider = serviceHolder.get(by: AddressBookProvider.self)
         self.fbAuthorization = serviceHolder.get(by: FBAuthorization.self)
         self.firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
     }

@@ -18,13 +18,11 @@ class AuthFlowCoordinator {
     private let rootNav = UINavigationController()
     private weak var transitions: AuthFlowCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
-    private var addressBookProvider: AddressBookProvider
     
     init(window: UIWindow, transitions: AuthFlowCoordinatorTransitions, serviceHolder: ServiceHolder) {
         self.window = window
         self.transitions = transitions
         self.serviceHolder = serviceHolder
-        self.addressBookProvider = AddressBookProvider(user: UserModel())
     }
     
     func start() {
@@ -36,7 +34,7 @@ class AuthFlowCoordinator {
             userDidLogin()
         } else {
             rootNav.setNavigationBarHidden(true, animated: false)
-            let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder, addressBookProvider: addressBookProvider)
+            let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
             coordinator.start()
             setupRootViewController(rootNav)
         }
@@ -59,12 +57,15 @@ extension AuthFlowCoordinator {
     private func startServices() {
         let fbAuthorization = FBAuthorization()
         let firebaseAgent = FirebaseAgent()
+        let addressBookProvider = AddressBookProvider(user: UserModel())
         serviceHolder.add(FBAuthorization.self, for: fbAuthorization)
         serviceHolder.add(FirebaseAgent.self, for: firebaseAgent)
+        serviceHolder.add(AddressBookProvider.self, for: addressBookProvider)
     }
     
     private func removeServices() {
         serviceHolder.remove(by: FBAuthorization.self)
         serviceHolder.remove(by: FirebaseAgent.self)
+        serviceHolder.remove(by: AddressBookProvider.self)
     }
 }

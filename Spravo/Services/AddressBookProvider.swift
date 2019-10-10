@@ -8,7 +8,14 @@
 
 import Foundation
 
-class AddressBookProvider {
+protocol AddressBookProviderType: Service {
+    var userModel: UserModel { get }
+    var addressBookModel: [AddressBookModel] { get }
+    var userFacebookID: String { get }
+    var userName: String { get }
+}
+
+class AddressBookProvider: AddressBookProviderType {
     var userModel: UserModel
     var addressBookModel: [AddressBookModel]
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FetchPhoneContactsVC: UIViewController {
+class FetchPhoneContactsVC: UITableViewController {
     
     var viewModel: FetchPhoneContactsViewModelType!
 

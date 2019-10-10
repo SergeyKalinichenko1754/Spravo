@@ -68,34 +68,77 @@
             <point key="canvasLocation" x="56.799999999999997" y="26.53673163418291"/>
         </scene>
         <!--Fetch Phone ContactsVC-->
-        <scene sceneID="FlW-H8-Ljz">
+        <scene sceneID="JdU-lx-keP">
             <objects>
-                <viewController storyboardIdentifier="FetchPhoneContactsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tKM-ao-iXY" customClass="FetchPhoneContactsVC" customModule="Spravo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QH1-9K-Nr2">
+                <tableViewController storyboardIdentifier="FetchPhoneContactsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VVa-9A-1ZB" customClass="FetchPhoneContactsVC" customModule="Spravo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ztS-8w-AFn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetch Phone Contacts VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBr-ED-82l">
-                                <rect key="frame" x="75.5" y="321.5" width="224" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="uBr-ED-82l" firstAttribute="centerX" secondItem="QH1-9K-Nr2" secondAttribute="centerX" id="FF7-yh-kTv"/>
-                            <constraint firstItem="uBr-ED-82l" firstAttribute="centerY" secondItem="QH1-9K-Nr2" secondAttribute="centerY" id="Nl5-Q6-2rT"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="drz-q4-KZ9"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqi-bX-JZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <sections>
+                            <tableViewSection id="h2b-qh-GOj">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="g1g-lA-cOS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g1g-lA-cOS" id="xm8-oU-aPO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FetchContacts" translatesAutoresizingMaskIntoConstraints="NO" id="y1i-PS-pBz">
+                                                    <rect key="frame" x="20.5" y="16" width="334" height="178"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="y1i-PS-pBz" secondAttribute="height" multiplier="15:8" id="Abz-0t-lZR"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="y1i-PS-pBz" firstAttribute="centerX" secondItem="xm8-oU-aPO" secondAttribute="centerX" id="1T3-RS-Xdg"/>
+                                                <constraint firstItem="y1i-PS-pBz" firstAttribute="bottom" secondItem="xm8-oU-aPO" secondAttribute="bottomMargin" constant="5" id="C9d-2e-UuJ"/>
+                                                <constraint firstItem="y1i-PS-pBz" firstAttribute="top" secondItem="xm8-oU-aPO" secondAttribute="topMargin" constant="5" id="Mxg-X3-aYq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oaN-6I-AGz">
+                                        <rect key="frame" x="0.0" y="200" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oaN-6I-AGz" id="KuS-h4-EE0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="AzM-ci-FAN">
+                                        <rect key="frame" x="0.0" y="244" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AzM-ci-FAN" id="ox7-wP-1ni">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZJ8-rZ-q9K">
+                                        <rect key="frame" x="0.0" y="288" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZJ8-rZ-q9K" id="gW6-M6-8qS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="VVa-9A-1ZB" id="tGv-kY-tCp"/>
+                            <outlet property="delegate" destination="VVa-9A-1ZB" id="5Bm-8M-0Hy"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pyk-Lt-LAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="27"/>
+            <point key="canvasLocation" x="696" y="28"/>
         </scene>
     </scenes>
     <resources>
+        <image name="FetchContacts" width="682" height="445"/>
         <image name="SpravoBrand" width="180" height="80"/>
     </resources>
 </document>

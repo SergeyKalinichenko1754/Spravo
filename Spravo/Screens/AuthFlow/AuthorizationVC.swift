@@ -19,13 +19,22 @@ class AuthorizationVC: UIViewController {
         localizeScreen()
     }
     
-    func localizeScreen() {
+    fileprivate func localizeScreen() {
         messageLabel.text = NSLocalizedString("Login.WelcomeTo", comment: "Welcome to")
         let loginBtnCaption = NSLocalizedString("Login.LoginButtonCaption", comment: "Caption of Login with facebook button")
         facebookLoginButton.setTitle(loginBtnCaption, for: .normal)
     }
         
     @IBAction func tapedLoginWithFBButton(_ sender: UIButton) {
-        viewModel.authWithFbAndGetUserName()
+        HUDRenderer.showHUD()
+        viewModel.authWithFbAndGetUserName() { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                HUDRenderer.hideHUD()
+                AlertHelper.showAlert(nil, msg: error, from: self)
+                return
+            }
+            self.facebookLoginButton.isHidden = true
+        }
     }
 }

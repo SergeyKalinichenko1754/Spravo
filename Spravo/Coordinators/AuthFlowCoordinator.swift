@@ -27,19 +27,22 @@ class AuthFlowCoordinator {
     
     func start() {
         startServices()
-        let fbAuthorization = serviceHolder.get(by: FBAuthorization.self)
-        //TODO(SergeyK): Temporary log Out form Fb on start (need for setting authorization). After setting should delete !
-        fbAuthorization.logOutFromFB()
-        if !fbAuthorization.needAuthorization() {
+        let fbAuthorization = serviceHolder.get(by: FBAuthorization.self), firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
+        //TODO(SergeyK): Temporary log Out form Fb on start (need for setting authorization). After setting should delete ! //fbAuthorization.logOutFromFB()
+        if !fbAuthorization.needAuthorization() && !firebaseAgent.needAuthorization() {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
             userDidLogin()
         } else {
             rootNav.setNavigationBarHidden(true, animated: false)
             let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
             coordinator.start()
-            window.rootViewController = rootNav
-            window.makeKeyAndVisible()
+            setupRootViewController(rootNav)
         }
+    }
+    
+    fileprivate func setupRootViewController(_ viewController: UIViewController) {
+        window.rootViewController = viewController
+        window.makeKeyAndVisible()
     }
 }
 
@@ -53,10 +56,16 @@ extension AuthFlowCoordinator: AuthorizationCoordinatorTransitions {
 extension AuthFlowCoordinator {
     private func startServices() {
         let fbAuthorization = FBAuthorization()
+        let firebaseAgent = FirebaseAgent()
+        let addressBookProvider = AddressBookProvider(user: UserModel())
         serviceHolder.add(FBAuthorization.self, for: fbAuthorization)
+        serviceHolder.add(FirebaseAgent.self, for: firebaseAgent)
+        serviceHolder.add(AddressBookProvider.self, for: addressBookProvider)
     }
     
     private func removeServices() {
         serviceHolder.remove(by: FBAuthorization.self)
+        serviceHolder.remove(by: FirebaseAgent.self)
+        serviceHolder.remove(by: AddressBookProvider.self)
     }
 }

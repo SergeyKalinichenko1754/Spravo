@@ -30,5 +30,9 @@ class AddressBookProvider: AddressBookProviderType {
     
     var userName: String {
         return userModel.userName ?? ""
-    }    
+    }
+    
+    deinit {
+        debugPrint("Аddressbook deinit !!!")
+    }
 }

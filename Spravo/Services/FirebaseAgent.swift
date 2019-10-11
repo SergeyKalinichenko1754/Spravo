@@ -129,7 +129,10 @@ class FirebaseAgent: FirebaseAgentType {
                 completion(nil)
                 return
             }
-            imageReference.downloadURL(completion: { (url, error) in
+            imageReference.downloadURL(completion: { [weak self] (url, error) in
+                guard let self = self else {
+                    completion(nil)
+                    return }
                 if let error = error {
                     debugPrint("Problem with upload image for contact \(contactID): \(error.localizedDescription)")
                     completion(nil)

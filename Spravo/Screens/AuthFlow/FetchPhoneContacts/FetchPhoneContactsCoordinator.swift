@@ -26,7 +26,7 @@ class FetchPhoneContactsCoordinator: FetchPhoneContactsCoordinatorType {
         self.navigationController = navigationController
         self.transitions = transitions
         self.serviceHolder = serviceHolder
-        controller?.viewModel = FetcPhoneContactsViewModel(self, serviceHolder: serviceHolder)
+        controller?.viewModel = FetchPhoneContactsViewModel(self, serviceHolder: serviceHolder)
     }
     
     func start() {

@@ -9,7 +9,16 @@
 "Common.OK" = "OK";
 "Common.Error" = "Error";
 
-// LogIn
+// Authorization
 "Login.WelcomeTo" = "Welcome to";
 "Login.LoginButtonCaption" = "Login with Facebook";
 "Login.Cancel.Warning" = "It is impossible to enter the program without registering on Facebook";
+
+//FetchPhoneContacts
+"ImportPhoneContacts.TopLabel" = "Importing the contacts in your phonebook into the application";
+"ImportPhoneContacts.DescriptionLabel" = "If agreed, the contact data of your phone book will be imported into the application. Contact data in the application is editable.";
+"ImportPhoneContacts.ImportButtonCaption" = "Import data";
+"ImportPhoneContacts.CancelButtonCaption" = "Refusal to import data";
+"ImportPhoneContacts.AskForPermission" = "This application requires access to phone contacts. Do you want to open settings and allow access to phone contacts?";
+"ImportPhoneContacts.AskForPermissionCancelButtonCaption" = "Cancel";
+"ImportPhoneContacts.AskForPermissionOpenSettingsButtonCaption" = "Open Settings";

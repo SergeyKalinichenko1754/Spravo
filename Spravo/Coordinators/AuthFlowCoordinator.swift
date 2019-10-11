@@ -49,6 +49,8 @@ class AuthFlowCoordinator {
 
 extension AuthFlowCoordinator: AuthorizationCoordinatorTransitions {
     func startFetchPhoneContactsCoordinator() {
+        let phoneContactsProvider = PhoneContactsProvider()
+        serviceHolder.add(PhoneContactsProvider.self, for: phoneContactsProvider)
         let coordinator = FetchPhoneContactsCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
         coordinator.start()
     }

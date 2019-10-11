@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  Spravo
+
+  Created by Onix on 10/11/19.
+  Copyright © 2019 Home. All rights reserved.
+*/
+NSContactsUsageDescription = "Provide access if you want to add existing phone contacts to your application";

@@ -15,6 +15,7 @@ class FetchPhoneContactsVC: UITableViewController {
     @IBOutlet weak var cancelButton: UIButton!
     
     var viewModel: FetchPhoneContactsViewModelType!
+    let popupVC = PopupVC()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,28 @@ class FetchPhoneContactsVC: UITableViewController {
         viewModel.fetchPhonesContacts { [weak self] success in
             guard let self = self else { return }
             if success {
-                self.viewModel.finishedRequestContacts()
+                //TODO(Serhii K.) delete DispatchQueue.main.asyncAfter on next stage
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: { [weak self] in
+                    guard let self = self else { return }
+                    self.popupVC.nextTaskForActivityIndicator()
+                    self.syncingContacts()
+                })
+                return
+            }
+            self.showSettingsAlert()
+        }
+    }
+    
+    func syncingContacts() {
+        viewModel.syncingContacts { [weak self] success in
+            guard let self = self else { return }
+            if success {
+                //TODO(Serhii K.) delete DispatchQueue.main.asyncAfter on next stage
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: { [weak self] in
+                    guard let self = self else { return }
+                    self.popupVC.nextTaskForActivityIndicator()
+                    self.viewModel.finishedRequestContacts()
+                })
                 return
             }
             self.showSettingsAlert()
@@ -59,10 +81,19 @@ class FetchPhoneContactsVC: UITableViewController {
     }
     
     @IBAction func tapedImportButton(_ sender: UIButton) {
-        fetchPhonesContacts()
+        let label1 = "Reading contacts"
+        let label2 = "Synsing with Spravo"
+        self.popupVC.showScreen(vc: self, labels: [label1, label2], showIndicator: true)
+        self.fetchPhonesContacts()
     }
     
     @IBAction func tapedCancelButton(_ sender: UIButton) {
+        viewModel.finishedRequestContacts()
+    }
+}
+
+extension FetchPhoneContactsVC: PopupVCDelegate {
+    func tapedCancelButtonInPopupVC() {
         viewModel.finishedRequestContacts()
     }
 }

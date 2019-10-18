@@ -11,6 +11,7 @@ import UIKit
 protocol FetchPhoneContactsViewModelType {
     func finishedRequestContacts()
     func fetchPhonesContacts(completion: @escaping (_ access: Bool) -> Void)
+    func syncingContacts(completion: @escaping (_ access: Bool) -> Void)
 }
 
 class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
@@ -34,17 +35,22 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
             return
         }
         phoneContactsProvider.requestAccess { [weak self] (result) in
-            guard let self = self else { return }
+            guard let _ = self else { return }
             if !result {
                 completion(false)
                 return
             }
-            self.finishedRequestContacts()
+            completion(true)
         }
+    }
+    
+    func syncingContacts(completion: @escaping (_ access: Bool) -> Void) {
+        //TODO(Serhii K.) next stage (syncing contacts with Firebase and locale store)
+        completion(true)
+        self.finishedRequestContacts()
     }
     
     func finishedRequestContacts() {
         coordinator.userDidLogin()
     }
-        
 }

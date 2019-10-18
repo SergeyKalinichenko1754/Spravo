@@ -187,7 +187,7 @@ class PopupVC: UIScrollView {
     func remove(animated: Bool) {
         updateUIonMainThread { [weak self] in
             guard let self = self else { return }
-            self.clear()
+            self.clean()
             let duration = 0.25
             self.activityIndicator.stopAnimating()
             self.setContentOffset(.zero, animated: false)
@@ -225,7 +225,7 @@ class PopupVC: UIScrollView {
         activityIndicator.center = CGPoint(x: indentForIndicator / 2, y: indicatorPositionForItems[currentTask])
     }
     
-    func clear() {
+    func clean() {
         mainView = nil
         currentTask = 0
         indicatorPositionForItems = []

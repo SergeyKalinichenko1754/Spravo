@@ -30,7 +30,8 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     }
     
     func fetchPhonesContacts(completion: @escaping (_ access: Bool) -> Void) {
-        guard !phoneContactsProvider.isPhoneContactsLoadedAlready() else {
+        guard let userFbId = addressBookProvider.userModel.userFacebookID,
+            !phoneContactsProvider.isPhoneContactsLoadedAlready(userFbId: userFbId) else {
             completion(true)
             return
         }

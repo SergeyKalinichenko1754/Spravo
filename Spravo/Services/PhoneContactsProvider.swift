@@ -9,19 +9,19 @@
 import Contacts
 
 protocol PhoneContactsProviderType: Service {
-    func isPhoneContactsLoadedAlready() -> Bool
+    func isPhoneContactsLoadedAlready(userFbId: String) -> Bool
     func requestAccess(completion: @escaping (_ accessGranted: Bool) -> Void)
     func fetchExistingPhoneContacts(completion: @escaping (_ access: Bool) -> Void)
 }
 
 class PhoneContactsProvider: PhoneContactsProviderType {
     private let store = CNContactStore()
-    private var contactLoadedAlreadyKey: String {
+    private var contactLoadedAlreadyKeyPrefex: String {
         return "DateOfUplodePhoneContactsToFBForUser"
     }
     
-    func isPhoneContactsLoadedAlready() -> Bool {
-        guard let _ = UserDefaults.standard.object(forKey: contactLoadedAlreadyKey) as? Date else { return false }
+    func isPhoneContactsLoadedAlready(userFbId: String) -> Bool {
+        guard let _ = UserDefaults.standard.object(forKey: (contactLoadedAlreadyKeyPrefex + userFbId)) as? Date else { return false }
         return true
     }
     

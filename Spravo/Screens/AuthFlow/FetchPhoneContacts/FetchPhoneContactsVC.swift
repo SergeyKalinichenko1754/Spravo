@@ -15,14 +15,18 @@ class FetchPhoneContactsVC: UITableViewController {
     @IBOutlet weak var cancelButton: UIButton!
     
     var viewModel: FetchPhoneContactsViewModelType!
-    let popupVC = PopupVC()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
     }
     
+    override func viewDidLayoutSubviews() {
+        tableView.isScrollEnabled = tableView.contentSize.height > tableView.frame.size.height
+    }
+    
     func setupScreen() {
+        tableView.allowsSelection = false
         importContactsLabel.text = NSLocalizedString("ImportPhoneContacts.TopLabel", comment: "Text on label with name of import existing contacts process")
         descriptionLabel.text = NSLocalizedString("ImportPhoneContacts.DescriptionLabel", comment: "Description of import existing contacts process")
         let importButtonCaption = NSLocalizedString("ImportPhoneContacts.ImportButtonCaption", comment: "Name for allow import contacts button")
@@ -41,12 +45,7 @@ class FetchPhoneContactsVC: UITableViewController {
         viewModel.fetchPhonesContacts { [weak self] success in
             guard let self = self else { return }
             if success {
-                //TODO(Serhii K.) delete DispatchQueue.main.asyncAfter on next stage
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: { [weak self] in
-                    guard let self = self else { return }
-                    self.popupVC.nextTaskForActivityIndicator()
-                    self.syncingContacts()
-                })
+                self.syncingContacts()
                 return
             }
             self.showSettingsAlert()
@@ -57,12 +56,7 @@ class FetchPhoneContactsVC: UITableViewController {
         viewModel.syncingContacts { [weak self] success in
             guard let self = self else { return }
             if success {
-                //TODO(Serhii K.) delete DispatchQueue.main.asyncAfter on next stage
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: { [weak self] in
-                    guard let self = self else { return }
-                    self.popupVC.nextTaskForActivityIndicator()
-                    self.viewModel.finishedRequestContacts()
-                })
+                self.viewModel.finishedRequestContacts()
                 return
             }
             self.showSettingsAlert()
@@ -81,19 +75,10 @@ class FetchPhoneContactsVC: UITableViewController {
     }
     
     @IBAction func tapedImportButton(_ sender: UIButton) {
-        let label1 = "Reading contacts"
-        let label2 = "Synsing with Spravo"
-        self.popupVC.showScreen(vc: self, labels: [label1, label2], showIndicator: true)
         self.fetchPhonesContacts()
     }
     
     @IBAction func tapedCancelButton(_ sender: UIButton) {
-        viewModel.finishedRequestContacts()
-    }
-}
-
-extension FetchPhoneContactsVC: PopupVCDelegate {
-    func tapedCancelButtonInPopupVC() {
         viewModel.finishedRequestContacts()
     }
 }

@@ -26,11 +26,9 @@ class AuthorizationVC: UIViewController {
     }
         
     @IBAction func tapedLoginWithFBButton(_ sender: UIButton) {
-        HUDRenderer.showHUD()
         viewModel.authWithFbAndGetUserName() { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                HUDRenderer.hideHUD()
                 AlertHelper.showAlert(nil, msg: error, from: self)
                 return
             }

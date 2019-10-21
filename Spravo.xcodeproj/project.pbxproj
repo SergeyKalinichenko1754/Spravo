@@ -13,7 +13,6 @@
 		042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */; };
 		042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */; };
 		042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */; };
-		044F3BBC23589473001D0540 /* PopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044F3BBB23589473001D0540 /* PopupVC.swift */; };
 		0483CA53233B9C4B003C2D10 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483CA52233B9C4B003C2D10 /* String.swift */; };
 		049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D2233E569100344EA7 /* ServiceHolder.swift */; };
 		049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D5233E589700344EA7 /* AppCoordinator.swift */; };
@@ -46,7 +45,6 @@
 		042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsCoordinator.swift; sourceTree = "<group>"; };
 		042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsViewModel.swift; sourceTree = "<group>"; };
 		042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsVC.swift; sourceTree = "<group>"; };
-		044F3BBB23589473001D0540 /* PopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupVC.swift; sourceTree = "<group>"; };
 		0483CA52233B9C4B003C2D10 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		049E34D2233E569100344EA7 /* ServiceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHolder.swift; sourceTree = "<group>"; };
 		049E34D5233E589700344EA7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 				04EB6387233E1BDF00D46342 /* AlertHelper.swift */,
 				04EB6389233E1CF100D46342 /* Defines.swift */,
 				04EB638B233E21F000D46342 /* HUDRenderer.swift */,
-				044F3BBB23589473001D0540 /* PopupVC.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -376,7 +373,6 @@
 				042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */,
 				04D676512350695800E86E06 /* PhoneContactsProvider.swift in Sources */,
 				37011ED6234B9812002A0487 /* UserModel.swift in Sources */,
-				044F3BBC23589473001D0540 /* PopupVC.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
 				042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */,

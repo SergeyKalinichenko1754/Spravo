@@ -81,16 +81,13 @@ class AuthorizationViewModel: AuthorizationViewModelType {
                     switch result {
                     case .success(let providerID):
                         debugPrint("Succesfully logged in Firebase with provider user ID: \(providerID)")
-                        HUDRenderer.hideHUD()
                         self.coordinator.startFetchPhoneContactsCoordinator()
                     case .failure(let error):
                         completion(error)
-                        HUDRenderer.hideHUD()
                     }
                 })
             case .failure(let error):
                 completion(error)
-                HUDRenderer.hideHUD()
             }
         })
     }

@@ -25,3 +25,4 @@
 "ImportPhoneContacts.AskForPermissionOpenSettingsButtonCaption" = "Einstellungen öffnen";
 "ImportPhoneContacts.Action_1" = "Kontakte lesen";
 "ImportPhoneContacts.Action_2" = "Mit Spravo synchronisieren";
+"ImportPhoneContacts.ErrorInternetConnection" = "Bitte überprüfe deine Internetverbindung";

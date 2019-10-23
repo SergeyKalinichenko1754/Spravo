@@ -40,6 +40,7 @@
 		04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EFB2EB23603835007A2AB6 /* ActionButton.xib */; };
 		04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2ED2360385B007A2AB6 /* ActionButton.swift */; };
 		04EFB2F02360734B007A2AB6 /* ServiceFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */; };
+		04EFB2F42360AC96007A2AB6 /* ErrorScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2F32360AC96007A2AB6 /* ErrorScreenVC.swift */; };
 		37011ED3234B97B0002A0487 /* AddressBookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED2234B97B0002A0487 /* AddressBookProvider.swift */; };
 		37011ED6234B9812002A0487 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED4234B9812002A0487 /* UserModel.swift */; };
 		37011ED7234B9813002A0487 /* AddressBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED5234B9812002A0487 /* AddressBookModel.swift */; };
@@ -86,6 +87,7 @@
 		04EFB2EB23603835007A2AB6 /* ActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionButton.xib; sourceTree = "<group>"; };
 		04EFB2ED2360385B007A2AB6 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFunctions.swift; sourceTree = "<group>"; };
+		04EFB2F32360AC96007A2AB6 /* ErrorScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorScreenVC.swift; sourceTree = "<group>"; };
 		37011ED2234B97B0002A0487 /* AddressBookProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookProvider.swift; sourceTree = "<group>"; };
 		37011ED4234B9812002A0487 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		37011ED5234B9812002A0487 /* AddressBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookModel.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		0483CA56233B9D5E003C2D10 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				04EFB2F22360AC74007A2AB6 /* ErrorScreen */,
 				041B353A235F23E100E71B1A /* ActivityScreen */,
 				049E34DF233E769800344EA7 /* AuthFlow */,
 			);
@@ -270,6 +273,14 @@
 				04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		04EFB2F22360AC74007A2AB6 /* ErrorScreen */ = {
+			isa = PBXGroup;
+			children = (
+				04EFB2F32360AC96007A2AB6 /* ErrorScreenVC.swift */,
+			);
+			path = ErrorScreen;
 			sourceTree = "<group>";
 		};
 		D0E48D6B89A7CD37C69D1FF7 /* Pods */ = {
@@ -417,6 +428,7 @@
 				049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */,
 				042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */,
 				04D676512350695800E86E06 /* PhoneContactsProvider.swift in Sources */,
+				04EFB2F42360AC96007A2AB6 /* ErrorScreenVC.swift in Sources */,
 				37011ED6234B9812002A0487 /* UserModel.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,

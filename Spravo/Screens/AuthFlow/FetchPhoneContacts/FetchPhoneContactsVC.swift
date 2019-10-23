@@ -16,6 +16,13 @@ class FetchPhoneContactsVC: UITableViewController {
     
     var viewModel: FetchPhoneContactsViewModelType!
     weak var activityController: ActivityScreenVC?
+    weak var errorController: ErrorScreenVC?
+    
+    enum ErrorType {
+        case checkInternetConnection
+        case syncingContactsfailed
+        case other(String)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +114,25 @@ class FetchPhoneContactsVC: UITableViewController {
         }
     }
     
+    private func showErrorScreen(_ errorType: ErrorType) {
+        errorController = Storyboard.service.controller(withClass: ErrorScreenVC.self)
+        guard let errorController = errorController else { return }
+        updateUIonMainThread { [weak self] in
+            guard let self = self else { return }
+            switch errorType {
+            case .checkInternetConnection:
+                errorController.image = UIImage(named: "Disconnected")
+                errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorInternetConnection", comment: "Request to check internet connection")
+            case .syncingContactsfailed:
+                errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + supportEmail
+            case .other(let error):
+                errorController.text = error
+            }
+            self.navigationController?.modalPresentationStyle = .overCurrentContext
+            self.navigationController?.present(errorController, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func tapedImportButton(_ sender: UIButton) {
         self.fetchPhonesContacts()
     }
@@ -118,8 +144,8 @@ class FetchPhoneContactsVC: UITableViewController {
 
 extension FetchPhoneContactsVC: ActivityScreenDelegate {
     func userInterruptedAction() {
-        //TODO(Serhii K.) Delete Alert message and unrem next str (//viewModel.userInterruptedAction())
-        AlertHelper.showAlert(msg: "User interrupted Program !!!!")
+        //TODO(Serhii K.) Delete showErrorScreen unrem next str (//viewModel.userInterruptedAction())
+        showErrorScreen(.checkInternetConnection)
         //viewModel.userInterruptedAction()
     }
 }

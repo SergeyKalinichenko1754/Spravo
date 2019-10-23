@@ -12,6 +12,7 @@ protocol FetchPhoneContactsViewModelType {
     func finishedRequestContacts()
     func fetchPhonesContacts(completion: @escaping (_ access: Bool) -> Void)
     func syncingContacts(completion: @escaping (_ access: Bool) -> Void)
+    func userInterruptedAction()
 }
 
 class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
@@ -36,31 +37,28 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
             return
         }
         phoneContactsProvider.requestAccess { [weak self] (result) in
-            guard let self = self else { return }
+            guard let _ = self else { return }
             if !result {
                 completion(false)
                 return
             }
-            self.coordinator.startActivityScreen(labels: ["Reading contacts", "Syncing with Spravo"])
-            //TODO(Serhii K.) Timer wirr remove in next stage (realizing fetch phones cntacts)
-            Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
-                completion(true)
-            })
-            
+            completion(true)
         }
     }
     
     func syncingContacts(completion: @escaping (_ access: Bool) -> Void) {
-        coordinator.starNextActivityIndicator()
-        //TODO(Serhii K.) Timer wirr remove in next stage (realizing fetch phones cntacts)
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { [weak self] timer in
-            guard let self = self else { return }
-            self.coordinator.starNextActivityIndicator()
+        //TODO(Serhii K.) will remove in next stage (realizing fetch phones contacts)
+        DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(2)) { [weak self] in
+            guard let _ = self else { return }
             completion(true)
-        })
+        }
     }
     
     func finishedRequestContacts() {
         coordinator.userDidLogin()
+    }
+    
+    func userInterruptedAction() {
+        coordinator.userInterruptedProgram()
     }
 }

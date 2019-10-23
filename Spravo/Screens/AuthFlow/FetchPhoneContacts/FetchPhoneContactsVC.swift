@@ -15,6 +15,7 @@ class FetchPhoneContactsVC: UITableViewController {
     @IBOutlet weak var cancelButton: UIButton!
     
     var viewModel: FetchPhoneContactsViewModelType!
+    weak var activityController: ActivityScreenVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,22 +45,33 @@ class FetchPhoneContactsVC: UITableViewController {
     func fetchPhonesContacts() {
         viewModel.fetchPhonesContacts { [weak self] success in
             guard let self = self else { return }
-            if success {
-                self.syncingContacts()
+            guard success else {
+                self.showSettingsAlert()
                 return
             }
-            self.showSettingsAlert()
+            self.startActivityScreen()
+            //TODO(Serhii K.) Delete DispatchQueue.main
+            DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(3)) { [weak self] in
+                guard let self = self else { return }
+                self.syncingContacts()
+            }
         }
     }
     
     func syncingContacts() {
+        starNextActivityIndicator()
         viewModel.syncingContacts { [weak self] success in
             guard let self = self else { return }
-            if success {
-                self.viewModel.finishedRequestContacts()
+            guard success else {
+                self.showSettingsAlert()
                 return
             }
-            self.showSettingsAlert()
+            //TODO(Serhii K.) Delete DispatchQueue.main and unrem //self.viewModel.finishedRequestContacts()
+            DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(2)) { [weak self] in
+                guard let self = self else { return }
+                self.starNextActivityIndicator()
+                //self.viewModel.finishedRequestContacts()
+            }
         }
     }
     
@@ -74,11 +86,40 @@ class FetchPhoneContactsVC: UITableViewController {
         }
     }
     
+    private func startActivityScreen() {
+        activityController = Storyboard.service.controller(withClass: ActivityScreenVC.self)
+        guard let activityController = activityController else { return }
+        updateUIonMainThread { [weak self] in
+            guard let self = self else { return }
+            let lb_1 = NSLocalizedString("ImportPhoneContacts.Action_1", comment: "Description first action in fetching contacts")
+            let lb_2 = NSLocalizedString("ImportPhoneContacts.Action_2", comment: "Description second action in fetching contacts")
+            activityController.labels = [lb_1, lb_2]
+            activityController.parentDelegate = self
+            self.navigationController?.modalPresentationStyle = .overCurrentContext
+            self.navigationController?.present(activityController, animated: true, completion: nil)
+        }
+    }
+    
+    private func starNextActivityIndicator() {
+        guard let activityController = activityController else { return }
+        updateUIonMainThread {
+            activityController.starNextActivityIndicator()
+        }
+    }
+    
     @IBAction func tapedImportButton(_ sender: UIButton) {
         self.fetchPhonesContacts()
     }
     
     @IBAction func tapedCancelButton(_ sender: UIButton) {
         viewModel.finishedRequestContacts()
+    }
+}
+
+extension FetchPhoneContactsVC: ActivityScreenDelegate {
+    func userInterruptedAction() {
+        //TODO(Serhii K.) Delete Alert message and unrem next str (//viewModel.userInterruptedAction())
+        AlertHelper.showAlert(msg: "User interrupted Program !!!!")
+        //viewModel.userInterruptedAction()
     }
 }

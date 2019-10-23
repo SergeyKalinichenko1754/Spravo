@@ -8,18 +8,4 @@
 
 import Foundation
 
-typealias EmptyClosure = () -> ()
-typealias SimpleClosure<T> = (T) -> ()
-
-enum Result<V, E> {
-    case success(V)
-    case failure(E)
-}
-
-func updateUIonMainThread(block: @escaping () -> Void) {
-    if Thread.isMainThread {
-        block()
-    } else {
-        DispatchQueue.main.async { block() }
-    }
-}
+let supportEmail = "spravo.support@gmail.com"

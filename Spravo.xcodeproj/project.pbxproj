@@ -10,9 +10,7 @@
 		04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04022C632344D89700EABC2B /* GoogleService-Info.plist */; };
 		04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04022C652344E9D700EABC2B /* FirebaseAgent.swift */; };
 		0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414959C233D2BB6001D914C /* AuthorizationVC.swift */; };
-		041B353C235F248400E71B1A /* ActivityScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B353B235F248400E71B1A /* ActivityScreenCoordinator.swift */; };
 		041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */; };
-		041B3540235F271400E71B1A /* ActivityScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B353F235F271400E71B1A /* ActivityScreenViewModel.swift */; };
 		041B3542235F27F100E71B1A /* ServiceScreens.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041B3541235F27F100E71B1A /* ServiceScreens.storyboard */; };
 		041B3545235F614B00E71B1A /* ActivityIndicatorLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */; };
 		041B3547235F626900E71B1A /* ActivityIndicatorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */; };
@@ -41,6 +39,7 @@
 		04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB638B233E21F000D46342 /* HUDRenderer.swift */; };
 		04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EFB2EB23603835007A2AB6 /* ActionButton.xib */; };
 		04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2ED2360385B007A2AB6 /* ActionButton.swift */; };
+		04EFB2F02360734B007A2AB6 /* ServiceFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */; };
 		37011ED3234B97B0002A0487 /* AddressBookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED2234B97B0002A0487 /* AddressBookProvider.swift */; };
 		37011ED6234B9812002A0487 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED4234B9812002A0487 /* UserModel.swift */; };
 		37011ED7234B9813002A0487 /* AddressBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED5234B9812002A0487 /* AddressBookModel.swift */; };
@@ -51,9 +50,7 @@
 		04022C632344D89700EABC2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04022C652344E9D700EABC2B /* FirebaseAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAgent.swift; sourceTree = "<group>"; };
 		0414959C233D2BB6001D914C /* AuthorizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
-		041B353B235F248400E71B1A /* ActivityScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreenCoordinator.swift; sourceTree = "<group>"; };
 		041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreenVC.swift; sourceTree = "<group>"; };
-		041B353F235F271400E71B1A /* ActivityScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreenViewModel.swift; sourceTree = "<group>"; };
 		041B3541235F27F100E71B1A /* ServiceScreens.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceScreens.storyboard; sourceTree = "<group>"; };
 		041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorLabel.xib; sourceTree = "<group>"; };
 		041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorLabel.swift; sourceTree = "<group>"; };
@@ -88,6 +85,7 @@
 		04EB638B233E21F000D46342 /* HUDRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDRenderer.swift; sourceTree = "<group>"; };
 		04EFB2EB23603835007A2AB6 /* ActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionButton.xib; sourceTree = "<group>"; };
 		04EFB2ED2360385B007A2AB6 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFunctions.swift; sourceTree = "<group>"; };
 		37011ED2234B97B0002A0487 /* AddressBookProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookProvider.swift; sourceTree = "<group>"; };
 		37011ED4234B9812002A0487 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		37011ED5234B9812002A0487 /* AddressBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookModel.swift; sourceTree = "<group>"; };
@@ -119,8 +117,6 @@
 		041B353A235F23E100E71B1A /* ActivityScreen */ = {
 			isa = PBXGroup;
 			children = (
-				041B353B235F248400E71B1A /* ActivityScreenCoordinator.swift */,
-				041B353F235F271400E71B1A /* ActivityScreenViewModel.swift */,
 				041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */,
 			);
 			path = ActivityScreen;
@@ -271,6 +267,7 @@
 				04EB6387233E1BDF00D46342 /* AlertHelper.swift */,
 				04EB6389233E1CF100D46342 /* Defines.swift */,
 				04EB638B233E21F000D46342 /* HUDRenderer.swift */,
+				04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -416,7 +413,6 @@
 				049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */,
 				041B3549235F62E600E71B1A /* UIView.swift in Sources */,
 				049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */,
-				041B353C235F248400E71B1A /* ActivityScreenCoordinator.swift in Sources */,
 				042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */,
 				049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */,
 				042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */,
@@ -424,7 +420,6 @@
 				37011ED6234B9812002A0487 /* UserModel.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
-				041B3540235F271400E71B1A /* ActivityScreenViewModel.swift in Sources */,
 				042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */,
 				0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */,
 				04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */,
@@ -435,6 +430,7 @@
 				049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */,
 				041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */,
 				04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */,
+				04EFB2F02360734B007A2AB6 /* ServiceFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

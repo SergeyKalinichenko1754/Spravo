@@ -23,3 +23,5 @@
 "ImportPhoneContacts.AskForPermission" = "Ця програма вимагає доступу до контактів телефону. Ви хочете відкрити налаштування та дозволити доступ до контактів телефону?";
 "ImportPhoneContacts.AskForPermissionCancelButtonCaption" = "Скасувати";
 "ImportPhoneContacts.AskForPermissionOpenSettingsButtonCaption" = "Відкрити налаштування";
+"ImportPhoneContacts.Action_1" = "Читання контактів";
+"ImportPhoneContacts.Action_2" = "Синхронізація зі Spravo";

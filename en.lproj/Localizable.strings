@@ -23,3 +23,5 @@
 "ImportPhoneContacts.AskForPermission" = "This application requires access to phone contacts. Do you want to open settings and allow access to phone contacts?";
 "ImportPhoneContacts.AskForPermissionCancelButtonCaption" = "Cancel";
 "ImportPhoneContacts.AskForPermissionOpenSettingsButtonCaption" = "Open Settings";
+"ImportPhoneContacts.Action_1" = "Reading contacts";
+"ImportPhoneContacts.Action_2" = "Syncing with Spravo";

@@ -37,4 +37,9 @@ extension AppCoordinator: AuthFlowCoordinatorTransitions {
     func userDidLogin() {
         enterApp()
     }
+    
+    func userInterruptedProgram() {
+        //TODO(Serhii K.) will be change later
+        exit(0)
+    }
 }

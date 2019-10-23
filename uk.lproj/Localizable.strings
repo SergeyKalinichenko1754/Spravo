@@ -8,6 +8,7 @@
 //Common
 "Common.OK" = "Гаразд";
 "Common.Error" = "Помилка";
+"Common.Cancel" = "Скасувати";
 
 // Authorization
 "Login.WelcomeTo" = "Ласкаво просимо до";

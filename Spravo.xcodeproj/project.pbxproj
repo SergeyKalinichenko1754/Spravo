@@ -10,6 +10,13 @@
 		04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04022C632344D89700EABC2B /* GoogleService-Info.plist */; };
 		04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04022C652344E9D700EABC2B /* FirebaseAgent.swift */; };
 		0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414959C233D2BB6001D914C /* AuthorizationVC.swift */; };
+		041B353C235F248400E71B1A /* ActivityScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B353B235F248400E71B1A /* ActivityScreenCoordinator.swift */; };
+		041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */; };
+		041B3540235F271400E71B1A /* ActivityScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B353F235F271400E71B1A /* ActivityScreenViewModel.swift */; };
+		041B3542235F27F100E71B1A /* ServiceScreens.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041B3541235F27F100E71B1A /* ServiceScreens.storyboard */; };
+		041B3545235F614B00E71B1A /* ActivityIndicatorLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */; };
+		041B3547235F626900E71B1A /* ActivityIndicatorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */; };
+		041B3549235F62E600E71B1A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B3548235F62E600E71B1A /* UIView.swift */; };
 		042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */; };
 		042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */; };
 		042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */; };
@@ -32,6 +39,8 @@
 		04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6387233E1BDF00D46342 /* AlertHelper.swift */; };
 		04EB638A233E1CF100D46342 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6389233E1CF100D46342 /* Defines.swift */; };
 		04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB638B233E21F000D46342 /* HUDRenderer.swift */; };
+		04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EFB2EB23603835007A2AB6 /* ActionButton.xib */; };
+		04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2ED2360385B007A2AB6 /* ActionButton.swift */; };
 		37011ED3234B97B0002A0487 /* AddressBookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED2234B97B0002A0487 /* AddressBookProvider.swift */; };
 		37011ED6234B9812002A0487 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED4234B9812002A0487 /* UserModel.swift */; };
 		37011ED7234B9813002A0487 /* AddressBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED5234B9812002A0487 /* AddressBookModel.swift */; };
@@ -42,6 +51,13 @@
 		04022C632344D89700EABC2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04022C652344E9D700EABC2B /* FirebaseAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAgent.swift; sourceTree = "<group>"; };
 		0414959C233D2BB6001D914C /* AuthorizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
+		041B353B235F248400E71B1A /* ActivityScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreenCoordinator.swift; sourceTree = "<group>"; };
+		041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreenVC.swift; sourceTree = "<group>"; };
+		041B353F235F271400E71B1A /* ActivityScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreenViewModel.swift; sourceTree = "<group>"; };
+		041B3541235F27F100E71B1A /* ServiceScreens.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceScreens.storyboard; sourceTree = "<group>"; };
+		041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorLabel.xib; sourceTree = "<group>"; };
+		041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorLabel.swift; sourceTree = "<group>"; };
+		041B3548235F62E600E71B1A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsCoordinator.swift; sourceTree = "<group>"; };
 		042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsViewModel.swift; sourceTree = "<group>"; };
 		042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsVC.swift; sourceTree = "<group>"; };
@@ -70,6 +86,8 @@
 		04EB6387233E1BDF00D46342 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		04EB6389233E1CF100D46342 /* Defines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
 		04EB638B233E21F000D46342 /* HUDRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDRenderer.swift; sourceTree = "<group>"; };
+		04EFB2EB23603835007A2AB6 /* ActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionButton.xib; sourceTree = "<group>"; };
+		04EFB2ED2360385B007A2AB6 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		37011ED2234B97B0002A0487 /* AddressBookProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookProvider.swift; sourceTree = "<group>"; };
 		37011ED4234B9812002A0487 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		37011ED5234B9812002A0487 /* AddressBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookModel.swift; sourceTree = "<group>"; };
@@ -98,6 +116,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		041B353A235F23E100E71B1A /* ActivityScreen */ = {
+			isa = PBXGroup;
+			children = (
+				041B353B235F248400E71B1A /* ActivityScreenCoordinator.swift */,
+				041B353F235F271400E71B1A /* ActivityScreenViewModel.swift */,
+				041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */,
+			);
+			path = ActivityScreen;
+			sourceTree = "<group>";
+		};
+		041B3543235F610B00E71B1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */,
+				041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */,
+				04EFB2EB23603835007A2AB6 /* ActionButton.xib */,
+				04EFB2ED2360385B007A2AB6 /* ActionButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		042402BF234F5AF800D11C25 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +163,7 @@
 				0483CA52233B9C4B003C2D10 /* String.swift */,
 				049E34DB233E70F700344EA7 /* UIStoryboard.swift */,
 				049E34DD233E721600344EA7 /* UIViewController.swift */,
+				041B3548235F62E600E71B1A /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -132,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */,
+				041B3541235F27F100E71B1A /* ServiceScreens.storyboard */,
 				04B8C641233A86D2008C4269 /* AuthFlow.storyboard */,
 			);
 			path = Storyboards;
@@ -149,6 +190,7 @@
 		0483CA56233B9D5E003C2D10 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				041B353A235F23E100E71B1A /* ActivityScreen */,
 				049E34DF233E769800344EA7 /* AuthFlow */,
 			);
 			path = Screens;
@@ -212,6 +254,7 @@
 				04EB6386233E1BBC00D46342 /* Helpers */,
 				0483CA56233B9D5E003C2D10 /* Screens */,
 				0483CA55233B9D3F003C2D10 /* Models */,
+				041B3543235F610B00E71B1A /* Views */,
 				0483CA54233B9CFA003C2D10 /* Storyboards */,
 				0483CA51233B9B08003C2D10 /* Extension */,
 				04B8C63D233A86D2008C4269 /* AppDelegate.swift */,
@@ -303,10 +346,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041B3542235F27F100E71B1A /* ServiceScreens.storyboard in Resources */,
 				04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */,
 				04D6764B235066E600E86E06 /* InfoPlist.strings in Resources */,
 				04D55880233D226800511BF7 /* Localizable.strings in Resources */,
+				04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */,
 				04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */,
+				041B3545235F614B00E71B1A /* ActivityIndicatorLabel.xib in Resources */,
 				04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */,
 				04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */,
 			);
@@ -364,10 +410,13 @@
 				37011ED3234B97B0002A0487 /* AddressBookProvider.swift in Sources */,
 				049E34DE233E721600344EA7 /* UIViewController.swift in Sources */,
 				04EB638A233E1CF100D46342 /* Defines.swift in Sources */,
+				041B3547235F626900E71B1A /* ActivityIndicatorLabel.swift in Sources */,
 				04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */,
 				04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */,
 				049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */,
+				041B3549235F62E600E71B1A /* UIView.swift in Sources */,
 				049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */,
+				041B353C235F248400E71B1A /* ActivityScreenCoordinator.swift in Sources */,
 				042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */,
 				049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */,
 				042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */,
@@ -375,6 +424,7 @@
 				37011ED6234B9812002A0487 /* UserModel.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
+				041B3540235F271400E71B1A /* ActivityScreenViewModel.swift in Sources */,
 				042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */,
 				0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */,
 				04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */,
@@ -383,6 +433,8 @@
 				37011ED7234B9813002A0487 /* AddressBookModel.swift in Sources */,
 				049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */,
 				049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */,
+				041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */,
+				04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@ import UIKit
 
 protocol AuthFlowCoordinatorTransitions: class {
     func userDidLogin()
+    func userInterruptedProgram()
 }
 
 class AuthFlowCoordinator {
@@ -29,9 +30,11 @@ class AuthFlowCoordinator {
         startServices()
         rootNav.setNavigationBarHidden(true, animated: false)
         let fbAuthorization = serviceHolder.get(by: FBAuthorization.self),
-        firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
+        firebaseAgent = serviceHolder.get(by: FirebaseAgent.self),
+        addressbookProvider = serviceHolder.get(by: AddressBookProvider.self)
         if !fbAuthorization.needAuthorization() && !firebaseAgent.needAuthorization() {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
+            addressbookProvider.userModel.userFacebookID = fbAuthorization.getFBUserId()
             startFetchPhoneContactsCoordinator()
             setupRootViewController(rootNav)
         } else {
@@ -68,8 +71,6 @@ extension AuthFlowCoordinator {
     
     private func removeServices() {
         serviceHolder.remove(by: FBAuthorization.self)
-        serviceHolder.remove(by: FirebaseAgent.self)
-        serviceHolder.remove(by: AddressBookProvider.self)
     }
 }
 
@@ -77,5 +78,9 @@ extension AuthFlowCoordinator: FetcPhoneContactsCoordinatorTransitions {
     func userDidLogin() {
         removeServices()
         transitions?.userDidLogin()
+    }
+    
+    func userInterruptedProgram() {
+        transitions?.userInterruptedProgram()
     }
 }

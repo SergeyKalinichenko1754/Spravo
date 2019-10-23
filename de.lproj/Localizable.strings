@@ -8,6 +8,7 @@
 //Common
 "Common.OK" = "Okay";
 "Common.Error" = "Error";
+"Common.Cancel" = "Stornieren";
 
 // Authorization
 "Login.WelcomeTo" = "Willkommen zu";

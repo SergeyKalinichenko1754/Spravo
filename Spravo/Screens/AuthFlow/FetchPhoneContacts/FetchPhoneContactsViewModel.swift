@@ -36,19 +36,28 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
             return
         }
         phoneContactsProvider.requestAccess { [weak self] (result) in
-            guard let _ = self else { return }
+            guard let self = self else { return }
             if !result {
                 completion(false)
                 return
             }
-            completion(true)
+            self.coordinator.startActivityScreen(labels: ["Reading contacts", "Syncing with Spravo"])
+            //TODO(Serhii K.) Timer wirr remove in next stage (realizing fetch phones cntacts)
+            Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
+                completion(true)
+            })
+            
         }
     }
     
     func syncingContacts(completion: @escaping (_ access: Bool) -> Void) {
-        //TODO(Serhii K.) next stage (syncing contacts with Firebase and locale store)
-        completion(true)
-        self.finishedRequestContacts()
+        coordinator.starNextActivityIndicator()
+        //TODO(Serhii K.) Timer wirr remove in next stage (realizing fetch phones cntacts)
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { [weak self] timer in
+            guard let self = self else { return }
+            self.coordinator.starNextActivityIndicator()
+            completion(true)
+        })
     }
     
     func finishedRequestContacts() {

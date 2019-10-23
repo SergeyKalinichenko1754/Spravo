@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Activity ScreenVC-->
+        <scene sceneID="HHf-Od-O5x">
+            <objects>
+                <viewController storyboardIdentifier="ActivityScreenVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1hd-X5-S1D" customClass="ActivityScreenVC" customModule="Spravo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="x4h-37-2dJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAS-dQ-rdl">
+                                <rect key="frame" x="-45" y="-45" width="465" height="757"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="arg-gv-IQy">
+                                        <rect key="frame" x="117.5" y="278.5" width="230" height="200"/>
+                                        <color key="backgroundColor" red="0.84291583299999995" green="0.84698110820000005" blue="0.85516572000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="9hT-xP-95a"/>
+                                            <constraint firstAttribute="height" constant="200" id="wg9-ih-g0s"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DiE-18-EKw">
+                                        <rect key="frame" x="117.5" y="278.5" width="230" height="200"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZAP-dT-LJH" customClass="ActivityIndicatorLabel" customModule="Spravo" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="230" height="75"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2iv-MW-Tp5" customClass="ActivityIndicatorLabel" customModule="Spravo" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="75" width="230" height="75"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JjA-no-URt" customClass="ActionButton" customModule="Spravo" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="150" width="230" height="50"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ToH-ij-dzE"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="2iv-MW-Tp5" firstAttribute="height" secondItem="ZAP-dT-LJH" secondAttribute="height" id="D6I-wV-Z3P"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.86781141493055558" alpha="0.35215111301369861" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="DiE-18-EKw" firstAttribute="top" secondItem="arg-gv-IQy" secondAttribute="top" id="8MB-vj-Rls"/>
+                                    <constraint firstItem="DiE-18-EKw" firstAttribute="bottom" secondItem="arg-gv-IQy" secondAttribute="bottom" id="Xop-sj-z1s"/>
+                                    <constraint firstItem="DiE-18-EKw" firstAttribute="trailing" secondItem="arg-gv-IQy" secondAttribute="trailing" id="c7B-gK-gsr"/>
+                                    <constraint firstItem="arg-gv-IQy" firstAttribute="centerY" secondItem="VAS-dQ-rdl" secondAttribute="centerY" id="dHh-bi-7Sk"/>
+                                    <constraint firstItem="DiE-18-EKw" firstAttribute="leading" secondItem="arg-gv-IQy" secondAttribute="leading" id="sol-BI-EwJ"/>
+                                    <constraint firstItem="arg-gv-IQy" firstAttribute="centerX" secondItem="VAS-dQ-rdl" secondAttribute="centerX" id="ukC-fH-TOy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VAS-dQ-rdl" firstAttribute="bottom" secondItem="02J-Qt-PJ8" secondAttribute="bottom" constant="45" id="1Wx-2R-SBj"/>
+                            <constraint firstItem="VAS-dQ-rdl" firstAttribute="top" secondItem="x4h-37-2dJ" secondAttribute="top" constant="-45" id="V2S-c9-VET"/>
+                            <constraint firstItem="VAS-dQ-rdl" firstAttribute="leading" secondItem="02J-Qt-PJ8" secondAttribute="leading" constant="-45" id="sKL-kU-dfx"/>
+                            <constraint firstItem="VAS-dQ-rdl" firstAttribute="trailing" secondItem="02J-Qt-PJ8" secondAttribute="trailing" constant="45" id="wDR-SP-rLx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="02J-Qt-PJ8"/>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="JjA-no-URt" id="ml4-aD-KXE"/>
+                        <outlet property="bottomActivityIndicatorLabel" destination="2iv-MW-Tp5" id="alI-qs-mhp"/>
+                        <outlet property="contentView" destination="arg-gv-IQy" id="SQ8-aS-nvq"/>
+                        <outlet property="topActivityIndicatorLabel" destination="ZAP-dT-LJH" id="WPB-OH-y9R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yop-tB-Ta8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-548" y="214.54272863568218"/>
+        </scene>
+    </scenes>
+</document>

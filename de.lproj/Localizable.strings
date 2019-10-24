@@ -8,8 +8,21 @@
 //Common
 "Common.OK" = "Okay";
 "Common.Error" = "Error";
+"Common.Cancel" = "Stornieren";
 
-// LogIn
+// Authorization
 "Login.WelcomeTo" = "Willkommen zu";
 "Login.LoginButtonCaption" = "Mit Facebook einloggen";
 "Login.Cancel.Warning" = "Es ist unmöglich, das Programm zu betreten, ohne sich auf Facebook zu registrieren";
+
+//FetchPhoneContacts
+"ImportPhoneContacts.TopLabel" = "Importieren von Kontakten in Ihrem Telefonbuch in die Anwendung";
+"ImportPhoneContacts.DescriptionLabel" = "Wenn vereinbart, werden die Kontaktdaten Ihres Telefonbuchs in die Anwendung importiert. Kontaktdaten in der Anwendung können bearbeitet werden.";
+"ImportPhoneContacts.ImportButtonCaption" = "Daten importieren";
+"ImportPhoneContacts.CancelButtonCaption" = "Verweigerung des Datenimports";
+"ImportPhoneContacts.AskForPermission" = "Diese Anwendung erfordert Zugriff auf Telefonkontakte. Möchten Sie Einstellungen öffnen und Zugriff auf Telefonkontakte gewähren?";
+"ImportPhoneContacts.AskForPermissionCancelButtonCaption" = "Stornieren";
+"ImportPhoneContacts.AskForPermissionOpenSettingsButtonCaption" = "Einstellungen öffnen";
+"ImportPhoneContacts.Action_1" = "Kontakte lesen";
+"ImportPhoneContacts.Action_2" = "Mit Spravo synchronisieren";
+"ImportPhoneContacts.ErrorInternetConnection" = "Bitte überprüfe deine Internetverbindung";

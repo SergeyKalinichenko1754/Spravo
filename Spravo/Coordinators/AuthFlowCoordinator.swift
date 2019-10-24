@@ -10,6 +10,7 @@ import UIKit
 
 protocol AuthFlowCoordinatorTransitions: class {
     func userDidLogin()
+    func userInterruptedProgram()
 }
 
 class AuthFlowCoordinator {
@@ -27,13 +28,16 @@ class AuthFlowCoordinator {
     
     func start() {
         startServices()
-        let fbAuthorization = serviceHolder.get(by: FBAuthorization.self), firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
-        //TODO(SergeyK): Temporary log Out form Fb on start (need for setting authorization). After setting should delete ! //fbAuthorization.logOutFromFB()
+        rootNav.setNavigationBarHidden(true, animated: false)
+        let fbAuthorization = serviceHolder.get(by: FBAuthorization.self),
+        firebaseAgent = serviceHolder.get(by: FirebaseAgent.self),
+        addressbookProvider = serviceHolder.get(by: AddressBookProvider.self)
         if !fbAuthorization.needAuthorization() && !firebaseAgent.needAuthorization() {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
-            userDidLogin()
+            addressbookProvider.userModel.userFacebookID = fbAuthorization.getFBUserId()
+            startFetchPhoneContactsCoordinator()
+            setupRootViewController(rootNav)
         } else {
-            rootNav.setNavigationBarHidden(true, animated: false)
             let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
             coordinator.start()
             setupRootViewController(rootNav)
@@ -47,9 +51,11 @@ class AuthFlowCoordinator {
 }
 
 extension AuthFlowCoordinator: AuthorizationCoordinatorTransitions {
-    func userDidLogin() {
-        removeServices()
-        transitions?.userDidLogin()
+    func startFetchPhoneContactsCoordinator() {
+        let phoneContactsProvider = PhoneContactsProvider()
+        serviceHolder.add(PhoneContactsProvider.self, for: phoneContactsProvider)
+        let coordinator = FetchPhoneContactsCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
+        coordinator.start()
     }
 }
 
@@ -65,7 +71,16 @@ extension AuthFlowCoordinator {
     
     private func removeServices() {
         serviceHolder.remove(by: FBAuthorization.self)
-        serviceHolder.remove(by: FirebaseAgent.self)
-        serviceHolder.remove(by: AddressBookProvider.self)
+    }
+}
+
+extension AuthFlowCoordinator: FetcPhoneContactsCoordinatorTransitions {
+    func userDidLogin() {
+        removeServices()
+        transitions?.userDidLogin()
+    }
+    
+    func userInterruptedProgram() {
+        transitions?.userInterruptedProgram()
     }
 }

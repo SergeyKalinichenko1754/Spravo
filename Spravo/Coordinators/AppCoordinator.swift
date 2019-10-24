@@ -9,7 +9,6 @@
 import UIKit
 
 class AppCoordinator {
-    
     private let window: UIWindow
     private var authFlowCoordinator: AuthFlowCoordinator?
     private var serviceHolder = ServiceHolder()
@@ -37,5 +36,10 @@ class AppCoordinator {
 extension AppCoordinator: AuthFlowCoordinatorTransitions {
     func userDidLogin() {
         enterApp()
+    }
+    
+    func userInterruptedProgram() {
+        //TODO(Serhii K.) will be change later
+        exit(0)
     }
 }

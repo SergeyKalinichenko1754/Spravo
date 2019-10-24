@@ -8,8 +8,21 @@
 //Common
 "Common.OK" = "Гаразд";
 "Common.Error" = "Помилка";
+"Common.Cancel" = "Скасувати";
 
-// LogIn
+// Authorization
 "Login.WelcomeTo" = "Ласкаво просимо до";
 "Login.LoginButtonCaption" = "Увiйти з Facebook";
 "Login.Cancel.Warning" = "Без реєстрації на facebook вхід в програму неможливий";
+
+//FetchPhoneContacts
+"ImportPhoneContacts.TopLabel" = "Імпорт в додаток наявні у вашій телефонній книзі контакти";
+"ImportPhoneContacts.DescriptionLabel" = "У разі згоди в додаток будуть імпортовані дані контактів вашої телефонної книги. Дані контактів в додатку редагуються.";
+"ImportPhoneContacts.ImportButtonCaption" = "Iмпортувати дані";
+"ImportPhoneContacts.CancelButtonCaption" = "Відмова від імпорту даних";
+"ImportPhoneContacts.AskForPermission" = "Ця програма вимагає доступу до контактів телефону. Ви хочете відкрити налаштування та дозволити доступ до контактів телефону?";
+"ImportPhoneContacts.AskForPermissionCancelButtonCaption" = "Скасувати";
+"ImportPhoneContacts.AskForPermissionOpenSettingsButtonCaption" = "Відкрити налаштування";
+"ImportPhoneContacts.Action_1" = "Читання контактів";
+"ImportPhoneContacts.Action_2" = "Синхронізація зі Spravo";
+"ImportPhoneContacts.ErrorInternetConnection" = "Перевірте підключення до Інтернету";

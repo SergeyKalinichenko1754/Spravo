@@ -10,6 +10,7 @@ import UIKit
 
 struct Storyboard {
     static let launch = UIStoryboard(name: "LaunchScreen", bundle: nil)
+    static let service = UIStoryboard(name: "ServiceScreens", bundle: nil)
     static let auth = UIStoryboard(name: "AuthFlow", bundle: nil)
 }
 

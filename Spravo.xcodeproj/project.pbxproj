@@ -10,6 +10,14 @@
 		04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04022C632344D89700EABC2B /* GoogleService-Info.plist */; };
 		04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04022C652344E9D700EABC2B /* FirebaseAgent.swift */; };
 		0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414959C233D2BB6001D914C /* AuthorizationVC.swift */; };
+		041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */; };
+		041B3542235F27F100E71B1A /* ServiceScreens.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041B3541235F27F100E71B1A /* ServiceScreens.storyboard */; };
+		041B3545235F614B00E71B1A /* ActivityIndicatorLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */; };
+		041B3547235F626900E71B1A /* ActivityIndicatorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */; };
+		041B3549235F62E600E71B1A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B3548235F62E600E71B1A /* UIView.swift */; };
+		042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */; };
+		042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */; };
+		042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */; };
 		0483CA53233B9C4B003C2D10 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483CA52233B9C4B003C2D10 /* String.swift */; };
 		049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D2233E569100344EA7 /* ServiceHolder.swift */; };
 		049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D5233E589700344EA7 /* AppCoordinator.swift */; };
@@ -24,9 +32,15 @@
 		04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C644233A86D4008C4269 /* Assets.xcassets */; };
 		04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */; };
 		04D55880233D226800511BF7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D55882233D226800511BF7 /* Localizable.strings */; };
+		04D6764B235066E600E86E06 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D6764D235066E600E86E06 /* InfoPlist.strings */; };
+		04D676512350695800E86E06 /* PhoneContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D676502350695800E86E06 /* PhoneContactsProvider.swift */; };
 		04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6387233E1BDF00D46342 /* AlertHelper.swift */; };
 		04EB638A233E1CF100D46342 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6389233E1CF100D46342 /* Defines.swift */; };
 		04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB638B233E21F000D46342 /* HUDRenderer.swift */; };
+		04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EFB2EB23603835007A2AB6 /* ActionButton.xib */; };
+		04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2ED2360385B007A2AB6 /* ActionButton.swift */; };
+		04EFB2F02360734B007A2AB6 /* ServiceFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */; };
+		04EFB2F42360AC96007A2AB6 /* ErrorScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2F32360AC96007A2AB6 /* ErrorScreenVC.swift */; };
 		37011ED3234B97B0002A0487 /* AddressBookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED2234B97B0002A0487 /* AddressBookProvider.swift */; };
 		37011ED6234B9812002A0487 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED4234B9812002A0487 /* UserModel.swift */; };
 		37011ED7234B9813002A0487 /* AddressBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED5234B9812002A0487 /* AddressBookModel.swift */; };
@@ -37,6 +51,14 @@
 		04022C632344D89700EABC2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04022C652344E9D700EABC2B /* FirebaseAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAgent.swift; sourceTree = "<group>"; };
 		0414959C233D2BB6001D914C /* AuthorizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
+		041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreenVC.swift; sourceTree = "<group>"; };
+		041B3541235F27F100E71B1A /* ServiceScreens.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceScreens.storyboard; sourceTree = "<group>"; };
+		041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorLabel.xib; sourceTree = "<group>"; };
+		041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorLabel.swift; sourceTree = "<group>"; };
+		041B3548235F62E600E71B1A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsCoordinator.swift; sourceTree = "<group>"; };
+		042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsViewModel.swift; sourceTree = "<group>"; };
+		042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsVC.swift; sourceTree = "<group>"; };
 		0483CA52233B9C4B003C2D10 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		049E34D2233E569100344EA7 /* ServiceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHolder.swift; sourceTree = "<group>"; };
 		049E34D5233E589700344EA7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -55,9 +77,17 @@
 		04D55881233D226800511BF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04D55883233D226A00511BF7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04D55884233D226C00511BF7 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04D6764C235066E600E86E06 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04D6764E235066E900E86E06 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04D6764F235066EB00E86E06 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04D676502350695800E86E06 /* PhoneContactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsProvider.swift; sourceTree = "<group>"; };
 		04EB6387233E1BDF00D46342 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		04EB6389233E1CF100D46342 /* Defines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
 		04EB638B233E21F000D46342 /* HUDRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDRenderer.swift; sourceTree = "<group>"; };
+		04EFB2EB23603835007A2AB6 /* ActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionButton.xib; sourceTree = "<group>"; };
+		04EFB2ED2360385B007A2AB6 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFunctions.swift; sourceTree = "<group>"; };
+		04EFB2F32360AC96007A2AB6 /* ErrorScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorScreenVC.swift; sourceTree = "<group>"; };
 		37011ED2234B97B0002A0487 /* AddressBookProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookProvider.swift; sourceTree = "<group>"; };
 		37011ED4234B9812002A0487 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		37011ED5234B9812002A0487 /* AddressBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookModel.swift; sourceTree = "<group>"; };
@@ -86,12 +116,52 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		041B353A235F23E100E71B1A /* ActivityScreen */ = {
+			isa = PBXGroup;
+			children = (
+				041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */,
+			);
+			path = ActivityScreen;
+			sourceTree = "<group>";
+		};
+		041B3543235F610B00E71B1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */,
+				041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */,
+				04EFB2EB23603835007A2AB6 /* ActionButton.xib */,
+				04EFB2ED2360385B007A2AB6 /* ActionButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		042402BF234F5AF800D11C25 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				049E34D9233E6DFE00344EA7 /* AuthorizationCoordinator.swift */,
+				04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */,
+				0414959C233D2BB6001D914C /* AuthorizationVC.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		042402C0234F5B9C00D11C25 /* FetchPhoneContacts */ = {
+			isa = PBXGroup;
+			children = (
+				042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */,
+				042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */,
+				042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */,
+			);
+			path = FetchPhoneContacts;
+			sourceTree = "<group>";
+		};
 		0483CA51233B9B08003C2D10 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				0483CA52233B9C4B003C2D10 /* String.swift */,
 				049E34DB233E70F700344EA7 /* UIStoryboard.swift */,
 				049E34DD233E721600344EA7 /* UIViewController.swift */,
+				041B3548235F62E600E71B1A /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -100,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */,
+				041B3541235F27F100E71B1A /* ServiceScreens.storyboard */,
 				04B8C641233A86D2008C4269 /* AuthFlow.storyboard */,
 			);
 			path = Storyboards;
@@ -117,6 +188,8 @@
 		0483CA56233B9D5E003C2D10 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				04EFB2F22360AC74007A2AB6 /* ErrorScreen */,
+				041B353A235F23E100E71B1A /* ActivityScreen */,
 				049E34DF233E769800344EA7 /* AuthFlow */,
 			);
 			path = Screens;
@@ -128,6 +201,8 @@
 				37011ED2234B97B0002A0487 /* AddressBookProvider.swift */,
 				049E34D2233E569100344EA7 /* ServiceHolder.swift */,
 				04022C652344E9D700EABC2B /* FirebaseAgent.swift */,
+				049E34E0233E9C3000344EA7 /* FBAuthorization.swift */,
+				04D676502350695800E86E06 /* PhoneContactsProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -144,9 +219,8 @@
 		049E34DF233E769800344EA7 /* AuthFlow */ = {
 			isa = PBXGroup;
 			children = (
-				049E34D9233E6DFE00344EA7 /* AuthorizationCoordinator.swift */,
-				04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */,
-				0414959C233D2BB6001D914C /* AuthorizationVC.swift */,
+				042402BF234F5AF800D11C25 /* Authorization */,
+				042402C0234F5B9C00D11C25 /* FetchPhoneContacts */,
 			);
 			path = AuthFlow;
 			sourceTree = "<group>";
@@ -179,10 +253,12 @@
 				04EB6386233E1BBC00D46342 /* Helpers */,
 				0483CA56233B9D5E003C2D10 /* Screens */,
 				0483CA55233B9D3F003C2D10 /* Models */,
+				041B3543235F610B00E71B1A /* Views */,
 				0483CA54233B9CFA003C2D10 /* Storyboards */,
 				0483CA51233B9B08003C2D10 /* Extension */,
 				04B8C63D233A86D2008C4269 /* AppDelegate.swift */,
 				04B8C649233A86D4008C4269 /* Info.plist */,
+				04D6764D235066E600E86E06 /* InfoPlist.strings */,
 				04022C632344D89700EABC2B /* GoogleService-Info.plist */,
 			);
 			path = Spravo;
@@ -194,9 +270,17 @@
 				04EB6387233E1BDF00D46342 /* AlertHelper.swift */,
 				04EB6389233E1CF100D46342 /* Defines.swift */,
 				04EB638B233E21F000D46342 /* HUDRenderer.swift */,
-				049E34E0233E9C3000344EA7 /* FBAuthorization.swift */,
+				04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		04EFB2F22360AC74007A2AB6 /* ErrorScreen */ = {
+			isa = PBXGroup;
+			children = (
+				04EFB2F32360AC96007A2AB6 /* ErrorScreenVC.swift */,
+			);
+			path = ErrorScreen;
 			sourceTree = "<group>";
 		};
 		D0E48D6B89A7CD37C69D1FF7 /* Pods */ = {
@@ -270,9 +354,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041B3542235F27F100E71B1A /* ServiceScreens.storyboard in Resources */,
 				04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */,
+				04D6764B235066E600E86E06 /* InfoPlist.strings in Resources */,
 				04D55880233D226800511BF7 /* Localizable.strings in Resources */,
+				04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */,
 				04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */,
+				041B3545235F614B00E71B1A /* ActivityIndicatorLabel.xib in Resources */,
 				04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */,
 				04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */,
 			);
@@ -330,14 +418,21 @@
 				37011ED3234B97B0002A0487 /* AddressBookProvider.swift in Sources */,
 				049E34DE233E721600344EA7 /* UIViewController.swift in Sources */,
 				04EB638A233E1CF100D46342 /* Defines.swift in Sources */,
+				041B3547235F626900E71B1A /* ActivityIndicatorLabel.swift in Sources */,
 				04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */,
 				04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */,
 				049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */,
+				041B3549235F62E600E71B1A /* UIView.swift in Sources */,
 				049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */,
+				042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */,
 				049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */,
+				042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */,
+				04D676512350695800E86E06 /* PhoneContactsProvider.swift in Sources */,
+				04EFB2F42360AC96007A2AB6 /* ErrorScreenVC.swift in Sources */,
 				37011ED6234B9812002A0487 /* UserModel.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
+				042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */,
 				0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */,
 				04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */,
 				04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */,
@@ -345,6 +440,9 @@
 				37011ED7234B9813002A0487 /* AddressBookModel.swift in Sources */,
 				049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */,
 				049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */,
+				041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */,
+				04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */,
+				04EFB2F02360734B007A2AB6 /* ServiceFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +473,16 @@
 				04D55884233D226C00511BF7 /* uk */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		04D6764D235066E600E86E06 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04D6764C235066E600E86E06 /* en */,
+				04D6764E235066E900E86E06 /* de */,
+				04D6764F235066EB00E86E06 /* uk */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

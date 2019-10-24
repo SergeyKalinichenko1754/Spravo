@@ -33,7 +33,7 @@ class FetchPhoneContactsVC: UITableViewController {
         tableView.isScrollEnabled = tableView.contentSize.height > tableView.frame.size.height
     }
     
-    func setupScreen() {
+    private func setupScreen() {
         tableView.allowsSelection = false
         importContactsLabel.text = NSLocalizedString("ImportPhoneContacts.TopLabel", comment: "Text on label with name of import existing contacts process")
         descriptionLabel.text = NSLocalizedString("ImportPhoneContacts.DescriptionLabel", comment: "Description of import existing contacts process")
@@ -49,7 +49,7 @@ class FetchPhoneContactsVC: UITableViewController {
         cancelButton.layer.masksToBounds = true
     }
     
-    func fetchPhonesContacts() {
+    private func fetchPhonesContacts() {
         viewModel.fetchPhonesContacts { [weak self] success in
             guard let self = self else { return }
             guard success else {
@@ -65,7 +65,7 @@ class FetchPhoneContactsVC: UITableViewController {
         }
     }
     
-    func syncingContacts() {
+    private func syncingContacts() {
         starNextActivityIndicator()
         viewModel.syncingContacts { [weak self] success in
             guard let self = self else { return }

@@ -9,9 +9,9 @@ import Firebase
 
 protocol FirebaseAgentType: Service {
     func signIntoFirebase(token: String, completion: @escaping (Result<String, String?>) -> ())
-    func getAllContacts(userFbId: String, completion: @escaping ((_ array: [AddressBookModel]?) -> ()))
-    func saveNewContact(userFbId: String, contact: AddressBookModel)
-    func deleteContact(userFbId: String, contact: AddressBookModel)
+    func getAllContacts(userFbId: String, completion: @escaping ((_ array: [Contact]?) -> ()))
+    func saveNewContact(userFbId: String, contact: Contact)
+    func deleteContact(userFbId: String, contact: Contact)
     func uploadImage(userFbId: String, contactID: String, image: UIImage, completion: @escaping (_ urlString: String?) -> ())
 }
 
@@ -49,9 +49,9 @@ class FirebaseAgent: FirebaseAgentType {
         }
     }
     
-    func getAllContacts(userFbId: String, completion: @escaping (_ array: [AddressBookModel]?) -> ()) {
+    func getAllContacts(userFbId: String, completion: @escaping (_ array: [Contact]?) -> ()) {
         let decoder = JSONDecoder()
-        var arr = [AddressBookModel]()
+        var arr = [Contact]()
         firestore.collection("user\(userFbId)").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 debugPrint("Error getting documents: \(err)")
@@ -60,7 +60,7 @@ class FirebaseAgent: FirebaseAgentType {
                 for document in querySnapshot!.documents {
                     do {
                         let jsonData = try? JSONSerialization.data(withJSONObject: document.data())
-                        let contact = try decoder.decode(AddressBookModel.self, from: jsonData!)
+                        let contact = try decoder.decode(Contact.self, from: jsonData!)
                         arr.append(contact)
                         arr[arr.count - 1].id = document.documentID
                     } catch let error  {
@@ -73,7 +73,7 @@ class FirebaseAgent: FirebaseAgentType {
         }
     }
     
-    func saveNewContact(userFbId: String, contact: AddressBookModel) {
+    func saveNewContact(userFbId: String, contact: Contact) {
         var ref: DocumentReference? = nil
         guard let dict = contact.dictionary else { return }
         ref = firestore.collection("user\(userFbId)").addDocument(data: dict)
@@ -86,7 +86,7 @@ class FirebaseAgent: FirebaseAgentType {
         }
     }
 
-    func updateContact(userFbId: String, contact: AddressBookModel) {
+    func updateContact(userFbId: String, contact: Contact) {
         guard let dict = contact.dictionary, let contactID = contact.id  else { return }
         firestore.collection("user\(userFbId)").document(contactID).setData(dict, completion: { (error) in
             if let error = error {
@@ -97,7 +97,7 @@ class FirebaseAgent: FirebaseAgentType {
         })
     }
     
-    func deleteContact(userFbId: String, contact: AddressBookModel) {
+    func deleteContact(userFbId: String, contact: Contact) {
         guard let contactID = contact.id else { return }
         if let _ = contact.profileImage {
            removeImageFromStorage(userFbId: userFbId, contactID: contactID)

@@ -16,12 +16,12 @@ protocol PhoneContactsProviderType: Service {
 
 class PhoneContactsProvider: PhoneContactsProviderType {
     private let store = CNContactStore()
-    private var contactLoadedAlreadyKeyPrefex: String {
-        return "DateOfUplodePhoneContactsToFBForUser"
+    private var contactLoadedAlreadyKeyPrefix: String {
+        return "DateUplodePhoneContactsToFbForUser"
     }
     
     func isPhoneContactsLoadedAlready(userFbId: String) -> Bool {
-        guard let _ = UserDefaults.standard.object(forKey: (contactLoadedAlreadyKeyPrefex + userFbId)) as? Date else { return false }
+        guard let _ = UserDefaults.standard.object(forKey: (contactLoadedAlreadyKeyPrefix + userFbId)) as? Date else { return false }
         return true
     }
     

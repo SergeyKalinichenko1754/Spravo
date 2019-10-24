@@ -31,10 +31,10 @@ class AuthFlowCoordinator {
         rootNav.setNavigationBarHidden(true, animated: false)
         let fbAuthorization = serviceHolder.get(by: FBAuthorization.self),
         firebaseAgent = serviceHolder.get(by: FirebaseAgent.self),
-        addressbookProvider = serviceHolder.get(by: AddressBookProvider.self)
+        contactsProvider = serviceHolder.get(by: ContactsProvider.self)
         if !fbAuthorization.needAuthorization() && !firebaseAgent.needAuthorization() {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
-            addressbookProvider.userModel.userFacebookID = fbAuthorization.getFBUserId()
+            contactsProvider.userModel.facebookId = fbAuthorization.getFBUserId()
             startFetchPhoneContactsCoordinator()
             setupRootViewController(rootNav)
         } else {
@@ -63,10 +63,10 @@ extension AuthFlowCoordinator {
     private func startServices() {
         let fbAuthorization = FBAuthorization()
         let firebaseAgent = FirebaseAgent()
-        let addressBookProvider = AddressBookProvider(user: UserModel())
+        let contactsProvider = ContactsProvider(user: User())
         serviceHolder.add(FBAuthorization.self, for: fbAuthorization)
         serviceHolder.add(FirebaseAgent.self, for: firebaseAgent)
-        serviceHolder.add(AddressBookProvider.self, for: addressBookProvider)
+        serviceHolder.add(ContactsProvider.self, for: contactsProvider)
     }
     
     private func removeServices() {

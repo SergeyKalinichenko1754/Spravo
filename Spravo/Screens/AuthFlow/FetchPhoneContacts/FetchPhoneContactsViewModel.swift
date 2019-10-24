@@ -18,20 +18,20 @@ protocol FetchPhoneContactsViewModelType {
 class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     fileprivate let coordinator: FetchPhoneContactsCoordinatorType
     private var serviceHolder: ServiceHolder
-    private var addressBookProvider: AddressBookProvider
+    private var addressBookProvider: ContactsProvider
     private var phoneContactsProvider: PhoneContactsProvider
     private var firebaseAgent: FirebaseAgent
     
     init(_ coordinator: FetchPhoneContactsCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
-        self.addressBookProvider = serviceHolder.get(by: AddressBookProvider.self)
+        self.addressBookProvider = serviceHolder.get(by: ContactsProvider.self)
         self.phoneContactsProvider = serviceHolder.get(by: PhoneContactsProvider.self)
         self.firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
     }
     
     func fetchPhonesContacts(completion: @escaping (_ access: Bool) -> Void) {
-        guard let userFbId = addressBookProvider.userModel.userFacebookID,
+        guard let userFbId = addressBookProvider.userModel.facebookId,
             !phoneContactsProvider.isPhoneContactsLoadedAlready(userFbId: userFbId) else {
             completion(true)
             return

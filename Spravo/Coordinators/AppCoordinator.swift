@@ -28,6 +28,7 @@ class AppCoordinator {
     }
     
     private func enterApp() {
+        //TODO(Serhii K.) start AddressBookTabBarCoordinator and delete debugPrint("Start ...
         debugPrint("Start AddressBookTabBarCoordinator **************")
         authFlowCoordinator = nil
     }

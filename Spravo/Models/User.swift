@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserModel {
-    var userName: String?
-    var userFacebookID: String?
+struct User {
+    var name: String?
+    var facebookId: String?
 }

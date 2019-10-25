@@ -10,7 +10,7 @@ import UIKit
 
 protocol FetchPhoneContactsViewModelType {
     func finishedRequestContacts()
-    func fetchPhonesContacts(completion: @escaping (_ access: Bool) -> Void)
+    func fetchPhonesContacts(completion: @escaping (BoolResult) -> Void)
     func syncingContacts(completion: @escaping (_ access: Bool) -> Void)
     func userInterruptedAction()
 }
@@ -21,6 +21,7 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     private var addressBookProvider: ContactsProvider
     private var phoneContactsProvider: PhoneContactsProvider
     private var firebaseAgent: FirebaseAgent
+    private var phoneContacts: [(Contact, Data?)]?
     
     init(_ coordinator: FetchPhoneContactsCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
@@ -29,20 +30,27 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
         self.phoneContactsProvider = serviceHolder.get(by: PhoneContactsProvider.self)
         self.firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
     }
-    
-    func fetchPhonesContacts(completion: @escaping (_ access: Bool) -> Void) {
+
+    func fetchPhonesContacts(completion: @escaping (BoolResult) -> ()) {
         guard let userFbId = addressBookProvider.userModel.facebookId,
             !phoneContactsProvider.isPhoneContactsLoadedAlready(userFbId: userFbId) else {
-            completion(true)
+            completion(.failure("Phone contacts allready uploded"))
             return
         }
-        phoneContactsProvider.requestAccess { [weak self] (result) in
-            guard let _ = self else { return }
-            if !result {
-                completion(false)
-                return
+        //TODO(Serhii K.) question to Seniour ( Should implement [weak self]? )
+        phoneContactsProvider.fetchExistingPhoneContacts { (result, contacts) in
+            switch result {
+            case .failure, .success(false):
+                completion(result)
+            case .success(true):
+                if let contacts = contacts {
+                    self.phoneContacts = contacts
+                    completion(result)
+                } else {
+                    let error = NSLocalizedString("ImportPhoneContacts.ErrorFetchingPhoneContactsFailed", comment: "Message about fetching phones contacts failed") + ": " + supportEmail
+                    completion(.failure(error))
+                }
             }
-            completion(true)
         }
     }
     

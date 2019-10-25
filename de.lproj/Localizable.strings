@@ -26,3 +26,5 @@
 "ImportPhoneContacts.Action_1" = "Kontakte lesen";
 "ImportPhoneContacts.Action_2" = "Mit Spravo synchronisieren";
 "ImportPhoneContacts.ErrorInternetConnection" = "Bitte überprüfe deine Internetverbindung";
+"ImportPhoneContacts.ErrorFetchingPhoneContactsFailed" = "Das Abrufen der Telefonkontakte ist fehlgeschlagen. Bitte versuchen Sie es erneut. Oder wenden Sie sich an den Support";
+"ImportPhoneContacts.ErrorSyncingContactsFailed" = "Synchronisierung der Kontakte fehlgeschlagen. Bitte versuchen Sie es erneut. Oder wenden Sie sich an den Support";

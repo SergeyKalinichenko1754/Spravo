@@ -26,4 +26,5 @@
 "ImportPhoneContacts.Action_1" = "Reading contacts";
 "ImportPhoneContacts.Action_2" = "Syncing with Spravo";
 "ImportPhoneContacts.ErrorInternetConnection" = "Please, check your Internet connection";
-"ImportPhoneContacts.ErrorSyncingContactsFailed" = "Syncing contacts failed. Please, try again Or contact support: ";
+"ImportPhoneContacts.ErrorFetchingPhoneContactsFailed" = "Fetching phone contacts failed. Please, try again Or contact support";
+"ImportPhoneContacts.ErrorSyncingContactsFailed" = "Syncing contacts failed. Please, try again Or contact support";

@@ -69,6 +69,10 @@ class ActivityScreenVC: UIViewController {
             bottomActivityIndicatorLabel.startIndicator()
         }
     }
+    
+    func stopActivityIndicator() {
+        self.dismiss(animated: false, completion: nil)
+    }
 }
 
 extension ActivityScreenVC: ActionButtonDelegate {

@@ -64,7 +64,7 @@ class FirebaseAgent: FirebaseAgentType {
                         arr.append(contact)
                         arr[arr.count - 1].id = document.documentID
                     } catch let error  {
-                        print(error.localizedDescription)
+                        debugPrint(error.localizedDescription)
                     }
                 }
                 completion(arr)
@@ -87,12 +87,12 @@ class FirebaseAgent: FirebaseAgentType {
     }
 
     func updateContact(userFbId: String, contact: Contact) {
-        guard let dict = contact.dictionary, let contactID = contact.id  else { return }
-        firestore.collection("user\(userFbId)").document(contactID).setData(dict, completion: { (error) in
+        guard let dict = contact.dictionary, let contactId = contact.id  else { return }
+        firestore.collection("user\(userFbId)").document(contactId).setData(dict, completion: { (error) in
             if let error = error {
                 debugPrint("Error updating document: \(error)")
             } else {
-                debugPrint("Document \(contactID) successfully updated")
+                debugPrint("Document \(contactId) successfully updated")
             }
         })
     }

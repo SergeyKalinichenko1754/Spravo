@@ -11,7 +11,7 @@ import UIKit
 protocol FetchPhoneContactsViewModelType {
     func finishedRequestContacts()
     func fetchPhonesContacts(completion: @escaping (BoolResult) -> Void)
-    func syncingContacts(completion: @escaping (_ access: Bool) -> Void)
+    func syncingContacts(completion: @escaping (_ error: String?) -> Void)
     func userInterruptedAction()
 }
 
@@ -32,12 +32,7 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     }
 
     func fetchPhonesContacts(completion: @escaping (BoolResult) -> ()) {
-        guard let userFbId = addressBookProvider.userModel.facebookId,
-            !phoneContactsProvider.isPhoneContactsLoadedAlready(userFbId: userFbId) else {
-            completion(.failure("Phone contacts allready uploded"))
-            return
-        }
-        //TODO(Serhii K.) question to Seniour ( Should implement [weak self]? )
+        //TODO(Serhii K.) question to Seniour ( Should implement [weak self]? in this block )
         phoneContactsProvider.fetchExistingPhoneContacts { (result, contacts) in
             switch result {
             case .failure, .success(false):
@@ -54,11 +49,32 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
         }
     }
     
-    func syncingContacts(completion: @escaping (_ access: Bool) -> Void) {
-        //TODO(Serhii K.) will remove in next stage (realizing fetch phones contacts)
-        DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(2)) { [weak self] in
-            guard let _ = self else { return }
-            completion(true)
+    func syncingContacts(completion: @escaping (_ error: String?) -> Void) {
+        guard let contacts = phoneContacts, let userFbId = addressBookProvider.userModel.facebookId else {
+            let error = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
+            completion(error)
+            return
+        }
+        var contactsQuantity = contacts.count
+        for item in contacts {
+            var image: UIImage?
+            if let data = item.1 {
+                image = UIImage(data: data)
+            }
+            firebaseAgent.saveNewContact(userFbId: userFbId, contact: item.0, userProfileImage: image) { [weak self] error in
+                guard let self = self else { return }
+                contactsQuantity -= 1
+                if error != nil {
+                    self.phoneContacts = []
+                    completion(error)
+                    return
+                } else if contactsQuantity == 0 {
+                    self.phoneContacts = []
+                    self.firebaseAgent.setUploadPhonesContactsMark(userFbId: userFbId)
+                    completion(nil)
+                    return
+                }
+            }
         }
     }
     

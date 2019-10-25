@@ -9,8 +9,10 @@ import Firebase
 
 protocol FirebaseAgentType: Service {
     func signIntoFirebase(token: String, completion: @escaping (Result<String, String?>) -> ())
+    func setUploadPhonesContactsMark(userFbId: String)
+    func isPhoneContactsLoadedAlready(userFbId: String) -> Bool
     func getAllContacts(userFbId: String, completion: @escaping ((_ array: [Contact]?) -> ()))
-    func saveNewContact(userFbId: String, contact: Contact)
+    func saveNewContact(userFbId: String, contact: Contact, userProfileImage: UIImage?, completion: @escaping (_ error: String?) -> ())
     func deleteContact(userFbId: String, contact: Contact)
     func uploadImage(userFbId: String, contactID: String, image: UIImage, completion: @escaping (_ urlString: String?) -> ())
 }
@@ -18,6 +20,20 @@ protocol FirebaseAgentType: Service {
 class FirebaseAgent: FirebaseAgentType {
     fileprivate let firestore = Firestore.firestore()
     fileprivate let storage = Storage.storage()
+    fileprivate let prefixForUsersCollection = "user"
+    fileprivate let prefixForUsersProfileImage = "profImageFor"
+    fileprivate var contactLoadedAlreadyKeyPrefix: String {
+        return "DateUplodePhoneContactsToFbForUser"
+    }
+    
+    func isPhoneContactsLoadedAlready(userFbId: String) -> Bool {
+        guard let _ = UserDefaults.standard.object(forKey: (contactLoadedAlreadyKeyPrefix + userFbId)) as? Date else { return false }
+        return true
+    }
+    
+    func setUploadPhonesContactsMark(userFbId: String) {
+        UserDefaults.standard.setValue(Date(), forKey: (contactLoadedAlreadyKeyPrefix + userFbId))
+    }
     
     func needAuthorization() -> Bool {
         if let _ = Auth.auth().currentUser {
@@ -52,7 +68,7 @@ class FirebaseAgent: FirebaseAgentType {
     func getAllContacts(userFbId: String, completion: @escaping (_ array: [Contact]?) -> ()) {
         let decoder = JSONDecoder()
         var arr = [Contact]()
-        firestore.collection("user\(userFbId)").getDocuments() { (querySnapshot, err) in
+        firestore.collection("\(prefixForUsersCollection)\(userFbId)").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 debugPrint("Error getting documents: \(err)")
                 completion(nil)
@@ -73,22 +89,54 @@ class FirebaseAgent: FirebaseAgentType {
         }
     }
     
-    func saveNewContact(userFbId: String, contact: Contact) {
-        var ref: DocumentReference? = nil
-        guard let dict = contact.dictionary else { return }
-        ref = firestore.collection("user\(userFbId)").addDocument(data: dict)
-        { error in
-            if let error = error {
-                debugPrint("Error adding document: \(error)")
-            } else {
-                debugPrint("Document added with ID: \(ref!.documentID)")
+    func saveNewContact(userFbId: String, contact: Contact, userProfileImage: UIImage? = nil, completion: @escaping (_ error: String?) -> ()) {
+        DispatchQueue.global().async { [weak self] in
+            let syncingError = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
+            guard let self = self else {
+                DispatchQueue.main.async {
+                    completion(syncingError)
+                }
+                return
+            }
+            var ref: DocumentReference? = nil
+            guard let dict = contact.dictionary else {
+                DispatchQueue.main.async {
+                    completion(syncingError)
+                }
+                return }
+            ref = self.firestore.collection("\(self.prefixForUsersCollection)\(userFbId)").addDocument(data: dict)
+            { [weak self] error in
+                guard let self = self else {
+                    DispatchQueue.main.async {
+                        completion(syncingError)
+                    }
+                    return
+                }
+                if let error = error {
+                    DispatchQueue.main.async {
+                        completion(error.localizedDescription)
+                    }
+                } else if let image = userProfileImage, let contactID = ref?.documentID {
+                    self.uploadImage(userFbId: userFbId, contactID: contactID, image: image, completion: { imageUrl in
+                        guard let _ = imageUrl else {
+                            DispatchQueue.main.async {
+                                completion(syncingError)
+                            }
+                            return
+                        }
+                    })
+                    
+                }
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
             }
         }
     }
 
     func updateContact(userFbId: String, contact: Contact) {
         guard let dict = contact.dictionary, let contactId = contact.id  else { return }
-        firestore.collection("user\(userFbId)").document(contactId).setData(dict, completion: { (error) in
+        firestore.collection("\(prefixForUsersCollection)\(userFbId)").document(contactId).setData(dict, completion: { (error) in
             if let error = error {
                 debugPrint("Error updating document: \(error)")
             } else {
@@ -102,7 +150,7 @@ class FirebaseAgent: FirebaseAgentType {
         if let _ = contact.profileImage {
            removeImageFromStorage(userFbId: userFbId, contactID: contactID)
         }
-        firestore.collection("user\(userFbId)").document(contactID).delete() { error in
+        firestore.collection("\(prefixForUsersCollection)\(userFbId)").document(contactID).delete() { error in
             if let error = error {
                 debugPrint("Error removing document: \(error)")
             } else {
@@ -116,9 +164,9 @@ class FirebaseAgent: FirebaseAgentType {
             debugPrint("Problem with convertation image to data for contact \(contactID)")
             completion(nil)
             return}
-        let imageName = "profImageFor\(contactID)"
+        let imageName = "\(prefixForUsersProfileImage)\(contactID)"
         let imageReference = storage.reference()
-            .child("user\(userFbId)")
+            .child("\(prefixForUsersCollection)\(userFbId)")
             .child(imageName)
         imageReference.putData(data, metadata: nil) { [weak self] (metadata, error) in
             guard let self = self else {
@@ -143,7 +191,7 @@ class FirebaseAgent: FirebaseAgentType {
                     completion(nil)
                     return
                 }
-                self.firestore.collection("user\(userFbId)").document(contactID).setData(["profileImage": urlString], merge: true, completion: { (error) in
+                self.firestore.collection("\(self.prefixForUsersCollection)\(userFbId)").document(contactID).setData(["profileImage": urlString], merge: true, completion: { (error) in
                     if let error = error {
                         debugPrint("Problem with upload Url image for contact \(contactID): \(error.localizedDescription)")
                         completion(nil)
@@ -156,9 +204,9 @@ class FirebaseAgent: FirebaseAgentType {
     }
     
     func removeImageFromStorage(userFbId: String, contactID: String) {
-        let imageName = "profImageFor\(contactID)"
+        let imageName = "\(prefixForUsersProfileImage)\(contactID)"
         let imageReference = storage.reference()
-            .child("user\(userFbId)")
+            .child("\(prefixForUsersCollection)\(userFbId)")
             .child(imageName)
         imageReference.delete { (error) in
             if let error = error {

@@ -70,8 +70,10 @@ class ActivityScreenVC: UIViewController {
         }
     }
     
-    func stopActivityIndicator() {
-        self.dismiss(animated: false, completion: nil)
+    func stopActivityIndicator(completion: @escaping EmptyClosure) {
+        self.dismiss(animated: false, completion: {
+            completion()
+        })
     }
 }
 

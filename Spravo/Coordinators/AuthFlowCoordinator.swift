@@ -34,9 +34,14 @@ class AuthFlowCoordinator {
         contactsProvider = serviceHolder.get(by: ContactsProvider.self)
         if !fbAuthorization.needAuthorization() && !firebaseAgent.needAuthorization() {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
-            contactsProvider.userModel.facebookId = fbAuthorization.getFBUserId()
-            startFetchPhoneContactsCoordinator()
-            setupRootViewController(rootNav)
+            guard let userFbId = fbAuthorization.getFBUserId() else { return }
+            contactsProvider.userModel.facebookId = userFbId
+            if firebaseAgent.isPhoneContactsLoadedAlready(userFbId: userFbId) {
+                transitions?.userDidLogin()                
+            } else {
+                startFetchPhoneContactsCoordinator()
+                setupRootViewController(rootNav)
+            }
         } else {
             let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
             coordinator.start()

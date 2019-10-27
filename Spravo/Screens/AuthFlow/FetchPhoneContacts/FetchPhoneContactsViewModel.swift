@@ -18,7 +18,7 @@ protocol FetchPhoneContactsViewModelType {
 class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     fileprivate let coordinator: FetchPhoneContactsCoordinatorType
     private var serviceHolder: ServiceHolder
-    private var addressBookProvider: ContactsProvider
+    private var contactsProvider: ContactsProvider
     private var phoneContactsProvider: PhoneContactsProvider
     private var firebaseAgent: FirebaseAgent
     private var phoneContacts: [(Contact, Data?)]?
@@ -26,7 +26,7 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     init(_ coordinator: FetchPhoneContactsCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
-        self.addressBookProvider = serviceHolder.get(by: ContactsProvider.self)
+        self.contactsProvider = serviceHolder.get(by: ContactsProvider.self)
         self.phoneContactsProvider = serviceHolder.get(by: PhoneContactsProvider.self)
         self.firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
     }
@@ -50,7 +50,7 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     }
     
     func syncingContacts(completion: @escaping (_ error: String?) -> Void) {
-        guard let contacts = phoneContacts, let userFbId = addressBookProvider.userModel.facebookId else {
+        guard let contacts = phoneContacts, let userFbId = contactsProvider.userModel.facebookId else {
             let error = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
             completion(error)
             return

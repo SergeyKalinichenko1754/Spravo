@@ -17,12 +17,6 @@ class FetchPhoneContactsVC: UITableViewController {
     var viewModel: FetchPhoneContactsViewModelType!
     weak var activityController: ActivityScreenVC?
     
-    enum ErrorType {
-        case checkInternetConnection
-        case syncingContactsfailed
-        case other(String)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
@@ -56,7 +50,7 @@ class FetchPhoneContactsVC: UITableViewController {
             case .failure(let error):
                 self.stopActivityIndicator { [weak self] in
                     guard let self = self else { return }
-                    self.showErrorScreen(.other(error))
+                    self.showErrorScreen(error)
                 }
             case .success(false):
                 self.stopActivityIndicator { [weak self] in
@@ -76,7 +70,7 @@ class FetchPhoneContactsVC: UITableViewController {
             self.stopActivityIndicator { [weak self] in
                 guard let self = self else { return }
                 if let error = error {
-                    self.showErrorScreen(.other(error))
+                    self.showErrorScreen(error)
                 } else {
                     self.viewModel.finishedRequestContacts()
                 }
@@ -125,19 +119,14 @@ class FetchPhoneContactsVC: UITableViewController {
         }
     }
 
-    private func showErrorScreen(_ errorType: ErrorType) {
+    private func showErrorScreen(_ error: String? = nil) {
         guard let errorController = Storyboard.service.controller(withClass: ErrorScreenVC.self) else { return }
         updateUIonMainThread { [weak self] in
             guard let self = self else { return }
-            switch errorType {
-            case .checkInternetConnection:
-                errorController.image = UIImage(named: "Disconnected")
-                errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorInternetConnection", comment: "Request to check internet connection")
-            case .syncingContactsfailed:
-                errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
-            case .other(let error):
-                errorController.text = error
+            if let error = error {
+                debugPrint(error)
             }
+            errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
             self.navigationController?.modalPresentationStyle = .overCurrentContext
             self.navigationController?.present(errorController, animated: true, completion: nil)
         }

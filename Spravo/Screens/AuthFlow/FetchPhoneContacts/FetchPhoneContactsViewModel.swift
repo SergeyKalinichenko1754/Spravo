@@ -50,18 +50,18 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     }
     
     func syncingContacts(completion: @escaping (_ error: String?) -> Void) {
-        guard let contacts = phoneContacts, let userFbId = contactsProvider.userModel.facebookId else {
+        guard let contacts = phoneContacts, let userFbId = contactsProvider.user.facebookId else {
             let error = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
             completion(error)
             return
         }
         var contactsQuantity = contacts.count
-        for item in contacts {
+        for contact in contacts {
             var image: UIImage?
-            if let data = item.1 {
+            if let data = contact.1 {
                 image = UIImage(data: data)
             }
-            firebaseAgent.saveNewContact(userFbId: userFbId, contact: item.0, userProfileImage: image) { [weak self] error in
+            firebaseAgent.saveNewContact(userFbId: userFbId, contact: contact.0, userProfileImage: image) { [weak self] error in
                 guard let self = self else { return }
                 contactsQuantity -= 1
                 if error != nil {

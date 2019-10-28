@@ -33,7 +33,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             guard let self = self else { return }
             switch result {
             case .success(let userFbId):
-                self.contactsProvider.userModel.facebookId = userFbId
+                self.contactsProvider.user.facebookId = userFbId
                 completion(.success(userFbId))
             case .failure(let error):
                 self.fbAuthorization.logOutFromFB()
@@ -48,7 +48,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             switch result {
             case .success(let userFbName):
                 debugPrint("User name in FB : \(userFbName)")
-                self.contactsProvider.userModel.name = userFbName
+                self.contactsProvider.user.name = userFbName
             case .failure(let error):
                 if let error = error {
                     debugPrint("Error : \(error)")

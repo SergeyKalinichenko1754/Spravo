@@ -66,7 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if rootVC is UINavigationController {
                 let topController = (rootVC as! UINavigationController).visibleViewController
                 if topController is ErrorScreenVC {
-                    topController?.dismiss(animated: true, completion: nil)
+                    updateUIonMainThread {
+                        topController?.dismiss(animated: true, completion: nil)
+                    }
                 }
             }
         }

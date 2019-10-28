@@ -64,15 +64,18 @@ class FetchPhoneContactsVC: UITableViewController {
     }
     
     private func syncingContacts() {
-        starNextActivityIndicator()
-        viewModel.syncingContacts { [weak self] error in
+        updateUIonMainThread { [weak self] in
             guard let self = self else { return }
-            self.stopActivityIndicator { [weak self] in
+            self.starNextActivityIndicator()
+            self.viewModel.syncingContacts { [weak self] error in
                 guard let self = self else { return }
-                if let error = error {
-                    self.showErrorScreen(error)
-                } else {
-                    self.viewModel.finishedRequestContacts()
+                self.stopActivityIndicator { [weak self] in
+                    guard let self = self else { return }
+                    if let error = error {
+                        self.showErrorScreen(error)
+                    } else {
+                        self.viewModel.finishedRequestContacts()
+                    }
                 }
             }
         }

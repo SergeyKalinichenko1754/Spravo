@@ -9,26 +9,26 @@
 import Foundation
 
 protocol ContactsProviderType: Service {
-    var userModel: User { get }
-    var contactsModel: [Contact] { get }
+    var user: User { get }
+    var contactModels: [Contact] { get }
     var userFacebookId: String { get }
     var userName: String { get }
 }
 
 class ContactsProvider: ContactsProviderType {
-    var userModel: User
-    var contactsModel: [Contact]
+    var user: User
+    var contactModels: [Contact]
     
     init(user: User) {
-        self.userModel = user
-        self.contactsModel = []
+        self.user = user
+        self.contactModels = []
     }
     
     var userFacebookId: String {
-        return userModel.facebookId ?? ""
+        return user.facebookId ?? ""
     }
     
     var userName: String {
-        return userModel.name ?? ""
+        return user.name ?? ""
     }
 }

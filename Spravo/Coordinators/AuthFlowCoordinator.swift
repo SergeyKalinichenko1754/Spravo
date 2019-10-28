@@ -35,7 +35,7 @@ class AuthFlowCoordinator {
         if !fbAuthorization.needAuthorization() && !firebaseAgent.needAuthorization() {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
             guard let userFbId = fbAuthorization.getFBUserId() else { return }
-            contactsProvider.userModel.facebookId = userFbId
+            contactsProvider.user.facebookId = userFbId
             if firebaseAgent.isPhoneContactsLoadedAlready(userFbId: userFbId) {
                 transitions?.userDidLogin()                
             } else {

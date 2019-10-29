@@ -69,6 +69,12 @@ class ActivityScreenVC: UIViewController {
             bottomActivityIndicatorLabel.startIndicator()
         }
     }
+    
+    func stopActivityIndicator(completion: @escaping EmptyClosure) {
+        self.dismiss(animated: false, completion: {
+            completion()
+        })
+    }
 }
 
 extension ActivityScreenVC: ActionButtonDelegate {

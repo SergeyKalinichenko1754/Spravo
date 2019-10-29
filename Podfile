@@ -11,6 +11,6 @@ target 'Spravo' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
-
+  pod 'Reachability', '~> 3.2'
 
 end

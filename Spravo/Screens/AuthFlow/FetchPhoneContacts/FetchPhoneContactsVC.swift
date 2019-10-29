@@ -16,13 +16,6 @@ class FetchPhoneContactsVC: UITableViewController {
     
     var viewModel: FetchPhoneContactsViewModelType!
     weak var activityController: ActivityScreenVC?
-    weak var errorController: ErrorScreenVC?
-    
-    enum ErrorType {
-        case checkInternetConnection
-        case syncingContactsfailed
-        case other(String)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +26,7 @@ class FetchPhoneContactsVC: UITableViewController {
         tableView.isScrollEnabled = tableView.contentSize.height > tableView.frame.size.height
     }
     
-    func setupScreen() {
+    private func setupScreen() {
         tableView.allowsSelection = false
         importContactsLabel.text = NSLocalizedString("ImportPhoneContacts.TopLabel", comment: "Text on label with name of import existing contacts process")
         descriptionLabel.text = NSLocalizedString("ImportPhoneContacts.DescriptionLabel", comment: "Description of import existing contacts process")
@@ -49,35 +42,41 @@ class FetchPhoneContactsVC: UITableViewController {
         cancelButton.layer.masksToBounds = true
     }
     
-    func fetchPhonesContacts() {
-        viewModel.fetchPhonesContacts { [weak self] success in
+    private func fetchPhonesContacts() {
+        startActivityScreen()
+        viewModel.fetchPhonesContacts { [weak self] result in
             guard let self = self else { return }
-            guard success else {
-                self.showSettingsAlert()
-                return
-            }
-            self.startActivityScreen()
-            //TODO(Serhii K.) Delete DispatchQueue.main
-            DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(3)) { [weak self] in
-                guard let self = self else { return }
+            switch result {
+            case .failure(let error):
+                self.stopActivityIndicator { [weak self] in
+                    guard let self = self else { return }
+                    self.showErrorScreen(error)
+                }
+            case .success(false):
+                self.stopActivityIndicator { [weak self] in
+                    guard let self = self else { return }
+                    self.showSettingsAlert()
+                }
+            case .success(true):
                 self.syncingContacts()
             }
         }
     }
     
-    func syncingContacts() {
-        starNextActivityIndicator()
-        viewModel.syncingContacts { [weak self] success in
+    private func syncingContacts() {
+        updateUIonMainThread { [weak self] in
             guard let self = self else { return }
-            guard success else {
-                self.showSettingsAlert()
-                return
-            }
-            //TODO(Serhii K.) Delete DispatchQueue.main and unrem //self.viewModel.finishedRequestContacts()
-            DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(2)) { [weak self] in
+            self.starNextActivityIndicator()
+            self.viewModel.syncingContacts { [weak self] error in
                 guard let self = self else { return }
-                self.starNextActivityIndicator()
-                //self.viewModel.finishedRequestContacts()
+                self.stopActivityIndicator { [weak self] in
+                    guard let self = self else { return }
+                    if let error = error {
+                        self.showErrorScreen(error)
+                    } else {
+                        self.viewModel.finishedRequestContacts()
+                    }
+                }
             }
         }
     }
@@ -114,20 +113,23 @@ class FetchPhoneContactsVC: UITableViewController {
         }
     }
     
-    private func showErrorScreen(_ errorType: ErrorType) {
-        errorController = Storyboard.service.controller(withClass: ErrorScreenVC.self)
-        guard let errorController = errorController else { return }
+    private func stopActivityIndicator(completion: @escaping EmptyClosure) {
+        guard let activityController = activityController else { return }
+        updateUIonMainThread {
+            activityController.stopActivityIndicator {
+                completion()
+            }
+        }
+    }
+
+    private func showErrorScreen(_ error: String? = nil) {
+        guard let errorController = Storyboard.service.controller(withClass: ErrorScreenVC.self) else { return }
         updateUIonMainThread { [weak self] in
             guard let self = self else { return }
-            switch errorType {
-            case .checkInternetConnection:
-                errorController.image = UIImage(named: "Disconnected")
-                errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorInternetConnection", comment: "Request to check internet connection")
-            case .syncingContactsfailed:
-                errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + supportEmail
-            case .other(let error):
-                errorController.text = error
+            if let error = error {
+                debugPrint(error)
             }
+            errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
             self.navigationController?.modalPresentationStyle = .overCurrentContext
             self.navigationController?.present(errorController, animated: true, completion: nil)
         }
@@ -144,8 +146,6 @@ class FetchPhoneContactsVC: UITableViewController {
 
 extension FetchPhoneContactsVC: ActivityScreenDelegate {
     func userInterruptedAction() {
-        //TODO(Serhii K.) Delete showErrorScreen unrem next str (//viewModel.userInterruptedAction())
-        showErrorScreen(.checkInternetConnection)
-        //viewModel.userInterruptedAction()
+        viewModel.userInterruptedAction()
     }
 }

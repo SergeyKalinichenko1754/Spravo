@@ -132,6 +132,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.9.2)
+  - Reachability (3.2)
 
 DEPENDENCIES:
   - FBSDKLoginKit (~> 5.6.0)
@@ -140,6 +141,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - MBProgressHUD (~> 1.1.0)
+  - Reachability (~> 3.2)
 
 SPEC REPOS:
   trunk:
@@ -167,6 +169,7 @@ SPEC REPOS:
     - MBProgressHUD
     - nanopb
     - Protobuf
+    - Reachability
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -193,7 +196,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 67fb42ba613def994e61854de2b3164f13790cc4
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
-PODFILE CHECKSUM: 91573b3830a54bd89b80c5f64adb9246fe3345c6
+PODFILE CHECKSUM: 63c3855ff7810442469980a5fd669871533e9226
 
 COCOAPODS: 1.8.0

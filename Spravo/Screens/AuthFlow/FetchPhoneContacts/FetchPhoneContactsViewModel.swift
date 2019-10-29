@@ -10,47 +10,71 @@ import UIKit
 
 protocol FetchPhoneContactsViewModelType {
     func finishedRequestContacts()
-    func fetchPhonesContacts(completion: @escaping (_ access: Bool) -> Void)
-    func syncingContacts(completion: @escaping (_ access: Bool) -> Void)
+    func fetchPhonesContacts(completion: @escaping (BoolResult) -> Void)
+    func syncingContacts(completion: @escaping (_ error: String?) -> Void)
     func userInterruptedAction()
 }
 
 class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     fileprivate let coordinator: FetchPhoneContactsCoordinatorType
     private var serviceHolder: ServiceHolder
-    private var addressBookProvider: AddressBookProvider
+    private var contactsProvider: ContactsProvider
     private var phoneContactsProvider: PhoneContactsProvider
     private var firebaseAgent: FirebaseAgent
+    private var phoneContacts: [(Contact, Data?)]?
     
     init(_ coordinator: FetchPhoneContactsCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
-        self.addressBookProvider = serviceHolder.get(by: AddressBookProvider.self)
+        self.contactsProvider = serviceHolder.get(by: ContactsProvider.self)
         self.phoneContactsProvider = serviceHolder.get(by: PhoneContactsProvider.self)
         self.firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
     }
-    
-    func fetchPhonesContacts(completion: @escaping (_ access: Bool) -> Void) {
-        guard let userFbId = addressBookProvider.userModel.userFacebookID,
-            !phoneContactsProvider.isPhoneContactsLoadedAlready(userFbId: userFbId) else {
-            completion(true)
-            return
-        }
-        phoneContactsProvider.requestAccess { [weak self] (result) in
-            guard let _ = self else { return }
-            if !result {
-                completion(false)
-                return
+
+    func fetchPhonesContacts(completion: @escaping (BoolResult) -> ()) {
+        //TODO(Serhii K.) question to Seniour ( Should implement [weak self]? in this block )
+        phoneContactsProvider.fetchExistingPhoneContacts { (result, contacts) in
+            switch result {
+            case .failure, .success(false):
+                completion(result)
+            case .success(true):
+                if let contacts = contacts {
+                    self.phoneContacts = contacts
+                    completion(result)
+                } else {
+                    let error = NSLocalizedString("ImportPhoneContacts.ErrorFetchingPhoneContactsFailed", comment: "Message about fetching phones contacts failed") + ": " + supportEmail
+                    completion(.failure(error))
+                }
             }
-            completion(true)
         }
     }
     
-    func syncingContacts(completion: @escaping (_ access: Bool) -> Void) {
-        //TODO(Serhii K.) will remove in next stage (realizing fetch phones contacts)
-        DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(2)) { [weak self] in
-            guard let _ = self else { return }
-            completion(true)
+    func syncingContacts(completion: @escaping (_ error: String?) -> Void) {
+        guard let contacts = phoneContacts, let userFbId = contactsProvider.user.facebookId else {
+            let error = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
+            completion(error)
+            return
+        }
+        var contactsQuantity = contacts.count
+        for contact in contacts {
+            var image: UIImage?
+            if let data = contact.1 {
+                image = UIImage(data: data)
+            }
+            firebaseAgent.saveNewContact(userFbId: userFbId, contact: contact.0, userProfileImage: image) { [weak self] error in
+                guard let self = self else { return }
+                contactsQuantity -= 1
+                if error != nil {
+                    self.phoneContacts = []
+                    completion(error)
+                    return
+                } else if contactsQuantity == 0 {
+                    self.phoneContacts = []
+                    self.firebaseAgent.setUploadPhonesContactsMark(userFbId: userFbId)
+                    completion(nil)
+                    return
+                }
+            }
         }
     }
     

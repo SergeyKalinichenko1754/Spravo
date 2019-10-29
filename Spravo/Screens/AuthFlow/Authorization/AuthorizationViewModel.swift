@@ -16,14 +16,14 @@ protocol AuthorizationViewModelType {
 class AuthorizationViewModel: AuthorizationViewModelType {
     fileprivate let coordinator: AuthorizationCoordinatorType
     private var serviceHolder: ServiceHolder
-    private var addressBookProvider: AddressBookProvider
+    private var contactsProvider: ContactsProvider
     private var fbAuthorization: FBAuthorizationType
     private var firebaseAgent: FirebaseAgent
     
     init(_ coordinator: AuthorizationCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
-        self.addressBookProvider = serviceHolder.get(by: AddressBookProvider.self)
+        self.contactsProvider = serviceHolder.get(by: ContactsProvider.self)
         self.fbAuthorization = serviceHolder.get(by: FBAuthorization.self)
         self.firebaseAgent = serviceHolder.get(by: FirebaseAgent.self)
     }
@@ -33,7 +33,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             guard let self = self else { return }
             switch result {
             case .success(let userFbId):
-                self.addressBookProvider.userModel.userFacebookID = userFbId
+                self.contactsProvider.user.facebookId = userFbId
                 completion(.success(userFbId))
             case .failure(let error):
                 self.fbAuthorization.logOutFromFB()
@@ -48,7 +48,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             switch result {
             case .success(let userFbName):
                 debugPrint("User name in FB : \(userFbName)")
-                self.addressBookProvider.userModel.userName = userFbName
+                self.contactsProvider.user.name = userFbName
             case .failure(let error):
                 if let error = error {
                     debugPrint("Error : \(error)")

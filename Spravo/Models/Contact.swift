@@ -23,7 +23,7 @@ struct LabelAddress: Codable {
     var postalCode: String?
 }
 
-struct AddressBookModel: Codable {
+struct Contact: Codable {
     var id: String?
     var givenName: String?
     var familyName: String?
@@ -35,7 +35,7 @@ struct AddressBookModel: Codable {
     var profileImage: String?
 }
 
-extension AddressBookModel {
+extension Contact {
     var dictionary: [String: Any]? {
         guard let data = try? JSONEncoder().encode(self) else { return nil }
         guard let rawJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
@@ -47,7 +47,7 @@ extension AddressBookModel {
     }
 }
 
-extension AddressBookModel {
+extension Contact {
     init(givenName: String,
          familyName: String? = nil,
          phones: [LabelString] = [],

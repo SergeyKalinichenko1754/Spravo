@@ -16,6 +16,12 @@ enum Result<V, E> {
     case failure(E)
 }
 
+enum BoolResult {
+    case success(Bool)
+    case failure(String)
+}
+
+
 func updateUIonMainThread(block: @escaping () -> Void) {
     if Thread.isMainThread {
         block()

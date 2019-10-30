@@ -28,3 +28,15 @@
 "ImportPhoneContacts.ErrorInternetConnection" = "Перевірте підключення до Інтернету";
 "ImportPhoneContacts.ErrorFetchingPhoneContactsFailed" = "Не вдалося отримати телефонні контакти. Повторіть спробу, або зв’яжіться зі службою підтримки";
 "ImportPhoneContacts.ErrorSyncingContactsFailed" = "Помилка синхронізації контактів. Повторіть спробу, або зв’яжіться зі службою підтримки";
+
+//Favourites
+"Favourites.Title" = "Вибране";
+
+//Recents
+"Recents.Title" = "Недавні";
+
+//Contacts
+"Contacts.Title" = "Контакти";
+
+//Profile
+"Profile.Title" = "Профіль";

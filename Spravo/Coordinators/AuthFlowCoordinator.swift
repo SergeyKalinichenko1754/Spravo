@@ -27,7 +27,6 @@ class AuthFlowCoordinator {
     }
     
     func start() {
-        startServices()
         rootNav.setNavigationBarHidden(true, animated: false)
         let fbAuthorization = serviceHolder.get(by: FBAuthorization.self),
         firebaseAgent = serviceHolder.get(by: FirebaseAgent.self),
@@ -64,24 +63,8 @@ extension AuthFlowCoordinator: AuthorizationCoordinatorTransitions {
     }
 }
 
-extension AuthFlowCoordinator {
-    private func startServices() {
-        let fbAuthorization = FBAuthorization()
-        let firebaseAgent = FirebaseAgent()
-        let contactsProvider = ContactsProvider(user: User())
-        serviceHolder.add(FBAuthorization.self, for: fbAuthorization)
-        serviceHolder.add(FirebaseAgent.self, for: firebaseAgent)
-        serviceHolder.add(ContactsProvider.self, for: contactsProvider)
-    }
-    
-    private func removeServices() {
-        serviceHolder.remove(by: FBAuthorization.self)
-    }
-}
-
 extension AuthFlowCoordinator: FetcPhoneContactsCoordinatorTransitions {
     func userDidLogin() {
-        removeServices()
         transitions?.userDidLogin()
     }
     

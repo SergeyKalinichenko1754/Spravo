@@ -28,11 +28,46 @@ class FirebaseAgent: FirebaseAgentType {
     
     func isPhoneContactsLoadedAlready(userFbId: String) -> Bool {
         guard let _ = UserDefaults.standard.object(forKey: (contactLoadedAlreadyKeyPrefix + userFbId)) as? Date else { return false }
+        
+        startMarkInFirebase(userFbId: userFbId) { date in
+            if let date = date {
+                debugPrint("StartMark: \(date)")
+            }
+        }
         return true
+    }
+    
+    func startMarkInFirebase(userFbId: String, completion: @escaping (_ date: Date?) -> ()) {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else {
+                completion(nil)
+                return }
+            let docRef = self.firestore.collection("startMarks").document(userFbId)
+            docRef.getDocument { (document, error) in
+                guard error == nil, let document = document else {
+                    completion(nil)
+                    return }
+                if let timestamp = document["startDate"] as? Timestamp {
+                    let date = timestamp.dateValue()
+                    completion(date)
+                    return
+                }
+                completion(nil)
+            }
+        }
     }
     
     func setUploadPhonesContactsMark(userFbId: String) {
         UserDefaults.standard.setValue(Date(), forKey: (contactLoadedAlreadyKeyPrefix + userFbId))
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            let startMarkData = ["startDate": Timestamp(date: Date())]
+            self.firestore.collection("startMarks").document(userFbId).setData(startMarkData) { error in
+                if let error = error {
+                    debugPrint("Error in standing start mark: \(error.localizedDescription)")
+                }
+            }
+        }
     }
     
     func needAuthorization() -> Bool {

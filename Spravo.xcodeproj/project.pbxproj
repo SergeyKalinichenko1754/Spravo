@@ -18,6 +18,28 @@
 		042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */; };
 		042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */; };
 		042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */; };
+		045CE92F236993C0003E91DA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE92E236993C0003E91DA /* TabBarCoordinator.swift */; };
+		045CE93123699539003E91DA /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE93023699539003E91DA /* UIColor.swift */; };
+		045CE933236997E3003E91DA /* FavouritesTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE932236997E3003E91DA /* FavouritesTabCoordinator.swift */; };
+		045CE93523699842003E91DA /* RecentsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE93423699842003E91DA /* RecentsTabCoordinator.swift */; };
+		045CE9372369985A003E91DA /* ContactsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9362369985A003E91DA /* ContactsTabCoordinator.swift */; };
+		045CE9392369986F003E91DA /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9382369986F003E91DA /* ProfileTabCoordinator.swift */; };
+		045CE93D2369A992003E91DA /* FavouritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE93C2369A992003E91DA /* FavouritesCoordinator.swift */; };
+		045CE93F2369A9A7003E91DA /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE93E2369A9A7003E91DA /* FavouritesViewModel.swift */; };
+		045CE9412369A9D7003E91DA /* FavouritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9402369A9D7003E91DA /* FavouritesVC.swift */; };
+		045CE9432369B075003E91DA /* Favourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CE9422369B075003E91DA /* Favourites.storyboard */; };
+		045CE9462369B736003E91DA /* RecentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9452369B736003E91DA /* RecentsCoordinator.swift */; };
+		045CE9482369B74F003E91DA /* RecentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9472369B74F003E91DA /* RecentsViewModel.swift */; };
+		045CE94A2369B76C003E91DA /* RecentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9492369B76C003E91DA /* RecentsVC.swift */; };
+		045CE94C2369BC82003E91DA /* Recents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CE94B2369BC82003E91DA /* Recents.storyboard */; };
+		045CE94F2369C1A5003E91DA /* ContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE94E2369C1A5003E91DA /* ContactsCoordinator.swift */; };
+		045CE9512369C1C5003E91DA /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9502369C1C5003E91DA /* ContactsViewModel.swift */; };
+		045CE9532369C1DF003E91DA /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9522369C1DF003E91DA /* ContactsVC.swift */; };
+		045CE9552369C2D2003E91DA /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CE9542369C2D2003E91DA /* Contacts.storyboard */; };
+		045CE9582369C79E003E91DA /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9572369C79E003E91DA /* ProfileCoordinator.swift */; };
+		045CE95A2369C7AF003E91DA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9592369C7AF003E91DA /* ProfileViewModel.swift */; };
+		045CE95C2369C7C4003E91DA /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE95B2369C7C4003E91DA /* ProfileVC.swift */; };
+		045CE95E2369C7D6003E91DA /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CE95D2369C7D6003E91DA /* Profile.storyboard */; };
 		0483CA53233B9C4B003C2D10 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483CA52233B9C4B003C2D10 /* String.swift */; };
 		049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D2233E569100344EA7 /* ServiceHolder.swift */; };
 		049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D5233E589700344EA7 /* AppCoordinator.swift */; };
@@ -59,6 +81,28 @@
 		042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsCoordinator.swift; sourceTree = "<group>"; };
 		042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsViewModel.swift; sourceTree = "<group>"; };
 		042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsVC.swift; sourceTree = "<group>"; };
+		045CE92E236993C0003E91DA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		045CE93023699539003E91DA /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		045CE932236997E3003E91DA /* FavouritesTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTabCoordinator.swift; sourceTree = "<group>"; };
+		045CE93423699842003E91DA /* RecentsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsTabCoordinator.swift; sourceTree = "<group>"; };
+		045CE9362369985A003E91DA /* ContactsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTabCoordinator.swift; sourceTree = "<group>"; };
+		045CE9382369986F003E91DA /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
+		045CE93C2369A992003E91DA /* FavouritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCoordinator.swift; sourceTree = "<group>"; };
+		045CE93E2369A9A7003E91DA /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		045CE9402369A9D7003E91DA /* FavouritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesVC.swift; sourceTree = "<group>"; };
+		045CE9422369B075003E91DA /* Favourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourites.storyboard; sourceTree = "<group>"; };
+		045CE9452369B736003E91DA /* RecentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCoordinator.swift; sourceTree = "<group>"; };
+		045CE9472369B74F003E91DA /* RecentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsViewModel.swift; sourceTree = "<group>"; };
+		045CE9492369B76C003E91DA /* RecentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsVC.swift; sourceTree = "<group>"; };
+		045CE94B2369BC82003E91DA /* Recents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recents.storyboard; sourceTree = "<group>"; };
+		045CE94E2369C1A5003E91DA /* ContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCoordinator.swift; sourceTree = "<group>"; };
+		045CE9502369C1C5003E91DA /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		045CE9522369C1DF003E91DA /* ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
+		045CE9542369C2D2003E91DA /* Contacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
+		045CE9572369C79E003E91DA /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		045CE9592369C7AF003E91DA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		045CE95B2369C7C4003E91DA /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		045CE95D2369C7D6003E91DA /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0483CA52233B9C4B003C2D10 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		049E34D2233E569100344EA7 /* ServiceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHolder.swift; sourceTree = "<group>"; };
 		049E34D5233E589700344EA7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -155,6 +199,69 @@
 			path = FetchPhoneContacts;
 			sourceTree = "<group>";
 		};
+		045CE92D23699386003E91DA /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				045CE92E236993C0003E91DA /* TabBarCoordinator.swift */,
+				045CE932236997E3003E91DA /* FavouritesTabCoordinator.swift */,
+				045CE93423699842003E91DA /* RecentsTabCoordinator.swift */,
+				045CE9362369985A003E91DA /* ContactsTabCoordinator.swift */,
+				045CE9382369986F003E91DA /* ProfileTabCoordinator.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		045CE93A2369A8EA003E91DA /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				045CE93B2369A967003E91DA /* Favourites */,
+				045CE9442369B6E5003E91DA /* Recents */,
+				045CE94D2369C154003E91DA /* Contacts */,
+				045CE9562369C778003E91DA /* Profile */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		045CE93B2369A967003E91DA /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				045CE93C2369A992003E91DA /* FavouritesCoordinator.swift */,
+				045CE93E2369A9A7003E91DA /* FavouritesViewModel.swift */,
+				045CE9402369A9D7003E91DA /* FavouritesVC.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		045CE9442369B6E5003E91DA /* Recents */ = {
+			isa = PBXGroup;
+			children = (
+				045CE9452369B736003E91DA /* RecentsCoordinator.swift */,
+				045CE9472369B74F003E91DA /* RecentsViewModel.swift */,
+				045CE9492369B76C003E91DA /* RecentsVC.swift */,
+			);
+			path = Recents;
+			sourceTree = "<group>";
+		};
+		045CE94D2369C154003E91DA /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				045CE94E2369C1A5003E91DA /* ContactsCoordinator.swift */,
+				045CE9502369C1C5003E91DA /* ContactsViewModel.swift */,
+				045CE9522369C1DF003E91DA /* ContactsVC.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		045CE9562369C778003E91DA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				045CE9572369C79E003E91DA /* ProfileCoordinator.swift */,
+				045CE9592369C7AF003E91DA /* ProfileViewModel.swift */,
+				045CE95B2369C7C4003E91DA /* ProfileVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		0483CA51233B9B08003C2D10 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +269,7 @@
 				049E34DB233E70F700344EA7 /* UIStoryboard.swift */,
 				049E34DD233E721600344EA7 /* UIViewController.swift */,
 				041B3548235F62E600E71B1A /* UIView.swift */,
+				045CE93023699539003E91DA /* UIColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -172,6 +280,10 @@
 				04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */,
 				041B3541235F27F100E71B1A /* ServiceScreens.storyboard */,
 				04B8C641233A86D2008C4269 /* AuthFlow.storyboard */,
+				045CE9422369B075003E91DA /* Favourites.storyboard */,
+				045CE94B2369BC82003E91DA /* Recents.storyboard */,
+				045CE9542369C2D2003E91DA /* Contacts.storyboard */,
+				045CE95D2369C7D6003E91DA /* Profile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -191,6 +303,7 @@
 				04EFB2F22360AC74007A2AB6 /* ErrorScreen */,
 				041B353A235F23E100E71B1A /* ActivityScreen */,
 				049E34DF233E769800344EA7 /* AuthFlow */,
+				045CE93A2369A8EA003E91DA /* TabBar */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -212,6 +325,7 @@
 			children = (
 				049E34D5233E589700344EA7 /* AppCoordinator.swift */,
 				049E34D7233E58AA00344EA7 /* AuthFlowCoordinator.swift */,
+				045CE92D23699386003E91DA /* TabBar */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -358,9 +472,13 @@
 				04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */,
 				04D6764B235066E600E86E06 /* InfoPlist.strings in Resources */,
 				04D55880233D226800511BF7 /* Localizable.strings in Resources */,
+				045CE9432369B075003E91DA /* Favourites.storyboard in Resources */,
+				045CE95E2369C7D6003E91DA /* Profile.storyboard in Resources */,
 				04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */,
+				045CE94C2369BC82003E91DA /* Recents.storyboard in Resources */,
 				04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */,
 				041B3545235F614B00E71B1A /* ActivityIndicatorLabel.xib in Resources */,
+				045CE9552369C2D2003E91DA /* Contacts.storyboard in Resources */,
 				04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */,
 				04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */,
 			);
@@ -415,33 +533,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045CE9582369C79E003E91DA /* ProfileCoordinator.swift in Sources */,
 				37011ED3234B97B0002A0487 /* ContactsProvider.swift in Sources */,
 				049E34DE233E721600344EA7 /* UIViewController.swift in Sources */,
 				04EB638A233E1CF100D46342 /* Defines.swift in Sources */,
 				041B3547235F626900E71B1A /* ActivityIndicatorLabel.swift in Sources */,
+				045CE9392369986F003E91DA /* ProfileTabCoordinator.swift in Sources */,
 				04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */,
+				045CE92F236993C0003E91DA /* TabBarCoordinator.swift in Sources */,
 				04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */,
 				049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */,
 				041B3549235F62E600E71B1A /* UIView.swift in Sources */,
+				045CE933236997E3003E91DA /* FavouritesTabCoordinator.swift in Sources */,
 				049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */,
+				045CE93D2369A992003E91DA /* FavouritesCoordinator.swift in Sources */,
+				045CE93523699842003E91DA /* RecentsTabCoordinator.swift in Sources */,
+				045CE9482369B74F003E91DA /* RecentsViewModel.swift in Sources */,
+				045CE94A2369B76C003E91DA /* RecentsVC.swift in Sources */,
 				042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */,
+				045CE9462369B736003E91DA /* RecentsCoordinator.swift in Sources */,
 				049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */,
 				042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */,
 				04D676512350695800E86E06 /* PhoneContactsProvider.swift in Sources */,
 				04EFB2F42360AC96007A2AB6 /* ErrorScreenVC.swift in Sources */,
 				37011ED6234B9812002A0487 /* User.swift in Sources */,
+				045CE95C2369C7C4003E91DA /* ProfileVC.swift in Sources */,
+				045CE93F2369A9A7003E91DA /* FavouritesViewModel.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
 				042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */,
+				045CE93123699539003E91DA /* UIColor.swift in Sources */,
 				0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */,
 				04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */,
 				04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */,
+				045CE9532369C1DF003E91DA /* ContactsVC.swift in Sources */,
+				045CE9512369C1C5003E91DA /* ContactsViewModel.swift in Sources */,
+				045CE9372369985A003E91DA /* ContactsTabCoordinator.swift in Sources */,
 				049E34DA233E6DFE00344EA7 /* AuthorizationCoordinator.swift in Sources */,
 				37011ED7234B9813002A0487 /* Contact.swift in Sources */,
 				049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */,
 				049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */,
+				045CE95A2369C7AF003E91DA /* ProfileViewModel.swift in Sources */,
 				041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */,
+				045CE94F2369C1A5003E91DA /* ContactsCoordinator.swift in Sources */,
 				04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */,
+				045CE9412369A9D7003E91DA /* FavouritesVC.swift in Sources */,
 				04EFB2F02360734B007A2AB6 /* ServiceFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

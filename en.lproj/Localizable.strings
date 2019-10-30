@@ -28,3 +28,15 @@
 "ImportPhoneContacts.ErrorInternetConnection" = "Please, check your Internet connection";
 "ImportPhoneContacts.ErrorFetchingPhoneContactsFailed" = "Fetching phone contacts failed. Please, try again Or contact support";
 "ImportPhoneContacts.ErrorSyncingContactsFailed" = "Syncing contacts failed. Please, try again Or contact support";
+
+//Favourites
+"Favourites.Title" = "Favourites";
+
+//Recents
+"Recents.Title" = "Recents";
+
+//Contacts
+"Contacts.Title" = "Contacts";
+
+//Profile
+"Profile.Title" = "Profile";

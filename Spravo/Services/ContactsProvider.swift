@@ -31,4 +31,9 @@ class ContactsProvider: ContactsProviderType {
     var userName: String {
         return user.name ?? ""
     }
+    
+    func logOut() {
+        user = User()
+        contactModels = []
+    }
 }

@@ -12,6 +12,10 @@ struct Storyboard {
     static let launch = UIStoryboard(name: "LaunchScreen", bundle: nil)
     static let service = UIStoryboard(name: "ServiceScreens", bundle: nil)
     static let auth = UIStoryboard(name: "AuthFlow", bundle: nil)
+    static let favourites = UIStoryboard(name: "Favourites", bundle: nil)
+    static let recents = UIStoryboard(name: "Recents", bundle: nil)
+    static let contacts = UIStoryboard(name: "Contacts", bundle: nil)
+    static let profile = UIStoryboard(name: "Profile", bundle: nil)
 }
 
 protocol StoryboardIdentifiable {

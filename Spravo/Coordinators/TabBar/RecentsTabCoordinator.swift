@@ -12,8 +12,8 @@ protocol RecentsTabCoordinatorTransitions: class {
 }
 
 class RecentsTabCoordinator: TabBarItemCoordinatorType {
-    var rootController = UINavigationController()
-    var tabBarItem = UITabBarItem(title: "Recents.Title".localized, image: UIImage(named: "recents"), selectedImage: nil)
+    let rootController = UINavigationController()
+    let tabBarItem = UITabBarItem(title: "Recents.Title".localized, image: UIImage(named: "recents"), selectedImage: nil)
     private weak var transitions: RecentsTabCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
     

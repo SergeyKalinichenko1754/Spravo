@@ -9,11 +9,12 @@
 import UIKit
 
 protocol ProfileTabCoordinatorTransitions: class {
+    func logout()
 }
 
 class ProfileTabCoordinator: TabBarItemCoordinatorType {
-    var rootController = UINavigationController()
-    var tabBarItem = UITabBarItem(title: "Profile.Title".localized, image: UIImage(named: "profile"), selectedImage: nil)
+    let rootController = UINavigationController()
+    let tabBarItem = UITabBarItem(title: "Profile.Title".localized, image: UIImage(named: "profile"), selectedImage: nil)
     private weak var transitions: ProfileTabCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
     
@@ -30,4 +31,7 @@ class ProfileTabCoordinator: TabBarItemCoordinatorType {
 }
 
 extension ProfileTabCoordinator: ProfileCoordinatorTransitions {
+    func logout() {
+        transitions?.logout()
+    }
 }

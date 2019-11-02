@@ -14,7 +14,6 @@ protocol AuthFlowCoordinatorTransitions: class {
 }
 
 class AuthFlowCoordinator {
-    
     private let window: UIWindow
     private let rootNav = UINavigationController()
     private weak var transitions: AuthFlowCoordinatorTransitions?
@@ -35,12 +34,7 @@ class AuthFlowCoordinator {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
             guard let userFbId = fbAuthorization.getFBUserId() else { return }
             contactsProvider.user.facebookId = userFbId
-            if firebaseAgent.isPhoneContactsLoadedAlready(userFbId: userFbId) {
-                transitions?.userDidLogin()                
-            } else {
-                startFetchPhoneContactsCoordinator()
-                setupRootViewController(rootNav)
-            }
+            transitions?.userDidLogin()
         } else {
             let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
             coordinator.start()

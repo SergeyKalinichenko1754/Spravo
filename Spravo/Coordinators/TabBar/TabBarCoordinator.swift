@@ -9,6 +9,7 @@
 import UIKit
 
 protocol TabBarCoordinatorTransitions: class {
+    func startFetchPhoneContacts()
     func logout()
 }
 
@@ -22,7 +23,7 @@ class TabBarCoordinator {
     private weak var transitions: TabBarCoordinatorTransitions?
     private let serviceHolder: ServiceHolder
     private let tabBarController = UITabBarController()
-    private var tabCoordinators:[TabBarItemCoordinatorType] = []
+    private var tabCoordinators: [TabBarItemCoordinatorType] = []
     
     init(window: UIWindow, transitions: TabBarCoordinatorTransitions, serviceHolder: ServiceHolder) {
         self.window = window
@@ -47,13 +48,19 @@ class TabBarCoordinator {
         guard let window = window else { return }
         if (animated) {
             UIView.transition(with: window, duration: 0.5, options: UIView.AnimationOptions.transitionCrossDissolve, animations: { [weak self] in
-                window.rootViewController = self?.tabBarController
+                guard let self = self else { return }
+                window.rootViewController = self.tabBarController
                 }, completion: nil)
         } else {
             window.rootViewController = tabBarController
             window.makeKeyAndVisible()
         }
     }
+    
+    deinit {
+        debugPrint("TABBAR Coordinator deinit !!!")
+    }
+    
 }
 
 extension TabBarCoordinator: FavouritesTabCoordinatorTransitions {
@@ -63,7 +70,13 @@ extension TabBarCoordinator: RecentsTabCoordinatorTransitions {
 }
 
 extension TabBarCoordinator: ContactsTabCoordinatorTransitions {
+    func startFetchPhoneContacts() {
+        transitions?.startFetchPhoneContacts()
+    }
 }
 
 extension TabBarCoordinator: ProfileTabCoordinatorTransitions {
+    func logout() {
+        transitions?.logout()
+    }
 }

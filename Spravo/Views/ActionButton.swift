@@ -12,7 +12,7 @@ protocol ActionButtonDelegate: class {
     func buttonTapedAction()
 }
 
-class ActionButton: UIButton {
+class ActionButton: UIView {
     @IBOutlet weak var button: UIButton!
     
     private weak var delegate: ActionButtonDelegate?

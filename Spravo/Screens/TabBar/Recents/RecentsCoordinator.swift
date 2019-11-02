@@ -11,7 +11,7 @@ import UIKit
 protocol RecentsCoordinatorTransitions: class {
 }
 
-protocol RecentsCoordinatorType: class {
+protocol RecentsCoordinatorType {
 }
 
 class RecentsCoordinator: RecentsCoordinatorType {
@@ -20,7 +20,7 @@ class RecentsCoordinator: RecentsCoordinatorType {
     private weak var controller = Storyboard.recents.controller(withClass: RecentsVC.self)
     private var serviceHolder: ServiceHolder
     
-    init(navigationController: UINavigationController?, transitions: RecentsCoordinatorTransitions, serviceHolder: ServiceHolder) {
+    init(navigationController: UINavigationController?, transitions: RecentsCoordinatorTransitions?, serviceHolder: ServiceHolder) {
         self.navigationController = navigationController
         self.transitions = transitions
         self.serviceHolder = serviceHolder

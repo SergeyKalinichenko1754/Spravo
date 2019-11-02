@@ -9,11 +9,12 @@
 import UIKit
 
 protocol ContactsTabCoordinatorTransitions: class {
+    func startFetchPhoneContacts()
 }
 
 class ContactsTabCoordinator: TabBarItemCoordinatorType {
-    var rootController = UINavigationController()
-    var tabBarItem = UITabBarItem(title: "Contacts.Title".localized, image: UIImage(named: "contacts"), selectedImage: nil)
+    let rootController = UINavigationController()
+    let tabBarItem = UITabBarItem(title: "Contacts.Title".localized, image: UIImage(named: "contacts"), selectedImage: nil)
     private weak var transitions: ContactsTabCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
     
@@ -27,7 +28,15 @@ class ContactsTabCoordinator: TabBarItemCoordinatorType {
         let coordinator = ContactsCoordinator(navigationController: rootController, transitions: self, serviceHolder: serviceHolder)
         coordinator.start()
     }
+    
+    deinit {
+        debugPrint("ContactsTabCoordinator DEINIT !!!!")
+    }
+    
 }
 
 extension ContactsTabCoordinator: ContactsCoordinatorTransitions {
+    func startFetchPhoneContacts() {
+        transitions?.startFetchPhoneContacts()
+    }
 }

@@ -37,6 +37,8 @@
 
 //Contacts
 "Contacts.Title" = "Контакти";
+"Contacts.ErrorCopyFromFb" = "Помилка копіювання контактів з Firebase";
+"Contacts.ImportButtonCaption" = "Імпорт контактiв з телефону";
 
 //Profile
 "Profile.Title" = "Профіль";

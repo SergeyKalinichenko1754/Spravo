@@ -9,8 +9,6 @@ import Firebase
 
 protocol FirebaseAgentType: Service {
     func signIntoFirebase(token: String, completion: @escaping (Result<String, String?>) -> ())
-    func setUploadPhonesContactsMark(userFbId: String)
-    func isPhoneContactsLoadedAlready(userFbId: String) -> Bool
     func getAllContacts(userFbId: String, completion: @escaping ((_ array: [Contact]?) -> ()))
     func saveNewContact(userFbId: String, contact: Contact, userProfileImage: UIImage?, completion: @escaping (_ error: String?) -> ())
     func deleteContact(userFbId: String, contact: Contact)
@@ -22,50 +20,17 @@ class FirebaseAgent: FirebaseAgentType {
     fileprivate let storage = Storage.storage()
     fileprivate let prefixForUsersCollection = "user"
     fileprivate let prefixForUsersProfileImage = "profImageFor"
-    fileprivate var contactLoadedAlreadyKeyPrefix: String {
-        return "DateUplodePhoneContactsToFbForUser"
-    }
     
-    func isPhoneContactsLoadedAlready(userFbId: String) -> Bool {
-        guard let _ = UserDefaults.standard.object(forKey: (contactLoadedAlreadyKeyPrefix + userFbId)) as? Date else { return false }
-        
-        startMarkInFirebase(userFbId: userFbId) { date in
-            if let date = date {
-                debugPrint("StartMark: \(date)")
-            }
-        }
-        return true
-    }
-    
-    func startMarkInFirebase(userFbId: String, completion: @escaping (_ date: Date?) -> ()) {
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else {
-                completion(nil)
-                return }
-            let docRef = self.firestore.collection("startMarks").document(userFbId)
-            docRef.getDocument { (document, error) in
-                guard error == nil, let document = document else {
-                    completion(nil)
-                    return }
-                if let timestamp = document["startDate"] as? Timestamp {
-                    let date = timestamp.dateValue()
-                    completion(date)
+    func collectionExists(userFbId: String, completion: @escaping (_ result: BoolResult) -> ()) {
+        firestore.collection("\(prefixForUsersCollection)\(userFbId)").getDocuments() { (querySnapshot, error) in
+            if let error = error {
+                completion(.failure(error.localizedDescription))
+            } else {
+                if querySnapshot?.documents.count ?? 0 > 0 {
+                    completion(.success(true))
                     return
                 }
-                completion(nil)
-            }
-        }
-    }
-    
-    func setUploadPhonesContactsMark(userFbId: String) {
-        UserDefaults.standard.setValue(Date(), forKey: (contactLoadedAlreadyKeyPrefix + userFbId))
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            let startMarkData = ["startDate": Timestamp(date: Date())]
-            self.firestore.collection("startMarks").document(userFbId).setData(startMarkData) { error in
-                if let error = error {
-                    debugPrint("Error in standing start mark: \(error.localizedDescription)")
-                }
+                completion(.success(false))
             }
         }
     }
@@ -248,9 +213,5 @@ class FirebaseAgent: FirebaseAgentType {
                 debugPrint("Problem with deleting image from storage for contact \(contactID): \(error.localizedDescription)")
             }
         }
-    }
-        
-    deinit {
-        debugPrint("FirebaseAgent deinit !!!")
     }
 }

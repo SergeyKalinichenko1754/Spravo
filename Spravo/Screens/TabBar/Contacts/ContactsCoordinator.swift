@@ -9,9 +9,11 @@
 import UIKit
 
 protocol ContactsCoordinatorTransitions: class {
+    func startFetchPhoneContacts()
 }
 
-protocol ContactsCoordinatorType: class {
+protocol ContactsCoordinatorType {
+    func startFetchPhoneContacts()
 }
 
 class ContactsCoordinator: ContactsCoordinatorType {
@@ -20,7 +22,7 @@ class ContactsCoordinator: ContactsCoordinatorType {
     private weak var controller = Storyboard.contacts.controller(withClass: ContactsVC.self)
     private var serviceHolder: ServiceHolder
     
-    init(navigationController: UINavigationController?, transitions: ContactsCoordinatorTransitions, serviceHolder: ServiceHolder) {
+    init(navigationController: UINavigationController?, transitions: ContactsCoordinatorTransitions?, serviceHolder: ServiceHolder) {
         self.navigationController = navigationController
         self.transitions = transitions
         self.serviceHolder = serviceHolder
@@ -31,5 +33,19 @@ class ContactsCoordinator: ContactsCoordinatorType {
         if let controller = controller {
             navigationController?.setViewControllers([controller], animated: true)
         }
+    }
+    
+    func startFetchPhoneContacts() {
+        //TODO(Serhii K.) Will delete if let _ = transitions {... after fix parent coordinator deinit
+        if let _ = transitions {
+            print("Transitions IS")
+        } else {
+            print("NOT !!!!!!!")
+        }
+        transitions?.startFetchPhoneContacts()
+    }
+    
+    deinit {
+        debugPrint("Contacts Coordinator DEINIT !!!!!!!")
     }
 }

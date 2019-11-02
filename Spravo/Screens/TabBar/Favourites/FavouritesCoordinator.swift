@@ -11,7 +11,7 @@ import UIKit
 protocol FavouritesCoordinatorTransitions: class {
 }
 
-protocol FavouritesCoordinatorType: class {
+protocol FavouritesCoordinatorType {
 }
 
 class FavouritesCoordinator: FavouritesCoordinatorType {
@@ -20,7 +20,7 @@ class FavouritesCoordinator: FavouritesCoordinatorType {
     private weak var controller = Storyboard.favourites.controller(withClass: FavouritesVC.self)
     private var serviceHolder: ServiceHolder
     
-    init(navigationController: UINavigationController?, transitions: FavouritesCoordinatorTransitions, serviceHolder: ServiceHolder) {
+    init(navigationController: UINavigationController?, transitions: FavouritesCoordinatorTransitions?, serviceHolder: ServiceHolder) {
         self.navigationController = navigationController
         self.transitions = transitions
         self.serviceHolder = serviceHolder

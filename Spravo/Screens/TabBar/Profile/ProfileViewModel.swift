@@ -9,6 +9,7 @@
 import Foundation
 
 protocol ProfileViewModelType {
+    func logout()
 }
 
 class ProfileViewModel: ProfileViewModelType {
@@ -18,5 +19,9 @@ class ProfileViewModel: ProfileViewModelType {
     init(_ coordinator: ProfileCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
+    }
+    
+    func logout() {
+        coordinator.logout()
     }
 }

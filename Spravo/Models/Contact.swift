@@ -26,6 +26,7 @@ struct LabelAddress: Codable {
 struct Contact: Codable {
     var id: String?
     var givenName: String?
+    var middleName: String?
     var familyName: String?
     var phones: [LabelString]?
     var emails: [LabelString]?
@@ -38,8 +39,8 @@ struct Contact: Codable {
 extension Contact {
     var dictionary: [String: Any]? {
         guard let data = try? JSONEncoder().encode(self) else { return nil }
-        guard let rawJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
-            let json = rawJson as? [String: Any] else {
+        guard let rowJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+            let json = rowJson as? [String: Any] else {
                 debugPrint("Cannot convert SpravoContact")
                 return nil
         }
@@ -49,6 +50,7 @@ extension Contact {
 
 extension Contact {
     init(givenName: String,
+         middleName: String? = nil,
          familyName: String? = nil,
          phones: [LabelString] = [],
          emails: [LabelString] = [],
@@ -57,11 +59,25 @@ extension Contact {
          notes: String? = nil,
          profileImage: String? = nil) {
         self.givenName = givenName
+        self.middleName = middleName
         self.familyName = familyName
         self.phones = phones
         self.emails = emails
         self.birthday = birthday
         self.addresses = addresses
         self.notes = notes
+    }
+}
+
+extension Contact {
+    var fullName: String {
+        let fName = [givenName, middleName, familyName].compactMap({$0})
+        return fName.joined(separator: " ")
+    }
+    
+    var namePrefix: String {
+        let fName = [familyName, givenName, middleName].compactMap({$0})
+        let name = fName.joined(separator: " ")
+        return String((name.count == 0 ? "#" : name).prefix(1))
     }
 }

@@ -19,5 +19,4 @@ class FavouritesViewModel: FavouritesViewModelType {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
     }
-    
 }

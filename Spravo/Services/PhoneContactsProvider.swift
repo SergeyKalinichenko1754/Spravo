@@ -47,11 +47,12 @@ class PhoneContactsProvider: PhoneContactsProviderType {
             case .success(true):
                 DispatchQueue.global().async {
                     var imagesForContacts = [(Contact, Data?)]()
-                    let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey, CNContactBirthdayKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactNoteKey]
+                    let keys = [CNContactGivenNameKey, CNContactMiddleNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey, CNContactBirthdayKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactNoteKey]
                     let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
                     do {
                         try self.store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerForStopEnumerating) in
                             let givenName = contact.givenName
+                            let middleName = contact.middleName
                             let familyName = contact.familyName
                             let phones = contact.phoneNumbers.compactMap { LabelString(label: $0.label, value: $0.value.stringValue) }
                             let emails = contact.emailAddresses.compactMap { LabelString(label: $0.label, value: String($0.value)) }
@@ -60,6 +61,7 @@ class PhoneContactsProvider: PhoneContactsProviderType {
                             let image = contact.imageData
                             let note = contact.note
                             let addedContact = Contact(givenName: givenName,
+                                                       middleName: middleName,
                                                        familyName: familyName,
                                                        phones: phones,
                                                        emails: emails,

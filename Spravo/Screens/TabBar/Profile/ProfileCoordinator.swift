@@ -10,9 +10,11 @@
 import UIKit
 
 protocol ProfileCoordinatorTransitions: class {
+    func logout()
 }
 
-protocol ProfileCoordinatorType: class {
+protocol ProfileCoordinatorType {
+    func logout()
 }
 
 class ProfileCoordinator: ProfileCoordinatorType {
@@ -21,7 +23,7 @@ class ProfileCoordinator: ProfileCoordinatorType {
     private weak var controller = Storyboard.profile.controller(withClass: ProfileVC.self)
     private var serviceHolder: ServiceHolder
     
-    init(navigationController: UINavigationController?, transitions: ProfileCoordinatorTransitions, serviceHolder: ServiceHolder) {
+    init(navigationController: UINavigationController?, transitions: ProfileCoordinatorTransitions?, serviceHolder: ServiceHolder) {
         self.navigationController = navigationController
         self.transitions = transitions
         self.serviceHolder = serviceHolder
@@ -32,5 +34,9 @@ class ProfileCoordinator: ProfileCoordinatorType {
         if let controller = controller {
             navigationController?.setViewControllers([controller], animated: true)
         }
+    }
+    
+    func logout() {
+        transitions?.logout()
     }
 }

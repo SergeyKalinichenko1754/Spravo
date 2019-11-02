@@ -10,9 +10,9 @@ import UIKit
 
 class AppCoordinator {
     private let window: UIWindow
+    private let serviceHolder = ServiceHolder()
     private var authFlowCoordinator: AuthFlowCoordinator?
     private var tabBarCoordinator: TabBarCoordinator?
-    private var serviceHolder = ServiceHolder()
     
     init(window: UIWindow) {
         self.window = window
@@ -34,6 +34,10 @@ class AppCoordinator {
         tabBarCoordinator = TabBarCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
         tabBarCoordinator?.start()
         authFlowCoordinator = nil
+    }
+    
+    deinit {
+        debugPrint("APPCOORDINATOR DEINIT !!!!!!!!!!!!!!!!!!!!!!")
     }
 }
 
@@ -68,5 +72,10 @@ extension AppCoordinator: TabBarCoordinatorTransitions {
         fbAuthorization.logOutFromFB()
         contactsProvider.logOut()
         authorizationStart()
+    }
+    
+    func startFetchPhoneContacts() {
+        //TODO(Serhii K.) Will delete debugPrint after fix coordinators work (prevent deinit)
+        debugPrint("Huray !!!!!!!!!!!!!!!!")
     }
 }

@@ -32,6 +32,10 @@ class ContactsProvider: ContactsProviderType {
         return user.name ?? ""
     }
     
+    var contactsQuantity: Int {
+        return contactModels.count
+    }
+    
     func logOut() {
         user = User()
         contactModels = []

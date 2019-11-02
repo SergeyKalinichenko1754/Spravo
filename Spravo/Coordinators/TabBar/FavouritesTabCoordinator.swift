@@ -12,8 +12,8 @@ protocol FavouritesTabCoordinatorTransitions: class {
 }
 
 class FavouritesTabCoordinator: TabBarItemCoordinatorType {
-    var rootController = UINavigationController()
-    var tabBarItem = UITabBarItem(title: "Favourites.Title".localized, image: UIImage(named: "favourites"), selectedImage: nil)
+    let rootController = UINavigationController()
+    let tabBarItem = UITabBarItem(title: "Favourites.Title".localized, image: UIImage(named: "favourites"), selectedImage: nil)
     private weak var transitions: FavouritesTabCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
     

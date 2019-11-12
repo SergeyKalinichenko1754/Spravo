@@ -7,6 +7,17 @@
 //
 
 import UIKit
+
+enum SortContactsBy: String, CaseIterable {
+    case givenName = "Contacts.SortBy.givenName"
+    case familyName = "Contacts.SortBy.familyName"
+    case fullName = "Contacts.SortBy.fullName"
+    
+    func localizedString() -> String {
+        return NSLocalizedString(self.rawValue, comment: "")
+    }
+}
+
 protocol ContactsViewModelType {
     func getContacts(completion: @escaping (ResultE<String?>) -> ())
     func registerCells(for tableView: UITableView)
@@ -23,9 +34,9 @@ class ContactsViewModel: ContactsViewModelType {
     private var serviceHolder: ServiceHolder
     private var contactsProvider: ContactsProvider
     private var firebaseAgent: FirebaseAgent
-    
     private var contactsDictionary = [String: [Contact]]()
     private var contactsSections = [String]()
+    private var sortContactsBy: SortContactsBy?
     
     init(_ coordinator: ContactsCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
@@ -64,7 +75,7 @@ class ContactsViewModel: ContactsViewModelType {
                 })
         }
         for contact in arrContacts {
-            let contKey = contact.namePrefix
+            let contKey = getSortPrefix(contact: contact)
             if var sectArr = contactsDictionary[contKey] {
                 sectArr.append(contact)
                 contactsDictionary[contKey] = sectArr
@@ -74,6 +85,23 @@ class ContactsViewModel: ContactsViewModelType {
         }
         contactsSections = [String](contactsDictionary.keys)
         contactsSections = contactsSections.sorted(by: < )
+    }
+    
+    private func getSortPrefix(contact: Contact) -> String {
+        guard let sortBy = sortContactsBy else { return contact.fullNamePrefix}
+        switch sortBy {
+        case .givenName:
+            return contact.firstNamePrefix
+        case .familyName:
+            return contact.lastNamePrefix
+        case .fullName:
+            return contact.fullNamePrefix
+        }
+    }
+    
+    func sortContactsBy(by: SortContactsBy, searchText: String? = nil) {
+        sortContactsBy = by
+        sortСontacts(searchText)
     }
     
     func startFetchPhoneContacts() {

@@ -18,7 +18,7 @@ protocol ProfileCoordinatorType {
 }
 
 class ProfileCoordinator: ProfileCoordinatorType {
-    private weak var navigationController: UINavigationController?
+    private let navigationController: UINavigationController?
     private weak var transitions: ProfileCoordinatorTransitions?
     private weak var controller = Storyboard.profile.controller(withClass: ProfileVC.self)
     private var serviceHolder: ServiceHolder

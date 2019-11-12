@@ -16,6 +16,7 @@ protocol FetcPhoneContactsCoordinatorTransitions: class {
 protocol FetchPhoneContactsCoordinatorType {
     func userDidLogin()
     func userInterruptedProgram()
+    var autoStartFetchContacts: Bool { get set }
 }
 
 class FetchPhoneContactsCoordinator: FetchPhoneContactsCoordinatorType {
@@ -23,6 +24,7 @@ class FetchPhoneContactsCoordinator: FetchPhoneContactsCoordinatorType {
     private weak var controller = Storyboard.auth.controller(withClass: FetchPhoneContactsVC.self)
     private weak var transitions: FetcPhoneContactsCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
+    var autoStartFetchContacts = false
     
     init(navigationController: UINavigationController?, transitions: FetcPhoneContactsCoordinatorTransitions, serviceHolder: ServiceHolder) {
         self.navigationController = navigationController
@@ -33,6 +35,7 @@ class FetchPhoneContactsCoordinator: FetchPhoneContactsCoordinatorType {
     
     func start() {
         guard let controller = controller else { return }
+        controller.autoStartFetchContacts = autoStartFetchContacts
         navigationController?.pushViewController(controller, animated: true)
     }
     

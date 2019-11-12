@@ -25,19 +25,15 @@ class AppCoordinator {
     }
     
     private func authorizationStart() {
+        tabBarCoordinator = nil
         authFlowCoordinator = AuthFlowCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
         authFlowCoordinator?.start()
-        tabBarCoordinator = nil
     }
     
     private func enterApp() {
+        authFlowCoordinator = nil
         tabBarCoordinator = TabBarCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
         tabBarCoordinator?.start()
-        authFlowCoordinator = nil
-    }
-    
-    deinit {
-        debugPrint("APPCOORDINATOR DEINIT !!!!!!!!!!!!!!!!!!!!!!")
     }
 }
 
@@ -75,7 +71,8 @@ extension AppCoordinator: TabBarCoordinatorTransitions {
     }
     
     func startFetchPhoneContacts() {
-        //TODO(Serhii K.) Will delete debugPrint after fix coordinators work (prevent deinit)
-        debugPrint("Huray !!!!!!!!!!!!!!!!")
+        tabBarCoordinator = nil
+        authFlowCoordinator = AuthFlowCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
+        authFlowCoordinator?.startFromFetch()
     }
 }

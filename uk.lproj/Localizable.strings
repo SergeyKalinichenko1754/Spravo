@@ -39,6 +39,12 @@
 "Contacts.Title" = "Контакти";
 "Contacts.ErrorCopyFromFb" = "Помилка копіювання контактів з Firebase";
 "Contacts.ImportButtonCaption" = "Імпорт контактiв з телефону";
+"Contacts.NoName" = "Без імені";
+"Contacts.SortBy" = "Сортувати по";
+"Contacts.SortBy.givenName" = "Iмені";
+"Contacts.SortBy.familyName" = "Прізвищу";
+"Contacts.SortBy.fullName" = "Повному імені";
+"Contacts.SortBy.Cancel" = "Скасувати";
 
 //Profile
 "Profile.Title" = "Профіль";

@@ -52,32 +52,42 @@ extension Contact {
     init(givenName: String,
          middleName: String? = nil,
          familyName: String? = nil,
-         phones: [LabelString] = [],
-         emails: [LabelString] = [],
+         phones: [LabelString]?,
+         emails: [LabelString]?,
          birthday: Date? = nil,
-         addresses: [LabelAddress] = [],
-         notes: String? = nil,
-         profileImage: String? = nil) {
+         addresses: [LabelAddress]?,
+         notes: String? = nil) {
         self.givenName = givenName
-        self.middleName = middleName
-        self.familyName = familyName
-        self.phones = phones
-        self.emails = emails
+        self.middleName = middleName?.count == 0 ? nil : middleName
+        self.familyName = familyName?.count == 0 ? nil : familyName
+        self.phones = phones?.count == 0 ? nil : phones
+        self.emails = emails?.count == 0 ? nil : emails
         self.birthday = birthday
-        self.addresses = addresses
-        self.notes = notes
+        self.addresses = addresses?.count == 0 ? nil : addresses
+        self.notes = notes?.count == 0 ? nil : notes
     }
 }
 
 extension Contact {
     var fullName: String {
         let fName = [givenName, middleName, familyName].compactMap({$0})
+        if fName.count == 0 {
+            return NSLocalizedString("Contacts.NoName", comment: "For contacts without any names")
+        }
         return fName.joined(separator: " ")
     }
     
-    var namePrefix: String {
+    var fullNamePrefix: String {
         let fName = [familyName, givenName, middleName].compactMap({$0})
         let name = fName.joined(separator: " ")
-        return String((name.count == 0 ? "#" : name).prefix(1))
+        return String((name.count == 0 ? "🕶" : name).prefix(1))
+    }
+
+    var lastNamePrefix: String {
+        return String((familyName ?? "🕶").prefix(1))
+    }
+
+    var firstNamePrefix: String {
+        return String((givenName ?? "🕶").prefix(1))
     }
 }

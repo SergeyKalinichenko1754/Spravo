@@ -55,12 +55,7 @@ class TabBarCoordinator {
             window.rootViewController = tabBarController
             window.makeKeyAndVisible()
         }
-    }
-    
-    deinit {
-        debugPrint("TABBAR Coordinator deinit !!!")
-    }
-    
+    }    
 }
 
 extension TabBarCoordinator: FavouritesTabCoordinatorTransitions {

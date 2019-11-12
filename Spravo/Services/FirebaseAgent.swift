@@ -79,6 +79,9 @@ class FirebaseAgent: FirebaseAgentType {
                         let contact = try decoder.decode(Contact.self, from: jsonData!)
                         arr.append(contact)
                         arr[arr.count - 1].id = document.documentID
+                        if arr[arr.count - 1].givenName?.count == 0 {
+                           arr[arr.count - 1].givenName = nil
+                        }
                     } catch let error  {
                         debugPrint(error.localizedDescription)
                     }

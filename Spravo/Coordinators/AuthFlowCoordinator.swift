@@ -49,20 +49,31 @@ class AuthFlowCoordinator {
 }
 
 extension AuthFlowCoordinator: AuthorizationCoordinatorTransitions {
-    func startFetchPhoneContactsCoordinator() {
+    func startFetchPhoneContactsCoordinator(_ autoStartFetchContacts: Bool = false) {
         let phoneContactsProvider = PhoneContactsProvider()
         serviceHolder.add(PhoneContactsProvider.self, for: phoneContactsProvider)
         let coordinator = FetchPhoneContactsCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
+        coordinator.autoStartFetchContacts = autoStartFetchContacts
         coordinator.start()
     }
 }
 
 extension AuthFlowCoordinator: FetcPhoneContactsCoordinatorTransitions {
     func userDidLogin() {
+        serviceHolder.remove(by: PhoneContactsProvider.self)
         transitions?.userDidLogin()
     }
     
     func userInterruptedProgram() {
+        serviceHolder.remove(by: PhoneContactsProvider.self)
         transitions?.userInterruptedProgram()
+    }
+}
+
+extension AuthFlowCoordinator {
+    func startFromFetch() {
+        rootNav.setNavigationBarHidden(true, animated: false)
+        startFetchPhoneContactsCoordinator(true)
+        setupRootViewController(rootNav)
     }
 }

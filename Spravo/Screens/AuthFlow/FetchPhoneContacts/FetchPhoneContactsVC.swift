@@ -16,10 +16,14 @@ class FetchPhoneContactsVC: UITableViewController {
     
     var viewModel: FetchPhoneContactsViewModelType!
     weak var activityController: ActivityScreenVC?
+    var autoStartFetchContacts = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
+        if autoStartFetchContacts {
+            fetchPhonesContacts()
+        }
     }
     
     override func viewDidLayoutSubviews() {

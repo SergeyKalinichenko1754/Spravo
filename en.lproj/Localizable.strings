@@ -39,6 +39,12 @@
 "Contacts.Title" = "Contacts";
 "Contacts.ErrorCopyFromFb" = "Error copying contacts from Firebase";
 "Contacts.ImportButtonCaption" = "Import phone contacts";
+"Contacts.NoName" = "No name";
+"Contacts.SortBy" = "Sort by";
+"Contacts.SortBy.givenName" = "Name";
+"Contacts.SortBy.familyName" = "Last Name";
+"Contacts.SortBy.fullName" = "Full name";
+"Contacts.SortBy.Cancel" = "Cancel";
 
 //Profile
 "Profile.Title" = "Profile";

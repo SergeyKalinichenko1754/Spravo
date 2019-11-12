@@ -36,16 +36,6 @@ class ContactsCoordinator: ContactsCoordinatorType {
     }
     
     func startFetchPhoneContacts() {
-        //TODO(Serhii K.) Will delete if let _ = transitions {... after fix parent coordinator deinit
-        if let _ = transitions {
-            print("Transitions IS")
-        } else {
-            print("NOT !!!!!!!")
-        }
         transitions?.startFetchPhoneContacts()
-    }
-    
-    deinit {
-        debugPrint("Contacts Coordinator DEINIT !!!!!!!")
     }
 }

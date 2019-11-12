@@ -46,7 +46,7 @@ class PhoneContactsProvider: PhoneContactsProviderType {
                 completion(result, nil)
             case .success(true):
                 DispatchQueue.global().async {
-                    var imagesForContacts = [(Contact, Data?)]()
+                    var contactsArray = [(Contact, Data?)]()
                     let keys = [CNContactGivenNameKey, CNContactMiddleNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey, CNContactBirthdayKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactNoteKey]
                     let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
                     do {
@@ -68,11 +68,11 @@ class PhoneContactsProvider: PhoneContactsProviderType {
                                                        birthday: dob,
                                                        addresses: address,
                                                        notes: note)
-                            let contIm = (addedContact, image)
-                            imagesForContacts.append(contIm)
+                            let contactProfile = (addedContact, image)
+                            contactsArray.append(contactProfile)
                         })
                         DispatchQueue.main.async {
-                            completion(.success(true), imagesForContacts)
+                            completion(.success(true), contactsArray)
                         }
                     } catch let error {
                         DispatchQueue.main.async {

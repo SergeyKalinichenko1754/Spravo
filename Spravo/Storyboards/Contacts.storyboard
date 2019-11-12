@@ -62,6 +62,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gss-ZF-l6n">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fHU-br-aEs">
+                                        <rect key="frame" x="8" y="70" width="359" height="23"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Z7V-2P-9NM">
                                         <rect key="frame" x="0.0" y="94" width="375" height="56"/>
                                         <constraints>
@@ -69,12 +75,6 @@
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fHU-br-aEs">
-                                        <rect key="frame" x="8" y="70" width="359" height="23"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Z7V-2P-9NM" firstAttribute="leading" secondItem="Gss-ZF-l6n" secondAttribute="leading" id="1Fh-4R-VQd"/>
@@ -82,8 +82,8 @@
                                     <constraint firstAttribute="trailing" secondItem="fHU-br-aEs" secondAttribute="trailing" constant="8" id="MIU-Bi-VbM"/>
                                     <constraint firstItem="Z7V-2P-9NM" firstAttribute="top" secondItem="fHU-br-aEs" secondAttribute="bottom" constant="1" id="Zki-Ji-v9j"/>
                                     <constraint firstItem="fHU-br-aEs" firstAttribute="leading" secondItem="Gss-ZF-l6n" secondAttribute="leading" constant="8" id="eSN-SV-TXY"/>
-                                    <constraint firstItem="fHU-br-aEs" firstAttribute="top" secondItem="Gss-ZF-l6n" secondAttribute="top" priority="999" constant="70" id="jbo-1V-BWe"/>
-                                    <constraint firstAttribute="height" constant="150" identifier="topViewHeight" id="xKA-xC-wDn"/>
+                                    <constraint firstItem="fHU-br-aEs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Gss-ZF-l6n" secondAttribute="top" priority="900" constant="70" id="jbo-1V-BWe"/>
+                                    <constraint firstAttribute="height" constant="150" id="xKA-xC-wDn"/>
                                     <constraint firstAttribute="trailing" secondItem="Z7V-2P-9NM" secondAttribute="trailing" id="xhX-l4-rvt"/>
                                 </constraints>
                             </view>
@@ -97,11 +97,15 @@
                             <constraint firstItem="Gss-ZF-l6n" firstAttribute="top" secondItem="2a5-nS-nZ5" secondAttribute="top" id="pfD-y8-ife"/>
                             <constraint firstItem="ki5-4Q-Xey" firstAttribute="leading" secondItem="H2B-Lj-mOw" secondAttribute="leading" id="rBS-x4-axw"/>
                             <constraint firstItem="Gss-ZF-l6n" firstAttribute="leading" secondItem="H2B-Lj-mOw" secondAttribute="leading" id="tA2-8M-OcD"/>
-                            <constraint firstItem="fHU-br-aEs" firstAttribute="top" relation="lessThanOrEqual" secondItem="ki5-4Q-Xey" secondAttribute="top" constant="80" id="yxk-95-SF7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H2B-Lj-mOw"/>
                     </view>
                     <navigationItem key="navigationItem" id="aF1-Re-2xQ">
+                        <barButtonItem key="leftBarButtonItem" image="filter" id="PA7-UV-Wkm">
+                            <connections>
+                                <action selector="filterButtonTaped:" destination="8EG-Vl-hsp" id="djW-g1-uP3"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wyy-n0-vcm">
                             <connections>
                                 <action selector="addButtonTaped:" destination="8EG-Vl-hsp" id="X5a-8e-qCZ"/>
@@ -113,9 +117,11 @@
                         <outlet property="fetchContactsButtonInTableView" destination="KdT-Uc-6UZ" id="PRo-X2-Ij1"/>
                         <outlet property="searchBar" destination="Z7V-2P-9NM" id="bbz-bf-5Jp"/>
                         <outlet property="tableView" destination="ki5-4Q-Xey" id="o1c-pn-EnZ"/>
+                        <outlet property="tableViewTop" destination="2UL-Ra-dlS" id="dwR-Gw-L0n"/>
                         <outlet property="topView" destination="Gss-ZF-l6n" id="yXF-EP-GCQ"/>
-                        <outlet property="topViewHeight" destination="xKA-xC-wDn" id="eGZ-N7-XnV"/>
+                        <outlet property="topViewHeight" destination="xKA-xC-wDn" id="jN8-iN-u0A"/>
                         <outlet property="topViewLabel" destination="fHU-br-aEs" id="sp5-Wt-qjI"/>
+                        <outlet property="topViewLabelDistanceToTop" destination="jbo-1V-BWe" id="1um-ET-2Vj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="biV-Yr-9SE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,4 +129,7 @@
             <point key="canvasLocation" x="132" y="204.64767616191907"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="filter" width="24" height="24"/>
+    </resources>
 </document>

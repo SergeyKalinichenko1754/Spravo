@@ -16,6 +16,7 @@ struct Storyboard {
     static let recents = UIStoryboard(name: "Recents", bundle: nil)
     static let contacts = UIStoryboard(name: "Contacts", bundle: nil)
     static let profile = UIStoryboard(name: "Profile", bundle: nil)
+    static let contactDetails = UIStoryboard(name: "ContactDetails", bundle: nil)
 }
 
 protocol StoryboardIdentifiable {

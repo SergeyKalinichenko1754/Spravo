@@ -128,7 +128,6 @@ extension ContactsVC: UITableViewDataSource {
         viewModel.registerCells(for: tableView)
         tableViewTop.constant = CGFloat(70 + extraHeight)
         tableView.tableFooterView = UIView()
-        tableView.allowsSelection = false
         tableView.separatorInset.left = 10
         tableView.separatorInset.right = 10
         fetchContactsButtonInTableView.setTitleColor(RGBColor(33, 49, 205), for: .normal)
@@ -180,5 +179,10 @@ extension ContactsVC: UITableViewDelegate {
         } else if offsetY > pointMinObserveOffset + 13 && navigationItem.title?.count != 0 {
             navigationItem.title = ""
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.showContactDetails(indexPath)
     }
 }

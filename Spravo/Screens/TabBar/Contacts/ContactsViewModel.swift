@@ -147,4 +147,11 @@ extension ContactsViewModel {
     func search(searchText: String) {
         sortСontacts(searchText)
     }
+    
+    func showContactDetails(_ index: IndexPath) {
+        guard index.section < contactsSections.count, let sectArr = contactsDictionary[contactsSections[index.section]],
+        index.row < sectArr.count else { return }
+        let contact = sectArr[index.row]
+        coordinator.showContactDetails(contact)
+    }
 }

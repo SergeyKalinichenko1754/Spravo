@@ -14,6 +14,7 @@ protocol ContactsCoordinatorTransitions: class {
 
 protocol ContactsCoordinatorType {
     func startFetchPhoneContacts()
+    func showContactDetails(_ contact: Contact)
 }
 
 class ContactsCoordinator: ContactsCoordinatorType {
@@ -37,5 +38,13 @@ class ContactsCoordinator: ContactsCoordinatorType {
     
     func startFetchPhoneContacts() {
         transitions?.startFetchPhoneContacts()
+    }
+}
+
+extension ContactsCoordinator: ContactDetailsCoordinatorTransitions {
+    func showContactDetails(_ contact: Contact) {
+        guard let navigation = navigationController else { return }
+        let coordinator = ContactDetailsCoordinator(navigationController: navigation, transitions: self, serviceHolder: serviceHolder, contact: contact)
+        coordinator.start()
     }
 }

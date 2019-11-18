@@ -45,6 +45,20 @@
 "Contacts.SortBy.familyName" = "Nachname";
 "Contacts.SortBy.fullName" = "vollem Namen";
 "Contacts.SortBy.Cancel" = "Stornieren";
+"Contacts.Edit" = "Bearbeiten";
+"Contacts.Birthday" = "Geburtstag";
+"Contacts.Notes" = "Anmerkungen:";
+"Contacts.AddressNotFoundError" = "Die angegebene Adresse wurde nicht gefunden. Bearbeiten Sie es bei Bedarf.";
+"_$!<Home>!$_" = "Festnetz";
+"_$!<Work>!$_" = "Arbeits";
+"_$!<iPhone>!$_" = "iPhone";
+"_$!<Mobile>!$_" = "Handy";
+"_$!<Main>!$_" = "Haupt";
+"_$!<HomeFAX>!$_" = "Fax zu Hause";
+"_$!<WorkFAX>!$_" = "Arbeitsfax";
+"_$!<Pager>!$_" = "Pager";
+"_$!<Other>!$_" = "andere";
+"_$!<Empty>!$_" = "";
 
 //Profile
 "Profile.Title" = "Profil";

@@ -27,6 +27,7 @@ protocol ContactsViewModelType {
     func getNumberOfRows(section: Int) -> Int
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath) -> UITableViewCell
     func search(searchText: String)
+    func addContact()
 }
 
 class ContactsViewModel: ContactsViewModelType {
@@ -78,6 +79,7 @@ class ContactsViewModel: ContactsViewModelType {
             let contKey = getSortPrefix(contact: contact)
             if var sectArr = contactsDictionary[contKey] {
                 sectArr.append(contact)
+                sectArr = sectArr.sorted(by: {getStringForSort($0) < getStringForSort($1)})
                 contactsDictionary[contKey] = sectArr
             } else {
                 contactsDictionary[contKey] = [contact]
@@ -99,6 +101,16 @@ class ContactsViewModel: ContactsViewModelType {
         }
     }
     
+    private func getStringForSort(_ contact: Contact) -> String {
+        guard let sortBy = sortContactsBy else { return contact.fullNameStringForSort}
+        switch sortBy {
+        case .givenName:
+            return contact.fullName
+        case .familyName, .fullName:
+            return contact.fullNameStringForSort
+        }
+    }
+    
     func sortContactsBy(by: SortContactsBy, searchText: String? = nil) {
         sortContactsBy = by
         sortСontacts(searchText)
@@ -106,6 +118,10 @@ class ContactsViewModel: ContactsViewModelType {
     
     func startFetchPhoneContacts() {
         coordinator.startFetchPhoneContacts()
+    }
+    
+    func addContact() {
+        coordinator.addContact()
     }
 }
 

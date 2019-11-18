@@ -8,10 +8,49 @@
 
 import Foundation
 
+enum PhoneLabelString: String {
+    case home = "_$!<Home>!$_"
+    case work = "_$!<Work>!$_"
+    case iPhone = "_$!<iPhone>!$_"
+    case mobile = "_$!<Mobile>!$_"
+    case main = "_$!<Main>!$_"
+    case homeFax = "_$!<HomeFAX>!$_"
+    case workFax = "_$!<WorkFAX>!$_"
+    case pager = "_$!<Pager>!$_"
+    case other = "_$!<Other>!$_"
+    case empty = "_$!<Empty>!$_"
+}
+
+enum EmailLabelString: String {
+    case home = "_$!<Home>!$_"
+    case work = "_$!<Work>!$_"
+    case other = "_$!<Other>!$_"
+    case empty = "_$!<Empty>!$_"
+}
+
+enum AddressLabelString: String {
+    case home = "_$!<Home>!$_"
+    case work = "_$!<Work>!$_"
+    case other = "_$!<Other>!$_"
+    case empty = "_$!<Empty>!$_"
+}
+
 /// Type that represents key / value pair for phone number or email and its type
 struct LabelString: Codable {
     var label: String?
     var value: String?
+    
+    func phoneLbl() -> String {
+        guard let lbl = self.label else { return "" }
+        guard let _ = PhoneLabelString(rawValue: lbl) else { return lbl }
+        return NSLocalizedString(lbl, comment: "Name phone Label")
+    }
+
+    func emailLbl() -> String {
+        guard let lbl = self.label else { return "" }
+        guard let _ = EmailLabelString(rawValue: lbl) else { return lbl }
+        return NSLocalizedString(lbl, comment: "Name email Label")
+    }
 }
 
 struct LabelAddress: Codable {
@@ -21,6 +60,23 @@ struct LabelAddress: Codable {
     var street: String?
     var state: String?
     var postalCode: String?
+    
+    func addressLbl() -> String {
+        guard let lbl = self.label else { return "" }
+        guard let _ = AddressLabelString(rawValue: lbl) else { return lbl }
+        return NSLocalizedString(lbl, comment: "Name address Label")
+    }
+    
+    func address() -> String {
+        var country = isoCountryCode
+        if let isoCode = country {
+            let locale = Locale.current
+            country = locale.localizedString(forRegionCode: isoCode)
+        }
+        let address = [street, city, country].compactMap({$0})
+        let lbl = address.joined(separator: ", ")
+        return lbl 
+    }
 }
 
 struct Contact: Codable {
@@ -90,4 +146,9 @@ extension Contact {
     var firstNamePrefix: String {
         return String((givenName ?? "🕶").prefix(1))
     }
+    
+    var fullNameStringForSort: String {
+        let fName = [familyName, givenName, middleName].compactMap({$0})
+        return fName.joined(separator: " ")
+    }    
 }

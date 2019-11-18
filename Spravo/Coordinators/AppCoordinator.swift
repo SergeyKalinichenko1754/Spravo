@@ -42,9 +42,11 @@ extension AppCoordinator {
         let fbAuthorization = FBAuthorization()
         let firebaseAgent = FirebaseAgent()
         let contactsProvider = ContactsProvider(user: User())
+        let imageLoader = ImageLoader()
         serviceHolder.add(FBAuthorization.self, for: fbAuthorization)
         serviceHolder.add(FirebaseAgent.self, for: firebaseAgent)
         serviceHolder.add(ContactsProvider.self, for: contactsProvider)
+        serviceHolder.add(ImageLoader.self, for: imageLoader)
     }
 }
 

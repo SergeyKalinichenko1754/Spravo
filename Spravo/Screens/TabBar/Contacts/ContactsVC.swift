@@ -19,7 +19,7 @@ class ContactsVC: UIViewController {
     @IBOutlet weak var topViewLabelDistanceToTop: NSLayoutConstraint!
     
     var viewModel: ContactsViewModel!
-    private let extraHeight: CGFloat = UIScreen.main.bounds.size.height > 750 ? 30 : 0
+    private let extraHeight: CGFloat = max(UIScreen.main.bounds.size.height, UIScreen.main.bounds.size.width) > 750 ? 30 : 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,14 +87,13 @@ class ContactsVC: UIViewController {
         self.present(sortVC, animated: true, completion: nil)
     }
     
-    func sortContacts(_ by: SortContactsBy) {
+    private func sortContacts(_ by: SortContactsBy) {
         viewModel.sortContactsBy(by: by, searchText: searchBar.text)
         tableView.reloadData()
     }
     
     @IBAction func addButtonTaped(_ sender: UIBarButtonItem) {
-        //TODO(Serhii K) fix in next iterrations
-        debugPrint("Add Contacts")
+        viewModel.addContact()
     }
     
     @IBAction func fetchContactsButtonInTableViewTaped(_ sender: UIButton) {
@@ -126,7 +125,7 @@ extension ContactsVC: UITableViewDataSource {
     
     private func setupTableView() {
         viewModel.registerCells(for: tableView)
-        tableViewTop.constant = CGFloat(70 + extraHeight)
+        tableViewTop.constant = 70 + extraHeight
         tableView.tableFooterView = UIView()
         tableView.separatorInset.left = 10
         tableView.separatorInset.right = 10
@@ -167,18 +166,11 @@ extension ContactsVC: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
         let topViewDefaultHeight: CGFloat = 150
-        let pointMinObserveOffset: CGFloat = -35
+        let topViewMinHeight: CGFloat = 115
         let offsetY = -scrollView.contentOffset.y
-        if offsetY > pointMinObserveOffset {
-            topViewHeight.constant = topViewDefaultHeight + extraHeight + offsetY
-        } else if topViewHeight.constant > topViewDefaultHeight + pointMinObserveOffset + extraHeight {
-            topViewHeight.constant = topViewDefaultHeight + pointMinObserveOffset + extraHeight
-        }
-        if offsetY < pointMinObserveOffset + 13 && navigationItem.title?.count == 0 {
-            navigationItem.title = NSLocalizedString("Contacts.Title", comment: "Title of contacts screen")
-        } else if offsetY > pointMinObserveOffset + 13 && navigationItem.title?.count != 0 {
-            navigationItem.title = ""
-        }
+        topViewHeight.constant = max(topViewMinHeight + extraHeight, topViewDefaultHeight + extraHeight + offsetY)
+        navigationItem.title = offsetY < topViewMinHeight - topViewDefaultHeight + 13 ?
+            NSLocalizedString("Contacts.Title", comment: "Title of contacts screen") : ""
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

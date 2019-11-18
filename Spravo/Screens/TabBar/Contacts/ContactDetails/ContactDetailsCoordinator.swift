@@ -12,6 +12,9 @@ protocol ContactDetailsCoordinatorTransitions: class {
 }
 
 protocol ContactDetailsCoordinatorType {
+    func backTaped()
+    func editContact(_ contact: Contact)
+    func showContactOnMap(contact: Contact, addressNumber: Int)
 }
 
 class ContactDetailsCoordinator: ContactDetailsCoordinatorType {
@@ -30,5 +33,25 @@ class ContactDetailsCoordinator: ContactDetailsCoordinatorType {
     func start() {
         guard let controller = controller else { return }
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func backTaped() {
+        controller?.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension ContactDetailsCoordinator: EditContactCoordinatorTransitions {
+    func editContact(_ contact: Contact) {
+        guard let navigation = navigationController else { return }
+        let coordinator = EditContactCoordinator(navigationController: navigation, transitions: self, serviceHolder: serviceHolder, contact: contact)
+        coordinator.start()
+    }
+}
+
+extension ContactDetailsCoordinator: ContactOnMapCoordinatorTransitions {
+    func showContactOnMap(contact: Contact, addressNumber: Int) {
+        guard let navigation = navigationController else { return }
+        let coordinator = ContactOnMapCoordinator(navigationController: navigation, transitions: self, serviceHolder: serviceHolder, contact: contact, addressNumber: addressNumber)
+        coordinator.start()
     }
 }

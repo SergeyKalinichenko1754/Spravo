@@ -45,6 +45,20 @@
 "Contacts.SortBy.familyName" = "Прізвищу";
 "Contacts.SortBy.fullName" = "Повному імені";
 "Contacts.SortBy.Cancel" = "Скасувати";
+"Contacts.Edit" = "Редагувати";
+"Contacts.Birthday" = "день народження";
+"Contacts.Notes" = "примітки:";
+"Contacts.AddressNotFoundError" = "Вказану адресу не знайдено. Внесіть необхідні зміни, якщо необхідно.";
+"_$!<Home>!$_" = "домашній";
+"_$!<Work>!$_" = "робочий";
+"_$!<iPhone>!$_" = "iPhone";
+"_$!<Mobile>!$_" = "сотовий";
+"_$!<Main>!$_" = "основний";
+"_$!<HomeFAX>!$_" = "домашній факс";
+"_$!<WorkFAX>!$_" = "робочий факс";
+"_$!<Pager>!$_" = "пейджер";
+"_$!<Other>!$_" = "iнший";
+"_$!<Empty>!$_" = "";
 
 //Profile
 "Profile.Title" = "Профіль";

@@ -47,7 +47,6 @@ class AuthorizationViewModel: AuthorizationViewModelType {
             guard let self = self else { return }
             switch result {
             case .success(let userFbName):
-                debugPrint("User name in FB : \(userFbName)")
                 self.contactsProvider.user.name = userFbName
             case .failure(let error):
                 if let error = error {
@@ -73,8 +72,7 @@ class AuthorizationViewModel: AuthorizationViewModelType {
         authWithFB(completion: { [weak self] (result) in
             guard let self = self else { return }
             switch result {
-            case .success(let userFbId):
-                debugPrint("Facebook user ID: \(userFbId)")
+            case .success:
                 self.getFbUserName()
                 self.signIntoFirebase(completion: { [weak self] (result) in
                     guard let self = self else { return }

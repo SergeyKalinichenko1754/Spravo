@@ -18,7 +18,6 @@ public func RGBColor(_ red: Float, _ green: Float, _ blue: Float) -> UIColor {
 }
 
 extension UIColor {
-    
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
@@ -34,4 +33,9 @@ extension UIColor {
             blue: hex & 0xFF
         )
     }
+}
+
+struct DefaultColors {
+    static let navigationBarBackgroundColor = RGBColor(247, 247, 247)
+    static let navigationTintColor = RGBColor(33, 49, 205)
 }

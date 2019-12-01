@@ -12,6 +12,8 @@ protocol EditContactCoordinatorTransitions: class {
 }
 
 protocol EditContactCoordinatorType {
+    func backTaped()
+    func dissmisController()
 }
 
 class EditContactCoordinator: EditContactCoordinatorType {
@@ -31,5 +33,12 @@ class EditContactCoordinator: EditContactCoordinatorType {
         guard let controller = controller else { return }
         navigationController?.pushViewController(controller, animated: true)
     }
-
+    
+    func backTaped() {
+        controller?.navigationController?.popViewController(animated: true)
+    }
+    
+    func dissmisController() {
+        controller?.navigationController?.popViewController(animated: false)
+    }
 }

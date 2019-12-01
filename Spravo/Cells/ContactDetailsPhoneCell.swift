@@ -14,6 +14,7 @@ protocol SendSMSButtonDelegate: class {
 
 class ContactDetailsPhoneCell: UITableViewCell {
     @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var favouriteImage: UIImageView!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var smsButton: UIButton!
     

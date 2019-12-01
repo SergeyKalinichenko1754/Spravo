@@ -29,8 +29,8 @@ class TabBarCoordinator {
         self.window = window
         self.serviceHolder = serviceHolder
         self.transitions = transitions
-        tabBarController.tabBar.barTintColor = RGBColor(247, 247, 247)
-        tabBarController.tabBar.tintColor = RGBColor(33, 49, 205)
+        tabBarController.tabBar.barTintColor = DefaultColors.navigationBarBackgroundColor
+        tabBarController.tabBar.tintColor = DefaultColors.navigationTintColor
         let firstTabCoord = FavouritesTabCoordinator(serviceHolder: serviceHolder, transitions: self)
         firstTabCoord.start()
         let secondTabCoord = RecentsTabCoordinator(serviceHolder: serviceHolder, transitions: self)

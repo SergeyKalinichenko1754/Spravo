@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,33 +15,33 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="ContactDetailsPhoneCell" customModule="Spravo" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Label}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRO-wb-Obq">
-                        <rect key="frame" x="10" y="2" width="265" height="19"/>
+                        <rect key="frame" x="10" y="2" width="45.5" height="19"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="19" id="AnR-En-Me3"/>
+                            <constraint firstAttribute="height" priority="995" constant="19" id="AnR-En-Me3"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pge-mv-rX8">
-                        <rect key="frame" x="10" y="28" width="300" height="25"/>
+                        <rect key="frame" x="10" y="28" width="300" height="28.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="elR-a2-Y6Y"/>
+                            <constraint firstAttribute="height" priority="900" constant="25" id="elR-a2-Y6Y"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                         <color key="textColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJd-35-L8K">
-                        <rect key="frame" x="280" y="10" width="30" height="30"/>
+                        <rect key="frame" x="265" y="7" width="45" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="RW5-eD-Eht"/>
-                            <constraint firstAttribute="width" constant="30" id="cyW-IR-MzJ"/>
+                            <constraint firstAttribute="height" constant="45" id="RW5-eD-Eht"/>
+                            <constraint firstAttribute="width" constant="45" id="cyW-IR-MzJ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                         <state key="normal" title="💬"/>
@@ -49,21 +49,31 @@
                             <action selector="smsButtonTaped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cWQ-zi-nw2"/>
                         </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favourites" translatesAutoresizingMaskIntoConstraints="NO" id="H1Q-9j-67T">
+                        <rect key="frame" x="57.5" y="3" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="C9m-YA-unK"/>
+                            <constraint firstAttribute="height" constant="15" id="Xxi-iU-6la"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="JJd-35-L8K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H1Q-9j-67T" secondAttribute="trailing" constant="5" id="6Q9-tV-Lay"/>
+                    <constraint firstItem="H1Q-9j-67T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="8Xi-L3-ee6"/>
                     <constraint firstItem="Pge-mv-rX8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="CfZ-e7-IsW"/>
                     <constraint firstItem="mRO-wb-Obq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="OO6-Qi-TPB"/>
                     <constraint firstItem="Pge-mv-rX8" firstAttribute="top" secondItem="mRO-wb-Obq" secondAttribute="bottom" constant="7" id="RXI-z5-uEr"/>
                     <constraint firstAttribute="trailing" secondItem="JJd-35-L8K" secondAttribute="trailing" constant="10" id="TcU-27-It8"/>
                     <constraint firstItem="mRO-wb-Obq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="Xx9-jq-a7E"/>
-                    <constraint firstItem="JJd-35-L8K" firstAttribute="leading" secondItem="mRO-wb-Obq" secondAttribute="trailing" constant="5" id="b7B-re-80T"/>
                     <constraint firstAttribute="trailing" secondItem="Pge-mv-rX8" secondAttribute="trailing" constant="10" id="fo7-rx-Lma"/>
                     <constraint firstAttribute="bottom" secondItem="Pge-mv-rX8" secondAttribute="bottom" constant="3" id="mOL-y1-DCh"/>
-                    <constraint firstItem="JJd-35-L8K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="rFL-qG-V9x"/>
+                    <constraint firstItem="H1Q-9j-67T" firstAttribute="leading" secondItem="mRO-wb-Obq" secondAttribute="trailing" constant="2" id="o7F-mE-s4p"/>
+                    <constraint firstItem="JJd-35-L8K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="rFL-qG-V9x"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="favouriteImage" destination="H1Q-9j-67T" id="dMy-NG-TTp"/>
                 <outlet property="headerLabel" destination="mRO-wb-Obq" id="xa5-ck-jk4"/>
                 <outlet property="smsButton" destination="JJd-35-L8K" id="tCT-Cu-JC3"/>
                 <outlet property="valueLabel" destination="Pge-mv-rX8" id="AxW-Wo-moV"/>
@@ -71,4 +81,7 @@
             <point key="canvasLocation" x="52.799999999999997" y="109.74512743628186"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="favourites" width="25" height="25"/>
+    </resources>
 </document>

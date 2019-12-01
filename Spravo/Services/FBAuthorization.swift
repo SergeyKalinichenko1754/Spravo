@@ -33,7 +33,6 @@ class FBAuthorization: FBAuthorizationType {
     
     func getFBTokenExpDate() -> Date? {
         guard let accessToken = AccessToken.current else { return nil }
-        debugPrint("token updated: \(accessToken.refreshDate)")
         return accessToken.expirationDate
     }
     
@@ -51,7 +50,6 @@ class FBAuthorization: FBAuthorizationType {
                 self.logOutFromFB()
                 return
             }
-            debugPrint("Token updated")
         }
     }
     
@@ -92,27 +90,25 @@ class FBAuthorization: FBAuthorizationType {
     }
     
     func fetchFacebookProfileName(completion: @escaping (Result<String, String?>) -> ()) {
-        let parameters = ["fields": "first_name, last_name"]
-        var name = ""
-        GraphRequest(graphPath: "me", parameters: parameters).start { (connection, result, error) -> Void in
-            if let error = error {
-                completion(.failure(error.localizedDescription))
-                return
+        DispatchQueue.global().async {
+            let parameters = ["fields": "first_name, last_name"]
+            var name = ""
+            GraphRequest(graphPath: "me", parameters: parameters).start { (connection, result, error) -> Void in
+                if let error = error {
+                    completion(.failure(error.localizedDescription))
+                    return
+                }
+                if let responseDictionary = result as? NSDictionary {
+                    let firstNameFB = responseDictionary["first_name"] as? String
+                    let lastNameFB = responseDictionary["last_name"] as? String
+                    name = "\(firstNameFB ?? "") \(lastNameFB ?? "")".trimmingCharacters(in: .whitespaces)
+                }
+                completion(.success(name))
             }
-            if let responseDictionary = result as? NSDictionary {
-                let firstNameFB = responseDictionary["first_name"] as? String
-                let lastNameFB = responseDictionary["last_name"] as? String
-                name = "\(firstNameFB ?? "") \(lastNameFB ?? "")"
-            }
-            completion(.success(name))
         }
     }
     
     func logOutFromFB() {
         LoginManager().logOut()
-    }
-    
-    deinit {
-        debugPrint("FBAuthorization deinit !!!")
     }
 }

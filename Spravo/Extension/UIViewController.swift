@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIViewController {
-    
     class var identifier: String {
         let separator = "."
         let fullName = String(describing: self)

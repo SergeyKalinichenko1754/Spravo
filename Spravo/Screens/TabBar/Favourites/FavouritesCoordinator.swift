@@ -12,6 +12,7 @@ protocol FavouritesCoordinatorTransitions: class {
 }
 
 protocol FavouritesCoordinatorType {
+    func showContactDetails(_ contact: Contact)
 }
 
 class FavouritesCoordinator: FavouritesCoordinatorType {
@@ -31,5 +32,13 @@ class FavouritesCoordinator: FavouritesCoordinatorType {
         if let controller = controller {
             navigationController?.setViewControllers([controller], animated: true)
         }
+    }
+}
+
+extension FavouritesCoordinator: ContactDetailsCoordinatorTransitions {
+    func showContactDetails(_ contact: Contact) {
+        guard let navigation = navigationController else { return }
+        let coordinator = ContactDetailsCoordinator(navigationController: navigation, transitions: self, serviceHolder: serviceHolder, contact: contact)
+        coordinator.start()
     }
 }

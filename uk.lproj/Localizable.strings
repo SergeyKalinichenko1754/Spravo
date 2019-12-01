@@ -30,7 +30,9 @@
 "ImportPhoneContacts.ErrorSyncingContactsFailed" = "Помилка синхронізації контактів. Повторіть спробу, або зв’яжіться зі службою підтримки";
 
 //Favourites
-"Favourites.Title" = "Вибране";
+"Favourites.Title" = "Обранi";
+"Favourites.EditButtonCaption" = "Редагувати";
+"Favourites.DoneButtonCaption" = "Готово";
 
 //Recents
 "Recents.Title" = "Недавні";
@@ -48,6 +50,7 @@
 "Contacts.Edit" = "Редагувати";
 "Contacts.Birthday" = "день народження";
 "Contacts.Notes" = "примітки:";
+"Contacts.AddToFavoritesBtnCaption" = "Додати до Обраних";
 "Contacts.AddressNotFoundError" = "Вказану адресу не знайдено. Внесіть необхідні зміни, якщо необхідно.";
 "_$!<Home>!$_" = "домашній";
 "_$!<Work>!$_" = "робочий";
@@ -59,6 +62,34 @@
 "_$!<Pager>!$_" = "пейджер";
 "_$!<Other>!$_" = "iнший";
 "_$!<Empty>!$_" = "";
+
+//EditContacts
+"EditContacts.SaveButtonCaption" = "Зберегти";
+"EditContacts.GivenNameTextFieldPlaceholder" = "Iм'я:";
+"EditContacts.MiddleNameTextFieldPlaceholder" = "по батькові:";
+"EditContacts.LastNameTextFieldPlaceholder" = "Прізвище:";
+"EditContacts.RemoveContactButtonCaption" = "Видалити контакт";
+"EditContacts.DeleteContactQestion" = "Видалити контакт?";
+"EditContacts.SaveDate" = "Зберегти дату";
+"EditContacts.RemoveDate" = "Видалити дату";
+"EditContacts.DeleteCell" = "Видалити";
+"EditContacts.AddPhone" = "Додати телефон";
+"EditContacts.AddEmail" = "Додати електронну пошту";
+"EditContacts.AddAddress" = "Додати адресу";
+"EditContacts.AddOwnLabel" = "Додати власну мітку";
+"EditContacts.Error.RemoveContactFromFirebase" = "Неможливо видалити контакт з Firebase";
+
+//CustomImagePicker
+"CustomImagePicker.TakePhoto" = "Зробити фото";
+"CustomImagePicker.CameraRoll" = "Знятi знимки";
+"CustomImagePicker.PhotoLibrary" = "Фотобібліотека";
+"CustomImagePicker.RemovePhoto" = "Видалити фото";
+
+// MapPopUp
+"MapPopUp.MapTypeLabelText" = "Тип карти";
+"MapPopUp.MapTypeStandard" = "Стандарт";
+"MapPopUp.MapTypeSatellite" = "Супутник";
+"MapPopUp.MapRouteLabel" = "Маршрут";
 
 //Profile
 "Profile.Title" = "Профіль";

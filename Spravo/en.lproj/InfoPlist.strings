@@ -6,3 +6,6 @@
   Copyright © 2019 Home. All rights reserved.
 */
 NSContactsUsageDescription = "Provide access if you want to add existing phone contacts to your application";
+NSCameraUsageDescription = "Application need your allowing to use camera";
+NSPhotoLibraryUsageDescription = "Application need your allowing to use your photo";
+NSLocationWhenInUseUsageDescription = "Application need your allowing to use your location";

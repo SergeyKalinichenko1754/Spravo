@@ -130,9 +130,6 @@ class FetchPhoneContactsVC: UITableViewController {
         guard let errorController = Storyboard.service.controller(withClass: ErrorScreenVC.self) else { return }
         updateUIonMainThread { [weak self] in
             guard let self = self else { return }
-            if let error = error {
-                debugPrint(error)
-            }
             errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
             self.navigationController?.modalPresentationStyle = .overCurrentContext
             self.navigationController?.present(errorController, animated: true, completion: nil)

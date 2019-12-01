@@ -52,6 +52,7 @@ extension AppCoordinator {
 
 extension AppCoordinator: AuthFlowCoordinatorTransitions {
     func userDidLogin() {
+        startTabBarServices()
         enterApp()
     }
     
@@ -69,6 +70,7 @@ extension AppCoordinator: TabBarCoordinatorTransitions {
         _ = firebaseAgent.signOut()
         fbAuthorization.logOutFromFB()
         contactsProvider.logOut()
+        cleanServices()
         authorizationStart()
     }
     
@@ -76,5 +78,15 @@ extension AppCoordinator: TabBarCoordinatorTransitions {
         tabBarCoordinator = nil
         authFlowCoordinator = AuthFlowCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
         authFlowCoordinator?.startFromFetch()
+    }
+    
+    func startTabBarServices() {
+        let communicationProvider = CommunicationProvider()
+        serviceHolder.add(CommunicationProvider.self, for: communicationProvider)
+    }
+    
+    private func cleanServices() {
+        serviceHolder.remove(by: UserLocationService.self)
+        serviceHolder.remove(by: CommunicationProvider.self)
     }
 }

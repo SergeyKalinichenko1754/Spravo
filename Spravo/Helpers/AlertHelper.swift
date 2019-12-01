@@ -51,7 +51,7 @@ class AlertHelper {
         }
     }
     
-    class func showAlert(msg: String?, from: UIViewController? = nil, leftBtnTitle: String? = nil, rightBtnTitle: String? = nil, completion: SimpleClosure<Bool>? = nil) {
+    class func showAlert(msg: String?, from: UIViewController? = nil, leftBtnTitle: String? = nil,rightBtnTitle: String? = nil, completion: SimpleClosure<Bool>? = nil) {
         let alertMsg = msg ?? ""
         let alertLeftBtnTitle = leftBtnTitle ?? "Common.OK".localized
         updateUIonMainThread {

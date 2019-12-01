@@ -16,20 +16,37 @@ protocol ContactDetailsViewModelType {
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, smsButtonDelegate: SendSMSButtonDelegate) -> UITableViewCell
     func getFullName() -> String
     func getProfileImage(completion: @escaping (UIImage?) ->())
-    func didSelectRowAt(_ tableView: UITableView, indexPath: IndexPath, completion: @escaping (String?) ->())
+    func didSelectRowAt(_ tableView: UITableView, indexPath: IndexPath, rootVC: UIViewController, completion: @escaping (String?) ->())
     func backTaped()
     func editContact()
+    func sendSMS(_ to: String, inVC: UIViewController)
+    func contactExist() -> Bool
+    func dismissVC()
 }
 
 class ContactDetailsViewModel: ContactDetailsViewModelType {
     private let coordinator : ContactDetailsCoordinatorType
     private var contact: Contact
+    private var contactsProvider: ContactsProvider
+    private var communicationProvider: CommunicationProvider
     private var imageLoader: ImageLoader
     
     init(coordinator: ContactDetailsCoordinatorType, serviceHolder: ServiceHolder, contact: Contact) {
         self.coordinator = coordinator
         self.contact = contact
+        self.contactsProvider = serviceHolder.get(by: ContactsProvider.self)
         self.imageLoader = serviceHolder.get(by: ImageLoader.self)
+        self.communicationProvider = serviceHolder.get(by: CommunicationProvider.self)
+    }
+    
+    func contactExist() -> Bool {
+        guard let contactInStore = contactsProvider.getContact(contact.id) else { return false }
+        contact = contactInStore
+        return true
+    }
+    
+    func dismissVC() {
+        coordinator.backTaped()
     }
     
     func registerCells(for tableView: UITableView) {
@@ -55,7 +72,7 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
         case 4:
             return contact.notes != nil ? 1: 0
         case 5:
-            return 0
+            return contact.phones != nil || contact.emails != nil ? 1 : 0
         default:
             return 0
         }
@@ -64,58 +81,66 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, smsButtonDelegate: SendSMSButtonDelegate) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsPhoneCell.identifier, for: indexPath) as? ContactDetailsPhoneCell
-            cell?.headerLabel.text = "📞 " + (contact.phones?[indexPath.row].phoneLbl() ?? "")
-            cell?.valueLabel.text = contact.phones?[indexPath.row].value
-            cell?.smsButton.isHidden = false
-            cell?.delegate = smsButtonDelegate
-            return cell ?? UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsPhoneCell.identifier, for: indexPath) as? ContactDetailsPhoneCell else { return UITableViewCell() }
+            cell.headerLabel.text = "📞 " + (contact.phones?[indexPath.row].phoneLbl() ?? "")
+            cell.valueLabel.text = contact.phones?[indexPath.row].value
+            cell.smsButton.isHidden = false
+            cell.delegate = smsButtonDelegate
+            cell.favouriteImage.isHidden = !contactsProvider.isContactFavourite(id: contact.id, item: contact.phones?[indexPath.row].value ?? "")
+            return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsPhoneCell.identifier, for: indexPath) as? ContactDetailsPhoneCell
-            cell?.headerLabel.text = "📧 " + (contact.emails?[indexPath.row].emailLbl() ?? "")
-            cell?.valueLabel.text = contact.emails?[indexPath.row].value
-            cell?.smsButton.isHidden = true
-            return cell ?? UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsPhoneCell.identifier, for: indexPath) as? ContactDetailsPhoneCell else { return UITableViewCell() }
+            cell.headerLabel.text = "📧 " + (contact.emails?[indexPath.row].emailLbl() ?? "")
+            cell.valueLabel.text = contact.emails?[indexPath.row].value
+            cell.smsButton.isHidden = true
+            cell.favouriteImage.isHidden = !contactsProvider.isContactFavourite(id: contact.id, item: contact.emails?[indexPath.row].value ?? "")
+            return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsAddressCell.identifier, for: indexPath) as? ContactDetailsAddressCell
-            cell?.headerLabel.text = contact.addresses?[indexPath.row].addressLbl()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsAddressCell.identifier, for: indexPath) as? ContactDetailsAddressCell else { return UITableViewCell() }
+            cell.headerLabel.text = contact.addresses?[indexPath.row].addressLbl()
             if let address = contact.addresses?[indexPath.row].address() {
-                cell?.valueLabel.text = address
+                cell.valueLabel.text = address
                 let geocoder = CLGeocoder()
                 let cleanedAddress = address.filter { !"\n\t\r".contains($0) }
                 geocoder.geocodeAddressString(cleanedAddress) { (placemarks, error) in
                     guard let location = placemarks?.first?.location?.coordinate , error == nil else {
                         let emptyMap = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
                         emptyMap.image = UIImage(named: "unknownLocation")
-                        cell?.mapView.tag = -1
-                        cell?.mapView.subviews[0].isHidden = true
-                        cell?.mapView.addSubview(emptyMap)
+                        cell.mapView.tag = -1
+                        cell.mapView.subviews[0].isHidden = true
+                        cell.mapView.addSubview(emptyMap)
                         return }
                     let anno = MKPointAnnotation()
                     anno.coordinate = location
-                    cell?.mapView.addAnnotation(anno)
-                    cell?.mapView.selectAnnotation(anno, animated: false)
+                    cell.mapView.addAnnotation(anno)
+                    cell.mapView.selectAnnotation(anno, animated: false)
                     let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
                     let region = MKCoordinateRegion(center: location, span: span)
-                    cell?.mapView.setRegion(region, animated: false)
+                    cell.mapView.setRegion(region, animated: false)
                 }
             }
-            return cell ?? UITableViewCell()
+            return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsPhoneCell.identifier, for: indexPath) as? ContactDetailsPhoneCell
-            cell?.headerLabel.text = NSLocalizedString("Contacts.Birthday", comment: "Label 'birthday'")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsPhoneCell.identifier, for: indexPath) as? ContactDetailsPhoneCell else { return UITableViewCell() }
+            cell.favouriteImage.isHidden = true
+            cell.headerLabel.text = NSLocalizedString("Contacts.Birthday", comment: "Label 'birthday'")
             var dateString = ""
             if let date = contact.birthday {
                 dateString = DateFormatter.localizedString(from: date, dateStyle: .long, timeStyle: .none)
             }
-            cell?.valueLabel.text = dateString
-            cell?.smsButton.isHidden = true
-            return cell ?? UITableViewCell()
+            cell.valueLabel.text = dateString
+            cell.smsButton.isHidden = true
+            return cell
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsNotesCell.identifier, for: indexPath) as? ContactDetailsNotesCell
-            cell?.headerLabel.text = NSLocalizedString("Contacts.Notes", comment: "Label 'notes:'")
-            cell?.textView.text = contact.notes
-            return cell ?? UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsNotesCell.identifier, for: indexPath) as? ContactDetailsNotesCell else { return UITableViewCell() }
+            cell.headerLabel.text = NSLocalizedString("Contacts.Notes", comment: "Label 'notes:'")
+            cell.textView.text = contact.notes
+            return cell
+        case 5:
+            let cell = UITableViewCell()
+            cell.textLabel?.text = NSLocalizedString("Contacts.AddToFavoritesBtnCaption", comment: "Caption for Add to Favorites Button")
+            cell.textLabel?.textColor = RGBColor(1, 25, 147)
+            return cell
         default:
             let cell = UITableViewCell()
             cell.textLabel?.text = "Cell # \(indexPath.row)"
@@ -129,7 +154,7 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
     
     func getProfileImage(completion: @escaping (UIImage?) ->()) {
         guard let urlStr = contact.profileImage else {
-            completion(nil)
+            completion(UIImage(named: "ContactWithoutPhoto"))
             return
         }
         imageLoader.loadImage(urlString: urlStr) { (index, image) in
@@ -137,7 +162,7 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
         }
     }
     
-    func didSelectRowAt(_ tableView: UITableView, indexPath: IndexPath, completion: @escaping (String?) ->()) {
+    func didSelectRowAt(_ tableView: UITableView, indexPath: IndexPath, rootVC: UIViewController, completion: @escaping (String?) ->()) {
         switch indexPath.section {
         case 0:
             guard let number = contact.phones?[indexPath.row].value else { return }
@@ -151,37 +176,22 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
                 completion(error)
                 return }
             coordinator.showContactOnMap(contact: contact, addressNumber: indexPath.row)
+        case 5:
+            whatAddToFavourite(rootVC)
         default: break
         }
     }
     
     private func callToNumber(_ number: String) {
-        let shared = UIApplication.shared
-        let phone = "tel://\(number)"
-        let phoneFallback = "telprompt://\(number)"
-        if let url = URL(string: phone), shared.canOpenURL(url) {
-            shared.open(url, options: [:]) { success in
-                debugPrint("Call to \(phone)")
-            }
-        } else if let fallbackURl = URL(string: phoneFallback), shared.canOpenURL(fallbackURl) {
-            shared.open(fallbackURl, options: [:]) { success in
-                debugPrint("Call to \(phoneFallback)")
-            }
-        } else {
-            debugPrint("Unable to open url for call")
-        }
+        communicationProvider.callToNumber(number)
     }
     
     private func sendEmail(_ email: String) {
-        let shared = UIApplication.shared
-        let mail = "mailto:\(email)"
-        if let emailURl = URL(string: mail), shared.canOpenURL(emailURl) {
-            shared.open(emailURl, options: [:]) { success in
-                debugPrint("Send mail to \(mail)")
-            }
-        } else {
-            debugPrint("Unable to open url for send mail")
-        }
+        communicationProvider.sendEmail(email)
+    }
+    
+    func sendSMS(_ to: String, inVC: UIViewController) {
+        communicationProvider.sendSMS(to, inVC: inVC)
     }
     
     func backTaped() {
@@ -190,5 +200,57 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
     
     func editContact() {
         coordinator.editContact(contact)
+    }
+    
+    private func whatAddToFavourite(_ rootVC: UIViewController) {
+        var title = NSLocalizedString("Contacts.AddToFavoritesBtnCaption", comment: "Caption for Add to Favorites Button")
+        let popupVC = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        if let _ = contact.phones {
+            popupVC.addAction(UIAlertAction(title: "📞 phone for call", style: .default, handler: { [weak self] (alert: UIAlertAction!) -> Void in
+                self?.addToFavourite(what: .phone, rootVC: rootVC)
+            }))
+            popupVC.addAction(UIAlertAction(title: "💬 phone for sms", style: .default, handler: { [weak self] (alert: UIAlertAction!) -> Void in
+                self?.addToFavourite(what: .sms, rootVC: rootVC)
+            }))
+        }
+        if let _ = contact.emails {
+            popupVC.addAction(UIAlertAction(title: "📧 email", style: .default, handler: { [weak self] (alert: UIAlertAction!) -> Void in
+                self?.addToFavourite(what: .email, rootVC: rootVC)
+            }))
+        }
+        title = NSLocalizedString("Contacts.SortBy.Cancel", comment: "Title for Cancel (Sort by)")
+        popupVC.addAction(UIAlertAction(title: title, style: .cancel, handler: nil))
+        rootVC.present(popupVC, animated: true, completion: nil)
+    }
+    
+    private func addToFavourite(what: FavouriteType,rootVC: UIViewController) {
+        guard let favouriteArray = what == .email ? contact.emails : contact.phones else { return }
+        guard favouriteArray.count > 1 else {
+            if let newFavourite = favouriteArray[0].value {
+                let favourite = Favourite(id: contact.id, type: what, favourite: newFavourite)
+                if !contactsProvider.isContactFavourite(favourite) {
+                    contactsProvider.addFavourite(favourite)
+                }
+            }
+            return
+        }
+        var title = NSLocalizedString("Contacts.AddToFavoritesBtnCaption", comment: "Caption for Add to Favorites Button")
+        let popupVC = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        for favourite in favouriteArray {
+            if let newFavourite = favourite.value {
+                let favourite = Favourite(id: contact.id, type: what, favourite: newFavourite)
+                if !contactsProvider.isContactFavourite(favourite) {
+                    popupVC.addAction(UIAlertAction(title: newFavourite, style: .default, handler: { [weak self, favourite]
+                        (alert: UIAlertAction!) -> Void in
+                        guard let self = self else { return }
+                        self.contactsProvider.addFavourite(favourite)
+                    }))
+                }
+            }
+        }
+        guard popupVC.actions.count > 0 else { return }
+        title = NSLocalizedString("Contacts.SortBy.Cancel", comment: "Title for Cancel (Sort by)")
+        popupVC.addAction(UIAlertAction(title: title, style: .cancel, handler: nil))
+        rootVC.present(popupVC, animated: true, completion: nil)
     }
 }

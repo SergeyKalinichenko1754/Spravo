@@ -31,6 +31,8 @@
 
 //Favourites
 "Favourites.Title" = "Favourites";
+"Favourites.EditButtonCaption" = "Edit";
+"Favourites.DoneButtonCaption" = "Done";
 
 //Recents
 "Recents.Title" = "Recents";
@@ -48,6 +50,7 @@
 "Contacts.Edit" = "Edit";
 "Contacts.Birthday" = "birthday";
 "Contacts.Notes" = "notes:";
+"Contacts.AddToFavoritesBtnCaption" = "Add to Favorites";
 "Contacts.AddressNotFoundError" = "The specified address was not found. Edit it if necessary.";
 "_$!<Home>!$_" = "home";
 "_$!<Work>!$_" = "work";
@@ -59,6 +62,34 @@
 "_$!<Pager>!$_" = "pager";
 "_$!<Other>!$_" = "other";
 "_$!<Empty>!$_" = "";
+
+//EditContacts
+"EditContacts.SaveButtonCaption" = "Save";
+"EditContacts.GivenNameTextFieldPlaceholder" = "Name:";
+"EditContacts.MiddleNameTextFieldPlaceholder" = "Middle name:";
+"EditContacts.LastNameTextFieldPlaceholder" = "Last name:";
+"EditContacts.RemoveContactButtonCaption" = "Remove contact";
+"EditContacts.DeleteContactQestion" = "Delete contact?";
+"EditContacts.SaveDate" = "Save date";
+"EditContacts.RemoveDate" = "Remove date";
+"EditContacts.DeleteCell" = "Delete";
+"EditContacts.AddPhone" = "Add phone";
+"EditContacts.AddEmail" = "Add email";
+"EditContacts.AddAddress" = "Add address";
+"EditContacts.AddOwnLabel" = "Add own label";
+"EditContacts.Error.RemoveContactFromFirebase" = "Unable to remove contact from Firebase";
+
+//CustomImagePicker
+"CustomImagePicker.TakePhoto" = "Take a photo";
+"CustomImagePicker.CameraRoll" = "Camera roll";
+"CustomImagePicker.PhotoLibrary" = "Photo library";
+"CustomImagePicker.RemovePhoto" = "Remove current photo";
+
+// MapPopUp
+"MapPopUp.MapTypeLabelText" = "Map type";
+"MapPopUp.MapTypeStandard" = "Standard";
+"MapPopUp.MapTypeSatellite" = "Satellite";
+"MapPopUp.MapRouteLabel" = "Route";
 
 //Profile
 "Profile.Title" = "Profile";

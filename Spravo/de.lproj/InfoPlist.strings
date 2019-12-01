@@ -6,3 +6,6 @@
   Copyright © 2019 Home. All rights reserved.
 */
 NSContactsUsageDescription = "Stellen Sie den Zugriff bereit, wenn Sie Ihrer Anwendung vorhandene Telefonkontakte hinzufügen möchten";
+NSCameraUsageDescription = "Die Anwendung benötigt Ihre Erlaubnis, die Kamera zu benutzen";
+NSPhotoLibraryUsageDescription = "Die Anwendung benötigt Ihre Erlaubnis, um Ihre Fotos zu verwenden";
+NSLocationWhenInUseUsageDescription = "Die Anwendung benötigt Ihre Erlaubnis, Ihren Standort zu nutzen";

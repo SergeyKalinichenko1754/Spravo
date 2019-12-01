@@ -33,12 +33,13 @@ class ContactsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.reloadModel(searchBar.text)
         self.tableView.reloadData()
     }
     
     private func setup() {
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = RGBColor(33, 49, 205)
+        navigationController?.navigationBar.tintColor = DefaultColors.navigationTintColor
     }
     
     private func localizeScreen() {
@@ -48,9 +49,7 @@ class ContactsVC: UIViewController {
     }
     
     private func getContacts() {
-        updateUIonMainThread {
-            HUDRenderer.showHUD()
-        }
+        HUDRenderer.showHUD()
         self.viewModel.getContacts { (result) in
             updateUIonMainThread { [weak self] in
                 guard let self = self else { return }
@@ -129,14 +128,14 @@ extension ContactsVC: UITableViewDataSource {
         tableView.tableFooterView = UIView()
         tableView.separatorInset.left = 10
         tableView.separatorInset.right = 10
-        fetchContactsButtonInTableView.setTitleColor(RGBColor(33, 49, 205), for: .normal)
+        fetchContactsButtonInTableView.setTitleColor(DefaultColors.navigationTintColor, for: .normal)
     }
     
     private func setupTopView() {
         topViewHeight.constant = 150 + extraHeight
         topViewLabelDistanceToTop.constant = 70 + extraHeight
         topView.alpha = 0.95
-        topView.backgroundColor = RGBColor(247, 247, 247)
+        topView.backgroundColor = DefaultColors.navigationBarBackgroundColor
         topView.addBorder(.bottom, color: RGBColor(210, 210, 210), thickness: 1)
     }
 }
@@ -146,8 +145,8 @@ extension ContactsVC: UISearchBarDelegate {
         searchBar.delegate = self
         searchBar.showsScopeBar = false
         searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = RGBColor(247, 247, 247).cgColor
-        searchBar.barTintColor = RGBAColor(247, 247, 247, 1)
+        searchBar.layer.borderColor = DefaultColors.navigationBarBackgroundColor.cgColor
+        searchBar.barTintColor = DefaultColors.navigationBarBackgroundColor
         if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
             textFieldInsideSearchBar.backgroundColor = RGBAColor(240, 240, 240, 1)
         }

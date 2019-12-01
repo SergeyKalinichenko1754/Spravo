@@ -30,7 +30,6 @@ extension StoryboardIdentifiable where Self: UIViewController {
 }
 
 extension UIStoryboard {
-    
     func controller<T: UIViewController>(withClass: T.Type) -> T? {
         let identifier = withClass.identifier
         return instantiateViewController(withIdentifier: identifier) as? T
@@ -40,4 +39,3 @@ extension UIStoryboard {
         return instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T
     }
 }
-

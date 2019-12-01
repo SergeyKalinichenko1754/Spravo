@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum PhoneLabelString: String {
+enum PhoneLabelString: String, CaseIterable {
     case home = "_$!<Home>!$_"
     case work = "_$!<Work>!$_"
     case iPhone = "_$!<iPhone>!$_"
@@ -19,24 +19,69 @@ enum PhoneLabelString: String {
     case pager = "_$!<Pager>!$_"
     case other = "_$!<Other>!$_"
     case empty = "_$!<Empty>!$_"
+    
+    static func index(byRawValue: String?) -> Int? {
+        guard let byRawValue = byRawValue, let element = self.init(rawValue: byRawValue) else { return nil }
+        guard let index = self.allCases.firstIndex(of: element) else { return nil }
+        return index
+    }
+    
+    static func next(byRawValue: String?) -> String {
+        guard let index = self.index(byRawValue: byRawValue) else { return self.allCases[0].rawValue }
+        return index == (self.allCases.count - 1) ? self.allCases[0].rawValue : self.allCases[index + 1].rawValue
+    }
+    
+    static var keyForUserDefaultStore: String? {
+        return "PhoneLabelStringStore"
+    }
 }
 
-enum EmailLabelString: String {
+enum EmailLabelString: String, CaseIterable {
     case home = "_$!<Home>!$_"
     case work = "_$!<Work>!$_"
     case other = "_$!<Other>!$_"
     case empty = "_$!<Empty>!$_"
+    
+    static func index(byRawValue: String?) -> Int? {
+        guard let byRawValue = byRawValue, let element = self.init(rawValue: byRawValue) else { return nil }
+        guard let index = self.allCases.firstIndex(of: element) else { return nil }
+        return index
+    }
+    
+    static func next(byRawValue: String?) -> String {
+        guard let index = self.index(byRawValue: byRawValue) else { return self.allCases[0].rawValue }
+        return index == (self.allCases.count - 1) ? self.allCases[0].rawValue : self.allCases[index + 1].rawValue
+    }
+    
+    static var keyForUserDefaultStore: String? {
+        return "EmailLabelStringStore"
+    }
 }
 
-enum AddressLabelString: String {
+enum AddressLabelString: String, CaseIterable {
     case home = "_$!<Home>!$_"
     case work = "_$!<Work>!$_"
     case other = "_$!<Other>!$_"
     case empty = "_$!<Empty>!$_"
+    
+    static func index(byRawValue: String?) -> Int? {
+        guard let byRawValue = byRawValue, let element = self.init(rawValue: byRawValue) else { return nil }
+        guard let index = self.allCases.firstIndex(of: element) else { return nil }
+        return index
+    }
+    
+    static func next(byRawValue: String?) -> String {
+        guard let index = self.index(byRawValue: byRawValue) else { return self.allCases[0].rawValue }
+        return index == (self.allCases.count - 1) ? self.allCases[0].rawValue : self.allCases[index + 1].rawValue
+    }
+    
+    static var keyForUserDefaultStore: String? {
+        return "AddressLabelStringStore"
+    }
 }
 
 /// Type that represents key / value pair for phone number or email and its type
-struct LabelString: Codable {
+struct LabelString: Codable, Equatable {
     var label: String?
     var value: String?
     
@@ -53,7 +98,7 @@ struct LabelString: Codable {
     }
 }
 
-struct LabelAddress: Codable {
+struct LabelAddress: Codable, Equatable {
     var label: String?
     var isoCountryCode: String?
     var city: String?
@@ -68,14 +113,19 @@ struct LabelAddress: Codable {
     }
     
     func address() -> String {
+        let country = self.country()
+        let address = [street, city, country].compactMap({$0})
+        let lbl = address.joined(separator: ", ")
+        return lbl 
+    }
+    
+    func country() -> String? {
         var country = isoCountryCode
         if let isoCode = country {
             let locale = Locale.current
             country = locale.localizedString(forRegionCode: isoCode)
         }
-        let address = [street, city, country].compactMap({$0})
-        let lbl = address.joined(separator: ", ")
-        return lbl 
+        return country
     }
 }
 
@@ -152,3 +202,27 @@ extension Contact {
         return fName.joined(separator: " ")
     }    
 }
+
+extension Contact: Equatable {
+    static func == (lhs: Contact, rhs: Contact) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.givenName == rhs.givenName &&
+        lhs.middleName == rhs.middleName &&
+        lhs.familyName == rhs.familyName &&
+        lhs.phones == rhs.phones &&
+        lhs.emails == rhs.emails &&
+        lhs.birthday == rhs.birthday &&
+        lhs.addresses == rhs.addresses &&
+        lhs.notes == rhs.notes &&
+        lhs.profileImage == rhs.profileImage
+    }
+}
+
+extension Contact {
+    var isEmpty: Bool {
+        return id == nil && givenName == nil && middleName == nil && familyName == nil
+            && phones == nil && emails == nil && birthday == nil && addresses == nil
+            && notes == nil && profileImage == nil
+    }
+}
+

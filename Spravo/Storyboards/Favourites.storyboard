@@ -18,20 +18,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favourites VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImH-N2-h1L">
-                                <rect key="frame" x="77.5" y="311.5" width="220.5" height="44.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YPA-Kz-ajw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wMk-uW-7la" id="Ivl-HO-iaT"/>
+                                    <outlet property="delegate" destination="wMk-uW-7la" id="cpk-Sv-p6X"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ImH-N2-h1L" firstAttribute="centerY" secondItem="sw7-dx-eRq" secondAttribute="centerY" id="a25-WC-Lyo"/>
-                            <constraint firstItem="ImH-N2-h1L" firstAttribute="centerX" secondItem="sw7-dx-eRq" secondAttribute="centerX" id="k3N-JJ-VBT"/>
+                            <constraint firstItem="YPA-Kz-ajw" firstAttribute="top" secondItem="NRQ-vt-Kaq" secondAttribute="top" id="2hd-sV-HGG"/>
+                            <constraint firstItem="YPA-Kz-ajw" firstAttribute="leading" secondItem="NRQ-vt-Kaq" secondAttribute="leading" id="C98-VJ-XCX"/>
+                            <constraint firstItem="NRQ-vt-Kaq" firstAttribute="trailing" secondItem="YPA-Kz-ajw" secondAttribute="trailing" id="HwU-VR-QNh"/>
+                            <constraint firstItem="NRQ-vt-Kaq" firstAttribute="bottom" secondItem="YPA-Kz-ajw" secondAttribute="bottom" id="Ngf-Nw-u5G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NRQ-vt-Kaq"/>
                     </view>
+                    <navigationItem key="navigationItem" id="URb-aC-Pqh">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="hnn-aO-K66">
+                            <connections>
+                                <action selector="editButtonTaped:" destination="wMk-uW-7la" id="6S6-67-OuL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="editButton" destination="hnn-aO-K66" id="yD2-7B-fLt"/>
+                        <outlet property="tableView" destination="YPA-Kz-ajw" id="eFC-gI-xcZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbz-3Z-ELj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

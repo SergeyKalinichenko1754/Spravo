@@ -6,3 +6,6 @@
   Copyright © 2019 Home. All rights reserved.
 */
 NSContactsUsageDescription = "Надайте доступ, якщо ви хочете додати наявні телефоннi контакти до своєї програми";
+NSCameraUsageDescription = "Додаток потребує вашого дозволу використовувати камеру";
+NSPhotoLibraryUsageDescription = "Додаток потребує дозволу на використання ваших фотографій";
+NSLocationWhenInUseUsageDescription = "Додаток потребує вашого дозволу використовувати ваше місцезнаходження";

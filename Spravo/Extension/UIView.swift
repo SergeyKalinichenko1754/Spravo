@@ -9,19 +9,13 @@
 import UIKit
 
 extension UIView {
-    
     func nibSetup() {
         backgroundColor = .clear
         let subView = loadViewFromNib()
         subView.frame = bounds
         subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         subView.translatesAutoresizingMaskIntoConstraints = true
-//        subView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(subView)
-//        self.leadingAnchor.constraint(equalTo: subView.leadingAnchor, constant: 0).isActive = true
-//        self.trailingAnchor.constraint(equalTo: subView.trailingAnchor, constant: 0).isActive = true
-//        self.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
-//        self.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: 0).isActive = true
     }
     
     func loadViewFromNib() -> UIView {
@@ -33,7 +27,6 @@ extension UIView {
 }
 
 extension UIView {
-    
     class var identifier: String {
         let separator = "."
         let fullName = String(describing: self)

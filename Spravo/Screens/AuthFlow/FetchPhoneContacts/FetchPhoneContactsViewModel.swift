@@ -75,7 +75,8 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
             if let data = contact.1 {
                 image = UIImage(data: data)
             }
-            firebaseAgent.saveNewContact(userFbId: userFbId, contact: contact.0, userProfileImage: image) { [weak self] error in
+            firebaseAgent.saveNewContact(userFbId: userFbId, contact: contact.0, userProfileImage: image)
+            { [weak self] (error, contactID, imageUrl) in
                 guard let self = self else { return }
                 contactsQuantity -= 1
                 if error != nil {

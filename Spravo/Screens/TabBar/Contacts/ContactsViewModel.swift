@@ -116,6 +116,10 @@ class ContactsViewModel: ContactsViewModelType {
         sortСontacts(searchText)
     }
     
+    func reloadModel(_ searchText: String? = nil) {
+        sortСontacts(searchText)
+    }
+    
     func startFetchPhoneContacts() {
         coordinator.startFetchPhoneContacts()
     }

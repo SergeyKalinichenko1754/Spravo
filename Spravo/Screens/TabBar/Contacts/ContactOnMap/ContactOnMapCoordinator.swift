@@ -12,6 +12,7 @@ protocol ContactOnMapCoordinatorTransitions: class {
 }
 
 protocol ContactOnMapCoordinatorType {
+    func backTaped()
 }
 
 class ContactOnMapCoordinator: ContactOnMapCoordinatorType {
@@ -24,7 +25,7 @@ class ContactOnMapCoordinator: ContactOnMapCoordinatorType {
         self.navigationController = navigationController
         self.transitions = transitions
         self.serviceHolder = serviceHolder
-        controller?.viewModel = ContactOnMapViewModel(coordinator: self, contact: contact, addressNumber: addressNumber)
+        controller?.viewModel = ContactOnMapViewModel(coordinator: self, serviceHolder: serviceHolder, contact: contact, addressNumber: addressNumber)
     }
     
     func start() {
@@ -32,4 +33,7 @@ class ContactOnMapCoordinator: ContactOnMapCoordinatorType {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    func backTaped() {
+        controller?.navigationController?.popViewController(animated: true)
+    }
 }

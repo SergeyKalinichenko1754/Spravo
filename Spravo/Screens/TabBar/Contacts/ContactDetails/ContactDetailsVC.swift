@@ -10,7 +10,6 @@ import UIKit
 import MessageUI
 
 class ContactDetailsVC: UIViewController {
-    
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var imageViewInTopView: UIImageView!
     @IBOutlet weak var imageViewTopDistance: NSLayoutConstraint!
@@ -31,25 +30,39 @@ class ContactDetailsVC: UIViewController {
         localizeScreen()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if !viewModel.contactExist() {
+            viewModel.dismissVC()
+            return
+        }
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+        setupProfileImage()
+        tableView.reloadData()
+    }
+    
     private func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
-        topView.backgroundColor = RGBColor(247, 247, 247)
+        topView.backgroundColor = DefaultColors.navigationBarBackgroundColor
     }
     
     private func setupTopView() {
+        setupProfileImage()
+        imageViewTopDistance.constant = max(UIScreen.main.bounds.size.height, UIScreen.main.bounds.size.width) > 750 ? 35 : 17
+        topViewHeight.constant = 180 + extraHeight
+        nameLabelInTopView.text = viewModel.getFullName()
+    }
+    
+    private func setupProfileImage() {
         viewModel.getProfileImage { image in
-            guard let image = image  else { return }
             updateUIonMainThread { [weak self] in
                 guard let self = self else { return}
                 self.imageViewInTopView.image = image
             }
         }
-        imageViewTopDistance.constant = max(UIScreen.main.bounds.size.height, UIScreen.main.bounds.size.width) > 750 ? 35 : 17
-        topViewHeight.constant = 180 + extraHeight
-        nameLabelInTopView.text = viewModel.getFullName()
     }
     
     private func setupTopImage() {
@@ -107,7 +120,7 @@ extension ContactDetailsVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.didSelectRowAt(tableView, indexPath: indexPath) { error in
+        viewModel.didSelectRowAt(tableView, indexPath: indexPath, rootVC: self) { error in
             guard let error = error else { return }
             updateUIonMainThread {
                 AlertHelper.showAlert(error)
@@ -116,14 +129,17 @@ extension ContactDetailsVC: UITableViewDelegate {
     }
 }
 
-extension ContactDetailsVC: SendSMSButtonDelegate {
+extension ContactDetailsVC: SendSMSButtonDelegate, MFMessageComposeViewControllerDelegate {
     func sendSMS(_ to: String) {
-        if MFMessageComposeViewController.canSendText() {
-            let messageComposeViewController = MFMessageComposeViewController()
-            messageComposeViewController.recipients = [to]
-            present(messageComposeViewController, animated: true, completion: nil)
-        } else {
-            debugPrint("Unable to send SMS to \(to)")
+        viewModel.sendSMS(to, inVC: self)
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        switch result {
+        case .sent:
+            debugPrint("Sent")
+        default: break
         }
+        controller.dismiss(animated: true, completion: nil)
     }
 }

@@ -48,7 +48,6 @@ class ErrorScreenVC: UIViewController {
         textView.linkTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.blue]
         textView.sizeToFit()
     }
-    
 }
 
 extension ErrorScreenVC: ActionButtonDelegate {

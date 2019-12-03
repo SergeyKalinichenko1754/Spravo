@@ -7,29 +7,39 @@
 //
 
 import UIKit
-import MessageUI
 
 protocol FavouritesVCButtonActionDelegate: class {
     func buttonInTableViewTaped(_ indexPath: IndexPath)
 }
 
-class FavouritesVC: UIViewController {
+class FavouritesVC: TemplateMFMessageComposeVC {
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: FavouritesViewModel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeScreen()
         setup()
         setupTableView()
+        addToRecent = addToRecentFunc
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupEditButton()
+        navigationItem.title = NSLocalizedString("Favourites.Title", comment: "Screen title")
         tableView.reloadData()
+    }
+    
+    func addToRecentFunc(_ recent: Recent?) {
+        guard let recent = recent else {
+            currentCall = nil
+            return
+        }
+        viewModel.addToRecent(recent)        
+        currentCall = nil
     }
     
     private func localizeScreen() {
@@ -48,7 +58,7 @@ class FavouritesVC: UIViewController {
         tableView.isEditing = !tableView.isEditing
         editButton.title = tableView.isEditing ? NSLocalizedString("Favourites.DoneButtonCaption", comment: "Caption for done button") :
             NSLocalizedString("Favourites.EditButtonCaption", comment: "Caption for edit button")
-    }
+    }    
  }
 
 extension FavouritesVC: UITableViewDataSource {
@@ -68,20 +78,13 @@ extension FavouritesVC: UITableViewDataSource {
     }
 }
 
-extension FavouritesVC: UITableViewDelegate, MFMessageComposeViewControllerDelegate {
+extension FavouritesVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard addToRecent != nil,
+            let newCommunication = viewModel.getTemplateForFixingCommunication(indexPath) else { return }
+        currentCall = newCommunication
         viewModel.openCommunicationVC(indexPath, inVC: self)
-    }
-    
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        switch result {
-        case .sent:
-            //TODO(Serhii K) input notif. into recent
-            debugPrint("Sent")
-        default: break
-        }
-        controller.dismiss(animated: true, completion: nil)
     }
 }
 

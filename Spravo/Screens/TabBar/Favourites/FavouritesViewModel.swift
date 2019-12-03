@@ -15,6 +15,8 @@ protocol FavouritesViewModelType {
     func moveRow(from: Int, to: Int)
     func deleteRow(_ row: Int)
     func openCommunicationVC(_ index: IndexPath, inVC: UIViewController)
+    func getTemplateForFixingCommunication(_ index: IndexPath) -> Recent?
+    func addToRecent(_ new: Recent)
 }
 
 class FavouritesViewModel: FavouritesViewModelType {
@@ -112,5 +114,17 @@ extension FavouritesViewModel {
         case .email:
             communicationProvider.sendEmail(favourite.favourite)
         }
+    }
+}
+
+extension FavouritesViewModel {
+    func getTemplateForFixingCommunication(_ index: IndexPath) -> Recent? {
+        guard let favourite = contactsProvider.getFavourite(index.row) else { return nil }
+        let newCommunication = Recent(beganTalkDate: nil, id: favourite.id, type: favourite.type, recipient: favourite.favourite, otherRecipients: nil, completionDate: nil)
+        return newCommunication
+    }
+    
+    func addToRecent(_ new: Recent) {
+        contactsProvider.addRecent(new)
     }
 }

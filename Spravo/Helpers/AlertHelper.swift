@@ -9,7 +9,6 @@
 import UIKit
 
 class AlertHelper {
-    
     class func showAlert(_ error: String?) {
         showAlert(msg: error)
     }

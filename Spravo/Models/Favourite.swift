@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FavouriteType: String, Codable {
+enum CommunicationType: String, Codable {
     case phone
     case sms
     case email
@@ -16,6 +16,6 @@ enum FavouriteType: String, Codable {
 
 struct Favourite: Codable {
     var id: String?
-    var type: FavouriteType
+    var type: CommunicationType
     var favourite: String
 }

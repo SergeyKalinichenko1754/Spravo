@@ -423,7 +423,8 @@ extension EditContactViewModel {
     }
     
     func saveContact() {
-        guard let clearedContact = self.clearedContact() else { return }
+        guard let clearedContact = self.clearedContact(),
+        (clearedContact != thisContactInStore || profileImageChanged) else { return }
         HUDRenderer.showHUD()
         let userFbId = self.contactsProvider.userFacebookId
         var varContact = clearedContact
@@ -431,17 +432,8 @@ extension EditContactViewModel {
             firebaseAgent.saveNewContact(userFbId: userFbId, contact: varContact, userProfileImage: profileImage)
             { [weak self] (error, contactID, imageUrl) in
                 guard let self = self else { return }
-                if let error = error {
-                    AlertHelper.showAlert(error)
-                    return
-                }
-                if let imageUrl = imageUrl {
-                    varContact.profileImage = imageUrl
-                }
                 varContact.id = contactID
-                self.contactsProvider.updateContact(varContact)
-                HUDRenderer.hideHUD()
-                self.coordinator.backTaped()
+                self.updateAppStore(varContact, error: error, imageUrl: imageUrl)
             }
             return
         }
@@ -450,17 +442,23 @@ extension EditContactViewModel {
         }
         firebaseAgent.updateContact(userFbId: userFbId,
                                     contact: varContact, needSetNewImage: profileImageChanged,
-                                    userProfileImage: profileImage) { (error, imageUrl) in
-                                        if let error = error {
-                                            AlertHelper.showAlert(error)
-                                            return
-                                        }
-                                        if let imageUrl = imageUrl {
-                                            varContact.profileImage = imageUrl
-                                        }
-                                        self.contactsProvider.updateContact(varContact)
-                                        HUDRenderer.hideHUD()
-                                        self.coordinator.backTaped()
+                                    userProfileImage: profileImage) { [weak self] (error, imageUrl) in
+                                        guard let self = self else { return }
+                                        self.updateAppStore(varContact, error: error, imageUrl: imageUrl)
         }
+    }
+    
+    private func updateAppStore(_ contact: Contact,error: String?,imageUrl: String?) {
+        if let error = error {
+            AlertHelper.showAlert(error)
+            return
+        }
+        var varContact = contact
+        if let imageUrl = imageUrl {
+            varContact.profileImage = imageUrl
+        }
+        contactsProvider.updateContact(varContact)
+        HUDRenderer.hideHUD()
+        coordinator.backTaped()
     }
 }

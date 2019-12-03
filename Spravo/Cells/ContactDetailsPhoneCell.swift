@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SendSMSButtonDelegate: class {
-    func sendSMS(_ to: String)
+    func sendSMS(_ to: String, indexPath: IndexPath)
 }
 
 class ContactDetailsPhoneCell: UITableViewCell {
@@ -19,9 +19,10 @@ class ContactDetailsPhoneCell: UITableViewCell {
     @IBOutlet weak var smsButton: UIButton!
     
     weak var delegate: SendSMSButtonDelegate?
+    var indexPath: IndexPath?
     
     @IBAction func smsButtonTaped(_ sender: UIButton) {
-        guard let smsTo = valueLabel.text else { return }
-        delegate?.sendSMS(smsTo)
+        guard let to = valueLabel.text, let index = indexPath else { return }
+        delegate?.sendSMS(to, indexPath: index)
     }
 }

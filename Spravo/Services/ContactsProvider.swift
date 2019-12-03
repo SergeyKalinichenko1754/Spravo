@@ -32,12 +32,16 @@ class ContactsProvider: ContactsProviderType {
     var contactModels: [Contact]
     private var favourites: [Favourite]
     private let keyForFavoriteStore = "FavoriteStore"
+    private var recents: [Recent]
+    private let keyForRecentStore = "RecentStore"
     
     init(user: User) {
         self.user = user
         self.contactModels = []
         self.favourites = []
-        loadFavourite()
+        self.recents = []
+        loadFavourites()
+        loadRecents()
     }
     
     var userFacebookId: String {
@@ -75,7 +79,9 @@ class ContactsProvider: ContactsProviderType {
         user = User()
         contactModels = []
     }
-    
+}
+
+extension ContactsProvider {
     func addFavourite(_ new: Favourite) {
         favourites.append(new)
         saveFavourite()
@@ -109,7 +115,7 @@ class ContactsProvider: ContactsProviderType {
         }
     }
     
-    private func loadFavourite() {
+    private func loadFavourites() {
         DispatchQueue.global().async { [weak self] in
             guard let self = self, let encodedData = UserDefaults.standard.array(forKey: self.keyForFavoriteStore) as? [Data] else { return }
             self.favourites = encodedData.map { try! JSONDecoder().decode(Favourite.self, from: $0) }
@@ -124,5 +130,40 @@ class ContactsProvider: ContactsProviderType {
     func isContactFavourite(_ fav: Favourite) -> Bool {
         guard let _ = favourites.first(where: {$0.id == fav.id && $0.type == fav.type && $0.favourite == fav.favourite}) else { return false}
         return true
+    }
+}
+
+extension ContactsProvider {
+    func addRecent(_ new: Recent) {
+        recents.insert(new, at: 0)
+        saveRecent()
+    }
+    
+    func deleteRecent(_ index: Int) {
+        recents.remove(at: index)
+        saveRecent()
+    }
+    
+    func recentsCount() -> Int {
+        return recents.count
+    }
+    
+    func getRecent(_ index: Int) -> Recent? {
+        return index < recentsCount() ? self.recents[index] : nil
+    }
+    
+    private func saveRecent() {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            let data = self.recents.map { try? JSONEncoder().encode($0) }
+            UserDefaults.standard.set(data, forKey: self.keyForRecentStore)
+        }
+    }
+    
+    private func loadRecents() {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self, let encodedData = UserDefaults.standard.array(forKey: self.keyForRecentStore) as? [Data] else { return }
+            self.recents = encodedData.map { try! JSONDecoder().decode(Recent.self, from: $0) }
+        }
     }
 }

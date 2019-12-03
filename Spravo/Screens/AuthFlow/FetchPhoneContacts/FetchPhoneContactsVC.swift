@@ -53,13 +53,11 @@ class FetchPhoneContactsVC: UITableViewController {
             switch result {
             case .failure(let error):
                 self.stopActivityIndicator { [weak self] in
-                    guard let self = self else { return }
-                    self.showErrorScreen(error)
+                    self?.showErrorScreen(error)
                 }
             case .success(false):
                 self.stopActivityIndicator { [weak self] in
-                    guard let self = self else { return }
-                    self.showSettingsAlert()
+                    self?.showSettingsAlert()
                 }
             case .success(true):
                 self.syncingContacts()
@@ -69,16 +67,14 @@ class FetchPhoneContactsVC: UITableViewController {
     
     private func syncingContacts() {
         updateUIonMainThread { [weak self] in
-            guard let self = self else { return }
-            self.starNextActivityIndicator()
-            self.viewModel.syncingContacts { [weak self] error in
+            self?.starNextActivityIndicator()
+            self?.viewModel.syncingContacts { [weak self] error in
                 guard let self = self else { return }
                 self.stopActivityIndicator { [weak self] in
-                    guard let self = self else { return }
                     if let error = error {
-                        self.showErrorScreen(error)
+                        self?.showErrorScreen(error)
                     } else {
-                        self.viewModel.finishedRequestContacts()
+                        self?.viewModel.finishedRequestContacts()
                     }
                 }
             }

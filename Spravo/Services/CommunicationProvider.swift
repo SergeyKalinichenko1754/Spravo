@@ -23,20 +23,9 @@ class CommunicationProvider: CommunicationProviderType {
         let phone = "tel://\(clearNumber)"
         let phoneFallback = "telprompt://\(clearNumber)"
         if let url = URL(string: phone), shared.canOpenURL(url) {
-            shared.open(url, options: [:]) { success in
-                if success {
-                    AlertHelper.showAlert(msg: "Call to \(phone)  - start : \(Date())")
-                } else {
-                    AlertHelper.showAlert(msg: "Cancel  - taped : \(Date())")
-                }
-            }
+            shared.open(url, options: [:], completionHandler: nil)
         } else if let fallbackURl = URL(string: phoneFallback), shared.canOpenURL(fallbackURl) {
-            shared.open(fallbackURl, options: [:]) { success in
-                if success {
-                    AlertHelper.showAlert(msg: "Call to \(phone)  - start : \(Date())")
-                } else {
-                    AlertHelper.showAlert(msg: "Cancel  - taped : \(Date())")
-                }}
+            shared.open(fallbackURl, options: [:], completionHandler: nil)
         } else {
             AlertHelper.showAlert(msg: "Enable to call")
         }
@@ -46,9 +35,7 @@ class CommunicationProvider: CommunicationProviderType {
         let shared = UIApplication.shared
         let mail = "mailto:\(email)"
         if let emailURl = URL(string: mail), shared.canOpenURL(emailURl) {
-            shared.open(emailURl, options: [:]) { success in
-                debugPrint("Send mail to \(mail)")
-            }
+            shared.open(emailURl, options: [:], completionHandler: nil)
         } else {
             AlertHelper.showAlert(msg: "Unable to open url for send mail")
         }

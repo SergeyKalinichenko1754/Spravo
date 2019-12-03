@@ -71,13 +71,9 @@ class PhoneContactsProvider: PhoneContactsProviderType {
                             let contactProfile = (addedContact, image)
                             contactsArray.append(contactProfile)
                         })
-                        DispatchQueue.main.async {
-                            completion(.success(true), contactsArray)
-                        }
+                        completion(.success(true), contactsArray)
                     } catch let error {
-                        DispatchQueue.main.async {
-                            completion(.failure(error.localizedDescription), nil)
-                        }
+                        completion(.failure(error.localizedDescription), nil)
                     }
                 }
             }

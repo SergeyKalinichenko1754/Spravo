@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import MessageUI
 
-class ContactDetailsVC: UIViewController {
+class ContactDetailsVC: TemplateMFMessageComposeVC {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var imageViewInTopView: UIImageView!
     @IBOutlet weak var imageViewTopDistance: NSLayoutConstraint!
@@ -28,6 +27,7 @@ class ContactDetailsVC: UIViewController {
         setupTableView()
         setupTopImage()
         localizeScreen()
+        addToRecent = addToRecentFunc
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +39,15 @@ class ContactDetailsVC: UIViewController {
         navigationController?.isNavigationBarHidden = false
         setupProfileImage()
         tableView.reloadData()
+    }
+    
+    func addToRecentFunc(_ recent: Recent?) {
+        guard let recent = recent else {
+            currentCall = nil
+            return
+        }
+        viewModel.addToRecent(recent)
+        currentCall = nil
     }
     
     private func setupNavigationBar() {
@@ -120,6 +129,10 @@ extension ContactDetailsVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if addToRecent != nil,
+            let newCommunication = viewModel.getTemplateForFixingCommunication(indexPath, sms: false) {
+            currentCall = newCommunication
+        }
         viewModel.didSelectRowAt(tableView, indexPath: indexPath, rootVC: self) { error in
             guard let error = error else { return }
             updateUIonMainThread {
@@ -129,17 +142,11 @@ extension ContactDetailsVC: UITableViewDelegate {
     }
 }
 
-extension ContactDetailsVC: SendSMSButtonDelegate, MFMessageComposeViewControllerDelegate {
-    func sendSMS(_ to: String) {
+extension ContactDetailsVC: SendSMSButtonDelegate {
+    func sendSMS(_ to: String, indexPath: IndexPath) {
+        guard addToRecent != nil,
+            let newCommunication = viewModel.getTemplateForFixingCommunication(indexPath, sms: true) else { return }
+        currentCall = newCommunication
         viewModel.sendSMS(to, inVC: self)
-    }
-    
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        switch result {
-        case .sent:
-            debugPrint("Sent")
-        default: break
-        }
-        controller.dismiss(animated: true, completion: nil)
     }
 }

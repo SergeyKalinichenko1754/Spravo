@@ -22,6 +22,8 @@ protocol ContactDetailsViewModelType {
     func sendSMS(_ to: String, inVC: UIViewController)
     func contactExist() -> Bool
     func dismissVC()
+    func getTemplateForFixingCommunication(_ indexPath: IndexPath, sms: Bool) -> Recent?
+    func addToRecent(_ new: Recent)
 }
 
 class ContactDetailsViewModel: ContactDetailsViewModelType {
@@ -86,6 +88,7 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
             cell.valueLabel.text = contact.phones?[indexPath.row].value
             cell.smsButton.isHidden = false
             cell.delegate = smsButtonDelegate
+            cell.indexPath = indexPath
             cell.favouriteImage.isHidden = !contactsProvider.isContactFavourite(id: contact.id, item: contact.phones?[indexPath.row].value ?? "")
             return cell
         case 1:
@@ -166,10 +169,10 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
         switch indexPath.section {
         case 0:
             guard let number = contact.phones?[indexPath.row].value else { return }
-            callToNumber(number)
+            communicationProvider.callToNumber(number)
         case 1:
             guard let email = contact.emails?[indexPath.row].value else { return }
-            sendEmail(email)
+            communicationProvider.sendEmail(email)
         case 2:
             guard let cell = tableView.cellForRow(at: indexPath) as? ContactDetailsAddressCell, cell.mapView.tag >= 0 else {
                 let error = NSLocalizedString("Contacts.AddressNotFoundError", comment: "Error: address not found (on the map)")
@@ -180,14 +183,6 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
             whatAddToFavourite(rootVC)
         default: break
         }
-    }
-    
-    private func callToNumber(_ number: String) {
-        communicationProvider.callToNumber(number)
-    }
-    
-    private func sendEmail(_ email: String) {
-        communicationProvider.sendEmail(email)
     }
     
     func sendSMS(_ to: String, inVC: UIViewController) {
@@ -223,7 +218,7 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
         rootVC.present(popupVC, animated: true, completion: nil)
     }
     
-    private func addToFavourite(what: FavouriteType,rootVC: UIViewController) {
+    private func addToFavourite(what: CommunicationType,rootVC: UIViewController) {
         guard let favouriteArray = what == .email ? contact.emails : contact.phones else { return }
         guard favouriteArray.count > 1 else {
             if let newFavourite = favouriteArray[0].value {
@@ -252,5 +247,21 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
         title = NSLocalizedString("Contacts.SortBy.Cancel", comment: "Title for Cancel (Sort by)")
         popupVC.addAction(UIAlertAction(title: title, style: .cancel, handler: nil))
         rootVC.present(popupVC, animated: true, completion: nil)
+    }
+}
+
+extension ContactDetailsViewModel {
+    func getTemplateForFixingCommunication(_ indexPath: IndexPath, sms: Bool) -> Recent? {
+        var type = CommunicationType.sms
+        if sms == false {
+            type = indexPath.section == 0 ? .phone : .email
+        }
+        let recipient = indexPath.section == 0 ? (contact.phones?[indexPath.row].value ?? "") : (contact.emails?[indexPath.row].value ?? "")
+        let newCommunication = Recent(beganTalkDate: nil, id: contact.id, type: type, recipient: recipient, otherRecipients: nil, completionDate: nil)
+        return newCommunication
+    }
+    
+    func addToRecent(_ new: Recent) {
+        contactsProvider.addRecent(new)
     }
 }

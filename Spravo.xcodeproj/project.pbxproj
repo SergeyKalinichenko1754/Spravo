@@ -74,6 +74,7 @@
 		048AF44B238AAB14009A5173 /* CommunicationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AF44A238AAB14009A5173 /* CommunicationProvider.swift */; };
 		048DBB8F238D8BA100646F86 /* EditContactNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DBB8D238D8BA100646F86 /* EditContactNotesCell.swift */; };
 		048DBB90238D8BA100646F86 /* EditContactNotesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048DBB8E238D8BA100646F86 /* EditContactNotesCell.xib */; };
+		049C72ED23950943000AD23D /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C72EC23950943000AD23D /* Recent.swift */; };
 		049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D2233E569100344EA7 /* ServiceHolder.swift */; };
 		049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D5233E589700344EA7 /* AppCoordinator.swift */; };
 		049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D7233E58AA00344EA7 /* AuthFlowCoordinator.swift */; };
@@ -85,6 +86,7 @@
 		04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */; };
 		04AE9A4A239184C000885345 /* PopupMenuAddNewLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE9A48239184C000885345 /* PopupMenuAddNewLabelCell.swift */; };
 		04AE9A4B239184C000885345 /* PopupMenuAddNewLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AE9A49239184C000885345 /* PopupMenuAddNewLabelCell.xib */; };
+		04B0730B23944C6E002DA20C /* TemplateMFMessageComposeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0730A23944C6E002DA20C /* TemplateMFMessageComposeVC.swift */; };
 		04B8838B238C493A002316D2 /* TemplateKeyboardAvoidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8838A238C493A002316D2 /* TemplateKeyboardAvoidVC.swift */; };
 		04B8A235238290940046D612 /* ContactOnMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A234238290940046D612 /* ContactOnMapVC.swift */; };
 		04B8A237238290C90046D612 /* ContactOnMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A236238290C90046D612 /* ContactOnMapCoordinator.swift */; };
@@ -97,6 +99,8 @@
 		04D55880233D226800511BF7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D55882233D226800511BF7 /* Localizable.strings */; };
 		04D6764B235066E600E86E06 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D6764D235066E600E86E06 /* InfoPlist.strings */; };
 		04D676512350695800E86E06 /* PhoneContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D676502350695800E86E06 /* PhoneContactsProvider.swift */; };
+		04DC6E172396452D0005D5F1 /* RecentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DC6E152396452D0005D5F1 /* RecentsCell.swift */; };
+		04DC6E182396452D0005D5F1 /* RecentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DC6E162396452D0005D5F1 /* RecentsCell.xib */; };
 		04E30A74239100C00002D27D /* PopupMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30A73239100C00002D27D /* PopupMenuViewModel.swift */; };
 		04E30A7723912E7E0002D27D /* PopupMenuLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30A7523912E7E0002D27D /* PopupMenuLabelCell.swift */; };
 		04E30A7823912E7E0002D27D /* PopupMenuLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E30A7623912E7E0002D27D /* PopupMenuLabelCell.xib */; };
@@ -184,6 +188,7 @@
 		048AF44A238AAB14009A5173 /* CommunicationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationProvider.swift; sourceTree = "<group>"; };
 		048DBB8D238D8BA100646F86 /* EditContactNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactNotesCell.swift; sourceTree = "<group>"; };
 		048DBB8E238D8BA100646F86 /* EditContactNotesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactNotesCell.xib; sourceTree = "<group>"; };
+		049C72EC23950943000AD23D /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		049E34D2233E569100344EA7 /* ServiceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHolder.swift; sourceTree = "<group>"; };
 		049E34D5233E589700344EA7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		049E34D7233E58AA00344EA7 /* AuthFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -195,6 +200,7 @@
 		04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		04AE9A48239184C000885345 /* PopupMenuAddNewLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuAddNewLabelCell.swift; sourceTree = "<group>"; };
 		04AE9A49239184C000885345 /* PopupMenuAddNewLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMenuAddNewLabelCell.xib; sourceTree = "<group>"; };
+		04B0730A23944C6E002DA20C /* TemplateMFMessageComposeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMFMessageComposeVC.swift; sourceTree = "<group>"; };
 		04B8838A238C493A002316D2 /* TemplateKeyboardAvoidVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateKeyboardAvoidVC.swift; sourceTree = "<group>"; };
 		04B8A234238290940046D612 /* ContactOnMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOnMapVC.swift; sourceTree = "<group>"; };
 		04B8A236238290C90046D612 /* ContactOnMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOnMapCoordinator.swift; sourceTree = "<group>"; };
@@ -213,6 +219,8 @@
 		04D6764E235066E900E86E06 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04D6764F235066EB00E86E06 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04D676502350695800E86E06 /* PhoneContactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsProvider.swift; sourceTree = "<group>"; };
+		04DC6E152396452D0005D5F1 /* RecentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCell.swift; sourceTree = "<group>"; };
+		04DC6E162396452D0005D5F1 /* RecentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentsCell.xib; sourceTree = "<group>"; };
 		04E30A73239100C00002D27D /* PopupMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuViewModel.swift; sourceTree = "<group>"; };
 		04E30A7523912E7E0002D27D /* PopupMenuLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuLabelCell.swift; sourceTree = "<group>"; };
 		04E30A7623912E7E0002D27D /* PopupMenuLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMenuLabelCell.xib; sourceTree = "<group>"; };
@@ -373,6 +381,8 @@
 			children = (
 				0410DBFB238826D3006EB7AE /* FavouritesCell.swift */,
 				0410DBFC238826D3006EB7AE /* FavouritesCell.xib */,
+				04DC6E152396452D0005D5F1 /* RecentsCell.swift */,
+				04DC6E162396452D0005D5F1 /* RecentsCell.xib */,
 				045CE9602369FA82003E91DA /* ContactsCell.swift */,
 				045CE9612369FA82003E91DA /* ContactsCell.xib */,
 				04EBFA11237E817400802F3B /* ContactDetailsPhoneCell.swift */,
@@ -456,6 +466,7 @@
 				37011ED5234B9812002A0487 /* Contact.swift */,
 				37011ED4234B9812002A0487 /* User.swift */,
 				04F88E3B2387DE12007656A5 /* Favourite.swift */,
+				049C72EC23950943000AD23D /* Recent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -510,6 +521,7 @@
 			children = (
 				04B8838A238C493A002316D2 /* TemplateKeyboardAvoidVC.swift */,
 				04A76DEF238D035B00E7216C /* CustomImagePicker.swift */,
+				04B0730A23944C6E002DA20C /* TemplateMFMessageComposeVC.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -673,6 +685,7 @@
 				04731054237AD7700056F214 /* ContactDetails.storyboard in Resources */,
 				04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */,
 				047D946B238EE13900FC53EC /* EditContactPhoneCell.xib in Resources */,
+				04DC6E182396452D0005D5F1 /* RecentsCell.xib in Resources */,
 				04D6764B235066E600E86E06 /* InfoPlist.strings in Resources */,
 				04EBFA14237E817400802F3B /* ContactDetailsPhoneCell.xib in Resources */,
 				048DBB90238D8BA100646F86 /* EditContactNotesCell.xib in Resources */,
@@ -772,6 +785,7 @@
 				045CE93D2369A992003E91DA /* FavouritesCoordinator.swift in Sources */,
 				0413D1A1238441FE00C771D5 /* MKMapView.swift in Sources */,
 				045CE93523699842003E91DA /* RecentsTabCoordinator.swift in Sources */,
+				04B0730B23944C6E002DA20C /* TemplateMFMessageComposeVC.swift in Sources */,
 				045CE9482369B74F003E91DA /* RecentsViewModel.swift in Sources */,
 				045CE94A2369B76C003E91DA /* RecentsVC.swift in Sources */,
 				042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */,
@@ -786,6 +800,7 @@
 				045CE93F2369A9A7003E91DA /* FavouritesViewModel.swift in Sources */,
 				047D9466238E860600FC53EC /* EditContactAddFieldCell.swift in Sources */,
 				04731059237AD87E0056F214 /* ContactDetailsViewModel.swift in Sources */,
+				049C72ED23950943000AD23D /* Recent.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				0486F8692383399A00303030 /* UserLocationServiceType.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
@@ -814,6 +829,7 @@
 				049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */,
 				049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */,
 				045CE95A2369C7AF003E91DA /* ProfileViewModel.swift in Sources */,
+				04DC6E172396452D0005D5F1 /* RecentsCell.swift in Sources */,
 				041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */,
 				04B8A239238290DE0046D612 /* ContactOnMapViewModel.swift in Sources */,
 				045CE94F2369C1A5003E91DA /* ContactsCoordinator.swift in Sources */,

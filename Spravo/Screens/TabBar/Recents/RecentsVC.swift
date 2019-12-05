@@ -54,6 +54,7 @@ extension RecentsVC: UITableViewDataSource {
         tableView.tableFooterView = UIView()
         tableView.separatorInset.left = 10
         tableView.separatorInset.right = 10
+        tableView.allowsSelection = false
     }
 }
 

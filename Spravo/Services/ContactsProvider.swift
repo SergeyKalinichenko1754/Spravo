@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Contacts
 
 protocol ContactsProviderType: Service {
     var user: User { get }
@@ -73,6 +74,36 @@ class ContactsProvider: ContactsProviderType {
         } else {
            contactModels.append(contact)
         }
+    }
+    
+    func getCNContact(_ contact: Contact) -> CNMutableContact {
+        let sharedContact = CNMutableContact()
+        sharedContact.givenName = contact.givenName ?? ""
+        if let value = contact.middleName {
+            sharedContact.middleName = value
+        }
+        if let value = contact.familyName {
+            sharedContact.familyName = value
+        }
+        for phone in (contact.phones ?? [LabelString]()) {
+            sharedContact.phoneNumbers.append(CNLabeledValue(
+                label: phone.label, value: CNPhoneNumber(stringValue: phone.value ?? "")))
+        }
+        for email in (contact.emails ?? [LabelString]()) {
+            sharedContact.emailAddresses.append(CNLabeledValue(
+                label: email.label, value: (email.value ?? "") as NSString ))
+        }
+        for adr in (contact.addresses ?? [LabelAddress]()) {
+            let address = CNMutablePostalAddress()
+            address.street = adr.street ?? ""
+            address.city = adr.city ?? ""
+            address.state = adr.state ?? ""
+            address.postalCode = adr.postalCode ?? ""
+            address.country = adr.isoCountryCode ?? ""
+            let oneMoreAddress = CNLabeledValue<CNPostalAddress>(label: adr.label, value: address)
+            sharedContact.postalAddresses.append(oneMoreAddress)
+        }
+        return sharedContact
     }
     
     func logOut() {

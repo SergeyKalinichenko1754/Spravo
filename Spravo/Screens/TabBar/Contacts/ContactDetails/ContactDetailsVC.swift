@@ -25,7 +25,7 @@ class ContactDetailsVC: TemplateMFMessageComposeVC {
         setupTopView()
         setupNavigationBar()
         setupTableView()
-        setupTopImage()
+        setupTopImageView()
         localizeScreen()
         addToRecent = addToRecentFunc
     }
@@ -38,6 +38,7 @@ class ContactDetailsVC: TemplateMFMessageComposeVC {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
         setupProfileImage()
+        nameLabelInTopView.text = viewModel.getFullName()
         tableView.reloadData()
     }
     
@@ -62,7 +63,6 @@ class ContactDetailsVC: TemplateMFMessageComposeVC {
         setupProfileImage()
         imageViewTopDistance.constant = max(UIScreen.main.bounds.size.height, UIScreen.main.bounds.size.width) > 750 ? 35 : 17
         topViewHeight.constant = 180 + extraHeight
-        nameLabelInTopView.text = viewModel.getFullName()
     }
     
     private func setupProfileImage() {
@@ -74,7 +74,7 @@ class ContactDetailsVC: TemplateMFMessageComposeVC {
         }
     }
     
-    private func setupTopImage() {
+    private func setupTopImageView() {
         imageViewInTopView.layer.cornerRadius = imageViewInTopView.frame.width / 2
         imageViewInTopView.layer.masksToBounds = true
     }
@@ -124,7 +124,7 @@ extension ContactDetailsVC: UITableViewDelegate {
         let topViewMinHeight: CGFloat = 100
         let offsetY = -scrollView.contentOffset.y
         topViewHeight.constant = max(topViewMinHeight + extraHeight, topViewDefaultHeight + extraHeight + offsetY)
-        setupTopImage()
+        setupTopImageView()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -149,4 +149,7 @@ extension ContactDetailsVC: SendSMSButtonDelegate {
         currentCall = newCommunication
         viewModel.sendSMS(to, inVC: self)
     }
+}
+
+extension ContactDetailsVC: UIDocumentInteractionControllerDelegate {
 }

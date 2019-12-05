@@ -50,3 +50,15 @@ extension ProfileVC: UITableViewDataSource {
         tableView.separatorInset.right = 10
     }
 }
+
+extension ProfileVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.deleteAllContacts() { error in
+            HUDRenderer.hideHUD()
+            if let error = error {
+                AlertHelper.showAlert(error)
+            }
+        }
+    }
+}

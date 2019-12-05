@@ -63,6 +63,9 @@
 "_$!<Other>!$_" = "iнший";
 "_$!<Empty>!$_" = "";
 
+//ContactDetails
+"ContactDetails.ShareContactBtnCaption" = "Поділитися контактом";
+
 //EditContacts
 "EditContacts.SaveButtonCaption" = "Зберегти";
 "EditContacts.GivenNameTextFieldPlaceholder" = "Iм'я:";
@@ -90,6 +93,9 @@
 "MapPopUp.MapTypeStandard" = "Стандарт";
 "MapPopUp.MapTypeSatellite" = "Супутник";
 "MapPopUp.MapRouteLabel" = "Маршрут";
+"MapPopUp.AskForPermission" = "Ця програма вимагає доступу до вашого місцезнаходження. Ви хочете відкрити налаштування та дозволити доступ?";
+"MapPopUp.AskForPermissionCancelButtonCaption" = "Скасувати";
+"MapPopUp.AskForPermissionOpenSettingsButtonCaption" = "Відкрити налаштування";
 
 //Profile
 "Profile.Title" = "Профіль";

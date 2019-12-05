@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 
+import Contacts
+
 protocol ContactDetailsViewModelType {
     func registerCells(for tableView: UITableView)
     func getNumberOfSections() -> Int
@@ -58,7 +60,7 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
     }
     
     func getNumberOfSections() -> Int {
-        return 6
+        return 7
     }
     
     func getNumberOfRows(section: Int) -> Int {
@@ -76,7 +78,7 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
         case 5:
             return contact.phones != nil || contact.emails != nil ? 1 : 0
         default:
-            return 0
+            return 1
         }
     }
     
@@ -144,10 +146,13 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
             cell.textLabel?.text = NSLocalizedString("Contacts.AddToFavoritesBtnCaption", comment: "Caption for Add to Favorites Button")
             cell.textLabel?.textColor = RGBColor(1, 25, 147)
             return cell
-        default:
+        case 6:
             let cell = UITableViewCell()
-            cell.textLabel?.text = "Cell # \(indexPath.row)"
-            return cell 
+            cell.textLabel?.text = NSLocalizedString("ContactDetails.ShareContactBtnCaption", comment: "Caption for Share Contact Button")
+            cell.textLabel?.textColor = RGBColor(1, 25, 147)
+            return cell
+        default:
+            return UITableViewCell()
         }
     }
 
@@ -181,10 +186,30 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
             coordinator.showContactOnMap(contact: contact, addressNumber: indexPath.row)
         case 5:
             whatAddToFavourite(rootVC)
+        case 6:
+            shareContact(rootVC)
         default: break
         }
     }
     
+    private func shareContact(_ rootVC: UIViewController) {
+        let sharedContact = contactsProvider.getCNContact(contact)
+        let cacheDirectory = try! FileManager.default.url(for: FileManager.SearchPathDirectory.cachesDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: true)
+        let fileLocation = cacheDirectory.appendingPathComponent("\(CNContactFormatter().string(from: sharedContact)!).vcf")
+        let contactData = try! CNContactVCardSerialization.data(with: [sharedContact])
+        do {
+            try contactData.write(to: fileLocation, options: .atomic)
+        } catch let error {
+            AlertHelper.showAlert(error.localizedDescription)
+            return
+        }
+        let activityController = UIActivityViewController(activityItems: [fileLocation], applicationActivities: nil)
+        activityController.completionWithItemsHandler = { (activity, completed, items, error) in
+            try! FileManager.default.removeItem(at: fileLocation)
+        }
+        rootVC.present(activityController, animated: true)
+    }
+       
     func sendSMS(_ to: String, inVC: UIViewController) {
         communicationProvider.sendSMS(to, inVC: inVC)
     }

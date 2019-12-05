@@ -63,6 +63,9 @@
 "_$!<Other>!$_" = "andere";
 "_$!<Empty>!$_" = "";
 
+//ContactDetails
+"ContactDetails.ShareContactBtnCaption" = "Kontakt teilen";
+
 //EditContacts
 "EditContacts.SaveButtonCaption" = "Speichern";
 "EditContacts.GivenNameTextFieldPlaceholder" = "Name:";
@@ -90,6 +93,9 @@
 "MapPopUp.MapTypeStandard" = "Standard";
 "MapPopUp.MapTypeSatellite" = "Satellit";
 "MapPopUp.MapRouteLabel" = "Route";
+"MapPopUp.AskForPermission" = "Diese Anwendung erfordert Zugriff auf Ihren Standort. Möchten Sie Einstellungen öffnen und den Zugriff erlauben?";
+"MapPopUp.AskForPermissionCancelButtonCaption" = "Stornieren";
+"MapPopUp.AskForPermissionOpenSettingsButtonCaption" = "Einstellungen öffnen";
 
 //Profile
 "Profile.Title" = "Profil";

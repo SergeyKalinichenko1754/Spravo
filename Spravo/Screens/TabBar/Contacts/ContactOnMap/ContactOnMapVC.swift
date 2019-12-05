@@ -128,8 +128,11 @@ extension ContactOnMapVC: PopUpMapDelegate {
     }
     
     func route(_ by: Int) {
+        guard let from = viewModel.getUserLocationCoordinate(), let to = viewModel.getPinCoordinate() else {
+            showSettingsAlert()
+            return
+        }
         HUDRenderer.showHUD()
-        guard let from = viewModel.getUserLocationCoordinate(), let to = viewModel.getPinCoordinate() else { return }
         let transport: MKDirectionsTransportType = by == 0 ? .walking : .automobile
         viewModel.getRoute(from: from, to: to, by: transport) { [weak self] (response, error) in
             guard let self = self, let response = response else {
@@ -155,5 +158,16 @@ extension ContactOnMapVC: PopUpMapDelegate {
         renderer.lineWidth = 2.5
         renderer.alpha = 0.5
         return renderer
+    }
+    
+    private func showSettingsAlert() {
+        let msg = NSLocalizedString("MapPopUp.AskForPermission", comment: "Message that the program needs access to location")
+        let leftButtonCaption = NSLocalizedString("MapPopUp.AskForPermissionCancelButtonCaption", comment: "Cancel button caption")
+        let rightBittonCaption = NSLocalizedString("MapPopUp.AskForPermissionOpenSettingsButtonCaption", comment: "OpenSettings button caption")
+        AlertHelper.showAlert(msg: msg, from: self, leftBtnTitle: leftButtonCaption, rightBtnTitle: rightBittonCaption) { (result) in
+            if result {
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }
+        }
     }
 }

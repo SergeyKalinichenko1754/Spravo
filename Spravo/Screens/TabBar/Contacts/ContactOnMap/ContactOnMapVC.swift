@@ -9,12 +9,20 @@
 import UIKit
 import MapKit
 
+
+struct MapRoute {
+    var open: Bool
+    let color: UIColor
+    let route: MKRoute
+}
+
 class ContactOnMapVC: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var showUserLocationButton: UIButton!
     @IBOutlet weak var showAddressLocationButton: UIButton!
     @IBOutlet weak var showPopUpButton: UIButton!
     @IBOutlet weak var popUpConteiner: UIView!
+    @IBOutlet weak var popUpConteinerHeight: NSLayoutConstraint!
     
     var viewModel: ContactOnMapViewModelType!
     
@@ -127,8 +135,9 @@ extension ContactOnMapVC: PopUpMapDelegate {
         }
     }
     
-    func route(_ by: Int) {
-        guard let from = viewModel.getUserLocationCoordinate(), let to = viewModel.getPinCoordinate() else {
+    func route(_ by: Int, completion: @escaping (_ routes: [MapRoute]?) -> ()) {
+        guard let to = viewModel.getPinCoordinate() else { return }
+        guard let from = viewModel.getUserLocationCoordinate() else {
             showSettingsAlert()
             return
         }
@@ -142,12 +151,16 @@ extension ContactOnMapVC: PopUpMapDelegate {
                 }
                 return
             }
+            var routesArr: [MapRoute] = []
             let overlays = self.mapView.overlays
             self.mapView.removeOverlays(overlays)
             for route in response.routes {
                 self.mapView.addOverlay(route.polyline, level : .aboveRoads)
                 self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                let route = MapRoute(open: false, color: self.viewModel.getLastStrokeColor(), route: route)
+                routesArr.append(route)
             }
+            completion(routesArr)
             HUDRenderer.hideHUD()
         }
     }
@@ -169,5 +182,17 @@ extension ContactOnMapVC: PopUpMapDelegate {
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }
         }
+    }
+    
+    func setPopUpHeight(_ routeIsOpen: Bool?) {
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            guard let self = self else { return }
+            var multiplier: CGFloat = 0.3
+            if let routeIsOpen = routeIsOpen {
+                multiplier = routeIsOpen ? 1 : 0.5
+            }
+            NSLayoutConstraint.setMultiplier(multiplier, of: &self.popUpConteinerHeight)
+            self.view.layoutIfNeeded()
+        })
     }
 }

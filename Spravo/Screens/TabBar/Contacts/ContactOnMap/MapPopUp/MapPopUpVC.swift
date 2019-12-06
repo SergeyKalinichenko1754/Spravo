@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 enum MapPopUpButtonType {
     case mapType(Int)
@@ -19,7 +20,8 @@ protocol MapPopUpVCButtonActionDelegate: class {
 protocol PopUpMapDelegate {
     func hidePopUp()
     func setMapType(_ to: Int)
-    func route(_ by: Int)
+    func route(_ by: Int, completion: @escaping (_ routes: [MapRoute]?) -> ())
+    func setPopUpHeight(_ routeIsOpen: Bool?)
 }
 
 class MapPopUpVC: UIViewController {
@@ -47,8 +49,12 @@ class MapPopUpVC: UIViewController {
 extension MapPopUpVC: UITableViewDataSource {
     private func setupTableView() {
         viewModel.registerCells(for: tableView)
-        tableView.separatorStyle = .none
+        
         tableView.tableFooterView = UIView()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.getNumberOfSections()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,6 +70,11 @@ extension MapPopUpVC: UITableViewDataSource {
 extension MapPopUpVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.didSelectRowAt(indexPath) { [weak self] in
+            self?.tableView.reloadData { [weak self] in
+                self?.delegate?.setPopUpHeight(self?.viewModel.routeIsOpen())
+            }
+        }
     }
 }
 
@@ -74,7 +85,14 @@ extension MapPopUpVC: MapPopUpVCButtonActionDelegate {
         case (.mapType(let type), 0):
             delegate?.setMapType(type)
         case (.mapType(let type), 1):
-            delegate?.route(type)
+            delegate?.route(type) { [weak self] routes in
+                self?.viewModel.setRoutes([])
+                guard let routes = routes else { return }
+                self?.viewModel.setRoutes(routes)
+                self?.tableView.reloadData { [weak self] in
+                    self?.delegate?.setPopUpHeight(self?.viewModel.routeIsOpen())
+                }
+            }
         default: break
         }
     }

@@ -86,24 +86,32 @@ class ContactsProvider: ContactsProviderType {
             sharedContact.familyName = value
         }
         for phone in (contact.phones ?? [LabelString]()) {
+            let label = phone.label == PhoneLabelString.empty.rawValue ? "" : phone.label
             sharedContact.phoneNumbers.append(CNLabeledValue(
-                label: phone.label, value: CNPhoneNumber(stringValue: phone.value ?? "")))
+                label: label, value: CNPhoneNumber(stringValue: phone.value ?? "")))
         }
         for email in (contact.emails ?? [LabelString]()) {
+            let label = email.label == EmailLabelString.empty.rawValue ? "" : email.label
             sharedContact.emailAddresses.append(CNLabeledValue(
-                label: email.label, value: (email.value ?? "") as NSString ))
+                label: label, value: (email.value ?? "") as NSString ))
         }
         for adr in (contact.addresses ?? [LabelAddress]()) {
-            let address = CNMutablePostalAddress()
-            address.street = adr.street ?? ""
-            address.city = adr.city ?? ""
-            address.state = adr.state ?? ""
-            address.postalCode = adr.postalCode ?? ""
-            address.country = adr.isoCountryCode ?? ""
-            let oneMoreAddress = CNLabeledValue<CNPostalAddress>(label: adr.label, value: address)
+            let label = adr.label == AddressLabelString.empty.rawValue ? "" : adr.label
+            let address = getCNPostalAddress(adr)
+            let oneMoreAddress = CNLabeledValue<CNPostalAddress>(label: label, value: address)
             sharedContact.postalAddresses.append(oneMoreAddress)
         }
         return sharedContact
+    }
+    
+    func getCNPostalAddress(_ contactAddress: LabelAddress) -> CNMutablePostalAddress {
+        let address = CNMutablePostalAddress()
+        address.street = contactAddress.street ?? ""
+        address.city = contactAddress.city ?? ""
+        address.state = contactAddress.state ?? ""
+        address.postalCode = contactAddress.postalCode ?? ""
+        address.country = contactAddress.isoCountryCode ?? ""
+        return address
     }
     
     func logOut() {

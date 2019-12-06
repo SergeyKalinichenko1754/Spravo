@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-
 import Contacts
 
 protocol ContactDetailsViewModelType {
@@ -103,25 +102,21 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailsAddressCell.identifier, for: indexPath) as? ContactDetailsAddressCell else { return UITableViewCell() }
             cell.headerLabel.text = contact.addresses?[indexPath.row].addressLbl()
-            if let address = contact.addresses?[indexPath.row].address() {
-                cell.valueLabel.text = address
-                let geocoder = CLGeocoder()
-                let cleanedAddress = address.filter { !"\n\t\r".contains($0) }
-                geocoder.geocodeAddressString(cleanedAddress) { (placemarks, error) in
-                    guard let location = placemarks?.first?.location?.coordinate , error == nil else {
-                        let emptyMap = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                        emptyMap.image = UIImage(named: "unknownLocation")
-                        cell.mapView.tag = -1
-                        cell.mapView.subviews[0].isHidden = true
-                        cell.mapView.addSubview(emptyMap)
-                        return }
-                    let anno = MKPointAnnotation()
-                    anno.coordinate = location
-                    cell.mapView.addAnnotation(anno)
-                    cell.mapView.selectAnnotation(anno, animated: false)
-                    let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                    let region = MKCoordinateRegion(center: location, span: span)
-                    cell.mapView.setRegion(region, animated: false)
+            if let address = contact.addresses?[indexPath.row] {
+                cell.valueLabel.text = address.address()
+                getPlaceMarks(for: address, indexPath: indexPath) { [weak tableView] (placemarks, error, index) in
+                    updateUIonMainThread {
+                        guard let index = index, let tableView = tableView, let thisCell = tableView.cellForRow(at: index) as? ContactDetailsAddressCell, let location = placemarks?.first?.location?.coordinate, error == nil else { return }
+                        let anno = MKPointAnnotation()
+                        anno.coordinate = location
+                        let an = thisCell.mapView.annotations
+                        thisCell.mapView.removeAnnotations(an)
+                        thisCell.mapView.addAnnotation(anno)
+                        thisCell.mapView.selectAnnotation(anno, animated: false)
+                        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                        let region = MKCoordinateRegion(center: location, span: span)
+                        thisCell.mapView.setRegion(region, animated: false)
+                    }
                 }
             }
             return cell
@@ -155,6 +150,21 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
             return UITableViewCell()
         }
     }
+    
+    private func getPlaceMarks(for address: LabelAddress, indexPath: IndexPath?,
+                               completion: @escaping (_ placemarks: [CLPlacemark]?, _ error: String?, _ index: IndexPath?) -> ()) {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else {
+                completion(nil, nil, nil)
+                return
+            }
+            let cnAddress = self.contactsProvider.getCNPostalAddress(address)
+            let geocoder = CLGeocoder()
+            geocoder.geocodePostalAddress(cnAddress, preferredLocale: nil, completionHandler: { (placemarks, error) in
+                completion(placemarks, error?.localizedDescription, indexPath)
+            })
+        }
+    }
 
     func getFullName() -> String {
         return contact.fullName
@@ -179,10 +189,6 @@ class ContactDetailsViewModel: ContactDetailsViewModelType {
             guard let email = contact.emails?[indexPath.row].value else { return }
             communicationProvider.sendEmail(email)
         case 2:
-            guard let cell = tableView.cellForRow(at: indexPath) as? ContactDetailsAddressCell, cell.mapView.tag >= 0 else {
-                let error = NSLocalizedString("Contacts.AddressNotFoundError", comment: "Error: address not found (on the map)")
-                completion(error)
-                return }
             coordinator.showContactOnMap(contact: contact, addressNumber: indexPath.row)
         case 5:
             whatAddToFavourite(rootVC)

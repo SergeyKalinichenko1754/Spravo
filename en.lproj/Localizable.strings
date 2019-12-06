@@ -96,6 +96,7 @@
 "MapPopUp.AskForPermission" = "This application requires access to your location. Do you want to open settings and allow access?";
 "MapPopUp.AskForPermissionCancelButtonCaption" = "Cancel";
 "MapPopUp.AskForPermissionOpenSettingsButtonCaption" = "Open Settings";
+"km." = "km.";
 
 //Profile
 "Profile.Title" = "Profile";

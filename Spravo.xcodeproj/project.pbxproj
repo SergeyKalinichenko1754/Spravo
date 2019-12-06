@@ -58,6 +58,7 @@
 		045CE95E2369C7D6003E91DA /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CE95D2369C7D6003E91DA /* Profile.storyboard */; };
 		045CE9622369FA82003E91DA /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9602369FA82003E91DA /* ContactsCell.swift */; };
 		045CE9632369FA82003E91DA /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045CE9612369FA82003E91DA /* ContactsCell.xib */; };
+		0468D7C2239A25E800D39741 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468D7C1239A25E800D39741 /* Double.swift */; };
 		046C9E5E238177F500394F6B /* EditContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C9E5D238177F500394F6B /* EditContactCoordinator.swift */; };
 		046C9E602381781000394F6B /* EditContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C9E5F2381781000394F6B /* EditContactViewModel.swift */; };
 		046C9E642381785800394F6B /* EditContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C9E632381785800394F6B /* EditContactVC.swift */; };
@@ -84,6 +85,10 @@
 		049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34E0233E9C3000344EA7 /* FBAuthorization.swift */; };
 		04A76DF0238D035B00E7216C /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A76DEF238D035B00E7216C /* CustomImagePicker.swift */; };
 		04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */; };
+		04AE129C239A4FF300F41595 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE129B239A4FF300F41595 /* TableView.swift */; };
+		04AE129E239A63B700F41595 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE129D239A63B700F41595 /* NSLayoutConstraint.swift */; };
+		04AE12A1239A8D2C00F41595 /* MapPopUpRouteStepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE129F239A8D2C00F41595 /* MapPopUpRouteStepCell.swift */; };
+		04AE12A2239A8D2C00F41595 /* MapPopUpRouteStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AE12A0239A8D2C00F41595 /* MapPopUpRouteStepCell.xib */; };
 		04AE9A4A239184C000885345 /* PopupMenuAddNewLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE9A48239184C000885345 /* PopupMenuAddNewLabelCell.swift */; };
 		04AE9A4B239184C000885345 /* PopupMenuAddNewLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AE9A49239184C000885345 /* PopupMenuAddNewLabelCell.xib */; };
 		04B0730B23944C6E002DA20C /* TemplateMFMessageComposeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0730A23944C6E002DA20C /* TemplateMFMessageComposeVC.swift */; };
@@ -104,6 +109,8 @@
 		04E30A74239100C00002D27D /* PopupMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30A73239100C00002D27D /* PopupMenuViewModel.swift */; };
 		04E30A7723912E7E0002D27D /* PopupMenuLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30A7523912E7E0002D27D /* PopupMenuLabelCell.swift */; };
 		04E30A7823912E7E0002D27D /* PopupMenuLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E30A7623912E7E0002D27D /* PopupMenuLabelCell.xib */; };
+		04E8370A23999F4C00B76D52 /* MapPopUpRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8370823999F4C00B76D52 /* MapPopUpRouteCell.swift */; };
+		04E8370B23999F4C00B76D52 /* MapPopUpRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8370923999F4C00B76D52 /* MapPopUpRouteCell.xib */; };
 		04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6387233E1BDF00D46342 /* AlertHelper.swift */; };
 		04EB638A233E1CF100D46342 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6389233E1CF100D46342 /* Defines.swift */; };
 		04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB638B233E21F000D46342 /* HUDRenderer.swift */; };
@@ -172,6 +179,7 @@
 		045CE95D2369C7D6003E91DA /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		045CE9602369FA82003E91DA /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
 		045CE9612369FA82003E91DA /* ContactsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
+		0468D7C1239A25E800D39741 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		046C9E5D238177F500394F6B /* EditContactCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactCoordinator.swift; sourceTree = "<group>"; };
 		046C9E5F2381781000394F6B /* EditContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewModel.swift; sourceTree = "<group>"; };
 		046C9E632381785800394F6B /* EditContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactVC.swift; sourceTree = "<group>"; };
@@ -198,6 +206,10 @@
 		049E34E0233E9C3000344EA7 /* FBAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthorization.swift; sourceTree = "<group>"; };
 		04A76DEF238D035B00E7216C /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
 		04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
+		04AE129B239A4FF300F41595 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		04AE129D239A63B700F41595 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
+		04AE129F239A8D2C00F41595 /* MapPopUpRouteStepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpRouteStepCell.swift; sourceTree = "<group>"; };
+		04AE12A0239A8D2C00F41595 /* MapPopUpRouteStepCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPopUpRouteStepCell.xib; sourceTree = "<group>"; };
 		04AE9A48239184C000885345 /* PopupMenuAddNewLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuAddNewLabelCell.swift; sourceTree = "<group>"; };
 		04AE9A49239184C000885345 /* PopupMenuAddNewLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMenuAddNewLabelCell.xib; sourceTree = "<group>"; };
 		04B0730A23944C6E002DA20C /* TemplateMFMessageComposeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMFMessageComposeVC.swift; sourceTree = "<group>"; };
@@ -224,6 +236,8 @@
 		04E30A73239100C00002D27D /* PopupMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuViewModel.swift; sourceTree = "<group>"; };
 		04E30A7523912E7E0002D27D /* PopupMenuLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuLabelCell.swift; sourceTree = "<group>"; };
 		04E30A7623912E7E0002D27D /* PopupMenuLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMenuLabelCell.xib; sourceTree = "<group>"; };
+		04E8370823999F4C00B76D52 /* MapPopUpRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpRouteCell.swift; sourceTree = "<group>"; };
+		04E8370923999F4C00B76D52 /* MapPopUpRouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPopUpRouteCell.xib; sourceTree = "<group>"; };
 		04EB6387233E1BDF00D46342 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		04EB6389233E1CF100D46342 /* Defines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
 		04EB638B233E21F000D46342 /* HUDRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDRenderer.swift; sourceTree = "<group>"; };
@@ -393,6 +407,10 @@
 				042985D7237EF46700A317CE /* ContactDetailsAddressCell.xib */,
 				041B1AF42386D18900B1B419 /* MapPopUpMapTypeCell.swift */,
 				041B1AF52386D18900B1B419 /* MapPopUpMapTypeCell.xib */,
+				04E8370823999F4C00B76D52 /* MapPopUpRouteCell.swift */,
+				04E8370923999F4C00B76D52 /* MapPopUpRouteCell.xib */,
+				04AE129F239A8D2C00F41595 /* MapPopUpRouteStepCell.swift */,
+				04AE12A0239A8D2C00F41595 /* MapPopUpRouteStepCell.xib */,
 				041CADA8238C156C00BF318A /* EditContactPhotoNameCell.swift */,
 				041CADA9238C156C00BF318A /* EditContactPhotoNameCell.xib */,
 				047D9468238EE13900FC53EC /* EditContactPhoneCell.swift */,
@@ -439,8 +457,11 @@
 				049E34DB233E70F700344EA7 /* UIStoryboard.swift */,
 				049E34DD233E721600344EA7 /* UIViewController.swift */,
 				041B3548235F62E600E71B1A /* UIView.swift */,
+				04AE129B239A4FF300F41595 /* TableView.swift */,
 				045CE93023699539003E91DA /* UIColor.swift */,
 				0413D1A0238441FE00C771D5 /* MKMapView.swift */,
+				0468D7C1239A25E800D39741 /* Double.swift */,
+				04AE129D239A63B700F41595 /* NSLayoutConstraint.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -694,6 +715,7 @@
 				0410DBFE238826D3006EB7AE /* FavouritesCell.xib in Resources */,
 				045CE9432369B075003E91DA /* Favourites.storyboard in Resources */,
 				045CE95E2369C7D6003E91DA /* Profile.storyboard in Resources */,
+				04AE12A2239A8D2C00F41595 /* MapPopUpRouteStepCell.xib in Resources */,
 				042985D9237EF46700A317CE /* ContactDetailsAddressCell.xib in Resources */,
 				045CE9632369FA82003E91DA /* ContactsCell.xib in Resources */,
 				04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */,
@@ -704,6 +726,7 @@
 				041B3545235F614B00E71B1A /* ActivityIndicatorLabel.xib in Resources */,
 				045CE9552369C2D2003E91DA /* Contacts.storyboard in Resources */,
 				04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */,
+				04E8370B23999F4C00B76D52 /* MapPopUpRouteCell.xib in Resources */,
 				04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,6 +795,7 @@
 				045CE9392369986F003E91DA /* ProfileTabCoordinator.swift in Sources */,
 				04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */,
 				045CE92F236993C0003E91DA /* TabBarCoordinator.swift in Sources */,
+				04AE129E239A63B700F41595 /* NSLayoutConstraint.swift in Sources */,
 				04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */,
 				049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */,
 				041B3549235F62E600E71B1A /* UIView.swift in Sources */,
@@ -780,6 +804,7 @@
 				041B1AF32386C9B200B1B419 /* MapPopUpViewModel.swift in Sources */,
 				045156BC238FB43C0055EED2 /* EditContactAddressCell.swift in Sources */,
 				04B8A237238290C90046D612 /* ContactOnMapCoordinator.swift in Sources */,
+				04E8370A23999F4C00B76D52 /* MapPopUpRouteCell.swift in Sources */,
 				049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */,
 				04B8838B238C493A002316D2 /* TemplateKeyboardAvoidVC.swift in Sources */,
 				045CE93D2369A992003E91DA /* FavouritesCoordinator.swift in Sources */,
@@ -790,6 +815,7 @@
 				045CE94A2369B76C003E91DA /* RecentsVC.swift in Sources */,
 				042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */,
 				045CE9462369B736003E91DA /* RecentsCoordinator.swift in Sources */,
+				0468D7C2239A25E800D39741 /* Double.swift in Sources */,
 				049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */,
 				042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */,
 				04D676512350695800E86E06 /* PhoneContactsProvider.swift in Sources */,
@@ -801,6 +827,7 @@
 				047D9466238E860600FC53EC /* EditContactAddFieldCell.swift in Sources */,
 				04731059237AD87E0056F214 /* ContactDetailsViewModel.swift in Sources */,
 				049C72ED23950943000AD23D /* Recent.swift in Sources */,
+				04AE129C239A4FF300F41595 /* TableView.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
 				0486F8692383399A00303030 /* UserLocationServiceType.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
@@ -826,6 +853,7 @@
 				37011ED7234B9813002A0487 /* Contact.swift in Sources */,
 				0410DBFD238826D3006EB7AE /* FavouritesCell.swift in Sources */,
 				046C9E5E238177F500394F6B /* EditContactCoordinator.swift in Sources */,
+				04AE12A1239A8D2C00F41595 /* MapPopUpRouteStepCell.swift in Sources */,
 				049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */,
 				049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */,
 				045CE95A2369C7AF003E91DA /* ProfileViewModel.swift in Sources */,

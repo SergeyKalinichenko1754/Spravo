@@ -27,7 +27,7 @@ class CommunicationProvider: CommunicationProviderType {
         } else if let fallbackURl = URL(string: phoneFallback), shared.canOpenURL(fallbackURl) {
             shared.open(fallbackURl, options: [:], completionHandler: nil)
         } else {
-            AlertHelper.showAlert(msg: "Enable to call")
+            AlertHelper.showAlert(msg: "Unable to open url to call")
         }
     }
     

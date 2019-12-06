@@ -167,9 +167,8 @@
                                     <action selector="popUpButtonTaped:" destination="bQ5-Nm-ewq" eventType="touchUpInside" id="dn1-8e-k03"/>
                                 </connections>
                             </button>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtL-sd-e0H">
-                                <rect key="frame" x="0.0" y="417" width="375" height="250"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtL-sd-e0H">
+                                <rect key="frame" x="0.0" y="451.5" width="375" height="215.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="fNG-iX-bls" kind="embed" identifier="ToMapPopUpVC" id="XRu-Fs-5vQ"/>
@@ -178,7 +177,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="gtL-sd-e0H" firstAttribute="bottom" secondItem="Bcp-Yf-qxi" secondAttribute="bottom" id="2yd-bm-WL3"/>
                             <constraint firstItem="aZT-6t-2Cr" firstAttribute="leading" secondItem="hdN-NP-bpS" secondAttribute="leading" id="3tK-9o-r8O"/>
+                            <constraint firstItem="gtL-sd-e0H" firstAttribute="trailing" secondItem="Bcp-Yf-qxi" secondAttribute="trailing" id="6Dk-hx-ZEp"/>
                             <constraint firstItem="Bcp-Yf-qxi" firstAttribute="bottom" secondItem="aZT-6t-2Cr" secondAttribute="bottom" id="7Tf-Xp-F9v"/>
                             <constraint firstItem="Bcp-Yf-qxi" firstAttribute="bottom" secondItem="V0B-jR-1xR" secondAttribute="bottom" constant="10" id="CYy-NS-geI"/>
                             <constraint firstItem="aOG-ML-erf" firstAttribute="leading" secondItem="Bcp-Yf-qxi" secondAttribute="leading" constant="10" id="Da4-LH-P3h"/>
@@ -188,6 +189,8 @@
                             <constraint firstItem="Zaz-UE-5Mt" firstAttribute="leading" secondItem="jEy-eo-tpx" secondAttribute="trailing" constant="30" id="gci-6a-zZP"/>
                             <constraint firstAttribute="trailing" secondItem="aZT-6t-2Cr" secondAttribute="trailing" id="hXP-HO-TTr"/>
                             <constraint firstItem="aOG-ML-erf" firstAttribute="top" secondItem="Bcp-Yf-qxi" secondAttribute="top" constant="5" id="iZx-tx-zwE"/>
+                            <constraint firstItem="gtL-sd-e0H" firstAttribute="leading" secondItem="Bcp-Yf-qxi" secondAttribute="leading" id="mQ7-LZ-5np"/>
+                            <constraint firstItem="gtL-sd-e0H" firstAttribute="height" secondItem="Bcp-Yf-qxi" secondAttribute="height" multiplier="1:3" id="pcE-sC-zmd"/>
                             <constraint firstItem="V0B-jR-1xR" firstAttribute="centerX" secondItem="hdN-NP-bpS" secondAttribute="centerX" id="szG-1M-Nyv"/>
                             <constraint firstItem="aZT-6t-2Cr" firstAttribute="top" secondItem="hdN-NP-bpS" secondAttribute="top" id="xYh-Tj-TWF"/>
                         </constraints>
@@ -195,7 +198,8 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="aZT-6t-2Cr" id="QeQ-Sm-Q3V"/>
-                        <outlet property="popUpConteiner" destination="gtL-sd-e0H" id="JOz-90-m1j"/>
+                        <outlet property="popUpConteiner" destination="gtL-sd-e0H" id="cWb-nz-uJv"/>
+                        <outlet property="popUpConteinerHeight" destination="pcE-sC-zmd" id="Ocr-Vk-L4m"/>
                         <outlet property="showAddressLocationButton" destination="jEy-eo-tpx" id="zo4-0y-Z8G"/>
                         <outlet property="showPopUpButton" destination="V0B-jR-1xR" id="DaF-4Y-13N"/>
                         <outlet property="showUserLocationButton" destination="Zaz-UE-5Mt" id="IDi-TN-b6b"/>
@@ -253,7 +257,7 @@
             <objects>
                 <viewController storyboardIdentifier="MapPopUpVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fNG-iX-bls" customClass="MapPopUpVC" customModule="Spravo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MpQ-gN-Ome">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="my0-9c-WHo">
@@ -268,7 +272,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PlQ-nl-yb4">
-                                <rect key="frame" x="0.0" y="40" width="375" height="210"/>
+                                <rect key="frame" x="0.0" y="40" width="375" height="175.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="fNG-iX-bls" id="0Gi-ED-dkv"/>

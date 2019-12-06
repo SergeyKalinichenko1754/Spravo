@@ -21,6 +21,7 @@ protocol ContactOnMapViewModelType {
     func getRoute(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, by: MKDirectionsTransportType,
                   completion: @escaping (_ response: MKDirections.Response?, _ error: String?) -> ())
     func getStrokeColor() -> UIColor
+    func getLastStrokeColor() -> UIColor
 }
 
 class ContactOnMapViewModel: ContactOnMapViewModelType {
@@ -124,5 +125,9 @@ class ContactOnMapViewModel: ContactOnMapViewModelType {
         }
         lastStrokeColor = newStrokeColor
         return newStrokeColor
+    }
+    
+    func getLastStrokeColor() -> UIColor {
+        return lastStrokeColor
     }
 }

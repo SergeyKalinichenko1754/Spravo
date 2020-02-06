@@ -28,9 +28,9 @@ class ErrorScreenVC: UIViewController {
         contentView.layer.borderWidth = 2
         contentView.layer.borderColor = UIColor.gray.cgColor
         contentView.layer.masksToBounds = true
-        contentView.backgroundColor = UIColor(red: 170.0/255.0, green: 168.0/255.0, blue: 170.0/255.0, alpha: 1.0)
+        contentView.backgroundColor = RGBAColor(170, 168, 170, 1)
         actionButton.customSetup(delegate: self)
-        actionButton.button.backgroundColor = UIColor(red: 13.0/255.0, green: 145.0/255.0, blue: 1.0, alpha: 1.0)
+        actionButton.button.backgroundColor = RGBAColor(13, 145, 1, 1)
         actionButton.button.setTitleColor(.black, for: .normal)
         imageView.backgroundColor = .clear
         if let image = image {
@@ -48,7 +48,6 @@ class ErrorScreenVC: UIViewController {
         textView.linkTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.blue]
         textView.sizeToFit()
     }
-    
 }
 
 extension ErrorScreenVC: ActionButtonDelegate {

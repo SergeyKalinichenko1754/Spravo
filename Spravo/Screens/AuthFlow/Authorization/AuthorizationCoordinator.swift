@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AuthorizationCoordinatorTransitions: class {
-    func startFetchPhoneContactsCoordinator()
+    func startFetchPhoneContactsCoordinator(_ autoStartFetchContacts: Bool)
 }
 
 protocol AuthorizationCoordinatorType {
@@ -35,6 +35,6 @@ class AuthorizationCoordinator: AuthorizationCoordinatorType {
     }
     
     func startFetchPhoneContactsCoordinator() {
-        transitions?.startFetchPhoneContactsCoordinator()
+        transitions?.startFetchPhoneContactsCoordinator(false)
     }
 }

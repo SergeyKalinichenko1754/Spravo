@@ -35,4 +35,10 @@ public class ServiceHolder {
             servicesDictionary[name] = nil
         }
     }
+    
+    func isAdded<T>(by type: T.Type) -> Bool {
+        let name = String(reflecting: type)
+        guard let _ = servicesDictionary[name] as? T else { return false }
+        return true
+    }
 }

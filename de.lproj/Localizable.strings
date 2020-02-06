@@ -28,3 +28,75 @@
 "ImportPhoneContacts.ErrorInternetConnection" = "Bitte überprüfe deine Internetverbindung";
 "ImportPhoneContacts.ErrorFetchingPhoneContactsFailed" = "Das Abrufen der Telefonkontakte ist fehlgeschlagen. Bitte versuchen Sie es erneut. Oder wenden Sie sich an den Support";
 "ImportPhoneContacts.ErrorSyncingContactsFailed" = "Synchronisierung der Kontakte fehlgeschlagen. Bitte versuchen Sie es erneut. Oder wenden Sie sich an den Support";
+
+//Favourites
+"Favourites.Title" = "Favoriten";
+"Favourites.EditButtonCaption" = "Bearbeiten";
+"Favourites.DoneButtonCaption" = "Getan";
+
+//Recents
+"Recents.Title" = "Letzte";
+
+//Contacts
+"Contacts.Title" = "Kontakte";
+"Contacts.ErrorCopyFromFb" = "Fehler beim Kopieren der Kontakte von Firebase";
+"Contacts.ImportButtonCaption" = "Telefonkontakte importieren";
+"Contacts.NoName" = "Namenlos";
+"Contacts.SortBy" = "Sortieren nach";
+"Contacts.SortBy.givenName" = "Namen";
+"Contacts.SortBy.familyName" = "Nachname";
+"Contacts.SortBy.fullName" = "vollem Namen";
+"Contacts.SortBy.Cancel" = "Stornieren";
+"Contacts.Edit" = "Bearbeiten";
+"Contacts.Birthday" = "Geburtstag";
+"Contacts.Notes" = "Anmerkungen:";
+"Contacts.AddToFavoritesBtnCaption" = "Zu Favoriten hinzufügen";
+"Contacts.AddressNotFoundError" = "Die angegebene Adresse wurde nicht gefunden. Bearbeiten Sie es bei Bedarf.";
+"_$!<Home>!$_" = "Festnetz";
+"_$!<Work>!$_" = "Arbeits";
+"_$!<iPhone>!$_" = "iPhone";
+"_$!<Mobile>!$_" = "Handy";
+"_$!<Main>!$_" = "Haupt";
+"_$!<HomeFAX>!$_" = "Fax zu Hause";
+"_$!<WorkFAX>!$_" = "Arbeitsfax";
+"_$!<Pager>!$_" = "Pager";
+"_$!<Other>!$_" = "andere";
+"_$!<Empty>!$_" = "";
+
+//ContactDetails
+"ContactDetails.ShareContactBtnCaption" = "Kontakt teilen";
+
+//EditContacts
+"EditContacts.SaveButtonCaption" = "Speichern";
+"EditContacts.GivenNameTextFieldPlaceholder" = "Name:";
+"EditContacts.MiddleNameTextFieldPlaceholder" = "zweiter Vorname:";
+"EditContacts.LastNameTextFieldPlaceholder" = "Nachname:";
+"EditContacts.RemoveContactButtonCaption" = "Kontakt entfernen";
+"EditContacts.DeleteContactQestion" = "Kontakt löschen?";
+"EditContacts.SaveDate" = "Sichere Termin";
+"EditContacts.RemoveDate" = "Datum entfernen";
+"EditContacts.DeleteCell" = "löschen";
+"EditContacts.AddPhone" = "Telefon hinzufügen";
+"EditContacts.AddEmail" = "E-Mail hinzufügen";
+"EditContacts.AddAddress" = "Adresse hinzufügen";
+"EditContacts.AddOwnLabel" = "Eigenes Label hinzufügen";
+"EditContacts.Error.RemoveContactFromFirebase" = "Kontakt kann nicht aus Firebase entfernt werden";
+
+//CustomImagePicker
+"CustomImagePicker.TakePhoto" = "Mach ein Foto";
+"CustomImagePicker.CameraRoll" = "Filmrolle";
+"CustomImagePicker.PhotoLibrary" = "Fotothek";
+"CustomImagePicker.RemovePhoto" = "Foto entfernen";
+
+// MapPopUp
+"MapPopUp.MapTypeLabelText" = "Kartentyp";
+"MapPopUp.MapTypeStandard" = "Standard";
+"MapPopUp.MapTypeSatellite" = "Satellit";
+"MapPopUp.MapRouteLabel" = "Route";
+"MapPopUp.AskForPermission" = "Diese Anwendung erfordert Zugriff auf Ihren Standort. Möchten Sie Einstellungen öffnen und den Zugriff erlauben?";
+"MapPopUp.AskForPermissionCancelButtonCaption" = "Stornieren";
+"MapPopUp.AskForPermissionOpenSettingsButtonCaption" = "Einstellungen öffnen";
+
+//Profile
+"Profile.Title" = "Profil";
+"Profile.LogOutBtnCaption" = "Ausloggen";

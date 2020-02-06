@@ -46,12 +46,13 @@ class PhoneContactsProvider: PhoneContactsProviderType {
                 completion(result, nil)
             case .success(true):
                 DispatchQueue.global().async {
-                    var imagesForContacts = [(Contact, Data?)]()
-                    let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey, CNContactBirthdayKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactNoteKey]
+                    var contactsArray = [(Contact, Data?)]()
+                    let keys = [CNContactGivenNameKey, CNContactMiddleNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey, CNContactBirthdayKey, CNContactPostalAddressesKey, CNContactImageDataKey, CNContactNoteKey]
                     let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
                     do {
                         try self.store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerForStopEnumerating) in
                             let givenName = contact.givenName
+                            let middleName = contact.middleName
                             let familyName = contact.familyName
                             let phones = contact.phoneNumbers.compactMap { LabelString(label: $0.label, value: $0.value.stringValue) }
                             let emails = contact.emailAddresses.compactMap { LabelString(label: $0.label, value: String($0.value)) }
@@ -60,22 +61,19 @@ class PhoneContactsProvider: PhoneContactsProviderType {
                             let image = contact.imageData
                             let note = contact.note
                             let addedContact = Contact(givenName: givenName,
+                                                       middleName: middleName,
                                                        familyName: familyName,
                                                        phones: phones,
                                                        emails: emails,
                                                        birthday: dob,
                                                        addresses: address,
                                                        notes: note)
-                            let contIm = (addedContact, image)
-                            imagesForContacts.append(contIm)
+                            let contactProfile = (addedContact, image)
+                            contactsArray.append(contactProfile)
                         })
-                        DispatchQueue.main.async {
-                            completion(.success(true), imagesForContacts)
-                        }
+                        completion(.success(true), contactsArray)
                     } catch let error {
-                        DispatchQueue.main.async {
-                            completion(.failure(error.localizedDescription), nil)
-                        }
+                        completion(.failure(error.localizedDescription), nil)
                     }
                 }
             }

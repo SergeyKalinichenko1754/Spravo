@@ -9,16 +9,73 @@
 /* Begin PBXBuildFile section */
 		04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04022C632344D89700EABC2B /* GoogleService-Info.plist */; };
 		04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04022C652344E9D700EABC2B /* FirebaseAgent.swift */; };
+		0410DBFD238826D3006EB7AE /* FavouritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410DBFB238826D3006EB7AE /* FavouritesCell.swift */; };
+		0410DBFE238826D3006EB7AE /* FavouritesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0410DBFC238826D3006EB7AE /* FavouritesCell.xib */; };
+		0413D1A1238441FE00C771D5 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413D1A0238441FE00C771D5 /* MKMapView.swift */; };
 		0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414959C233D2BB6001D914C /* AuthorizationVC.swift */; };
+		041B1AF12386C8C800B1B419 /* MapPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B1AF02386C8C800B1B419 /* MapPopUpVC.swift */; };
+		041B1AF32386C9B200B1B419 /* MapPopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B1AF22386C9B200B1B419 /* MapPopUpViewModel.swift */; };
+		041B1AF62386D18900B1B419 /* MapPopUpMapTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B1AF42386D18900B1B419 /* MapPopUpMapTypeCell.swift */; };
+		041B1AF72386D18900B1B419 /* MapPopUpMapTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041B1AF52386D18900B1B419 /* MapPopUpMapTypeCell.xib */; };
 		041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */; };
 		041B3542235F27F100E71B1A /* ServiceScreens.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041B3541235F27F100E71B1A /* ServiceScreens.storyboard */; };
 		041B3545235F614B00E71B1A /* ActivityIndicatorLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */; };
 		041B3547235F626900E71B1A /* ActivityIndicatorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */; };
 		041B3549235F62E600E71B1A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B3548235F62E600E71B1A /* UIView.swift */; };
+		041CADAA238C156C00BF318A /* EditContactPhotoNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CADA8238C156C00BF318A /* EditContactPhotoNameCell.swift */; };
+		041CADAB238C156C00BF318A /* EditContactPhotoNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041CADA9238C156C00BF318A /* EditContactPhotoNameCell.xib */; };
 		042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */; };
 		042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */; };
 		042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */; };
+		042985D2237EC99700A317CE /* ContactDetailsNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042985D0237EC99700A317CE /* ContactDetailsNotesCell.swift */; };
+		042985D3237EC99700A317CE /* ContactDetailsNotesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042985D1237EC99700A317CE /* ContactDetailsNotesCell.xib */; };
+		042985D5237EDBA300A317CE /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042985D4237EDBA300A317CE /* ImageLoader.swift */; };
+		042985D8237EF46700A317CE /* ContactDetailsAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042985D6237EF46700A317CE /* ContactDetailsAddressCell.swift */; };
+		042985D9237EF46700A317CE /* ContactDetailsAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042985D7237EF46700A317CE /* ContactDetailsAddressCell.xib */; };
+		045156BC238FB43C0055EED2 /* EditContactAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045156BA238FB43C0055EED2 /* EditContactAddressCell.swift */; };
+		045156BD238FB43C0055EED2 /* EditContactAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045156BB238FB43C0055EED2 /* EditContactAddressCell.xib */; };
+		045CE92F236993C0003E91DA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE92E236993C0003E91DA /* TabBarCoordinator.swift */; };
+		045CE93123699539003E91DA /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE93023699539003E91DA /* UIColor.swift */; };
+		045CE933236997E3003E91DA /* FavouritesTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE932236997E3003E91DA /* FavouritesTabCoordinator.swift */; };
+		045CE93523699842003E91DA /* RecentsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE93423699842003E91DA /* RecentsTabCoordinator.swift */; };
+		045CE9372369985A003E91DA /* ContactsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9362369985A003E91DA /* ContactsTabCoordinator.swift */; };
+		045CE9392369986F003E91DA /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9382369986F003E91DA /* ProfileTabCoordinator.swift */; };
+		045CE93D2369A992003E91DA /* FavouritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE93C2369A992003E91DA /* FavouritesCoordinator.swift */; };
+		045CE93F2369A9A7003E91DA /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE93E2369A9A7003E91DA /* FavouritesViewModel.swift */; };
+		045CE9412369A9D7003E91DA /* FavouritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9402369A9D7003E91DA /* FavouritesVC.swift */; };
+		045CE9432369B075003E91DA /* Favourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CE9422369B075003E91DA /* Favourites.storyboard */; };
+		045CE9462369B736003E91DA /* RecentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9452369B736003E91DA /* RecentsCoordinator.swift */; };
+		045CE9482369B74F003E91DA /* RecentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9472369B74F003E91DA /* RecentsViewModel.swift */; };
+		045CE94A2369B76C003E91DA /* RecentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9492369B76C003E91DA /* RecentsVC.swift */; };
+		045CE94C2369BC82003E91DA /* Recents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CE94B2369BC82003E91DA /* Recents.storyboard */; };
+		045CE94F2369C1A5003E91DA /* ContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE94E2369C1A5003E91DA /* ContactsCoordinator.swift */; };
+		045CE9512369C1C5003E91DA /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9502369C1C5003E91DA /* ContactsViewModel.swift */; };
+		045CE9532369C1DF003E91DA /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9522369C1DF003E91DA /* ContactsVC.swift */; };
+		045CE9552369C2D2003E91DA /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CE9542369C2D2003E91DA /* Contacts.storyboard */; };
+		045CE9582369C79E003E91DA /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9572369C79E003E91DA /* ProfileCoordinator.swift */; };
+		045CE95A2369C7AF003E91DA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9592369C7AF003E91DA /* ProfileViewModel.swift */; };
+		045CE95C2369C7C4003E91DA /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE95B2369C7C4003E91DA /* ProfileVC.swift */; };
+		045CE95E2369C7D6003E91DA /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045CE95D2369C7D6003E91DA /* Profile.storyboard */; };
+		045CE9622369FA82003E91DA /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CE9602369FA82003E91DA /* ContactsCell.swift */; };
+		045CE9632369FA82003E91DA /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045CE9612369FA82003E91DA /* ContactsCell.xib */; };
+		0468D7C2239A25E800D39741 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468D7C1239A25E800D39741 /* Double.swift */; };
+		046C9E5E238177F500394F6B /* EditContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C9E5D238177F500394F6B /* EditContactCoordinator.swift */; };
+		046C9E602381781000394F6B /* EditContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C9E5F2381781000394F6B /* EditContactViewModel.swift */; };
+		046C9E642381785800394F6B /* EditContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C9E632381785800394F6B /* EditContactVC.swift */; };
+		04731054237AD7700056F214 /* ContactDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04731053237AD7700056F214 /* ContactDetails.storyboard */; };
+		04731057237AD8650056F214 /* ContactDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04731056237AD8650056F214 /* ContactDetailsCoordinator.swift */; };
+		04731059237AD87E0056F214 /* ContactDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04731058237AD87E0056F214 /* ContactDetailsViewModel.swift */; };
+		0473105B237AD89F0056F214 /* ContactDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473105A237AD89F0056F214 /* ContactDetailsVC.swift */; };
+		047D9466238E860600FC53EC /* EditContactAddFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D9464238E860600FC53EC /* EditContactAddFieldCell.swift */; };
+		047D9467238E860600FC53EC /* EditContactAddFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047D9465238E860600FC53EC /* EditContactAddFieldCell.xib */; };
+		047D946A238EE13900FC53EC /* EditContactPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D9468238EE13900FC53EC /* EditContactPhoneCell.swift */; };
+		047D946B238EE13900FC53EC /* EditContactPhoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047D9469238EE13900FC53EC /* EditContactPhoneCell.xib */; };
 		0483CA53233B9C4B003C2D10 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483CA52233B9C4B003C2D10 /* String.swift */; };
+		0486F8692383399A00303030 /* UserLocationServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486F8682383399A00303030 /* UserLocationServiceType.swift */; };
+		048AF44B238AAB14009A5173 /* CommunicationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AF44A238AAB14009A5173 /* CommunicationProvider.swift */; };
+		048DBB8F238D8BA100646F86 /* EditContactNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DBB8D238D8BA100646F86 /* EditContactNotesCell.swift */; };
+		048DBB90238D8BA100646F86 /* EditContactNotesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048DBB8E238D8BA100646F86 /* EditContactNotesCell.xib */; };
+		049C72ED23950943000AD23D /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C72EC23950943000AD23D /* Recent.swift */; };
 		049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D2233E569100344EA7 /* ServiceHolder.swift */; };
 		049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D5233E589700344EA7 /* AppCoordinator.swift */; };
 		049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34D7233E58AA00344EA7 /* AuthFlowCoordinator.swift */; };
@@ -26,21 +83,44 @@
 		049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34DB233E70F700344EA7 /* UIStoryboard.swift */; };
 		049E34DE233E721600344EA7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34DD233E721600344EA7 /* UIViewController.swift */; };
 		049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E34E0233E9C3000344EA7 /* FBAuthorization.swift */; };
+		04A76DF0238D035B00E7216C /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A76DEF238D035B00E7216C /* CustomImagePicker.swift */; };
 		04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */; };
+		04AE129C239A4FF300F41595 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE129B239A4FF300F41595 /* TableView.swift */; };
+		04AE129E239A63B700F41595 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE129D239A63B700F41595 /* NSLayoutConstraint.swift */; };
+		04AE12A1239A8D2C00F41595 /* MapPopUpRouteStepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE129F239A8D2C00F41595 /* MapPopUpRouteStepCell.swift */; };
+		04AE12A2239A8D2C00F41595 /* MapPopUpRouteStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AE12A0239A8D2C00F41595 /* MapPopUpRouteStepCell.xib */; };
+		04AE9A4A239184C000885345 /* PopupMenuAddNewLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE9A48239184C000885345 /* PopupMenuAddNewLabelCell.swift */; };
+		04AE9A4B239184C000885345 /* PopupMenuAddNewLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AE9A49239184C000885345 /* PopupMenuAddNewLabelCell.xib */; };
+		04B0730B23944C6E002DA20C /* TemplateMFMessageComposeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0730A23944C6E002DA20C /* TemplateMFMessageComposeVC.swift */; };
+		04B8838B238C493A002316D2 /* TemplateKeyboardAvoidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8838A238C493A002316D2 /* TemplateKeyboardAvoidVC.swift */; };
+		04B8A235238290940046D612 /* ContactOnMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A234238290940046D612 /* ContactOnMapVC.swift */; };
+		04B8A237238290C90046D612 /* ContactOnMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A236238290C90046D612 /* ContactOnMapCoordinator.swift */; };
+		04B8A239238290DE0046D612 /* ContactOnMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A238238290DE0046D612 /* ContactOnMapViewModel.swift */; };
 		04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8C63D233A86D2008C4269 /* AppDelegate.swift */; };
 		04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C641233A86D2008C4269 /* AuthFlow.storyboard */; };
 		04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C644233A86D4008C4269 /* Assets.xcassets */; };
 		04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */; };
+		04CCBCBB239006C100211904 /* PopupMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCBCBA239006C100211904 /* PopupMenuVC.swift */; };
 		04D55880233D226800511BF7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D55882233D226800511BF7 /* Localizable.strings */; };
 		04D6764B235066E600E86E06 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D6764D235066E600E86E06 /* InfoPlist.strings */; };
 		04D676512350695800E86E06 /* PhoneContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D676502350695800E86E06 /* PhoneContactsProvider.swift */; };
+		04DC6E172396452D0005D5F1 /* RecentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DC6E152396452D0005D5F1 /* RecentsCell.swift */; };
+		04DC6E182396452D0005D5F1 /* RecentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DC6E162396452D0005D5F1 /* RecentsCell.xib */; };
+		04E30A74239100C00002D27D /* PopupMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30A73239100C00002D27D /* PopupMenuViewModel.swift */; };
+		04E30A7723912E7E0002D27D /* PopupMenuLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30A7523912E7E0002D27D /* PopupMenuLabelCell.swift */; };
+		04E30A7823912E7E0002D27D /* PopupMenuLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E30A7623912E7E0002D27D /* PopupMenuLabelCell.xib */; };
+		04E8370A23999F4C00B76D52 /* MapPopUpRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8370823999F4C00B76D52 /* MapPopUpRouteCell.swift */; };
+		04E8370B23999F4C00B76D52 /* MapPopUpRouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8370923999F4C00B76D52 /* MapPopUpRouteCell.xib */; };
 		04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6387233E1BDF00D46342 /* AlertHelper.swift */; };
 		04EB638A233E1CF100D46342 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB6389233E1CF100D46342 /* Defines.swift */; };
 		04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB638B233E21F000D46342 /* HUDRenderer.swift */; };
+		04EBFA13237E817400802F3B /* ContactDetailsPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBFA11237E817400802F3B /* ContactDetailsPhoneCell.swift */; };
+		04EBFA14237E817400802F3B /* ContactDetailsPhoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EBFA12237E817400802F3B /* ContactDetailsPhoneCell.xib */; };
 		04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EFB2EB23603835007A2AB6 /* ActionButton.xib */; };
 		04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2ED2360385B007A2AB6 /* ActionButton.swift */; };
 		04EFB2F02360734B007A2AB6 /* ServiceFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */; };
 		04EFB2F42360AC96007A2AB6 /* ErrorScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFB2F32360AC96007A2AB6 /* ErrorScreenVC.swift */; };
+		04F88E3C2387DE12007656A5 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F88E3B2387DE12007656A5 /* Favourite.swift */; };
 		37011ED3234B97B0002A0487 /* ContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED2234B97B0002A0487 /* ContactsProvider.swift */; };
 		37011ED6234B9812002A0487 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED4234B9812002A0487 /* User.swift */; };
 		37011ED7234B9813002A0487 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37011ED5234B9812002A0487 /* Contact.swift */; };
@@ -50,16 +130,73 @@
 /* Begin PBXFileReference section */
 		04022C632344D89700EABC2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04022C652344E9D700EABC2B /* FirebaseAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAgent.swift; sourceTree = "<group>"; };
+		0410DBFB238826D3006EB7AE /* FavouritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCell.swift; sourceTree = "<group>"; };
+		0410DBFC238826D3006EB7AE /* FavouritesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesCell.xib; sourceTree = "<group>"; };
+		0413D1A0238441FE00C771D5 /* MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		0414959C233D2BB6001D914C /* AuthorizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
+		041B1AF02386C8C800B1B419 /* MapPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpVC.swift; sourceTree = "<group>"; };
+		041B1AF22386C9B200B1B419 /* MapPopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpViewModel.swift; sourceTree = "<group>"; };
+		041B1AF42386D18900B1B419 /* MapPopUpMapTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpMapTypeCell.swift; sourceTree = "<group>"; };
+		041B1AF52386D18900B1B419 /* MapPopUpMapTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPopUpMapTypeCell.xib; sourceTree = "<group>"; };
 		041B353D235F26AC00E71B1A /* ActivityScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreenVC.swift; sourceTree = "<group>"; };
 		041B3541235F27F100E71B1A /* ServiceScreens.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceScreens.storyboard; sourceTree = "<group>"; };
 		041B3544235F614B00E71B1A /* ActivityIndicatorLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorLabel.xib; sourceTree = "<group>"; };
 		041B3546235F626900E71B1A /* ActivityIndicatorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorLabel.swift; sourceTree = "<group>"; };
 		041B3548235F62E600E71B1A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		041CADA8238C156C00BF318A /* EditContactPhotoNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactPhotoNameCell.swift; sourceTree = "<group>"; };
+		041CADA9238C156C00BF318A /* EditContactPhotoNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactPhotoNameCell.xib; sourceTree = "<group>"; };
 		042402C1234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsCoordinator.swift; sourceTree = "<group>"; };
 		042402C3234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsViewModel.swift; sourceTree = "<group>"; };
 		042402C5234F5C3D00D11C25 /* FetchPhoneContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhoneContactsVC.swift; sourceTree = "<group>"; };
+		042985D0237EC99700A317CE /* ContactDetailsNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsNotesCell.swift; sourceTree = "<group>"; };
+		042985D1237EC99700A317CE /* ContactDetailsNotesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailsNotesCell.xib; sourceTree = "<group>"; };
+		042985D4237EDBA300A317CE /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		042985D6237EF46700A317CE /* ContactDetailsAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsAddressCell.swift; sourceTree = "<group>"; };
+		042985D7237EF46700A317CE /* ContactDetailsAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailsAddressCell.xib; sourceTree = "<group>"; };
+		045156BA238FB43C0055EED2 /* EditContactAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactAddressCell.swift; sourceTree = "<group>"; };
+		045156BB238FB43C0055EED2 /* EditContactAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactAddressCell.xib; sourceTree = "<group>"; };
+		045CE92E236993C0003E91DA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		045CE93023699539003E91DA /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		045CE932236997E3003E91DA /* FavouritesTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTabCoordinator.swift; sourceTree = "<group>"; };
+		045CE93423699842003E91DA /* RecentsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsTabCoordinator.swift; sourceTree = "<group>"; };
+		045CE9362369985A003E91DA /* ContactsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTabCoordinator.swift; sourceTree = "<group>"; };
+		045CE9382369986F003E91DA /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
+		045CE93C2369A992003E91DA /* FavouritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCoordinator.swift; sourceTree = "<group>"; };
+		045CE93E2369A9A7003E91DA /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		045CE9402369A9D7003E91DA /* FavouritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesVC.swift; sourceTree = "<group>"; };
+		045CE9422369B075003E91DA /* Favourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourites.storyboard; sourceTree = "<group>"; };
+		045CE9452369B736003E91DA /* RecentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCoordinator.swift; sourceTree = "<group>"; };
+		045CE9472369B74F003E91DA /* RecentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsViewModel.swift; sourceTree = "<group>"; };
+		045CE9492369B76C003E91DA /* RecentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsVC.swift; sourceTree = "<group>"; };
+		045CE94B2369BC82003E91DA /* Recents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recents.storyboard; sourceTree = "<group>"; };
+		045CE94E2369C1A5003E91DA /* ContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCoordinator.swift; sourceTree = "<group>"; };
+		045CE9502369C1C5003E91DA /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		045CE9522369C1DF003E91DA /* ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
+		045CE9542369C2D2003E91DA /* Contacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
+		045CE9572369C79E003E91DA /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		045CE9592369C7AF003E91DA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		045CE95B2369C7C4003E91DA /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		045CE95D2369C7D6003E91DA /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		045CE9602369FA82003E91DA /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
+		045CE9612369FA82003E91DA /* ContactsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
+		0468D7C1239A25E800D39741 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		046C9E5D238177F500394F6B /* EditContactCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactCoordinator.swift; sourceTree = "<group>"; };
+		046C9E5F2381781000394F6B /* EditContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewModel.swift; sourceTree = "<group>"; };
+		046C9E632381785800394F6B /* EditContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactVC.swift; sourceTree = "<group>"; };
+		04731053237AD7700056F214 /* ContactDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContactDetails.storyboard; sourceTree = "<group>"; };
+		04731056237AD8650056F214 /* ContactDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsCoordinator.swift; sourceTree = "<group>"; };
+		04731058237AD87E0056F214 /* ContactDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewModel.swift; sourceTree = "<group>"; };
+		0473105A237AD89F0056F214 /* ContactDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsVC.swift; sourceTree = "<group>"; };
+		047D9464238E860600FC53EC /* EditContactAddFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactAddFieldCell.swift; sourceTree = "<group>"; };
+		047D9465238E860600FC53EC /* EditContactAddFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactAddFieldCell.xib; sourceTree = "<group>"; };
+		047D9468238EE13900FC53EC /* EditContactPhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactPhoneCell.swift; sourceTree = "<group>"; };
+		047D9469238EE13900FC53EC /* EditContactPhoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactPhoneCell.xib; sourceTree = "<group>"; };
 		0483CA52233B9C4B003C2D10 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		0486F8682383399A00303030 /* UserLocationServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationServiceType.swift; sourceTree = "<group>"; };
+		048AF44A238AAB14009A5173 /* CommunicationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationProvider.swift; sourceTree = "<group>"; };
+		048DBB8D238D8BA100646F86 /* EditContactNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactNotesCell.swift; sourceTree = "<group>"; };
+		048DBB8E238D8BA100646F86 /* EditContactNotesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactNotesCell.xib; sourceTree = "<group>"; };
+		049C72EC23950943000AD23D /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		049E34D2233E569100344EA7 /* ServiceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHolder.swift; sourceTree = "<group>"; };
 		049E34D5233E589700344EA7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		049E34D7233E58AA00344EA7 /* AuthFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -67,13 +204,26 @@
 		049E34DB233E70F700344EA7 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		049E34DD233E721600344EA7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		049E34E0233E9C3000344EA7 /* FBAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthorization.swift; sourceTree = "<group>"; };
+		04A76DEF238D035B00E7216C /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
 		04AC39F1233BEECC007EDD56 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
+		04AE129B239A4FF300F41595 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		04AE129D239A63B700F41595 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
+		04AE129F239A8D2C00F41595 /* MapPopUpRouteStepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpRouteStepCell.swift; sourceTree = "<group>"; };
+		04AE12A0239A8D2C00F41595 /* MapPopUpRouteStepCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPopUpRouteStepCell.xib; sourceTree = "<group>"; };
+		04AE9A48239184C000885345 /* PopupMenuAddNewLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuAddNewLabelCell.swift; sourceTree = "<group>"; };
+		04AE9A49239184C000885345 /* PopupMenuAddNewLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMenuAddNewLabelCell.xib; sourceTree = "<group>"; };
+		04B0730A23944C6E002DA20C /* TemplateMFMessageComposeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMFMessageComposeVC.swift; sourceTree = "<group>"; };
+		04B8838A238C493A002316D2 /* TemplateKeyboardAvoidVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateKeyboardAvoidVC.swift; sourceTree = "<group>"; };
+		04B8A234238290940046D612 /* ContactOnMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOnMapVC.swift; sourceTree = "<group>"; };
+		04B8A236238290C90046D612 /* ContactOnMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOnMapCoordinator.swift; sourceTree = "<group>"; };
+		04B8A238238290DE0046D612 /* ContactOnMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOnMapViewModel.swift; sourceTree = "<group>"; };
 		04B8C63A233A86D2008C4269 /* Spravo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spravo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B8C63D233A86D2008C4269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04B8C642233A86D2008C4269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AuthFlow.storyboard; sourceTree = "<group>"; };
 		04B8C644233A86D4008C4269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04B8C647233A86D4008C4269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04B8C649233A86D4008C4269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04CCBCBA239006C100211904 /* PopupMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuVC.swift; sourceTree = "<group>"; };
 		04D55881233D226800511BF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04D55883233D226A00511BF7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04D55884233D226C00511BF7 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -81,13 +231,23 @@
 		04D6764E235066E900E86E06 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04D6764F235066EB00E86E06 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04D676502350695800E86E06 /* PhoneContactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsProvider.swift; sourceTree = "<group>"; };
+		04DC6E152396452D0005D5F1 /* RecentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsCell.swift; sourceTree = "<group>"; };
+		04DC6E162396452D0005D5F1 /* RecentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentsCell.xib; sourceTree = "<group>"; };
+		04E30A73239100C00002D27D /* PopupMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuViewModel.swift; sourceTree = "<group>"; };
+		04E30A7523912E7E0002D27D /* PopupMenuLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuLabelCell.swift; sourceTree = "<group>"; };
+		04E30A7623912E7E0002D27D /* PopupMenuLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupMenuLabelCell.xib; sourceTree = "<group>"; };
+		04E8370823999F4C00B76D52 /* MapPopUpRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpRouteCell.swift; sourceTree = "<group>"; };
+		04E8370923999F4C00B76D52 /* MapPopUpRouteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPopUpRouteCell.xib; sourceTree = "<group>"; };
 		04EB6387233E1BDF00D46342 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		04EB6389233E1CF100D46342 /* Defines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
 		04EB638B233E21F000D46342 /* HUDRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDRenderer.swift; sourceTree = "<group>"; };
+		04EBFA11237E817400802F3B /* ContactDetailsPhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsPhoneCell.swift; sourceTree = "<group>"; };
+		04EBFA12237E817400802F3B /* ContactDetailsPhoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailsPhoneCell.xib; sourceTree = "<group>"; };
 		04EFB2EB23603835007A2AB6 /* ActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionButton.xib; sourceTree = "<group>"; };
 		04EFB2ED2360385B007A2AB6 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		04EFB2EF2360734B007A2AB6 /* ServiceFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFunctions.swift; sourceTree = "<group>"; };
 		04EFB2F32360AC96007A2AB6 /* ErrorScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorScreenVC.swift; sourceTree = "<group>"; };
+		04F88E3B2387DE12007656A5 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 		37011ED2234B97B0002A0487 /* ContactsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsProvider.swift; sourceTree = "<group>"; };
 		37011ED4234B9812002A0487 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		37011ED5234B9812002A0487 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
@@ -114,6 +274,15 @@
 				F0E321E893F6F0731D97556F /* Pods_Spravo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		041B1AEF2386C85F00B1B419 /* MapPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				041B1AF02386C8C800B1B419 /* MapPopUpVC.swift */,
+				041B1AF22386C9B200B1B419 /* MapPopUpViewModel.swift */,
+			);
+			path = MapPopUp;
 			sourceTree = "<group>";
 		};
 		041B353A235F23E100E71B1A /* ActivityScreen */ = {
@@ -155,6 +324,132 @@
 			path = FetchPhoneContacts;
 			sourceTree = "<group>";
 		};
+		045CE92D23699386003E91DA /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				045CE92E236993C0003E91DA /* TabBarCoordinator.swift */,
+				045CE932236997E3003E91DA /* FavouritesTabCoordinator.swift */,
+				045CE93423699842003E91DA /* RecentsTabCoordinator.swift */,
+				045CE9362369985A003E91DA /* ContactsTabCoordinator.swift */,
+				045CE9382369986F003E91DA /* ProfileTabCoordinator.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		045CE93A2369A8EA003E91DA /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				045CE93B2369A967003E91DA /* Favourites */,
+				045CE9442369B6E5003E91DA /* Recents */,
+				045CE94D2369C154003E91DA /* Contacts */,
+				045CE9562369C778003E91DA /* Profile */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		045CE93B2369A967003E91DA /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				045CE93C2369A992003E91DA /* FavouritesCoordinator.swift */,
+				045CE93E2369A9A7003E91DA /* FavouritesViewModel.swift */,
+				045CE9402369A9D7003E91DA /* FavouritesVC.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		045CE9442369B6E5003E91DA /* Recents */ = {
+			isa = PBXGroup;
+			children = (
+				045CE9452369B736003E91DA /* RecentsCoordinator.swift */,
+				045CE9472369B74F003E91DA /* RecentsViewModel.swift */,
+				045CE9492369B76C003E91DA /* RecentsVC.swift */,
+			);
+			path = Recents;
+			sourceTree = "<group>";
+		};
+		045CE94D2369C154003E91DA /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				045CE94E2369C1A5003E91DA /* ContactsCoordinator.swift */,
+				045CE9502369C1C5003E91DA /* ContactsViewModel.swift */,
+				045CE9522369C1DF003E91DA /* ContactsVC.swift */,
+				04731055237AD7F20056F214 /* ContactDetails */,
+				046C9E5C238177B300394F6B /* EditContact */,
+				04B8A233238290650046D612 /* ContactOnMap */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		045CE9562369C778003E91DA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				045CE9572369C79E003E91DA /* ProfileCoordinator.swift */,
+				045CE9592369C7AF003E91DA /* ProfileViewModel.swift */,
+				045CE95B2369C7C4003E91DA /* ProfileVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		045CE95F2369F9BA003E91DA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0410DBFB238826D3006EB7AE /* FavouritesCell.swift */,
+				0410DBFC238826D3006EB7AE /* FavouritesCell.xib */,
+				04DC6E152396452D0005D5F1 /* RecentsCell.swift */,
+				04DC6E162396452D0005D5F1 /* RecentsCell.xib */,
+				045CE9602369FA82003E91DA /* ContactsCell.swift */,
+				045CE9612369FA82003E91DA /* ContactsCell.xib */,
+				04EBFA11237E817400802F3B /* ContactDetailsPhoneCell.swift */,
+				04EBFA12237E817400802F3B /* ContactDetailsPhoneCell.xib */,
+				042985D0237EC99700A317CE /* ContactDetailsNotesCell.swift */,
+				042985D1237EC99700A317CE /* ContactDetailsNotesCell.xib */,
+				042985D6237EF46700A317CE /* ContactDetailsAddressCell.swift */,
+				042985D7237EF46700A317CE /* ContactDetailsAddressCell.xib */,
+				041B1AF42386D18900B1B419 /* MapPopUpMapTypeCell.swift */,
+				041B1AF52386D18900B1B419 /* MapPopUpMapTypeCell.xib */,
+				04E8370823999F4C00B76D52 /* MapPopUpRouteCell.swift */,
+				04E8370923999F4C00B76D52 /* MapPopUpRouteCell.xib */,
+				04AE129F239A8D2C00F41595 /* MapPopUpRouteStepCell.swift */,
+				04AE12A0239A8D2C00F41595 /* MapPopUpRouteStepCell.xib */,
+				041CADA8238C156C00BF318A /* EditContactPhotoNameCell.swift */,
+				041CADA9238C156C00BF318A /* EditContactPhotoNameCell.xib */,
+				047D9468238EE13900FC53EC /* EditContactPhoneCell.swift */,
+				047D9469238EE13900FC53EC /* EditContactPhoneCell.xib */,
+				048DBB8D238D8BA100646F86 /* EditContactNotesCell.swift */,
+				048DBB8E238D8BA100646F86 /* EditContactNotesCell.xib */,
+				047D9464238E860600FC53EC /* EditContactAddFieldCell.swift */,
+				047D9465238E860600FC53EC /* EditContactAddFieldCell.xib */,
+				045156BA238FB43C0055EED2 /* EditContactAddressCell.swift */,
+				045156BB238FB43C0055EED2 /* EditContactAddressCell.xib */,
+				04E30A7523912E7E0002D27D /* PopupMenuLabelCell.swift */,
+				04E30A7623912E7E0002D27D /* PopupMenuLabelCell.xib */,
+				04AE9A48239184C000885345 /* PopupMenuAddNewLabelCell.swift */,
+				04AE9A49239184C000885345 /* PopupMenuAddNewLabelCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		046C9E5C238177B300394F6B /* EditContact */ = {
+			isa = PBXGroup;
+			children = (
+				046C9E5D238177F500394F6B /* EditContactCoordinator.swift */,
+				046C9E5F2381781000394F6B /* EditContactViewModel.swift */,
+				046C9E632381785800394F6B /* EditContactVC.swift */,
+				04CCBCB92390067800211904 /* PopupMenu */,
+			);
+			path = EditContact;
+			sourceTree = "<group>";
+		};
+		04731055237AD7F20056F214 /* ContactDetails */ = {
+			isa = PBXGroup;
+			children = (
+				04731056237AD8650056F214 /* ContactDetailsCoordinator.swift */,
+				04731058237AD87E0056F214 /* ContactDetailsViewModel.swift */,
+				0473105A237AD89F0056F214 /* ContactDetailsVC.swift */,
+			);
+			path = ContactDetails;
+			sourceTree = "<group>";
+		};
 		0483CA51233B9B08003C2D10 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +457,11 @@
 				049E34DB233E70F700344EA7 /* UIStoryboard.swift */,
 				049E34DD233E721600344EA7 /* UIViewController.swift */,
 				041B3548235F62E600E71B1A /* UIView.swift */,
+				04AE129B239A4FF300F41595 /* TableView.swift */,
+				045CE93023699539003E91DA /* UIColor.swift */,
+				0413D1A0238441FE00C771D5 /* MKMapView.swift */,
+				0468D7C1239A25E800D39741 /* Double.swift */,
+				04AE129D239A63B700F41595 /* NSLayoutConstraint.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -172,6 +472,11 @@
 				04B8C646233A86D4008C4269 /* LaunchScreen.storyboard */,
 				041B3541235F27F100E71B1A /* ServiceScreens.storyboard */,
 				04B8C641233A86D2008C4269 /* AuthFlow.storyboard */,
+				045CE9422369B075003E91DA /* Favourites.storyboard */,
+				045CE94B2369BC82003E91DA /* Recents.storyboard */,
+				045CE9542369C2D2003E91DA /* Contacts.storyboard */,
+				045CE95D2369C7D6003E91DA /* Profile.storyboard */,
+				04731053237AD7700056F214 /* ContactDetails.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -181,6 +486,8 @@
 			children = (
 				37011ED5234B9812002A0487 /* Contact.swift */,
 				37011ED4234B9812002A0487 /* User.swift */,
+				04F88E3B2387DE12007656A5 /* Favourite.swift */,
+				049C72EC23950943000AD23D /* Recent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,6 +498,7 @@
 				04EFB2F22360AC74007A2AB6 /* ErrorScreen */,
 				041B353A235F23E100E71B1A /* ActivityScreen */,
 				049E34DF233E769800344EA7 /* AuthFlow */,
+				045CE93A2369A8EA003E91DA /* TabBar */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -203,6 +511,9 @@
 				04022C652344E9D700EABC2B /* FirebaseAgent.swift */,
 				049E34E0233E9C3000344EA7 /* FBAuthorization.swift */,
 				04D676502350695800E86E06 /* PhoneContactsProvider.swift */,
+				042985D4237EDBA300A317CE /* ImageLoader.swift */,
+				0486F8682383399A00303030 /* UserLocationServiceType.swift */,
+				048AF44A238AAB14009A5173 /* CommunicationProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -212,6 +523,7 @@
 			children = (
 				049E34D5233E589700344EA7 /* AppCoordinator.swift */,
 				049E34D7233E58AA00344EA7 /* AuthFlowCoordinator.swift */,
+				045CE92D23699386003E91DA /* TabBar */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -223,6 +535,27 @@
 				042402C0234F5B9C00D11C25 /* FetchPhoneContacts */,
 			);
 			path = AuthFlow;
+			sourceTree = "<group>";
+		};
+		04B88389238C486C002316D2 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				04B8838A238C493A002316D2 /* TemplateKeyboardAvoidVC.swift */,
+				04A76DEF238D035B00E7216C /* CustomImagePicker.swift */,
+				04B0730A23944C6E002DA20C /* TemplateMFMessageComposeVC.swift */,
+			);
+			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		04B8A233238290650046D612 /* ContactOnMap */ = {
+			isa = PBXGroup;
+			children = (
+				04B8A236238290C90046D612 /* ContactOnMapCoordinator.swift */,
+				04B8A238238290DE0046D612 /* ContactOnMapViewModel.swift */,
+				04B8A234238290940046D612 /* ContactOnMapVC.swift */,
+				041B1AEF2386C85F00B1B419 /* MapPopUp */,
+			);
+			path = ContactOnMap;
 			sourceTree = "<group>";
 		};
 		04B8C631233A86D2008C4269 = {
@@ -248,10 +581,12 @@
 		04B8C63C233A86D2008C4269 /* Spravo */ = {
 			isa = PBXGroup;
 			children = (
+				04B88389238C486C002316D2 /* CustomClasses */,
 				049E34D4233E587A00344EA7 /* Coordinators */,
 				049E34D1233E567000344EA7 /* Services */,
 				04EB6386233E1BBC00D46342 /* Helpers */,
 				0483CA56233B9D5E003C2D10 /* Screens */,
+				045CE95F2369F9BA003E91DA /* Cells */,
 				0483CA55233B9D3F003C2D10 /* Models */,
 				041B3543235F610B00E71B1A /* Views */,
 				0483CA54233B9CFA003C2D10 /* Storyboards */,
@@ -262,6 +597,15 @@
 				04022C632344D89700EABC2B /* GoogleService-Info.plist */,
 			);
 			path = Spravo;
+			sourceTree = "<group>";
+		};
+		04CCBCB92390067800211904 /* PopupMenu */ = {
+			isa = PBXGroup;
+			children = (
+				04E30A73239100C00002D27D /* PopupMenuViewModel.swift */,
+				04CCBCBA239006C100211904 /* PopupMenuVC.swift */,
+			);
+			path = PopupMenu;
 			sourceTree = "<group>";
 		};
 		04EB6386233E1BBC00D46342 /* Helpers */ = {
@@ -354,14 +698,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E30A7823912E7E0002D27D /* PopupMenuLabelCell.xib in Resources */,
+				041B1AF72386D18900B1B419 /* MapPopUpMapTypeCell.xib in Resources */,
+				04AE9A4B239184C000885345 /* PopupMenuAddNewLabelCell.xib in Resources */,
 				041B3542235F27F100E71B1A /* ServiceScreens.storyboard in Resources */,
+				047D9467238E860600FC53EC /* EditContactAddFieldCell.xib in Resources */,
+				04731054237AD7700056F214 /* ContactDetails.storyboard in Resources */,
 				04B8C648233A86D4008C4269 /* LaunchScreen.storyboard in Resources */,
+				047D946B238EE13900FC53EC /* EditContactPhoneCell.xib in Resources */,
+				04DC6E182396452D0005D5F1 /* RecentsCell.xib in Resources */,
 				04D6764B235066E600E86E06 /* InfoPlist.strings in Resources */,
+				04EBFA14237E817400802F3B /* ContactDetailsPhoneCell.xib in Resources */,
+				048DBB90238D8BA100646F86 /* EditContactNotesCell.xib in Resources */,
 				04D55880233D226800511BF7 /* Localizable.strings in Resources */,
+				045156BD238FB43C0055EED2 /* EditContactAddressCell.xib in Resources */,
+				0410DBFE238826D3006EB7AE /* FavouritesCell.xib in Resources */,
+				045CE9432369B075003E91DA /* Favourites.storyboard in Resources */,
+				045CE95E2369C7D6003E91DA /* Profile.storyboard in Resources */,
+				04AE12A2239A8D2C00F41595 /* MapPopUpRouteStepCell.xib in Resources */,
+				042985D9237EF46700A317CE /* ContactDetailsAddressCell.xib in Resources */,
+				045CE9632369FA82003E91DA /* ContactsCell.xib in Resources */,
 				04EFB2EC23603835007A2AB6 /* ActionButton.xib in Resources */,
+				045CE94C2369BC82003E91DA /* Recents.storyboard in Resources */,
 				04022C642344D89700EABC2B /* GoogleService-Info.plist in Resources */,
+				042985D3237EC99700A317CE /* ContactDetailsNotesCell.xib in Resources */,
+				041CADAB238C156C00BF318A /* EditContactPhotoNameCell.xib in Resources */,
 				041B3545235F614B00E71B1A /* ActivityIndicatorLabel.xib in Resources */,
+				045CE9552369C2D2003E91DA /* Contacts.storyboard in Resources */,
 				04B8C645233A86D4008C4269 /* Assets.xcassets in Resources */,
+				04E8370B23999F4C00B76D52 /* MapPopUpRouteCell.xib in Resources */,
 				04B8C643233A86D2008C4269 /* AuthFlow.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,34 +780,93 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0473105B237AD89F0056F214 /* ContactDetailsVC.swift in Sources */,
+				045CE9582369C79E003E91DA /* ProfileCoordinator.swift in Sources */,
+				04AE9A4A239184C000885345 /* PopupMenuAddNewLabelCell.swift in Sources */,
+				046C9E642381785800394F6B /* EditContactVC.swift in Sources */,
 				37011ED3234B97B0002A0487 /* ContactsProvider.swift in Sources */,
 				049E34DE233E721600344EA7 /* UIViewController.swift in Sources */,
+				042985D8237EF46700A317CE /* ContactDetailsAddressCell.swift in Sources */,
 				04EB638A233E1CF100D46342 /* Defines.swift in Sources */,
 				041B3547235F626900E71B1A /* ActivityIndicatorLabel.swift in Sources */,
+				04E30A7723912E7E0002D27D /* PopupMenuLabelCell.swift in Sources */,
+				048DBB8F238D8BA100646F86 /* EditContactNotesCell.swift in Sources */,
+				045CE9622369FA82003E91DA /* ContactsCell.swift in Sources */,
+				045CE9392369986F003E91DA /* ProfileTabCoordinator.swift in Sources */,
 				04EB6388233E1BDF00D46342 /* AlertHelper.swift in Sources */,
+				045CE92F236993C0003E91DA /* TabBarCoordinator.swift in Sources */,
+				04AE129E239A63B700F41595 /* NSLayoutConstraint.swift in Sources */,
 				04022C662344E9D700EABC2B /* FirebaseAgent.swift in Sources */,
 				049E34D6233E589700344EA7 /* AppCoordinator.swift in Sources */,
 				041B3549235F62E600E71B1A /* UIView.swift in Sources */,
+				045CE933236997E3003E91DA /* FavouritesTabCoordinator.swift in Sources */,
+				04CCBCBB239006C100211904 /* PopupMenuVC.swift in Sources */,
+				041B1AF32386C9B200B1B419 /* MapPopUpViewModel.swift in Sources */,
+				045156BC238FB43C0055EED2 /* EditContactAddressCell.swift in Sources */,
+				04B8A237238290C90046D612 /* ContactOnMapCoordinator.swift in Sources */,
+				04E8370A23999F4C00B76D52 /* MapPopUpRouteCell.swift in Sources */,
 				049E34D8233E58AA00344EA7 /* AuthFlowCoordinator.swift in Sources */,
+				04B8838B238C493A002316D2 /* TemplateKeyboardAvoidVC.swift in Sources */,
+				045CE93D2369A992003E91DA /* FavouritesCoordinator.swift in Sources */,
+				0413D1A1238441FE00C771D5 /* MKMapView.swift in Sources */,
+				045CE93523699842003E91DA /* RecentsTabCoordinator.swift in Sources */,
+				04B0730B23944C6E002DA20C /* TemplateMFMessageComposeVC.swift in Sources */,
+				045CE9482369B74F003E91DA /* RecentsViewModel.swift in Sources */,
+				045CE94A2369B76C003E91DA /* RecentsVC.swift in Sources */,
 				042402C2234F5BF200D11C25 /* FetchPhoneContactsCoordinator.swift in Sources */,
+				045CE9462369B736003E91DA /* RecentsCoordinator.swift in Sources */,
+				0468D7C2239A25E800D39741 /* Double.swift in Sources */,
 				049E34E1233E9C3000344EA7 /* FBAuthorization.swift in Sources */,
 				042402C4234F5C1800D11C25 /* FetchPhoneContactsViewModel.swift in Sources */,
 				04D676512350695800E86E06 /* PhoneContactsProvider.swift in Sources */,
 				04EFB2F42360AC96007A2AB6 /* ErrorScreenVC.swift in Sources */,
+				04E30A74239100C00002D27D /* PopupMenuViewModel.swift in Sources */,
 				37011ED6234B9812002A0487 /* User.swift in Sources */,
+				045CE95C2369C7C4003E91DA /* ProfileVC.swift in Sources */,
+				045CE93F2369A9A7003E91DA /* FavouritesViewModel.swift in Sources */,
+				047D9466238E860600FC53EC /* EditContactAddFieldCell.swift in Sources */,
+				04731059237AD87E0056F214 /* ContactDetailsViewModel.swift in Sources */,
+				049C72ED23950943000AD23D /* Recent.swift in Sources */,
+				04AE129C239A4FF300F41595 /* TableView.swift in Sources */,
 				0483CA53233B9C4B003C2D10 /* String.swift in Sources */,
+				0486F8692383399A00303030 /* UserLocationServiceType.swift in Sources */,
 				04EB638C233E21F000D46342 /* HUDRenderer.swift in Sources */,
+				042985D2237EC99700A317CE /* ContactDetailsNotesCell.swift in Sources */,
 				042402C6234F5C3D00D11C25 /* FetchPhoneContactsVC.swift in Sources */,
+				04F88E3C2387DE12007656A5 /* Favourite.swift in Sources */,
+				041B1AF12386C8C800B1B419 /* MapPopUpVC.swift in Sources */,
+				045CE93123699539003E91DA /* UIColor.swift in Sources */,
 				0414959D233D2BB6001D914C /* AuthorizationVC.swift in Sources */,
+				041B1AF62386D18900B1B419 /* MapPopUpMapTypeCell.swift in Sources */,
+				04B8A235238290940046D612 /* ContactOnMapVC.swift in Sources */,
+				042985D5237EDBA300A317CE /* ImageLoader.swift in Sources */,
+				04731057237AD8650056F214 /* ContactDetailsCoordinator.swift in Sources */,
+				048AF44B238AAB14009A5173 /* CommunicationProvider.swift in Sources */,
 				04AC39F2233BEECC007EDD56 /* AuthorizationViewModel.swift in Sources */,
 				04B8C63E233A86D2008C4269 /* AppDelegate.swift in Sources */,
+				045CE9532369C1DF003E91DA /* ContactsVC.swift in Sources */,
+				041CADAA238C156C00BF318A /* EditContactPhotoNameCell.swift in Sources */,
+				045CE9512369C1C5003E91DA /* ContactsViewModel.swift in Sources */,
+				045CE9372369985A003E91DA /* ContactsTabCoordinator.swift in Sources */,
+				047D946A238EE13900FC53EC /* EditContactPhoneCell.swift in Sources */,
 				049E34DA233E6DFE00344EA7 /* AuthorizationCoordinator.swift in Sources */,
 				37011ED7234B9813002A0487 /* Contact.swift in Sources */,
+				0410DBFD238826D3006EB7AE /* FavouritesCell.swift in Sources */,
+				046C9E5E238177F500394F6B /* EditContactCoordinator.swift in Sources */,
+				04AE12A1239A8D2C00F41595 /* MapPopUpRouteStepCell.swift in Sources */,
 				049E34D3233E569100344EA7 /* ServiceHolder.swift in Sources */,
 				049E34DC233E70F700344EA7 /* UIStoryboard.swift in Sources */,
+				045CE95A2369C7AF003E91DA /* ProfileViewModel.swift in Sources */,
+				04DC6E172396452D0005D5F1 /* RecentsCell.swift in Sources */,
 				041B353E235F26AC00E71B1A /* ActivityScreenVC.swift in Sources */,
+				04B8A239238290DE0046D612 /* ContactOnMapViewModel.swift in Sources */,
+				045CE94F2369C1A5003E91DA /* ContactsCoordinator.swift in Sources */,
+				046C9E602381781000394F6B /* EditContactViewModel.swift in Sources */,
 				04EFB2EE2360385B007A2AB6 /* ActionButton.swift in Sources */,
+				04A76DF0238D035B00E7216C /* CustomImagePicker.swift in Sources */,
+				045CE9412369A9D7003E91DA /* FavouritesVC.swift in Sources */,
 				04EFB2F02360734B007A2AB6 /* ServiceFunctions.swift in Sources */,
+				04EBFA13237E817400802F3B /* ContactDetailsPhoneCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

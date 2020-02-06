@@ -9,7 +9,6 @@
 import MBProgressHUD
 
 class HUDRenderer {
-    
     class func showHUD() {
         updateUIonMainThread {
             guard let view = UIApplication.shared.keyWindow else { return }

@@ -28,3 +28,76 @@
 "ImportPhoneContacts.ErrorInternetConnection" = "Please, check your Internet connection";
 "ImportPhoneContacts.ErrorFetchingPhoneContactsFailed" = "Fetching phone contacts failed. Please, try again Or contact support";
 "ImportPhoneContacts.ErrorSyncingContactsFailed" = "Syncing contacts failed. Please, try again Or contact support";
+
+//Favourites
+"Favourites.Title" = "Favourites";
+"Favourites.EditButtonCaption" = "Edit";
+"Favourites.DoneButtonCaption" = "Done";
+
+//Recents
+"Recents.Title" = "Recents";
+
+//Contacts
+"Contacts.Title" = "Contacts";
+"Contacts.ErrorCopyFromFb" = "Error copying contacts from Firebase";
+"Contacts.ImportButtonCaption" = "Import phone contacts";
+"Contacts.NoName" = "No name";
+"Contacts.SortBy" = "Sort by";
+"Contacts.SortBy.givenName" = "Name";
+"Contacts.SortBy.familyName" = "Last Name";
+"Contacts.SortBy.fullName" = "Full name";
+"Contacts.SortBy.Cancel" = "Cancel";
+"Contacts.Edit" = "Edit";
+"Contacts.Birthday" = "birthday";
+"Contacts.Notes" = "notes:";
+"Contacts.AddToFavoritesBtnCaption" = "Add to Favorites";
+"Contacts.AddressNotFoundError" = "The specified address was not found. Edit it if necessary.";
+"_$!<Home>!$_" = "home";
+"_$!<Work>!$_" = "work";
+"_$!<iPhone>!$_" = "iPhone";
+"_$!<Mobile>!$_" = "mobile";
+"_$!<Main>!$_" = "main";
+"_$!<HomeFAX>!$_" = "home fax";
+"_$!<WorkFAX>!$_" = "work fax";
+"_$!<Pager>!$_" = "pager";
+"_$!<Other>!$_" = "other";
+"_$!<Empty>!$_" = "";
+
+//ContactDetails
+"ContactDetails.ShareContactBtnCaption" = "Share Contact";
+
+//EditContacts
+"EditContacts.SaveButtonCaption" = "Save";
+"EditContacts.GivenNameTextFieldPlaceholder" = "Name:";
+"EditContacts.MiddleNameTextFieldPlaceholder" = "Middle name:";
+"EditContacts.LastNameTextFieldPlaceholder" = "Last name:";
+"EditContacts.RemoveContactButtonCaption" = "Remove contact";
+"EditContacts.DeleteContactQestion" = "Delete contact?";
+"EditContacts.SaveDate" = "Save date";
+"EditContacts.RemoveDate" = "Remove date";
+"EditContacts.DeleteCell" = "Delete";
+"EditContacts.AddPhone" = "Add phone";
+"EditContacts.AddEmail" = "Add email";
+"EditContacts.AddAddress" = "Add address";
+"EditContacts.AddOwnLabel" = "Add own label";
+"EditContacts.Error.RemoveContactFromFirebase" = "Unable to remove contact from Firebase";
+
+//CustomImagePicker
+"CustomImagePicker.TakePhoto" = "Take a photo";
+"CustomImagePicker.CameraRoll" = "Camera roll";
+"CustomImagePicker.PhotoLibrary" = "Photo library";
+"CustomImagePicker.RemovePhoto" = "Remove current photo";
+
+// MapPopUp
+"MapPopUp.MapTypeLabelText" = "Map type";
+"MapPopUp.MapTypeStandard" = "Standard";
+"MapPopUp.MapTypeSatellite" = "Satellite";
+"MapPopUp.MapRouteLabel" = "Route";
+"MapPopUp.AskForPermission" = "This application requires access to your location. Do you want to open settings and allow access?";
+"MapPopUp.AskForPermissionCancelButtonCaption" = "Cancel";
+"MapPopUp.AskForPermissionOpenSettingsButtonCaption" = "Open Settings";
+"km." = "km.";
+
+//Profile
+"Profile.Title" = "Profile";
+"Profile.LogOutBtnCaption" = "Log Out";

@@ -14,7 +14,6 @@ protocol AuthFlowCoordinatorTransitions: class {
 }
 
 class AuthFlowCoordinator {
-    
     private let window: UIWindow
     private let rootNav = UINavigationController()
     private weak var transitions: AuthFlowCoordinatorTransitions?
@@ -27,7 +26,6 @@ class AuthFlowCoordinator {
     }
     
     func start() {
-        startServices()
         rootNav.setNavigationBarHidden(true, animated: false)
         let fbAuthorization = serviceHolder.get(by: FBAuthorization.self),
         firebaseAgent = serviceHolder.get(by: FirebaseAgent.self),
@@ -36,12 +34,7 @@ class AuthFlowCoordinator {
             //TODO(SergeyK): Revisit refresh token issue //fbAuthorization.refreshToken()
             guard let userFbId = fbAuthorization.getFBUserId() else { return }
             contactsProvider.user.facebookId = userFbId
-            if firebaseAgent.isPhoneContactsLoadedAlready(userFbId: userFbId) {
-                transitions?.userDidLogin()                
-            } else {
-                startFetchPhoneContactsCoordinator()
-                setupRootViewController(rootNav)
-            }
+            transitions?.userDidLogin()
         } else {
             let coordinator = AuthorizationCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
             coordinator.start()
@@ -56,36 +49,31 @@ class AuthFlowCoordinator {
 }
 
 extension AuthFlowCoordinator: AuthorizationCoordinatorTransitions {
-    func startFetchPhoneContactsCoordinator() {
+    func startFetchPhoneContactsCoordinator(_ autoStartFetchContacts: Bool = false) {
         let phoneContactsProvider = PhoneContactsProvider()
         serviceHolder.add(PhoneContactsProvider.self, for: phoneContactsProvider)
         let coordinator = FetchPhoneContactsCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
+        coordinator.autoStartFetchContacts = autoStartFetchContacts
         coordinator.start()
-    }
-}
-
-extension AuthFlowCoordinator {
-    private func startServices() {
-        let fbAuthorization = FBAuthorization()
-        let firebaseAgent = FirebaseAgent()
-        let contactsProvider = ContactsProvider(user: User())
-        serviceHolder.add(FBAuthorization.self, for: fbAuthorization)
-        serviceHolder.add(FirebaseAgent.self, for: firebaseAgent)
-        serviceHolder.add(ContactsProvider.self, for: contactsProvider)
-    }
-    
-    private func removeServices() {
-        serviceHolder.remove(by: FBAuthorization.self)
     }
 }
 
 extension AuthFlowCoordinator: FetcPhoneContactsCoordinatorTransitions {
     func userDidLogin() {
-        removeServices()
+        serviceHolder.remove(by: PhoneContactsProvider.self)
         transitions?.userDidLogin()
     }
     
     func userInterruptedProgram() {
+        serviceHolder.remove(by: PhoneContactsProvider.self)
         transitions?.userInterruptedProgram()
+    }
+}
+
+extension AuthFlowCoordinator {
+    func startFromFetch() {
+        rootNav.setNavigationBarHidden(true, animated: false)
+        startFetchPhoneContactsCoordinator(true)
+        setupRootViewController(rootNav)
     }
 }

@@ -10,8 +10,9 @@ import UIKit
 
 class AppCoordinator {
     private let window: UIWindow
+    private let serviceHolder = ServiceHolder()
     private var authFlowCoordinator: AuthFlowCoordinator?
-    private var serviceHolder = ServiceHolder()
+    private var tabBarCoordinator: TabBarCoordinator?
     
     init(window: UIWindow) {
         self.window = window
@@ -19,28 +20,73 @@ class AppCoordinator {
     }
     
     private func start() {
+        startInitialServices()
         authorizationStart()
     }
     
     private func authorizationStart() {
+        tabBarCoordinator = nil
         authFlowCoordinator = AuthFlowCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
         authFlowCoordinator?.start()
     }
     
     private func enterApp() {
-        //TODO(Serhii K.) start AddressBookTabBarCoordinator and delete debugPrint("Start ...
-        debugPrint("Start AddressBookTabBarCoordinator **************")
         authFlowCoordinator = nil
+        tabBarCoordinator = TabBarCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
+        tabBarCoordinator?.start()
+    }
+}
+
+extension AppCoordinator {
+    private func startInitialServices() {
+        let fbAuthorization = FBAuthorization()
+        let firebaseAgent = FirebaseAgent()
+        let contactsProvider = ContactsProvider(user: User())
+        let imageLoader = ImageLoader()
+        serviceHolder.add(FBAuthorization.self, for: fbAuthorization)
+        serviceHolder.add(FirebaseAgent.self, for: firebaseAgent)
+        serviceHolder.add(ContactsProvider.self, for: contactsProvider)
+        serviceHolder.add(ImageLoader.self, for: imageLoader)
     }
 }
 
 extension AppCoordinator: AuthFlowCoordinatorTransitions {
     func userDidLogin() {
+        startTabBarServices()
         enterApp()
     }
     
     func userInterruptedProgram() {
         //TODO(Serhii K.) will be change later
         exit(0)
+    }
+}
+
+extension AppCoordinator: TabBarCoordinatorTransitions {
+    func logout() {
+        let fbAuthorization = serviceHolder.get(by: FBAuthorization.self),
+        firebaseAgent = serviceHolder.get(by: FirebaseAgent.self),
+        contactsProvider = serviceHolder.get(by: ContactsProvider.self),
+        _ = firebaseAgent.signOut()
+        fbAuthorization.logOutFromFB()
+        contactsProvider.logOut()
+        cleanServices()
+        authorizationStart()
+    }
+    
+    func startFetchPhoneContacts() {
+        tabBarCoordinator = nil
+        authFlowCoordinator = AuthFlowCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
+        authFlowCoordinator?.startFromFetch()
+    }
+    
+    func startTabBarServices() {
+        let communicationProvider = CommunicationProvider()
+        serviceHolder.add(CommunicationProvider.self, for: communicationProvider)
+    }
+    
+    private func cleanServices() {
+        serviceHolder.remove(by: UserLocationService.self)
+        serviceHolder.remove(by: CommunicationProvider.self)
     }
 }

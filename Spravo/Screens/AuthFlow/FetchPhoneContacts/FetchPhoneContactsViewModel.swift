@@ -32,18 +32,32 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
     }
 
     func fetchPhonesContacts(completion: @escaping (BoolResult) -> ()) {
-        //TODO(Serhii K.) question to Seniour ( Should implement [weak self]? in this block )
-        phoneContactsProvider.fetchExistingPhoneContacts { (result, contacts) in
+        let error = NSLocalizedString("ImportPhoneContacts.ErrorFetchingPhoneContactsFailed", comment: "Message about fetching phones contacts failed") + ": " + supportEmail
+        guard let userFbId = contactsProvider.user.facebookId else {
+            completion(.failure(error))
+            return
+        }
+        firebaseAgent.collectionExists(userFbId: userFbId) { [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .failure, .success(false):
-                completion(result)
+            case .failure:
+                completion(.failure(error))
             case .success(true):
-                if let contacts = contacts {
-                    self.phoneContacts = contacts
-                    completion(result)
-                } else {
-                    let error = NSLocalizedString("ImportPhoneContacts.ErrorFetchingPhoneContactsFailed", comment: "Message about fetching phones contacts failed") + ": " + supportEmail
-                    completion(.failure(error))
+                self.finishedRequestContacts()
+            default:
+                self.phoneContactsProvider.fetchExistingPhoneContacts { [weak self] (result, contacts) in
+                    guard let self = self else { return }
+                    switch result {
+                    case .failure, .success(false):
+                        completion(result)
+                    case .success(true):
+                        if let contacts = contacts {
+                            self.phoneContacts = contacts
+                            completion(result)
+                        } else {
+                            completion(.failure(error))
+                        }
+                    }
                 }
             }
         }
@@ -61,7 +75,8 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
             if let data = contact.1 {
                 image = UIImage(data: data)
             }
-            firebaseAgent.saveNewContact(userFbId: userFbId, contact: contact.0, userProfileImage: image) { [weak self] error in
+            firebaseAgent.saveNewContact(userFbId: userFbId, contact: contact.0, userProfileImage: image)
+            { [weak self] (error, contactID, imageUrl) in
                 guard let self = self else { return }
                 contactsQuantity -= 1
                 if error != nil {
@@ -70,7 +85,6 @@ class FetchPhoneContactsViewModel: FetchPhoneContactsViewModelType {
                     return
                 } else if contactsQuantity == 0 {
                     self.phoneContacts = []
-                    self.firebaseAgent.setUploadPhonesContactsMark(userFbId: userFbId)
                     completion(nil)
                     return
                 }

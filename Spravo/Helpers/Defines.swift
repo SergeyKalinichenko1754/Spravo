@@ -9,3 +9,4 @@
 import Foundation
 
 let supportEmail = "spravo.support@gmail.com"
+

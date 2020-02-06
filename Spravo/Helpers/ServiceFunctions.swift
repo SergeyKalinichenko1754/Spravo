@@ -16,11 +16,15 @@ enum Result<V, E> {
     case failure(E)
 }
 
+enum ResultE<E> {
+    case success
+    case failure(E)
+}
+
 enum BoolResult {
     case success(Bool)
     case failure(String)
 }
-
 
 func updateUIonMainThread(block: @escaping () -> Void) {
     if Thread.isMainThread {

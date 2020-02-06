@@ -16,10 +16,14 @@ class FetchPhoneContactsVC: UITableViewController {
     
     var viewModel: FetchPhoneContactsViewModelType!
     weak var activityController: ActivityScreenVC?
+    var autoStartFetchContacts = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
+        if autoStartFetchContacts {
+            fetchPhonesContacts()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,13 +53,11 @@ class FetchPhoneContactsVC: UITableViewController {
             switch result {
             case .failure(let error):
                 self.stopActivityIndicator { [weak self] in
-                    guard let self = self else { return }
-                    self.showErrorScreen(error)
+                    self?.showErrorScreen(error)
                 }
             case .success(false):
                 self.stopActivityIndicator { [weak self] in
-                    guard let self = self else { return }
-                    self.showSettingsAlert()
+                    self?.showSettingsAlert()
                 }
             case .success(true):
                 self.syncingContacts()
@@ -65,16 +67,14 @@ class FetchPhoneContactsVC: UITableViewController {
     
     private func syncingContacts() {
         updateUIonMainThread { [weak self] in
-            guard let self = self else { return }
-            self.starNextActivityIndicator()
-            self.viewModel.syncingContacts { [weak self] error in
+            self?.starNextActivityIndicator()
+            self?.viewModel.syncingContacts { [weak self] error in
                 guard let self = self else { return }
                 self.stopActivityIndicator { [weak self] in
-                    guard let self = self else { return }
                     if let error = error {
-                        self.showErrorScreen(error)
+                        self?.showErrorScreen(error)
                     } else {
-                        self.viewModel.finishedRequestContacts()
+                        self?.viewModel.finishedRequestContacts()
                     }
                 }
             }
@@ -126,9 +126,6 @@ class FetchPhoneContactsVC: UITableViewController {
         guard let errorController = Storyboard.service.controller(withClass: ErrorScreenVC.self) else { return }
         updateUIonMainThread { [weak self] in
             guard let self = self else { return }
-            if let error = error {
-                debugPrint(error)
-            }
             errorController.text = NSLocalizedString("ImportPhoneContacts.ErrorSyncingContactsFailed", comment: "Message about syncing contacts failed") + ": " + supportEmail
             self.navigationController?.modalPresentationStyle = .overCurrentContext
             self.navigationController?.present(errorController, animated: true, completion: nil)
